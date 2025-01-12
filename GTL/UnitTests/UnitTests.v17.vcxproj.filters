@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{eaa7638c-a4c6-45f2-9864-a0945b3e6224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{a32dcb00-176a-4030-8248-ba3244272c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\Files">
+      <UniqueIdentifier>{2ac601af-954f-4403-9f66-8914a2600c28}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UnitTestsMain.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="WICFileIONative.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestWeakPtrCompare.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestAtomicMinMax.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestContainerAdapter.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestHashCombine.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestLattice.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestMinHeap.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestMultiarray.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestMultiarrayAdapter.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestRangeIteration.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestSharedPtrCompare.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestStringUtility.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\UTUtility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="UTLibrary.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTestInstantiate.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestRawPtrCompare.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTestsExceptions.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\TestMinimumSpanningTree.cpp">
+      <Filter>Utility\Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UnitTestsConfiguration.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="WICFileIONative.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="UTLibrary.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitTestsExceptions.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\UTUtility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitTestsNamespaces.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawLine.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

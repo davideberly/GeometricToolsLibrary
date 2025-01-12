@@ -1,0 +1,10 @@
+# User-specific files
+
+# Visual Studio cache/options directory
+.vs/
+
+# Geometric Tools output folder
+_Output/
+
+# User-specific settings
+*.user
