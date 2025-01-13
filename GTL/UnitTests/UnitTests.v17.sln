@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Required", "Required", "{FB
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTLUtility.v17", "..\Utility\GTLUtility.v17.vcxproj", "{331349F5-C668-4D28-8A79-5441DAB2BD75}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTLMathematics.v17", "..\Mathematics\GTLMathematics.v17.vcxproj", "{A51C6FA7-9082-4ECF-B024-A9DF098572A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -43,12 +45,25 @@ Global
 		{331349F5-C668-4D28-8A79-5441DAB2BD75}.ReleaseInstantiate|x64.Build.0 = Release|x64
 		{331349F5-C668-4D28-8A79-5441DAB2BD75}.ReleaseInstantiateRational|x64.ActiveCfg = Release|x64
 		{331349F5-C668-4D28-8A79-5441DAB2BD75}.ReleaseInstantiateRational|x64.Build.0 = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Debug|x64.ActiveCfg = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Debug|x64.Build.0 = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiate|x64.ActiveCfg = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiate|x64.Build.0 = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiateRational|x64.ActiveCfg = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiateRational|x64.Build.0 = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Release|x64.ActiveCfg = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Release|x64.Build.0 = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiate|x64.ActiveCfg = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiate|x64.Build.0 = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiateRational|x64.ActiveCfg = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiateRational|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{331349F5-C668-4D28-8A79-5441DAB2BD75} = {FB0EACAD-5521-4A7F-9442-8C7F499ED899}
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7} = {FB0EACAD-5521-4A7F-9442-8C7F499ED899}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB2BFB79-B603-4C16-80B6-E84FB05B4EE3}

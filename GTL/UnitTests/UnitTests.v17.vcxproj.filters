@@ -10,6 +10,21 @@
     <Filter Include="Utility\Files">
       <UniqueIdentifier>{2ac601af-954f-4403-9f66-8914a2600c28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mathematics">
+      <UniqueIdentifier>{51fcc466-2b53-43ed-82ac-26c8782b70e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\Algebra">
+      <UniqueIdentifier>{48a184c3-ea83-4d23-b488-d531fb94fe39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\Arithmetic">
+      <UniqueIdentifier>{62dfb8f9-b60c-455f-9f86-1760a825df85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\Functions">
+      <UniqueIdentifier>{53d6bf92-1370-451e-a332-b46aad9a7a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\MatrixAnalysis">
+      <UniqueIdentifier>{a70bb2eb-d05a-4364-ac3d-3edd30955406}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UnitTestsMain.cpp">
@@ -69,6 +84,171 @@
     <ClCompile Include="Utility\TestMinimumSpanningTree.cpp">
       <Filter>Utility\Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\UTMathematics.cpp">
+      <Filter>Mathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestAffineTransform.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestAxisAngle.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestConvertCoordinates.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestDualQuaternion.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestEulerAngles.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestLieGroupsAlgebras.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestMatrix.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestMatrixAccessor.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestPolynomial.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestQuaternion.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestRigidMotion.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Algebra\TestVector.cpp">
+      <Filter>Mathematics\Algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestAPConversion.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestAPInterval.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestBitHacks.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestBSNumber.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestBSPrecision.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestBSRational.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestConstants.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEBinary.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEBinary16.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEFunctions.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestQFNumber.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestSWInterval.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerALU32.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerAP32.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerFP32.cpp">
+      <Filter>Mathematics\Arithmetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestACosEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestASinEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestATanEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestChebyshevRatio.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestChebyshevRatioEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestCosEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestExp2Estimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestExpEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestInvSqrtEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestLog2Estimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestLogEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestRemezAlgorithm.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestRotationEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestSinEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestSlerp.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestSlerpEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestSqrtEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Functions\TestTanEstimate.cpp">
+      <Filter>Mathematics\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBandedMatrix.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBlockCholeskyDecomposition.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBlockLDLTDecomposition.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestCholeskyDecomposition.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestGaussianElimination.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestLDLTDecomposition.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestLinearSystem.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestSingularValueDecomposition.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestSymmetricEigensolver.cpp">
+      <Filter>Mathematics\MatrixAnalysis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
@@ -91,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="DrawLine.h">
       <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Mathematics\UTMathematics.h">
+      <Filter>Mathematics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

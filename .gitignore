@@ -8,3 +8,6 @@ _Output/
 
 # User-specific settings
 *.user
+
+# Output of unit tests
+GTL/UnitTests/UTResults.txt
