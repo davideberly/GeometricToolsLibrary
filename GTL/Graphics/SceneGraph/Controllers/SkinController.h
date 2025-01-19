@@ -1,0 +1,86 @@
+// Geometric Tools Library
+// https://www.geometrictools.com
+// Copyright (c) 2025 Geometric Tools LLC
+// Distributed under the Boost Software License, Version 1.0
+// https://www.boost.org/LICENSE_1_0.txt
+// File Version: yyyy.mm.dd
+
+#pragma once
+
+#include <GTL/Mathematics/Algebra/Vector.h>
+#include <GTL/Graphics/SceneGraph/Controllers/Controller.h>
+#include <GTL/Graphics/Resources/Buffers/VertexBuffer.h>
+#include <cstdint>
+
+namespace gtl
+{
+    class Node;
+
+    class SkinController : public Controller
+    {
+    public:
+        // Construction and destruction.  The numbers of vertices and bones
+        // are fixed for the lifetime of the object.  The controlled object
+        // must have a vertex buffer with 'numVertices' elements, with 3D
+        // (x,y,z) or 4D (x,y,z,1) positions, and the bind of positions is in
+        // unit 0.  The post-update function is used to allow a graphics
+        // engine object to copy the modified vertex buffer to graphics memory.
+        virtual ~SkinController() = default;
+        SkinController(int32_t numVertices, int32_t numBones, BufferUpdater const& postUpdate);
+
+        // Member access.  After calling the constructor, you must set the
+        // data using these functions.  The bone array uses weak pointers to
+        // avoid reference-count cycles in the scene graph.
+        inline int32_t GetNumVertices() const
+        {
+            return mNumVertices;
+        }
+
+        inline int32_t GetNumBones() const
+        {
+            return mNumBones;
+        }
+
+        inline std::vector<std::weak_ptr<Node>>& GetBones()
+        {
+            return mBones;
+        }
+
+        inline std::vector<float>& GetWeights()
+        {
+            return mWeights;
+        }
+
+        inline std::vector<Vector4<float>>& GetOffsets()
+        {
+            return mOffsets;
+        }
+
+        // The animation update.  The application time is in milliseconds.
+        virtual bool Update(double applicationTime) override;
+
+    protected:
+        // On the first call to Update(...), the position channel and stride
+        // are extracted from mObject's vertex buffer.  This is a deferred
+        // construction, because we do not know mObject when SkinController
+        // is constructed.
+        void OnFirstUpdate();
+
+        int32_t mNumVertices;
+        int32_t mNumBones;
+
+        // bones[numBones]
+        std::vector<std::weak_ptr<Node>> mBones;
+
+        // weight[numVertices * numBones], index = bone + numBones * vertex
+        std::vector<float> mWeights;
+
+        // offfset[numVertices * numBones], index = bone + numBones * vertex
+        std::vector<Vector4<float>> mOffsets;
+
+        BufferUpdater mPostUpdate;
+        char* mPosition;
+        uint32_t mStride;
+        bool mFirstUpdate, mCanUpdate;
+    };
+}

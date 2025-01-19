@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{108bb8b1-880b-478f-b5f2-01a02c0235e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MSW">
+      <UniqueIdentifier>{5fcf44bc-cff8-487c-b2b6-7c3346df6e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLX">
+      <UniqueIdentifier>{cbe229c6-476e-4032-ae29-88c0fe2d48b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraRig.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleApplication.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="OnIdleTimer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackBall.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackCylinder.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackObject.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Window2.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Window3.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowApplication.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\Console.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\ConsoleSystem.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\WICFileIO.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\WICFileIONative.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\Window.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="MSW\WindowSystem.cpp">
+      <Filter>MSW</Filter>
+    </ClCompile>
+    <ClCompile Include="GTLApplications.cpp" />
+    <ClCompile Include="GLX\Console.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLX\ConsoleSystem.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLX\WICFileIO.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLX\Window.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLX\WindowSystem.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraRig.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleApplication.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Environment.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="OnIdleTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackBall.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackCylinder.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="WICFileIO.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Window2.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Window3.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowApplication.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\Console.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\ConsoleSystem.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\WICFileIO.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\WICFileIONative.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\Window.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="MSW\WindowSystem.h">
+      <Filter>MSW</Filter>
+    </ClInclude>
+    <ClInclude Include="GTLApplications.h" />
+    <ClInclude Include="GTLApplicationsPCH.h" />
+    <ClInclude Include="GLX\Console.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+    <ClInclude Include="GLX\ConsoleSystem.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+    <ClInclude Include="GLX\WICFileIO.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+    <ClInclude Include="GLX\Window.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+    <ClInclude Include="GLX\WindowSystem.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

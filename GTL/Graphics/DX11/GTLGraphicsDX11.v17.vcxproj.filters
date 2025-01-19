@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{236f8e6f-e5b6-4d5a-a4cf-f21d1a2cd89b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXGI">
+      <UniqueIdentifier>{c9639c50-8d85-445f-ab9e-b9ec77ba9196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{160bfb52-3104-47fd-8158-e51999c5dc7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\HLSLI">
+      <UniqueIdentifier>{cbb14233-6aa8-453f-8271-155cddfe970c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputLayout">
+      <UniqueIdentifier>{8fb07dc8-21f3-4060-8c36-d5eaccf11f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{69f2c72a-90bf-43ca-be7f-9322df44aaad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Buffers">
+      <UniqueIdentifier>{20bc44a1-ef5c-4730-aa93-78bc75c5751e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Textures">
+      <UniqueIdentifier>{2e16e0a1-3840-4f90-8123-a631d64a59a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{8ff9e83e-3777-4031-a5fb-5739fed738b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{cb3e7dd9-62d4-47e1-ac94-ba56d24effae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DXGI\DXGIAdapter.cpp">
+      <Filter>DXGI</Filter>
+    </ClCompile>
+    <ClCompile Include="DXGI\DXGIOutput.cpp">
+      <Filter>DXGI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DX11.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DX11Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DX11GraphicsObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DX11PerformanceCounter.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLBaseBuffer.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLByteAddressBuffer.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLConstantBuffer.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLParameter.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLProgramFactory.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLReflection.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLResource.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLResourceBindInfo.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLSamplerState.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLShader.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLShaderFactory.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLShaderType.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLShaderVariable.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLStructuredBuffer.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLTexture.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLTextureArray.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLTextureBuffer.cpp">
+      <Filter>HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GTLGraphicsDX11.cpp" />
+    <ClCompile Include="InputLayout\DX11InputLayout.cpp">
+      <Filter>InputLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout\DX11InputLayoutManager.cpp">
+      <Filter>InputLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\DX11Resource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11Buffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11ConstantBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11IndexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11IndirectArgumentsBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11RawBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11StructuredBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11TextureBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\DX11VertexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture1.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture1Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture2.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture2Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11Texture3.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureCube.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureCubeArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureDS.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureRT.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11TextureSingle.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DX11DrawTarget.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\DX11ComputeShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\DX11GeometryShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\DX11PixelShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\DX11Shader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\DX11VertexShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DX11BlendState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DX11DepthStencilState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DX11DrawingState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DX11RasterizerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DX11SamplerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DXGI\DXGIAdapter.h">
+      <Filter>DXGI</Filter>
+    </ClInclude>
+    <ClInclude Include="DXGI\DXGIOutput.h">
+      <Filter>DXGI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DX11.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DX11Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DX11GraphicsObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DX11PerformanceCounter.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLBaseBuffer.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLByteAddressBuffer.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLComputeProgram.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLConstantBuffer.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLFactory.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLParameter.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLProgramFactory.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLReflection.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLResource.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLResourceBindInfo.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLSamplerState.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLShader.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLShaderFactory.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLShaderType.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLShaderVariable.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLStructuredBuffer.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLTexture.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLTextureArray.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLTextureBuffer.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="HLSL\HLSLVisualProgram.h">
+      <Filter>HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GTLGraphicsDX11.h" />
+    <ClInclude Include="GTLGraphicsDX11PCH.h" />
+    <ClInclude Include="InputLayout\DX11InputLayout.h">
+      <Filter>InputLayout</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout\DX11InputLayoutManager.h">
+      <Filter>InputLayout</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\DX11Resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11Buffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11ConstantBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11IndexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11IndirectArgumentsBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11RawBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11StructuredBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11TextureBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\DX11VertexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11DrawTarget.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture1.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture1Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture2.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture2Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11Texture3.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureCube.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureCubeArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureDS.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureRT.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DX11TextureSingle.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\DX11ComputeShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\DX11GeometryShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\DX11PixelShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\DX11Shader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\DX11VertexShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DX11BlendState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DX11DepthStencilState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DX11DrawingState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DX11RasterizerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DX11SamplerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HLSL\HLSLI\FloatFunction.hlsli">
+      <Filter>HLSL\HLSLI</Filter>
+    </None>
+    <None Include="HLSL\HLSLI\SqrtEstimate.hlsli">
+      <Filter>HLSL\HLSLI</Filter>
+    </None>
+  </ItemGroup>
+</Project>
