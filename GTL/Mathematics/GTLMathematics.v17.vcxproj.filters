@@ -13,6 +13,138 @@
     <Filter Include="MatrixAnalysis">
       <UniqueIdentifier>{61b42945-66be-48ef-80d1-10ed6e7542d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Approximation">
+      <UniqueIdentifier>{59bcdeaf-c8d3-4efd-b5b1-003d328ce769}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Approximation\2D">
+      <UniqueIdentifier>{401b366f-6d10-4770-b086-f26160f60f6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Approximation\3D">
+      <UniqueIdentifier>{716ed1eb-4b14-4de0-b697-73b5ec5f4588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Approximation\ND">
+      <UniqueIdentifier>{c94de45e-aeff-41d5-b938-9716a3024ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Approximation\Polynomial">
+      <UniqueIdentifier>{f63b9b0b-f1bd-48fe-99dc-59db32cb6260}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containment">
+      <UniqueIdentifier>{e2e2aaba-74de-41e0-83c8-6db9c53a396a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containment\2D">
+      <UniqueIdentifier>{d9cb9fdc-802d-42e0-9fa4-23780b90dd63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containment\3D">
+      <UniqueIdentifier>{667dca92-ed86-411c-82b9-a5a12cf898ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containment\ND">
+      <UniqueIdentifier>{1c62c317-231b-4aa8-a08b-53b6f6d2d86a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance">
+      <UniqueIdentifier>{b535483f-e791-4501-b57d-2b9d14f58e45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance\2D">
+      <UniqueIdentifier>{f26cc46f-9ddf-4052-afa3-37fda55191e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance\3D">
+      <UniqueIdentifier>{9a1fcbb7-d893-4676-97b2-4fd246da917c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Distance\ND">
+      <UniqueIdentifier>{fa0ab9cd-fc31-48c5-897e-77e23a5bcb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{7a22360a-7008-4030-a64d-cab6361bbe12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\1D">
+      <UniqueIdentifier>{3d0ed5da-4dfd-4fda-8346-e7c1078317c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\2D">
+      <UniqueIdentifier>{27a06244-94c2-4987-b057-35e646eacfc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\3D">
+      <UniqueIdentifier>{06df72f2-4a9b-4e27-8e2c-cb742d13d36b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\ND">
+      <UniqueIdentifier>{6a1ba723-5e62-4f85-9b42-022f464ae054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Curves">
+      <UniqueIdentifier>{f5e97668-05e1-497e-ab1d-c1e650259e0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DifferentialEquations">
+      <UniqueIdentifier>{0b4ffac2-b2fe-4116-9c6e-db37212df8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageProcessing">
+      <UniqueIdentifier>{f85c026d-c555-469d-8664-b973ec51e60b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Integration">
+      <UniqueIdentifier>{a78182b6-a6c4-4f36-99be-f4465097ba68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation">
+      <UniqueIdentifier>{2b0c8f14-62dd-4880-828c-1f5f83fd25db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation\1D">
+      <UniqueIdentifier>{ce0b2b10-de7d-4dca-b4d6-025b798e6d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation\2D">
+      <UniqueIdentifier>{e640226b-c823-4c82-ac6b-ff501a3041b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation\3D">
+      <UniqueIdentifier>{d0e184cc-8012-48ca-af06-efb6e1896e08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interpolation\ND">
+      <UniqueIdentifier>{75b4b449-b415-478a-b7d3-3459353b21c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection">
+      <UniqueIdentifier>{eab49f7b-ff6c-4391-8df8-c95483f4e0a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection\1D">
+      <UniqueIdentifier>{5874cd22-c702-4f20-9534-42c23b612fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection\2D">
+      <UniqueIdentifier>{59a274b5-baf7-4e7e-8bfd-aac038096394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection\3D">
+      <UniqueIdentifier>{940cb953-da75-416c-915a-7945847a5e74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Intersection\ND">
+      <UniqueIdentifier>{35775c85-dc8d-47e6-9071-7017fdc1675a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Meshes">
+      <UniqueIdentifier>{93f25e04-f563-4eca-b593-bdf3666628dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Minimizers">
+      <UniqueIdentifier>{bb2a3b82-3be1-4dd9-9cce-41e40aa08b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Miscellaneous">
+      <UniqueIdentifier>{9d3b23a8-dd2d-44bf-8196-21c9df63e44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{17640330-706b-4aff-a721-3ffce430d3cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitives">
+      <UniqueIdentifier>{444917ed-1194-429d-8529-2bd45718ffb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitives\2D">
+      <UniqueIdentifier>{dd836174-07bd-4c2e-9be3-3f111c7e7b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitives\3D">
+      <UniqueIdentifier>{a93d3f45-0ceb-4441-ad8e-a8387759bcbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Primitives\ND">
+      <UniqueIdentifier>{227e8a14-9093-4448-94aa-ef0fe977e529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Projection">
+      <UniqueIdentifier>{fa6121d7-3d19-4dcb-abed-1d7579c3b0b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RootFinders">
+      <UniqueIdentifier>{38fd0c12-dbe0-41ae-bd3b-152ad21fef77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Surfaces">
+      <UniqueIdentifier>{96cb6f63-25f7-454b-b39d-14947a9b7b9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Volumes">
+      <UniqueIdentifier>{291eb454-5020-4c51-9ccb-6dc0d7b555c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra\AxisAngle.h">
@@ -182,6 +314,855 @@
     </ClInclude>
     <ClInclude Include="MatrixAnalysis\BlockCholeskyDecomposition.h">
       <Filter>MatrixAnalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprCircle2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprCurveByArcs.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprEllipse2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprEllipseByArcs.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprHeightLine2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprOrthogonalLine2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprParabola2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprCone3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprHeightPlane3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprHelmertTransformation3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprOrthogonalLine3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprOrthogonalPlane3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprParaboloid3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprSphere3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprTorus3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\ND\ApprGaussianDistribution.h">
+      <Filter>Approximation\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\Polynomial\ApprPolynomial2.h">
+      <Filter>Approximation\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContScribeCircle2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContTetrahedron3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\ND\ContAlignedBox.h">
+      <Filter>Containment\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\BasisFunction.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\BezierCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\BSplineCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\BSplineCurveFit.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\BSplineGeodesic.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\EllipsoidGeodesic.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\FrenetFrame.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\ImplicitCurve2.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\NaturalCubicSpline.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\NaturalQuinticSpline.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\NURBSCircle.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\NURBSCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\ParametricCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\PolynomialCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\ReparameterizeByArclength.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\RiemannianGeodesic.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="Curves\TCBSplineCurve.h">
+      <Filter>Curves</Filter>
+    </ClInclude>
+    <ClInclude Include="DifferentialEquations\OdeEuler.h">
+      <Filter>DifferentialEquations</Filter>
+    </ClInclude>
+    <ClInclude Include="DifferentialEquations\OdeImplicitEuler.h">
+      <Filter>DifferentialEquations</Filter>
+    </ClInclude>
+    <ClInclude Include="DifferentialEquations\OdeMidpoint.h">
+      <Filter>DifferentialEquations</Filter>
+    </ClInclude>
+    <ClInclude Include="DifferentialEquations\OdeRungeKutta4.h">
+      <Filter>DifferentialEquations</Filter>
+    </ClInclude>
+    <ClInclude Include="DifferentialEquations\OdeSolver.h">
+      <Filter>DifferentialEquations</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\DistanceClosestPointQuery.h">
+      <Filter>Distance</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistLine2AlignedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistLine2Circle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistLine2OrientedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistPoint2Arc2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistPoint2Circle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistPoint2Parallelogram2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistRay2AlignedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistRay2Circle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistRay2OrientedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistSegment2AlignedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistSegment2Circle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistSegment2OrientedBox2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistAlignedBox3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistCircle3Circle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3Arc3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3Circle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3Rectangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLine3Triangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistLinearCircularSupport3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistOrientedBox3Cone3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistOrientedBox3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPlane3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPlane3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPlane3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Arc3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Circle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3ConvexPolyhedron3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Cylinder3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Frustum3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Parallelepiped3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistPoint3Tetrahedron3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3Arc3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3Circle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3Rectangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRay3Triangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRectangle3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRectangle3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRectangle3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistRectangle3Rectangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3Arc3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3Circle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3Rectangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistSegment3Triangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTetrahedron3Tetrahedron3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTriangle3AlignedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTriangle3CanonicalBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTriangle3OrientedBox3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTriangle3Rectangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\3D\DistTriangle3Triangle3.h">
+      <Filter>Distance\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistAlignedBoxAlignedBox.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistLineLine.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistLineRay.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistLineSegment.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointAlignedBox.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointCanonicalBox.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointHyperellipsoid.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointHyperplane.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointLine.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointOrientedBox.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointRay.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointRectangle.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointSegment.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistPointTriangle.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistRayRay.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistRaySegment.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\ND\DistSegmentSegment.h">
+      <Filter>Distance\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\1D\DisjointIntervals.h">
+      <Filter>Geometry\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\1D\ExactSignDeterminant2.h">
+      <Filter>Geometry\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\1D\ExactSignDeterminant3.h">
+      <Filter>Geometry\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\1D\ExactSignDeterminant4.h">
+      <Filter>Geometry\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\BSPPolygon2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ConstrainedDelaunay2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ConvexHull2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\Delaunay2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\DisjointRectangles.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ExactColinear2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ExactToCircumcircle2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ExactToLine2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ExactToLineExtended2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\ExactToTriangle2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\IncrementalDelaunay2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\MinimumAreaBox2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\MinimumWidthPoints2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\PolygonTree.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\RotatingCalipers.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\TriangulateCDT.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ConvexHull3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\Delaunay3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExactColinear3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExactCoplanar3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExactToCircumsphere3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExactToPlane3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExactToTetrahedron3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Integration\IntgGaussianQuadrature.h">
+      <Filter>Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="Integration\IntgRomberg.h">
+      <Filter>Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="Integration\IntgTrapezoidRule.h">
+      <Filter>Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\1D\IntpHermiteCubic1.h">
+      <Filter>Interpolation\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\1D\IntpHermiteQuintic1.h">
+      <Filter>Interpolation\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpHermiteCubic2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpHermiteQuintic2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpQuadraticNonuniform2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpHermiteCubic3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpHermiteQuintic3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\IntersectionQuery.h">
+      <Filter>Intersection</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrEllipse2Ellipse2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Line2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Ray2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Segment2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Triangle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2Triangle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2Triangle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrTriangle2Triangle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrCylinder3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3AlignedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Circle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3AlignedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3AlignedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTriangle3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\ND\IntrConvexPolygonHyperplane.h">
+      <Filter>Intersection\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicETManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicTSManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicVETManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\EdgeKey.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\FeatureKey.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\PlanarMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\StaticVETManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\TetrahedronKey.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\TriangleKey.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\VETFeaturesKS.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\VETManifoldMeshKS.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Minimizers\BrentsMinimizer.h">
+      <Filter>Minimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Minimizers\GaussNewtonMinimizer.h">
+      <Filter>Minimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Minimizers\LevenbergMarquardtMinimizer.h">
+      <Filter>Minimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\CircleThroughPointSpecifiedTangentAndRadius.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\CircleThroughTwoPointsSpecifiedRadius.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\InscribedFixedAspectRectInQuad.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\RandomPointOnHypersphere.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\2D\Ellipse2.h">
+      <Filter>Primitives\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\2D\Parallelogram2.h">
+      <Filter>Primitives\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\2D\Polygon2.h">
+      <Filter>Primitives\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\2D\Arc2.h">
+      <Filter>Primitives\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\2D\Circle2.h">
+      <Filter>Primitives\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Arc3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Circle3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\ConvexMesh3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\ConvexPolyhedron3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Ellipse3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Ellipsoid3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Frustum3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Parallelepiped3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Plane3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Polyhedron3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Sphere3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Tetrahedron3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\3D\Torus3.h">
+      <Filter>Primitives\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\AlignedBox.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\CanonicalBox.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Capsule.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Cone.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Cylinder.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Halfspace.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Hyperellipsoid.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Hyperplane.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Hypersphere.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Line.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Lozenge.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\OrientedBox.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Ray.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Rectangle.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Segment.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\SegmentMesh.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives\ND\Triangle.h">
+      <Filter>Primitives\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Projection\ProjectEllipsoidToPlane.h">
+      <Filter>Projection</Filter>
+    </ClInclude>
+    <ClInclude Include="Projection\ProjectHyperellipsoidToLine.h">
+      <Filter>Projection</Filter>
+    </ClInclude>
+    <ClInclude Include="Projection\ProjectPointsToCoordinatePlane.h">
+      <Filter>Projection</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\PolynomialRoot.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsBisection1.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsBisection2.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsBrentsMethod.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsCubic.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsLinear.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsPolynomial.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsQuadratic.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsQuartic.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\BSplineSurface.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\BSplineSurfaceFit.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\DarbouxFrame.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\ImplicitSurface3.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\NURBSSphere.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\NURBSSurface.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\ParametricSurface.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Surfaces\QuadricSurface.h">
+      <Filter>Surfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistRay2Arc2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistLine2Triangle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistRay2Triangle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistSegment2Arc2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistSegment2Triangle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrAreaEllipse2Ellipse2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\1D\IntrIntervals.h">
+      <Filter>Intersection\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Plane3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Rasterize2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTriangle3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContOrientedBox2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="RootFinders\RootsGeneralPolynomial.h">
+      <Filter>RootFinders</Filter>
+    </ClInclude>
+    <ClInclude Include="Minimizers\LCPSolver.h">
+      <Filter>Minimizers</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistLine2Arc2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Distance\2D\DistCircle2Circle2.h">
+      <Filter>Distance\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2Ray2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2Segment2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2Segment2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\STLBinaryFile.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\UniqueVerticesSimplices.h">
+      <Filter>Meshes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

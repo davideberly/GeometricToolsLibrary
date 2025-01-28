@@ -41,6 +41,13 @@ I have not yet tested code on Linux distributions, even for compilation. This
 will occur once I get the unit tests and visual tests in place for GTL on
 Microsoft Windows 11.
 
+The unit tests use exact comparison to floating-point numbers. These can
+potentially fail on different platforms because of small rounding errors.
+Once all the unit tests are in place, I will modify the unit tests to use
+epsilon values to account for the small rounding errors. For now, it is
+convenient to me simply to run the exact-comparison tests to speed up the
+port and adding unit tests.
+
 ## Current Distribution ##
 
 I am posting the GTL files as their unit testing and/or visual testing are

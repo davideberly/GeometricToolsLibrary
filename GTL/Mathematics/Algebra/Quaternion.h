@@ -395,9 +395,9 @@ namespace gtl
     template <typename T>
     Vector4<T> Rotate(Quaternion<T> const& q, Vector4<T> const& u)
     {
-        Vector3<T> v{ q[0], q[1], q[2] };
-        Vector3<T> t = C_<T>(2) * Cross(v, u);
-        Vector4<T> rotatedU = HLift(u + q[3] * t + Cross(v, t), C_<T>(0));
+        Vector4<T> v{ q[0], q[1], q[2], C_<T>(0) };
+        Vector4<T> t = C_<T>(2) * Cross(v, u);
+        Vector4<T> rotatedU = u + q[3] * t + Cross(v, t);
         return rotatedU;
     }
 

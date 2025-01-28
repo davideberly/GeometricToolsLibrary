@@ -1,0 +1,739 @@
+==============================================================================
+PENDING. Needs major revisit.
+
+// The line3-circle3 and circle3-circle3 code exists and is tested. This is
+// a list of files most of which need to be implemented and tested. They
+// should be backported to GTE.
+Distance/3D
+    DistCircle3Arc3
+    DistArc3Arc3
+
+Meshes (finish the mesh PDF and redesign the code)
+    IndexAttribute
+    RevolutionMesh
+    TubeMesh
+    VEManifoldMesh
+    VertexAttribute
+
+==============================================================================
+NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
+
+Approximation
+    2D
+        ApprParallelLines2
+    3D
+        ApprCylinder3
+        ApprEllipsoid3
+        ApprGreatArc3
+        ApprGreatCircle3
+    Polynomial
+        ApprPolynomial3
+        ApprPolynomial4
+        ApprPolynomialSpecial (merged the 2/3/4D versions into generic ND version)
+
+Containment
+    2D
+        ContAlignedBox2Arc2
+        ContCircle2
+        ContEllipse2
+        ContEllipse2MinCR
+        ContPointInPolygon2
+    3D
+        ContCapsule3
+        ContCylinder3
+        ContEllipsoid3
+        ContEllipsoid3MinCR
+        ContLozenge3
+        ContOrientedBox3
+        ContPointInPolyhedron3
+        ContScribeCircle3
+        ContScribeSphere3
+        ContSphere3
+    ND
+        ContCone
+
+Geometry
+    2D
+        IsPlanarGraph
+        MinimalCycleBasis
+        MinimumAreaCircle2
+        SeparatePoints2
+        TriangulateEC
+    3D
+        AlignedBoxBV.h
+        AlignedBoxTreeOfPoints.h
+        AlignedBoxTreeOfSegments.h
+        AlignedBoxTreeOfTriangles.h
+        BVTree.h (tested indirectly by derived classes)
+        BVTreeOfPoints.h (tested indirectly by derived classes)
+        BVTreeOfSegments.h (tested indirectly by derived classes)
+        BVTreeOfTriangles.h
+        ConformalMapGenus0
+        ExtremalQuery3
+        ExtremalQuery3BSP
+        ExtremalQuery3PRJ
+        GenerateMeshUV
+        MinimumVolumeBox3
+        MinimumVolumeSphere3
+        OBBTree
+        OBBTreeOfPoints
+        OBBTreeOfSegments
+        OBBTreeOfTriangles
+        OrientedBoxBV.h
+        OrientedBoxTreeOfPoints.h
+        OrientedBoxTreeOfSegments.h
+        OrientedBoxTreeOfTriangles.h
+        SeparatePoints3
+        SplitMeshByPlane
+    ND
+        CLODPolyline
+
+ImageProcessing
+    CurvatureFlow2
+    CurvatureFlow3
+    CurveExtractor (abstract base class)
+    CurveExtractorSquares
+    CurveExtractorTriangles
+    FastGaussianBlur1
+    FastGaussianBlur2
+    FastGaussianBlur3
+    FastMarch
+    FastMarch2
+    FastMarch3
+    GaussianBlur2
+    GaussianBlur3
+    GradientAnisotropic2
+    GradientAnisotropic3
+    Histogram
+    Image2
+    Image3
+    MarchingCubes
+    MinimalCycleBasis
+    Morphology
+    Morphology2
+    Morphology2
+    PdeFilter
+    PdeFilter1
+    PdeFilter2
+    PdeFilter3
+    Rasterize3
+    SurfaceExtractor
+    SurfaceExtractorCubes
+    SurfaceExtractorMC
+    SurfaceExtractorTetrahedra
+
+Interpolation
+    1D
+        IntpAkimaNonuniform1
+        IntpAkimaUniform1
+    2D
+        IntpAkimaUniform2
+        IntpCubic2
+        IntpLinear2
+        IntpLinearNonuniform2
+        IntpThinPlateSpline2
+        IntpVectorField2
+    3D
+        IntpAkimaUniform3
+        IntpCubic3
+        IntpLinear3
+        IntpLinearNonuniform3
+        IntpSphere3
+        IntpThinPlateSpline3
+    ND
+        IntpBSplineUniform
+
+Intersection
+    IntersectionQuery (was TIQuery and FIQuery)
+    2D
+        IntrAlignedBox2AlignedBox2
+        IntrAlignedBox2Circle2
+        IntrAlignedBox2OrientedBox2
+        IntrArc2Arc2
+        IntrCircle2Arc2
+        IntrCircle2Circle2
+        IntrDisk2Sector2
+        IntrHalfspace2Polygon2
+        IntrLine2AlignedBox2
+        IntrLine2Arc2
+        IntrLine2Circle2
+        IntrLine2OrientedBox2
+        IntrLine2SegmentMesh2
+        IntrOrientedBox2Circle2
+        IntrOrientedBox2Cone2
+        IntrOrientedBox2OrientedBox2
+        IntrOrientedBox2Sector2
+        IntrRay2AlignedBox2
+        IntrRay2Arc2
+        IntrRay2Circle2
+        IntrRay2OrientedBox2
+        IntrRay2SegmentMesh2
+        IntrSegment2AlignedBox2
+        IntrSegment2Arc2
+        IntrSegment2Circle2
+        IntrSegment2OrientedBox2
+        IntrSegment2SegmentMesh2
+    3D
+        IntrAlignedBox3AlignedBox3
+        IntrAlignedBox3Cone3
+        IntrAlignedBox3Cylinder3
+        IntrAlignedBox3OrientedBox3
+        IntrAlignedBox3Sphere3
+        IntrCanonicalBox3Cylinder3
+        IntrCapsule3Capsule3
+        IntrConvexMesh3Plane3
+        IntrEllipsoid3Ellipsoid3
+        IntrHalfspace3Capsule3
+        IntrHalfspace3Cylinder3
+        IntrHalfspace3Ellipsoid3
+        IntrHalfspace3OrientedBox3
+        IntrHalfspace3Segment3
+        IntrHalfspace3Sphere3
+        IntrHalfspace3Triangle3
+        IntrLine3Cone3
+        IntrLine3Torus3
+        IntrOrientedBox3Cone3
+        IntrOrientedBox3Cylinder3
+        IntrOrientedBox3Frustum3
+        IntrOrientedBox3OrientedBox3
+        IntrOrientedBox3Sphere3
+        IntrPlane3Capsule3
+        IntrPlane3Ellipsoid3
+        IntrPlane3OrientedBox3
+        IntrPlane3Sphere3
+        IntrPlane3Triangle3
+        IntrRay3Cone3
+        IntrSegment3Cone3
+        IntrSphere3Cone3
+        IntrSphere3Frustum3
+        IntrSphere3Sphere3
+        IntrSphere3Triangle3
+        IntrTetrahedron3Tetrahedron3
+        IntrTriangle3OrientedBox3
+    ND
+        IntrLineHyperplane (was IntrLine3Plane3, generalized to N)
+        IntrRayHyperplane (was IntrRay3Plane3, generalized to N)
+        IntrSegmentHyperplane (was IntrSegment3Plane3, generalized to N)
+
+Meshes
+    DynamicETNonmanifoldMesh
+    DynamicVETNonmanifoldeMesh
+    DynamicVTSManifoldMesh
+    Mesh (NOT FINISHED)
+    MeshCurvature
+    MeshSmoother
+    RectangleMesh (NOT FINISHED)
+    RectanglePatchMesh (NOT FINISHED)
+    StaticVTSManifoldMesh
+    UniqueVerticesSimplices
+    VertexCollapseMesh
+    VertexLayout (NOT FINISHED)
+    VolumeMesh
+
+Minimizers
+    PowellsMinimizer (not unit tested, was MinimizeN)
+
+Miscellaneous
+    SortPointsOnCircle
+
+Physics
+    BoxManager
+    MassSpringArbitrary
+    MassSpringCurve
+    MassSpringSurface
+    MassSpringVolume
+    ParticleSystem
+    PolyhedralMassProperties
+    RectangleManager
+    RigidBody
+
+Volumes
+    BSplineVolume
+    NURBSVolume
+    ParametricVolume
+
+==============================================================================
+PORTED CODE, UNIT/VISUAL TESTED, POSTED TO GITHUB
+
+Utility
+    AtomicMinMax
+    ContainerAdapter
+    Exceptions (no unit tests, these are all macros and work as designed)
+    HashCombine
+    Lattice
+    MinHeap
+    MinimumSpanningTree
+    Multiarray
+    MultiarrayAdapter
+    RangeInteration
+    RawIterators (no unit tests, used by ContainerAdapter)
+    RawPtrCompare
+    SharedPtrCompare
+    StringUtility
+    Timer (no unit tests, tested by other tests)
+    TypeTraits (no unit tests, these define type traits used elsewhere)
+    WeakPtrCompare
+
+Algebra
+    AffineTransform
+    AxisAngle
+    ConvertCoordinates
+    DualQuaternion
+    EulerAngles
+    LieGroupsAlgebras
+    Matrix
+    MatrixAccessor
+    Polynomial
+    Quaternion
+    RigidMotion
+    Vector
+
+Approximation
+    2D
+        ApprCircle2
+        ApprCurveByArcs (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateBezierCurveByArcs)
+        ApprEllipse2 (tested by GTL/VisualTests/Mathematics/Approximation/Approximation/ApproximateEllipse2)
+        ApprEllipseByArcs (tested by GTL/VisualTests/Mathematics/Approximation/Approximation/ApproximateEllipsesByArcs)
+        ApprHeightLine2
+        ApprOrthogonalLine2
+        ApprParabola2
+    3D
+        ApprCone3
+        ApprHeightPlane3
+        ApprHelmertTransformation3
+        ApprOrthogonalLine3
+        ApprOrthogonalPlane3
+        ApprParaboloid3
+        ApprSphere3
+        ApprTorus3
+    ND
+        ApprGaussianDistribution
+    Polynomial
+        ApprPolynomial2
+
+Containment
+    2D
+        ContScribeCircle2
+        ContOrientedBox2 (tested by ApprEllipse)
+    3D
+        ContTetrahedron3
+    ND
+        ContAlignedBox
+
+Curves
+    BasisFunction (tested by GTL/VisualTests/Mathematics/Curves/BSplineCurveFitter)
+    BezierCurve (and tested by GTL/VisualTests/Mathematics/Approximation/ApproximateBezierCurveByArcs)
+    BSplineCurve (and tested by GTL/VisualTests/Mathematics/Curves/BSplineCurveFitter)
+    BSplineCurveFit (tested by GTL/VisualTests/Mathematics/Curves/BSplineCurveFitter)
+    BSplineGeodesic (tested by GTL/VisualTests/Mathematics/Curves/GeodesicHeightField)
+    EllipsoidGeodesic (tested by GTL/VisualTests/Mathematics/Curves/GeodesicEllipsoid)
+    FrenetFrame
+    ImplicitCurve2
+    NaturalCubicSpline
+    NaturalQuinticSpline
+    NURBSCircle
+    NURBSCurve (and tested by GTL/VisualTests/Mathematics/Curves/NURBSCurveExample)
+    ParametricCurve
+    PolynomialCurve
+    ReparameterizeByArclength
+    RiemannianGeodesic (tested by GTL/VisualTests/Mathematics/Curves/GeodesicHeightField)
+    TCBSplineCurve
+
+DifferentialEquations
+    OdeEuler
+    OdeImplicitEuler
+    OdeMidpoint
+    OdeRungeKutta4
+    OdeSolver
+
+Distance
+    DistanceClosestPointQuery (no unit test, template definition)
+    2D
+        DistCircle2Circle2
+        DistLine2AlignedBox2
+        DistLine2Arc2
+        DistLine2Circle2
+        DistLine2OrientedBox2
+        DistLine2Triangle2
+        DistPoint2Arc2
+        DistPoint2Circle2
+        DistPoint2Parallelogram2
+        DistRay2AlignedBox2
+        DistRay2Arc2
+        DistRay2Circle2
+        DistRay2OrientedBox2
+        DistRay2Triangle2
+        DistSegment2AlignedBox2
+        DistSegment2Arc2
+        DistSegment2Circle2
+        DistSegment2OrientedBox2
+        DistSegment2Triangle2
+    3D
+        DistAlignedBox3OrientedBox3
+        DistCircle3Circle3
+        DistLine3AlignedBox3
+        DistLine3Arc3
+        DistLine3CanonicalBox3
+        DistLine3Circle3
+        DistLine3OrientedBox3
+        DistLine3Rectangle3
+        DistLine3Triangle3
+        DistLinearCircularSupport3 (tested by DistLine3Arc3, DistRay3Arc3, DistSegment3Arc3)
+        DistOrientedBox3Cone3 (tested by GTL/VisualTests/Mathematics/Distance/DistanceOrientedBoxCone)
+        DistOrientedBox3OrientedBox3
+        DistPlane3AlignedBox3
+        DistPlane3CanonicalBox3
+        DistPlane3OrientedBox3
+        DistPoint3Arc3
+        DistPoint3Circle3
+        DistPoint3ConvexPolyhedron3
+        DistPoint3Cylinder3
+        DistPoint3Frustum3
+        DistPoint3Parallelepiped3
+        DistPoint3Tetrahedron3
+        DistRay3AlignedBox3
+        DistRay3Arc3
+        DistRay3CanonicalBox3
+        DistRay3Circle3
+        DistRay3OrientedBox3
+        DistRay3Rectangle3
+        DistRay3Triangle3
+        DistRectangle3AlignedBox3
+        DistRectangle3CanonicalBox3
+        DistRectangle3OrientedBox3
+        DistRectangle3Rectangle3
+        DistSegment3AlignedBox3
+        DistSegment3Arc3
+        DistSegment3CanonicalBox3
+        DistSegment3Circle3
+        DistSegment3OrientedBox3
+        DistSegment3Rectangle3
+        DistSegment3Triangle3
+        DistTetrahedron3Tetrahedron3
+        DistTriangle3AlignedBox3
+        DistTriangle3CanonicalBox3
+        DistTriangle3OrientedBox3
+        DistTriangle3Rectangle3
+        DistTriangle3Triangle3
+    ND
+        DistAlignedBoxAlignedBox
+        DistLineLine
+        DistLineRay
+        DistLineSegment
+        DistPointAlignedBox
+        DistPointCanonicalBox
+        DistPointHyperellipsoid
+        DistPointHyperplane
+        DistPointLine
+        DistPointOrientedBox
+        DistPointRay
+        DistPointRectangle
+        DistPointSegment
+        DistPointTriangle
+        DistRayRay
+        DistRaySegment
+        DistSegmentSegment
+
+Functions
+    ACosEstimate
+    ASinEstimate
+    ATanEstimate
+    ChebyshevRatio
+    ChebyshevRatioEstimate
+    CosEstimate
+    Exp2Estimate
+    ExpEstimate
+    InvSqrtEstimate
+    Log2Estimate
+    LogEstimate
+    RemezAlgorithm
+    RotationEstimate
+    SinEstimate
+    Slerp
+    SlerpEstimate
+    SqrtEstimate
+    TanEstimate
+
+Geometry
+    1D
+        DisjointIntervals
+        ExactSignDeterminant2
+        ExactSignDeterminant3
+        ExactSignDeterminant4
+    2D
+        BSPPolygon2 (tested by GTL/VisualTests/Mathematics/Geometrics/PolygonBooleanOperations)
+        ConstrainedDelaunay2 (tested by GTL/VisualTests/Mathematics/Geometrics/ConstrainedDelaunay2)
+        ConvexHull2
+        Delaunay2
+        DisjointRectangles
+        ExactColinear2
+        ExactToCircumcircle2
+        ExactToLine2
+        ExactToLineExtended2
+        ExactToTriangle2
+        IncrementalDelaunay2 (tested by GTL/VisualTests/Mathematics/Geometrics/IncrementalDelaunay2)
+        MinimumAreaBox2 (tested by GTL/VisualTests/Mathematics/Geometrics/MinimumAreaBox2D)
+        MinimumWidthPoints2 (tested by GTL/VisualTests/Mathematics/Geometrics/MinimumAreaBox2D)
+        PolygonTree (unit tested by TriangulateCDT)
+        RotatingCalipers (tested by GTL/VisualTests/Mathematics/Geometrics/MinimumAreaBox2D)
+        TriangulateCDT
+    3D
+        ConvexHull3
+        Delaunay3 (tested by GTL/VisualTests/Mathematics/Geometrics/Delaunay3D)
+        ExactColinear3
+        ExactCoplanar3
+        ExactToCircumsphere3
+        ExactToPlane3
+        ExactToTetrahedron3
+
+ImageProcessing
+    Rasterize2 (tested by GTL/Applications/Window2)
+
+Integration
+    IntgGaussianQuadrature
+    IntgRomberg
+    IntgTrapezoidRule
+
+Interpolation
+    1D
+        IntpHermiteCubic1
+        IntpHermiteQuintic1
+    2D
+        IntpHermiteCubic2
+        IntpHermiteQuintic2
+        IntpQuadraticNonuniform2
+    3D
+        IntpHermiteCubic3
+        IntpHermiteQuintic3
+
+Intersection
+    IntersectionQuery
+    1D
+        IntrIntervals
+    2D
+        IntrEllipse2Ellipse2
+        IntrLine2Line2
+        IntrLine2Ray2
+        IntrLine2Segment2
+        IntrLine2Triangle2
+        IntrRay2Ray2 (port from GTE, no logic changes)
+        IntrRay2Segment2 (port from GTE, no logic changes)
+        IntrRay2Triangle2
+        IntrSegment2Segment2 (port from GTE, no logic changes)
+        IntrSegment2Triangle2
+        IntrTriangle2Triangle2
+    3D
+        IntrCylinder3Cylinder3 (unit tested and tested by GTL/VisualTests/Mathematics/Intersection/IntersectCylinders)
+        IntrLine3AlignedBox3
+        IntrLine3Capsule3
+        IntrLine3Cylinder3
+        IntrLine3Ellipsoid3
+        IntrLine3OrientedBox3
+        IntrLine3Sphere3
+        IntrLine3Triangle3 (unit tested by GTL/VisualTests/Graphics/SceneGraphics/Picking)
+        IntrPlane3Circle3
+        IntrPlane3Cylinder3
+        IntrPlane3Plane3 (unit tested by TestIntrPlane3Circle3)
+        IntrRay3AlignedBox3
+        IntrRay3Capsule3
+        IntrRay3Cylinder3
+        IntrRay3Ellipsoid3
+        IntrRay3OrientedBox3
+        IntrRay3Sphere3
+        IntrRay3Triangle3 (unit tested by GTL/VisualTests/Graphics/SceneGraphics/Picking)
+        IntrSegment3AlignedBox3
+        IntrSegment3Capsule3
+        IntrSegment3Cylinder3
+        IntrSegment3Ellipsoid3
+        IntrSegment3OrientedBox3
+        IntrSegment3Sphere3
+        IntrSegment3Triangle3 (unit tested by GTL/VisualTests/Graphics/SceneGraphics/Picking)
+        IntrTriangle3Cylinder3
+        IntrTriangle3Triangle3
+    ND
+        IntrConvexPolygonHyperplane
+
+MatrixAnalysis
+    BandedMatrix
+    BlockCholeskyDecomposition
+    BlockLDLTDecomposition
+    CholeskyDecomposition
+    GaussianElimination
+    LDLTDecomposition
+    LinearSystem
+    SingularValueDecomposition
+    SymmetricEigensolver (tested 3x3 case with GTL/VisualTests/Mathematics/MatrixAnalysis/SymmetricEigensolver3x3)
+
+Meshes
+    DynamicETManifoldMesh
+    DynamicTSManifoldMesh
+    DynamicVETManifoldMesh
+    EdgeKey (tested by ManifoldMesh classes)
+    FeatureKey (tested by ManifoldMesh classes)
+    PlanarMesh (tested by TestIntpQuadraticNonuniform2)
+    StaticVETManifoldMesh
+    TetrahedronKey (tested by ManifoldMesh classes)
+    TriangleKey (tested by ManifoldMesh classes)
+    VETFeaturesKS (tested by ConvexHull3 and Delaunay2)
+    VETManifoldMeshKS (tested by ConvexHull3 and Delaunay2)
+
+Minimizers
+    BrentsMinimizer
+    GaussNewtonMinimizer
+    LCPSolver (tested by GTE/VisualTests/Mathematcs/Distance/DistanceOrientedBoxCone)
+    LevenbergMarquardtMinimizer
+
+Miscellaneous
+    CircleThroughPointSpecifiedTangentAndRadius
+    CircleThroughTwoPointsSpecifiedRadius
+    InscribedFixedAspectRectInQuad
+    RandomPointOnHypersphere
+    STLBinaryFile (worked in GTE, no code changes in port to GTL)
+
+Physics
+
+Primitives
+    2D
+        Arc2
+        Circle2 (no unit tests, just a template alias)
+        Ellipse2 (no unit tests, just a template alias)
+        Parallelogram2
+        Polygon2
+    3D
+        Arc3
+        Circle3
+        ConvexMesh3
+        ConvexPolyhedron3
+        Ellipse3
+        Ellipsoid3 (no unit tests, just a template alias)
+        Frustum3
+        Plane3 (no unit tests, just a template alias)
+        Parallelepiped3
+        Polyhedron3
+        Sphere3 (no unit tests, just a template alias)
+        Tetrahedron3
+        Torus3
+    ND
+        AlignedBox
+        CanonicalBox
+        Capsule
+        Cone
+        Cylinder
+        Halfspace
+        Hyperellipsoid
+        Hyperplane
+        Hypersphere
+        Line
+        Lozenge
+        OrientedBox
+        Ray
+        Rectangle
+        Segment
+        SegmentMesh
+        Triangle
+
+Projection
+    ProjectEllipsoidToPlane
+    ProjectHyperellipsoidToLine
+    ProjectPointsToCoordinatePlane
+
+RootFinders
+    PolynomialRoot
+    RootsBisection1
+    RootsBisection2
+    RootsBrentsMethod
+    RootsCubic
+    RootsGeneralPolynomial (tested by DistCircle3Circle3)
+    RootsLinear
+    RootsPolynomial
+    RootsQuadratic
+    RootsQuartic
+
+Surfaces
+    BSplineSurface (tested by GTL/VisualTests/Mathematics/Surfaces/BSplineSurfaceFitter)
+    BSplineSurfaceFit (tested by GTL/VisualTests/Mathematics/Surfaces/BSplineSurfaceFitter)
+    DarbouxFrame
+    ImplicitSurface3
+    NURBSSphere (tested by GTL/VisualTests/Mathematics/Surfaces/NURBSSphere)
+    NURBSSurface (tested by GTL/VisualTests/Mathematics/Surfaces/NURBSSphere)
+    ParametricSurface
+    QuadricSurface
+
+Volumes
+
+==============================================================================
+PORTED LIBRARIES, POSTED TO GITHUB
+    GTGraphics
+    GTGraphicsDX11
+    GTGraphicsGL45
+    GTApplicationDX11
+    GTApplicationGL45
+
+==============================================================================
+OBSOLETE FILES:
+    AABBBVTreeOfTriangles.h (now AlignedBoxTreeOfTriangles.h)
+    AdaptiveSkeletonClimbing2
+    AdaptiveSkeletonClimbing3
+    ApprCone3EllipseAndPoints
+    ApprConvexQuadByRect
+    ApprGaussian2 (subset of ApprGaussianDistribution)
+    ApprGaussian3 (subset of ApprGaussianDistribution)
+    ApprQuadratic2
+    ApprQuadratic3
+    ApprQuery
+    ApprPolynomialSpecial{2,3,4} (merged into ApprPolynomialSpecial)
+    Array2
+    Array3
+    Array4
+    BSplineReduction
+    Capsule3 (now Capsule for ND)
+    ContScribeCircle3Sphere3 (now ContScribeCircle3 and ContScribeSphere3)
+    CubicRootsQR
+    Cylinder3 (subset of Cylinder)
+    DCPQuery (now DistanceClosestPointQuery)
+    Delaunay2Mesh (use PlanarMesh instead)
+    Delaunay3Mesh (use VolumetricMesh instead)
+    DistPointTriangleExact (merged with DistPointTriangle)
+    ETManifoldMesh (renamed to DynamicETManifoldMesh)
+    ETNonmanifoldMesh (renamed to DynamicETNonmanifoldMesh)
+    FIQuery (subset of IntersectionQuery)
+    FPInterval (floating-point environment mods not supported by all compilers)
+    GMatrix (now Matrix<T>)
+    GVector (now Vector<T>)
+    Image (now only Image2 and Image3, derived from Multiarray)
+    ImageUtility2 (now Rasterize2 and Morphology2)
+    ImageUtility3 (now Rasterize2 and Morphology2)
+    Integration (now IntgGaussianQuadrature, IngtgRomberg, IntgTrapezoidRule)
+    IntrDisk2Sector2 (not used in GTE)
+    IntrOrientedBox2Sector2 (not used in GTE)
+    LexicoArray2
+    LogToFile
+    LogToStdout
+    LogToStringArray
+    Lozenge3 (now Lozenge for ND)
+    MeshStaticManifold2 (now StaticVETManifoldMesh)
+    MeshStaticManifold3 (now StaticVTSManifoldMesh)
+    Minimize1 (now BrentsMinimizer)
+    MinimizeN (now PowellsMinimizer)
+    NaturalSplineCurve (replaced by NaturalCubicSpline, added NaturalQuinticSpline)
+    NearestNeighborQuery (This is not an implementation of NN, looks like an approximation)
+    Polynomial1 (now Polynomial with support for multivariate polynomials)
+    PrimalQuery2 (converted to individual files)
+    PrimalQuery3 (converted to individual files)
+    Projection (now ProjectHyperellipsoidToLine, ProjectEllipsoidToPlane)
+    QuarticRootsQR
+    Sector2 (not used in GTE)
+    StaticVETManifoldMesh2 (improved to StaticVETManifoldMesh)
+    StaticVTSManifoldMesh3 (improved to StaticVTSManifoldMesh)
+    SymmetricEigensolver2x2 (subset of SymmetricEigensolver)
+    SymmetricEigensolver3x3 (subset of SymmetricEigensolver)
+    ThreadSafeMap
+    ThreadSafeQueue
+    TIQuery (subset of IntersectionQuery)
+    TSManifoldMesh (renamed to DynamicTSManifoldMesh)
+    UniqueVerticesTriangles (deprecated, use UniqueVerticesSimplices)
+    UnsymmetricEigenvalues (does not work, needs help)
+    VETManifoldMesh (renamed to DynamicVETManifoldMesh)
+    VETNonmanifoldMesh (renamed to DynamicVETNonmanifoldMesh)
+    VETManifoldMeshNR (replaced by StaticVETManifoldMesh)
+    VTSManifoldMesh (now DynamicVTSManifoldMesh)

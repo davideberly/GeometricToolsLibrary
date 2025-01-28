@@ -162,6 +162,13 @@ void UTMathematics::Approximation2D::Execute()
     Postcall();
 #endif
 
+#if defined(UT_MATHEMATICS_APPRCURVEBYARCS)
+    Precall();
+    extern void TestApprCurveByArcs();
+    TestApprCurveByArcs();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_APPRELLIPSE2)
     Precall();
     extern void TestApprEllipse2();
@@ -2538,8 +2545,8 @@ void UTMathematics::Intersection2D::Execute()
 
 #if defined(UT_MATHEMATICS_INTRSEGMENT2SEGMENT2)
     Precall();
-    extern void TestIntrSegment2OrientedBox2();
-    TestIntrSegment2OrientedBox2();
+    extern void TestIntrSegment2Segment2();
+    TestIntrSegment2Segment2();
     Postcall();
 #endif
 
@@ -3117,27 +3124,6 @@ void UTMathematics::Meshes::Execute()
 #if defined(UT_MATHEMATICS_MESHES)
     UTInformation("Mathematics/Meshes");
 
-#if defined(UT_MATHEMATICS_EDGEKEY)
-    Precall();
-    extern void TestEdgeKey();
-    TestEdgeKey();
-    Postcall();
-#endif
-
-#if defined(UT_MATHEMATICS_MESH)
-    Precall();
-    extern void TestMesh();
-    TestMesh();
-    Postcall();
-#endif
-
-#if defined(UT_MATHEMATICS_MESHCURVATURE)
-    Precall();
-    extern void TestMeshCurvature();
-    TestMeshCurvature();
-    Postcall();
-#endif
-
 #if defined(UT_MATHEMATICS_DYNAMICETMANIFOLDMESH)
     Precall();
     extern void TestDynamicETManifoldMesh();
@@ -3177,6 +3163,27 @@ void UTMathematics::Meshes::Execute()
     Precall();
     extern void TestDynamicVTSManifoldMesh();
     TestDynamicVTSManifoldMesh();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_EDGEKEY)
+    Precall();
+    extern void TestEdgeKey();
+    TestEdgeKey();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_MESH)
+    Precall();
+    extern void TestMesh();
+    TestMesh();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_MESHCURVATURE)
+    Precall();
+    extern void TestMeshCurvature();
+    TestMeshCurvature();
     Postcall();
 #endif
 

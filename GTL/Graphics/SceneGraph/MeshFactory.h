@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include <GTL/Mathematics/Meshes/Mesh.h>
 #include <GTL/Graphics/SceneGraph/Hierarchy/Visual.h>
 #include <cstdint>
 

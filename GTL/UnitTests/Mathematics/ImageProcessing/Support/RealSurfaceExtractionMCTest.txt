@@ -1,0 +1,104 @@
+#include "GenericConsole.h"
+#include <Mathematics/SurfaceExtractorMC.h>
+#include <Mathematics/StringUtility.h>
+#include <random>
+
+GenericConsole::GenericConsole(Parameters& parameters)
+    :
+    Console(parameters)
+{
+//#define GTL_MARCHING_CUBES_ENTRY(name) CT##name, &MarchingCubes::name
+    std::ifstream input("table.txt");
+    std::ofstream output("output.txt");
+    std::string line;
+    std::vector<std::string> tokens, entryTokens;
+    std::string whiteSpace = "(),";
+    for (size_t i = 0; i < 256; ++i)
+    {
+        std::getline(input, line);
+        GetTextTokens(line, tokens);
+        GetTokens(tokens[1], whiteSpace, entryTokens);
+        output << tokens[0] << " ";
+        output << "CT" << entryTokens[1] << ", &MarchingCubes::" << entryTokens[1] << ", { ";
+        for (size_t j = 3; j + 1 < tokens.size(); ++j)
+        {
+            output << tokens[j] << " ";
+        }
+        output << tokens.back() << std::endl;
+    }
+    output.close();
+    input.close();
+}
+
+void GenericConsole::Execute()
+{
+    std::default_random_engine dre{};
+    std::uniform_real_distribution<float> urd(-1.0f, 1.0f);
+    Image3<float> image(8, 8, 8);
+    auto& voxels = image.GetPixels();
+    std::set<float> voxelUnique{};
+    for (auto& v : voxels)
+    {
+        v = urd(dre);
+        voxelUnique.insert(v);
+    }
+    //float perturb = 0.0f;
+    float perturb = 1e-12f * urd(dre);
+    image(4, 4, 4) = 0.0f;
+
+    using IndexType = int32_t;
+    SurfaceExtractorMC<float, IndexType> semc(image);
+    std::vector<Vector3<float>> vertices{};
+    std::vector<IndexType> indices{};
+    semc.Extract(0.0f, perturb, vertices, indices);
+    // vertices.size() = 2037, indices.size() = 3321 when image(x,y,z) has no 0 values
+    // vertices.size() = 1992, indices.size() = 3240 when image(4,4,4) = 0
+    // vertices.size() = 2045, indices.size() = 3333 when image(4,4,4) = 3.58271111e-13
+
+    struct Item
+    {
+        Item()
+            :
+            v{ 0.0f, 0.0f, 0.0f },
+            i(std::numeric_limits<size_t>::max())
+        {
+        }
+
+        Item(Vector3<float> const& inV, size_t inI)
+            :
+            v(inV),
+            i(inI)
+        {
+        }
+
+        Vector3<float> v;
+        size_t i;
+
+        bool operator<(Item const& other) const
+        {
+            return v < other.v;
+        }
+    };
+
+    std::set<Item> vUnique{};
+    for (size_t i = 0; i < vertices.size(); ++i)
+    {
+        vUnique.insert(Item(vertices[i], i));
+    }
+    std::vector<Item> copy(vUnique.size());
+    std::copy(vUnique.begin(), vUnique.end(), copy.begin());
+    std::vector<float> diff(copy.size() - 1);
+    for (size_t i0 = 0, i1 = 1; i1 < copy.size(); i0 = i1++)
+    {
+        diff[i0] = Length(copy[i1].v - copy[i0].v);
+    }
+    std::sort(diff.begin(), diff.end());
+
+    semc.MakeUnique(vertices, indices);
+    // vertices.size() = 675, indices.size() = 3321 when image(x,y,z) has no 0 values
+    // vertices.size() = 673, indices.size() = 3240 when image(4,4,4) = 0
+    // vertices.size() = 674, indices.size() = 3333 when image(4,4,4) = 3.58271111e-13
+
+    int stophere;
+    stophere = 0;
+}
