@@ -145,11 +145,13 @@ namespace gtl
     template class NURBSQuarterCircleDegree4<float>;
     template class NURBSHalfCircleDegree3<float>;
     template class NURBSFullCircleDegree3<float>;
+    template class NURBSCircularArcDegree2<float>;
 
     template class NURBSQuarterCircleDegree2<double>;
     template class NURBSQuarterCircleDegree4<double>;
     template class NURBSHalfCircleDegree3<double>;
     template class NURBSFullCircleDegree3<double>;
+    template class NURBSCircularArcDegree2<double>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
@@ -157,6 +159,7 @@ namespace gtl
     template class NURBSQuarterCircleDegree4<Rational>;
     template class NURBSHalfCircleDegree3<Rational>;
     template class NURBSFullCircleDegree3<Rational>;
+    template class NURBSCircularArcDegree2<Rational>;
 #endif
 }
 

@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.28
+// File Version: 2025.02.05
 
 #pragma once
 
@@ -15,8 +15,11 @@
 //   NURBSQuarterCircleDegree4 implements equation (10)
 //   NURBSHalfCircleDegree3 implements equation (12)
 //   NURBSFullCircleDegree3 implements Section 2.3
+//   NURBSCircularArcDegree2 implements Section 2.4
 
 #include <GTL/Mathematics/Curves/NURBSCurve.h>
+#include <GTL/Mathematics/Primitives/2D/Arc2.h>
+#include <cmath>
 
 namespace gtl
 {
@@ -144,6 +147,34 @@ namespace gtl
             input.uniqueKnots[1] = UniqueKnot(C_<T>(1, 2), 3);
             input.uniqueKnots[2] = UniqueKnot(C_<T>(1), 4);
             return input;
+        }
+
+    private:
+        friend class UnitTestNURBSCircle;
+    };
+
+    template <typename T>
+    class NURBSCircularArcDegree2 : public NURBSCurve<T, 2>
+    {
+    public:
+        NURBSCircularArcDegree2(Arc2<T> const& arc)
+            :
+            NURBSCurve<T, 2>(typename BasisFunction<T>::Input(3, 2), nullptr, nullptr)
+        {
+            T const one = static_cast<T>(1);
+            T const two = static_cast<T>(2);
+
+            Vector2<T> P0 = (arc.end[0] - arc.center) / arc.radius;
+            Vector2<T> P2 = (arc.end[1] - arc.center) / arc.radius;
+            Vector2<T> P1 = Perp(P2 - P0) / DotPerp(P0, P2);
+
+            this->mWeights[0] = std::sqrt(two * (Dot(P1, P1) - one) / (one - Dot(P0, P2)));
+            this->mWeights[1] = one;
+            this->mWeights[2] = this->mWeights[0];
+
+            this->mControls[0] = arc.center + arc.radius * P0;
+            this->mControls[1] = arc.center + arc.radius * P1;
+            this->mControls[2] = arc.center + arc.radius * P2;
         }
 
     private:
