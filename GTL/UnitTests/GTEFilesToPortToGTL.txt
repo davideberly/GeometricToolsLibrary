@@ -75,10 +75,6 @@ Geometry
         GenerateMeshUV
         MinimumVolumeBox3
         MinimumVolumeSphere3
-        OBBTree
-        OBBTreeOfPoints
-        OBBTreeOfSegments
-        OBBTreeOfTriangles
         OrientedBoxBV.h
         OrientedBoxTreeOfPoints.h
         OrientedBoxTreeOfSegments.h
@@ -108,10 +104,9 @@ ImageProcessing
     Image2
     Image3
     MarchingCubes
-    MinimalCycleBasis
     Morphology
     Morphology2
-    Morphology2
+    Morphology3
     PdeFilter
     PdeFilter1
     PdeFilter2
@@ -144,7 +139,6 @@ Interpolation
         IntpBSplineUniform
 
 Intersection
-    IntersectionQuery (was TIQuery and FIQuery)
     2D
         IntrAlignedBox2AlignedBox2
         IntrAlignedBox2Circle2
@@ -152,28 +146,23 @@ Intersection
         IntrArc2Arc2
         IntrCircle2Arc2
         IntrCircle2Circle2
-        IntrDisk2Sector2
         IntrHalfspace2Polygon2
         IntrLine2AlignedBox2
         IntrLine2Arc2
         IntrLine2Circle2
         IntrLine2OrientedBox2
-        IntrLine2SegmentMesh2
         IntrOrientedBox2Circle2
         IntrOrientedBox2Cone2
         IntrOrientedBox2OrientedBox2
-        IntrOrientedBox2Sector2
         IntrRay2AlignedBox2
         IntrRay2Arc2
         IntrRay2Circle2
         IntrRay2OrientedBox2
-        IntrRay2SegmentMesh2
         IntrSegment2AlignedBox2
         IntrSegment2Arc2
         IntrSegment2Circle2
         IntrSegment2OrientedBox2
-        IntrSegment2SegmentMesh2
-    3D
+   3D
         IntrAlignedBox3AlignedBox3
         IntrAlignedBox3Cone3
         IntrAlignedBox3Cylinder3
@@ -225,7 +214,6 @@ Meshes
     RectangleMesh (NOT FINISHED)
     RectanglePatchMesh (NOT FINISHED)
     StaticVTSManifoldMesh
-    UniqueVerticesSimplices
     VertexCollapseMesh
     VertexLayout (NOT FINISHED)
     VolumeMesh
@@ -310,6 +298,24 @@ Approximation
         ApprGaussianDistribution
     Polynomial
         ApprPolynomial2
+		
+Arithmetic
+    APConversion
+	APInterval
+	BitHacks
+	BSNumber
+	BSPrecision
+	BSRational
+	Constants
+	IEEEBinary
+	IEEEBinary16
+	IEEEFunctions
+	QFNumber
+	SWInterval
+	UIntegerALU32
+	UIntegerAP32
+	UIntegerFP32
+	
 
 Containment
     2D
@@ -507,10 +513,11 @@ Interpolation
         IntpHermiteQuintic3
 
 Intersection
-    IntersectionQuery
+    IntersectionQuery (no unit test, template definitions)
     1D
         IntrIntervals
     2D
+	    IntrAreaEllipse2Ellipse2
         IntrEllipse2Ellipse2
         IntrLine2Line2
         IntrLine2Ray2
@@ -574,6 +581,7 @@ Meshes
     StaticVETManifoldMesh
     TetrahedronKey (tested by ManifoldMesh classes)
     TriangleKey (tested by ManifoldMesh classes)
+    UniqueVerticesSimplices (tested by GTL/VisualTests/Mathematics/Distance/DistanceOrientedBoxCone)	
     VETFeaturesKS (tested by ConvexHull3 and Delaunay2)
     VETManifoldMeshKS (tested by ConvexHull3 and Delaunay2)
 
@@ -706,6 +714,9 @@ OBSOLETE FILES:
     Integration (now IntgGaussianQuadrature, IngtgRomberg, IntgTrapezoidRule)
     IntrDisk2Sector2 (not used in GTE)
     IntrOrientedBox2Sector2 (not used in GTE)
+	IntrLine2SegmentMesh2
+	IntrRay2SegmentMesh2
+	IntrSegment2SegmentMesh2
     LexicoArray2
     LogToFile
     LogToStdout
