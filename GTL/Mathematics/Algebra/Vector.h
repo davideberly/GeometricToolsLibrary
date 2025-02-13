@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2025.02.13
 
 #pragma once
 
@@ -53,8 +53,44 @@ namespace gtl
             fill(C_<T>(0));
         }
 
+        // Set all components to the same value. Create the zero vector using
+        // the syntax Vector<T,N> zero{static_cast<T>(0)}.
+        Vector(T const& value)
+            :
+            mContainer{}
+        {
+            mContainer.fill(value);
+        }
+
+        // Specializations for N = 2, 3, and 4.
+        template <std::size_t Dummy = N>
+        Vector(T const& x0, T const& x1,
+            typename std::enable_if<Dummy == 2>::type* = nullptr)
+            :
+            mContainer{ x0, x1 }
+        {
+        }
+
+        template <std::size_t Dummy = N>
+        Vector(T const& x0, T const& x1, T const& x2,
+            typename std::enable_if<Dummy == 3>::type* = nullptr)
+            :
+            mContainer{ x0, x1, x2 }
+        {
+        }
+
+        template <std::size_t Dummy = N>
+        Vector(T const& x0, T const& x1, T const& x2, T const& x3,
+            typename std::enable_if<Dummy == 4>::type* = nullptr)
+            :
+            mContainer{ x0, x1, x2, x3 }
+        {
+        }
+
         // Create a vector from an initializer list with N elements.
-        Vector(std::initializer_list<T> const& elements)
+        template <std::size_t Dummy = N>
+        Vector(std::initializer_list<T> elements,
+            typename std::enable_if<Dummy >= 5>::type* = nullptr)
             :
             mContainer{}
         {
