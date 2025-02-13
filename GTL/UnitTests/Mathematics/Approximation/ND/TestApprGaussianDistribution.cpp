@@ -31,7 +31,7 @@ UnitTestApprGaussianDistribution::UnitTestApprGaussianDistribution()
 void UnitTestApprGaussianDistribution::Test2Vector()
 {
     std::vector<Vector<double, 2>> points(1024);
-    std::ifstream input("Mathematics/Approximation/2D/Support/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
+    std::ifstream input("Mathematics/Approximation/2D/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
     input.read((char*)points.data(), points.size() * sizeof(points[0]));
     input.close();
 
@@ -80,7 +80,7 @@ void UnitTestApprGaussianDistribution::Test2Vector()
 void UnitTestApprGaussianDistribution::Test3Vector()
 {
     std::vector<Vector<double, 3>> points(1024);
-    std::ifstream input("Mathematics/Approximation/3D/Support/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
+    std::ifstream input("Mathematics/Approximation/3D/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
     input.read((char*)points.data(), points.size() * sizeof(points[0]));
     input.close();
 
@@ -147,7 +147,7 @@ void UnitTestApprGaussianDistribution::TestDynamicVector()
 {
     std::size_t constexpr DIM = 4;
     std::vector<Vector<double>> points(1024);
-    std::ifstream input("Mathematics/Approximation/ND/Support/RandomUnitPoints4D_Double_1024.binary", std::ios::binary);
+    std::ifstream input("Mathematics/Approximation/ND/RandomUnitPoints4D_Double_1024.binary", std::ios::binary);
     for (std::size_t i = 0; i < points.size(); ++i)
     {
         points[i].resize(DIM);
