@@ -35,7 +35,7 @@ UnitTestDelaunay2::UnitTestDelaunay2()
 void UnitTestDelaunay2::TestSorting()
 {
     std::ifstream input(
-        "Mathematics/Geometry/2D/Support/Delaunay2DRandom256.binary",
+        "Mathematics/Geometry/2D/Delaunay2DRandom256.binary",
         std::ios::binary);
     std::vector<Vector2<float>> points(256);
     input.read((char*)points.data(), 256 * sizeof(Vector2<float>));
@@ -60,13 +60,13 @@ void UnitTestDelaunay2::TestSorting()
 void UnitTestDelaunay2::TestRandom()
 {
     std::ifstream input(
-        "Mathematics/Geometry/2D/Support/Delaunay2DRandom256.binary",
+        "Mathematics/Geometry/2D/Delaunay2DRandom256.binary",
         std::ios::binary);
     std::vector<Vector2<float>> points(256);
     input.read((char*)points.data(), 256 * sizeof(Vector2<float>));
     input.close();
 
-    input.open("Mathematics/Geometry/2D/Support/Delaunay2DExpectedTriangles.txt");
+    input.open("Mathematics/Geometry/2D/Delaunay2DExpectedTriangles.txt");
     std::size_t const numTriangles = 497;
     std::vector<TriangleKey<true>> expectedTriangles(numTriangles);
     for (auto& tri : expectedTriangles)

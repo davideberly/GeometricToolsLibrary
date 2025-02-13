@@ -11,3 +11,6 @@ _Output/
 
 # Output of unit tests
 GTL/UnitTests/UTResults.txt
+
+# Output of unit tests
+GTL/UnitTests/*.png
