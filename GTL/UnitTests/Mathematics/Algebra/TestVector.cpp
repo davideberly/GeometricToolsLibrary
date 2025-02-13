@@ -117,9 +117,38 @@ void UnitTestVector::ConstructorsTN()
     UTAssert(vDef[0] == 0.0f && vDef[1] == 0.0f && vDef[2] == 0.0f,
         "Default constructor failed");
 
+    // Test the constant constructor.
+    Vector3<float> vConst(3.0f);
+    UTAssert(vConst[0] == 3.0f && vConst[1] == 3.0f && vConst[2] == 3.0f,
+        "Constant constructor failed");
+
+    // Test the specialized constructor for N = 2.
+    Vector2<float> vSpec2(1.0f, 2.0f);
+    UTAssert(vSpec2[0] == 1.0f && vSpec2[1] == 2.0f,
+        "Specialized constructor for N = 2 failed");
+    Vector2<float> vSpec2b{ 1.0f, 2.0f };
+    UTAssert(vSpec2b[0] == 1.0f && vSpec2b[1] == 2.0f,
+        "Specialized constructor for N = 2 failed");
+
+    // Test the specialized constructor for N = 3.
+    Vector3<float> vSpec3(1.0f, 2.0f, 3.0f);
+    UTAssert(vSpec3[0] == 1.0f && vSpec3[1] == 2.0f && vSpec3[2] == 3.0f,
+        "Specialized constructor for N = 3 failed");
+    Vector3<float> vSpec3b{ 1.0f, 2.0f, 3.0f };
+    UTAssert(vSpec3b[0] == 1.0f && vSpec3b[1] == 2.0f && vSpec3b[2] == 3.0f,
+        "Specialized constructor for N = 3 failed");
+
+    // Test the specialized constructor for N = 4.
+    Vector4<float> vSpec4(1.0f, 2.0f, 3.0f, 4.0f);
+    UTAssert(vSpec4[0] == 1.0f && vSpec4[1] == 2.0f && vSpec4[2] == 3.0f && vSpec4[3] == 4.0f,
+        "Specialized constructor for N = 4 failed");
+    Vector4<float> vSpec4b{ 1.0f, 2.0f, 3.0f, 4.0f };
+    UTAssert(vSpec4b[0] == 1.0f && vSpec4b[1] == 2.0f && vSpec4b[2] == 3.0f && vSpec4b[3] == 4.0f,
+        "Specialized constructor for N = 4 failed");
+
     // Test the initializer constructor.
-    Vector3<float> vInit{ 1.0f, 2.0f, 3.0f };
-    UTAssert(vInit[0] == 1.0f && vInit[1] == 2.0f && vInit[2] == 3.0f,
+    Vector<float, 5> vInit{ 1.0f, 2.0f, 3.0f, 4.0f, 5.0f };
+    UTAssert(vInit[0] == 1.0f && vInit[1] == 2.0f && vInit[2] == 3.0f && vInit[3] == 4.0f && vInit[4] == 5.0f,
         "Initializer constructor failed.");
 
     // Test the std::array constructor.
@@ -135,7 +164,7 @@ void UnitTestVector::ConstructorsTN()
         "std::vector constructor failed.");
 
     // Test the copy constructors.
-    Vector3<float> vCopy = vInit;
+    Vector3<float> vCopy = vSpec3;
     UTAssert(vCopy[0] == 1.0f && vCopy[1] == 2.0f && vCopy[2] == 3.0f,
         "Copy constructor failed.");
 }
