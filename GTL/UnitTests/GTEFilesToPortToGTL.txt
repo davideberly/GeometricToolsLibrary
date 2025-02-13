@@ -52,6 +52,10 @@ Containment
     ND
         ContCone
 
+Distance
+    2D  DistRay2Triangle2 (need to port GTE test app)
+        DistSegment2Triangle2 (need to port GTE test app)
+
 Geometry
     2D
         IsPlanarGraph
@@ -60,14 +64,14 @@ Geometry
         SeparatePoints2
         TriangulateEC
     3D
-        AlignedBoxBV.h
-        AlignedBoxTreeOfPoints.h
-        AlignedBoxTreeOfSegments.h
-        AlignedBoxTreeOfTriangles.h
-        BVTree.h (tested indirectly by derived classes)
-        BVTreeOfPoints.h (tested indirectly by derived classes)
-        BVTreeOfSegments.h (tested indirectly by derived classes)
-        BVTreeOfTriangles.h
+        AlignedBoxBV
+        AlignedBoxTreeOfPoints
+        AlignedBoxTreeOfSegments
+        AlignedBoxTreeOfTriangles
+        BVTree (will be tested indirectly by derived classes)
+        BVTreeOfPoints (will be tested indirectly by derived classes)
+        BVTreeOfSegments (will be tested indirectly by derived classes)
+        BVTreeOfTriangles
         ConformalMapGenus0
         ExtremalQuery3
         ExtremalQuery3BSP
