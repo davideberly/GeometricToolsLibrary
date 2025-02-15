@@ -179,8 +179,7 @@ void Terrain::OnCameraMotion()
                 {
                     newOrigin[0] - oldOrigin[0],
                     newOrigin[1] - oldOrigin[1],
-                    page->localTransform.GetTranslation()[2],
-                    1.0f
+                    page->localTransform.GetTranslation()[2]
                 };
                 page->localTransform.SetTranslation(pageTrn);
 
