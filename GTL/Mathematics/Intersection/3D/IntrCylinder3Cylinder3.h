@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.28
+// File Version: 2025.02.16
 
 #pragma once
 
@@ -249,7 +249,7 @@ namespace gtl
             jsup.back() = mNumPhi;
 
             std::vector<Output> localOutput(mNumThreads);
-            std::atomic<std::uint32_t> foundSeparatingDirection = 0;
+            std::atomic<std::uint32_t> foundSeparatingDirection(0);
 
             std::vector<std::thread> process(mNumThreads);
             for (size_t t = 0; t < mNumThreads; ++t)

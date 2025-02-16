@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.28
+// File Version: 2025.02.16
 
 #pragma once
 
@@ -337,7 +337,6 @@ namespace gtl
         {
             T const zero = static_cast<T>(0);
             T const one = static_cast<T>(1);
-            Vector2<T> DPerp = Perp(D);
             T s = DotPerp(D, P - V[i0]) / DotPerp(D, V[i1] - V[i0]);
             T oms = one - s;
             Vector2<T> Q = oms * V[i0] + s * V[i1];
