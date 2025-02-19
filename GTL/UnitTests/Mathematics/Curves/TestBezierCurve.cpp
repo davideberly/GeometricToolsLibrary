@@ -79,7 +79,7 @@ void UnitTestBezierCurve::Test()
     }
 
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/Curves/BezierCurveX.png",
+    WICFileIONative::SaveToPNG("Mathematics/Curves/_Output/BezierCurveX.png",
         WICFileIONative::R8G8B8A8, size, size,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
@@ -142,7 +142,7 @@ void UnitTestBezierCurve::TestDeferred()
     }
 
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/Curves/BezierCurveXDeferred.png",
+    WICFileIONative::SaveToPNG("Mathematics/Curves/_Output/BezierCurveXDeferred.png",
         WICFileIONative::R8G8B8A8, size, size,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

@@ -388,12 +388,16 @@
     <ClInclude Include="WICFileIONative.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mathematics\Approximation\2D\Support\RandomUnitPoints2D_Double_1024.binary" />
-    <None Include="Mathematics\Approximation\3D\Support\RandomUnitPoints3D_Double_1024.binary" />
-    <None Include="Mathematics\Approximation\ND\Support\RandomUnitPoints4D_Double_1024.binary" />
+    <None Include="Mathematics\Approximation\2D\Input\RandomUnitPoints2D_Double_1024.binary" />
+    <None Include="Mathematics\Approximation\3D\Input\RandomUnitPoints3D_Double_1024.binary" />
+    <None Include="Mathematics\Approximation\ND\Input\RandomUnitPoints4D_Double_1024.binary" />
+    <None Include="Mathematics\Geometry\2D\Input\ConvexHull2DRandom256.binary" />
+    <None Include="Mathematics\Geometry\2D\Input\Delaunay2DRandom256.binary" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="GTEFilesToPortToGTL.txt" />
+    <Text Include="Mathematics\Geometry\2D\Input\Delaunay2DExpectedTriangles.txt" />
+    <Text Include="Mathematics\ImageProcessing\Input\RealSurfaceExtractionMCTest.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

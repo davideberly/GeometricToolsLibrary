@@ -26,7 +26,7 @@ UnitTestApprPolynomial2::UnitTestApprPolynomial2()
 void UnitTestApprPolynomial2::Test()
 {
     std::vector<std::array<double, 2>> observations(1024);
-    std::ifstream input("Mathematics/Approximation/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
+    std::ifstream input("Mathematics/Approximation/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
     input.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
     input.close();
 

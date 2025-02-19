@@ -59,7 +59,7 @@ void UnitTestDistPoint2Parallelogram2::Test0()
     Query::Output output{};
     Vector2<double> P{};
 
-    std::ofstream outfile("Mathematics/Distance/2D/Support/Output0.txt");
+    std::ofstream outfile("Mathematics/Distance/2D/_Output/Output0.txt");
     std::size_t imax = 1024;
     for (std::size_t i : {0, 146, 400, 450, 456, 490, 658, 912, 962, 968})
     {
@@ -198,7 +198,7 @@ void UnitTestDistPoint2Parallelogram2::Test1()
     Query::Output output{};
     Vector2<double> P{};
 
-    std::ofstream outfile("Mathematics/Distance/2D/Support/Output1.txt");
+    std::ofstream outfile("Mathematics/Distance/2D/_Output/Output1.txt");
     std::size_t imax = 1024;
     for (std::size_t i : {158, 670})
     {

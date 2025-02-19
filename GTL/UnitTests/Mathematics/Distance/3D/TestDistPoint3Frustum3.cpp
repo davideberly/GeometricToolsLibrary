@@ -140,7 +140,7 @@ void UnitTestDistPoint3Frustum3::Test()
         }
     }
 
-    std::ofstream outfile("TestDistPoint3Frustum3_data.txt");
+    std::ofstream outfile("Mathematics/Distance/3D/_Output/TestDistPoint3Frustum3_data.txt");
     for (auto const& result : cases)
     {
         outfile << std::setprecision(20)

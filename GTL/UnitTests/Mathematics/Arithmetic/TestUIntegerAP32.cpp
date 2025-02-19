@@ -328,13 +328,13 @@ void UnitTestUIntegerAP32::TestWriteAndRead()
 {
     std::uint64_t u0 = 0x1291BB5C22AE9EF7ull;
     UIntegerAP32 n0(u0);
-    std::ofstream output("Mathematics/Arithmetic/UIntegerAP32Number.binary", std::ios::binary);
+    std::ofstream output("Mathematics/Arithmetic/_Output/UIntegerAP32Number.binary", std::ios::binary);
     bool success = n0.Write(output);
     output.close();
     UTAssert(success == true, "Write failed.");
 
     UIntegerAP32 n1;
-    std::ifstream input("Mathematics/Arithmetic/UIntegerAP32Number.binary", std::ios::binary);
+    std::ifstream input("Mathematics/Arithmetic/_Output/UIntegerAP32Number.binary", std::ios::binary);
     success = n1.Read(input);
     input.close();
     UTAssert(success == true, "Read failed.");

@@ -39,7 +39,7 @@ UnitTestConvexHull2::UnitTestConvexHull2()
 void UnitTestConvexHull2::TestRandom()
 {
     std::ifstream input(
-        "Mathematics/Geometry/2D/ConvexHull2DRandom256.binary",
+        "Mathematics/Geometry/2D/Input/ConvexHull2DRandom256.binary",
         std::ios::binary);
     std::vector<Vector2<float>> points(256);
     input.read((char*)points.data(), 256 * sizeof(Vector2<float>));

@@ -157,14 +157,23 @@
     <Filter Include="Mathematics\Primitives\ND">
       <UniqueIdentifier>{83115749-0620-4513-9e7a-f5defbe52dcf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mathematics\Approximation\2D\Support">
+    <Filter Include="Mathematics\Approximation\2D\Input">
       <UniqueIdentifier>{1672a2e9-fe44-42c4-81c8-ac41e4cb523c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mathematics\Approximation\3D\Support">
+    <Filter Include="Mathematics\Approximation\3D\Input">
       <UniqueIdentifier>{7b03f704-6b2b-47c5-9480-a30093ed0d7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mathematics\Approximation\ND\Support">
+    <Filter Include="Mathematics\Approximation\ND\Input">
       <UniqueIdentifier>{7d4ac90a-4455-44d2-ace5-9b2f1e8876ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\Geometry\2D\Input">
+      <UniqueIdentifier>{3c53a219-d9cf-4de0-8208-ab8ea801e63f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\Geometry\3D\Input">
+      <UniqueIdentifier>{f133b7e4-ffd8-4531-8f41-270d58d7d86e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mathematics\ImageProcessing\Input">
+      <UniqueIdentifier>{92a74e22-fd7a-4ff8-9031-0b70c79025a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1243,19 +1252,31 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mathematics\Approximation\2D\Support\RandomUnitPoints2D_Double_1024.binary">
-      <Filter>Mathematics\Approximation\2D\Support</Filter>
+    <None Include="Mathematics\Approximation\2D\Input\RandomUnitPoints2D_Double_1024.binary">
+      <Filter>Mathematics\Approximation\2D\Input</Filter>
     </None>
-    <None Include="Mathematics\Approximation\3D\Support\RandomUnitPoints3D_Double_1024.binary">
-      <Filter>Mathematics\Approximation\3D\Support</Filter>
+    <None Include="Mathematics\Approximation\3D\Input\RandomUnitPoints3D_Double_1024.binary">
+      <Filter>Mathematics\Approximation\3D\Input</Filter>
     </None>
-    <None Include="Mathematics\Approximation\ND\Support\RandomUnitPoints4D_Double_1024.binary">
-      <Filter>Mathematics\Approximation\ND\Support</Filter>
+    <None Include="Mathematics\Approximation\ND\Input\RandomUnitPoints4D_Double_1024.binary">
+      <Filter>Mathematics\Approximation\ND\Input</Filter>
+    </None>
+    <None Include="Mathematics\Geometry\2D\Input\ConvexHull2DRandom256.binary">
+      <Filter>Mathematics\Geometry\2D\Input</Filter>
+    </None>
+    <None Include="Mathematics\Geometry\2D\Input\Delaunay2DRandom256.binary">
+      <Filter>Mathematics\Geometry\2D\Input</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="GTEFilesToPortToGTL.txt">
       <Filter>Framework</Filter>
+    </Text>
+    <Text Include="Mathematics\Geometry\2D\Input\Delaunay2DExpectedTriangles.txt">
+      <Filter>Mathematics\Geometry\2D\Input</Filter>
+    </Text>
+    <Text Include="Mathematics\ImageProcessing\Input\RealSurfaceExtractionMCTest.txt">
+      <Filter>Mathematics\ImageProcessing\Input</Filter>
     </Text>
   </ItemGroup>
 </Project>

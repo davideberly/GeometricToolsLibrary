@@ -43,7 +43,7 @@ void UnitTestConvexHull3::TestFull()
 {
     std::size_t const numPoints = 121975;  // 121880 unique points
     std::vector<Vector3<float>> points(numPoints);
-    std::ifstream input("Mathematics/Geometry/3D/Spray3.txt");
+    std::ifstream input("Mathematics/Geometry/3D/Input/Spray3.txt");
     for (std::size_t i = 0; i < numPoints; ++i)
     {
         input >> points[i][0] >> points[i][1] >> points[i][2];
@@ -86,7 +86,7 @@ void UnitTestConvexHull3::TestFull()
     }
     std::sort(triangles.begin(), triangles.end());
 
-    input.open("Mathematics/Geometry/3D/Spray3ExpectedHull.txt");
+    input.open("Mathematics/Geometry/3D/Input/Spray3ExpectedHull.txt");
     std::vector<TriangleKey<true>> expectedTriangles(numTriangles);
     for (std::size_t t = 0; t < numTriangles; ++t)
     {

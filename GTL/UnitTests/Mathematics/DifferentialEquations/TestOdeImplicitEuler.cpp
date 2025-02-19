@@ -94,7 +94,7 @@ void UnitTestOdeImplicitEuler::Test2()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/PendulumImplicitEuler.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumImplicitEuler.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -123,7 +123,7 @@ void UnitTestOdeImplicitEuler::Test2()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/PendulumImplicitEuler.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumImplicitEuler.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
@@ -160,7 +160,7 @@ void UnitTestOdeImplicitEuler::TestDynamic()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/PendulumImplicitEulerD.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumImplicitEulerD.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -189,7 +189,7 @@ void UnitTestOdeImplicitEuler::TestDynamic()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/PendulumImplicitEulerD.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumImplicitEulerD.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

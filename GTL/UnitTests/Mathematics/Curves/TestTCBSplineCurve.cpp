@@ -152,7 +152,7 @@ void UnitTestTCBSplineCurve::Draw(std::string const& name,
 }
 
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/Curves/" + name + ".png",
+    WICFileIONative::SaveToPNG("Mathematics/Curves/_Output/" + name + ".png",
         WICFileIONative::R8G8B8A8, xSize, ySize,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

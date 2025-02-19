@@ -84,7 +84,7 @@ void UnitTestOdeMidpoint::Test2()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/PendulumMidpoint.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumMidpoint.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -113,7 +113,7 @@ void UnitTestOdeMidpoint::Test2()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/PendulumMidpoint.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumMidpoint.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
@@ -145,7 +145,7 @@ void UnitTestOdeMidpoint::TestDynamic()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/PendulumMidpointD.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumMidpointD.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -174,7 +174,7 @@ void UnitTestOdeMidpoint::TestDynamic()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/PendulumMidpointD.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumMidpointD.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

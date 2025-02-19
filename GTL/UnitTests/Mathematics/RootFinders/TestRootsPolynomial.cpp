@@ -178,7 +178,7 @@ void UnitTestRootsPolynomial::TestRandomRealLargeDegree()
 {
     std::size_t const degree = 33;
     Polynomial1<float> p(degree);
-    std::ifstream input("Mathematics/RootFinders/Support/RandomRealLargeDegree.binary", std::ios::binary);
+    std::ifstream input("Mathematics/RootFinders/Input/RandomRealLargeDegree.binary", std::ios::binary);
     input.read((char*)p.GetCoefficients().data(),
         p.GetCoefficients().size() * sizeof(float));
     input.close();
@@ -505,7 +505,7 @@ void UnitTestRootsPolynomial::TestRandomNonsimple()
     // The coefficients of p are written to a text file to be read by
     // Mathematica for experiments and verification.
     Polynomial1<double> temp(p.GetDegree());
-    std::ofstream output("Mathematics/NumericalMethods/RootFinders/Coefficients.txt");
+    std::ofstream output("Mathematics/NumericalMethods/RootFinders/_Output/Coefficients.txt");
     for (std::size_t i = 0; i <= p.GetDegree(); ++i)
     {
         temp[i] = (double)p[i];
