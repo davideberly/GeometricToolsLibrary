@@ -204,6 +204,7 @@
     <ClCompile Include="Mathematics\Geometry\2D\TestBSPPolygon2.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestConstrainedDelaunay2.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestConvexHull2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestConvexHullSimplePolygon.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestDelaunay2.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestDisjointRectangles.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestExactColinear2.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="Mathematics\Geometry\2D\TestMinimumAreaBox2.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestMinimumWidthPoints2.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestPolygonTree.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestPolygonWindingOrder.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestRotatingCalipers.cpp" />
     <ClCompile Include="Mathematics\Geometry\2D\TestTriangulateCDT.cpp" />
     <ClCompile Include="Mathematics\Geometry\3D\TestConvexHull3.cpp" />

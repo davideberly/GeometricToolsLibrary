@@ -1569,6 +1569,13 @@ void UTMathematics::Geometry2D::Execute()
     Postcall();
 #endif
 
+#if defined(UT_MATHEMATICS_CONVEXHULLSIMPLEPOLYGON)
+    Precall();
+    extern void TestConvexHullSimplePolygon();
+    TestConvexHullSimplePolygon();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_DELAUNAY2)
     Precall();
     extern void TestDelaunay2();
@@ -1664,6 +1671,13 @@ void UTMathematics::Geometry2D::Execute()
     Precall();
     extern void TestPolygonTree();
     TestPolygonTree();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_POLYGONWINDINGORDER)
+    Precall();
+    extern void TestPolygonWindingOrder();
+    TestPolygonWindingOrder();
     Postcall();
 #endif
 

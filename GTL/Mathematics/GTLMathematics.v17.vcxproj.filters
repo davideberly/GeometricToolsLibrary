@@ -1164,5 +1164,11 @@
     <ClInclude Include="Meshes\UniqueVerticesSimplices.h">
       <Filter>Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\2D\ConvexHullSimplePolygon.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\PolygonWindingOrder.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

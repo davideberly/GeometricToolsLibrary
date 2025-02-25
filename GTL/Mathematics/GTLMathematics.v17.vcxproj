@@ -191,6 +191,7 @@
     <ClInclude Include="Geometry\2D\BSPPolygon2.h" />
     <ClInclude Include="Geometry\2D\ConstrainedDelaunay2.h" />
     <ClInclude Include="Geometry\2D\ConvexHull2.h" />
+    <ClInclude Include="Geometry\2D\ConvexHullSimplePolygon.h" />
     <ClInclude Include="Geometry\2D\Delaunay2.h" />
     <ClInclude Include="Geometry\2D\DisjointRectangles.h" />
     <ClInclude Include="Geometry\2D\ExactColinear2.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Geometry\2D\MinimumAreaBox2.h" />
     <ClInclude Include="Geometry\2D\MinimumWidthPoints2.h" />
     <ClInclude Include="Geometry\2D\PolygonTree.h" />
+    <ClInclude Include="Geometry\2D\PolygonWindingOrder.h" />
     <ClInclude Include="Geometry\2D\RotatingCalipers.h" />
     <ClInclude Include="Geometry\2D\TriangulateCDT.h" />
     <ClInclude Include="Geometry\3D\ConvexHull3.h" />

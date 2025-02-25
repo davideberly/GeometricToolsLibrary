@@ -1224,6 +1224,12 @@
     <ClCompile Include="Mathematics\Meshes\TestUniqueVerticesSimplices.cpp">
       <Filter>Mathematics\Meshes</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Geometry\2D\TestConvexHullSimplePolygon.cpp">
+      <Filter>Mathematics\Geometry\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Geometry\2D\TestPolygonWindingOrder.cpp">
+      <Filter>Mathematics\Geometry\2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
