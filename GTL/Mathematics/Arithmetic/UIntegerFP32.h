@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2025.02.25
 
 #pragma once
 
@@ -53,6 +53,14 @@ namespace gtl
     class UIntegerFP32
     {
     public:
+#if defined(GTE_USE_MSWINDOWS)
+        // Disable the warning:
+        //   warning C26495: Variable 'gte::UIntegerFP32<2561>::mBits' is
+        //   uninitialized. Always initialize a member variable (type.6).
+        // See the NOTE above about performance problems when mBits is
+        // initialized in the constructors.
+#pragma warning(disable : 26495)
+#endif
         // Construction and destruction.
         UIntegerFP32()
             :
@@ -141,6 +149,10 @@ namespace gtl
 
             *this = other;
         }
+
+#if defined(GTE_USE_MSWINDOWS)
+#pragma warning(default : 28020)
+#endif
 
         UIntegerFP32& operator=(UIntegerFP32 const& other)
         {
