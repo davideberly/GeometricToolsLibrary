@@ -10,6 +10,8 @@
 #include <iostream>
 using namespace gtl;
 
+//#define MEASURE_PERFORMANCE
+
 namespace gtl
 {
     class UnitTestDistPoint2Parallelogram2
@@ -20,7 +22,10 @@ namespace gtl
     private:
         void Test0();
         void Test1();
+
+#if defined(MEASURE_PERFORMANCE)
         void Performance();
+#endif
     };
 }
 
@@ -30,7 +35,10 @@ UnitTestDistPoint2Parallelogram2::UnitTestDistPoint2Parallelogram2()
 
     Test0();
     Test1();
+
+#if defined(MEASURE_PERFORMANCE)
     Performance();
+#endif
 }
 
 void UnitTestDistPoint2Parallelogram2::Test0()
@@ -235,6 +243,7 @@ void UnitTestDistPoint2Parallelogram2::Test1()
     // MT closest[1] = {-1.32597, 0.48985}
 }
 
+#if defined(MEASURE_PERFORMANCE)
 void UnitTestDistPoint2Parallelogram2::Performance()
 {
     // Generate a center point and right-handed basis {V[0],V[1]} for
@@ -273,6 +282,7 @@ void UnitTestDistPoint2Parallelogram2::Performance()
     std::cout << "milliseconds = " << milliseconds << std::endl;
     // 12038 milliseconds
 }
+#endif
 
 #else
 
