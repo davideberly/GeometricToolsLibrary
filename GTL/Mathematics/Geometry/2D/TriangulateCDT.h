@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.28
+// File Version: 2025.02.25
 
 #pragma once
 
@@ -120,7 +120,7 @@ namespace gtl
             queue.push(input);
             while (queue.size() > 0)
             {
-                auto const& node = queue.front();
+                std::shared_ptr<PolygonTree> node = queue.front();
                 queue.pop();
                 numNodes += node->child.size();
                 for (auto const& child : node->child)
@@ -142,7 +142,7 @@ namespace gtl
             queue.push(input);
             while (queue.size() > 0)
             {
-                auto const& node = queue.front();
+                std::shared_ptr<PolygonTree> node = queue.front();
                 queue.pop();
                 auto& exnode = output.nodes[current++];
                 exnode.polygon = node->polygon;
