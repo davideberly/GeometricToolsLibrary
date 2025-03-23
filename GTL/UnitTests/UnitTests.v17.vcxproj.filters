@@ -175,6 +175,9 @@
     <Filter Include="Mathematics\ImageProcessing\Input">
       <UniqueIdentifier>{92a74e22-fd7a-4ff8-9031-0b70c79025a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mathematics\Interpolation\2D\Input">
+      <UniqueIdentifier>{d7b217d1-c02f-4e12-afe4-feb16f9a4c78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UnitTestsMain.cpp">
@@ -1230,6 +1233,21 @@
     <ClCompile Include="Mathematics\Geometry\2D\TestPolygonWindingOrder.cpp">
       <Filter>Mathematics\Geometry\2D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniformShared.cpp">
+      <Filter>Mathematics\Interpolation\ND</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\1D\TestIntpBSplineUniform1.cpp">
+      <Filter>Mathematics\Interpolation\1D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpBSplineUniform2.cpp">
+      <Filter>Mathematics\Interpolation\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpBSplineUniform3.cpp">
+      <Filter>Mathematics\Interpolation\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniform.cpp">
+      <Filter>Mathematics\Interpolation\ND</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
@@ -1284,5 +1302,10 @@
     <Text Include="Mathematics\ImageProcessing\Input\RealSurfaceExtractionMCTest.txt">
       <Filter>Mathematics\ImageProcessing\Input</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Mathematics\Interpolation\2D\Input\Magician.png">
+      <Filter>Mathematics\Interpolation\2D\Input</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -2150,6 +2150,13 @@ void UTMathematics::Interpolation1D::Execute()
     Postcall();
 #endif
 
+#if defined(UT_MATHEMATICS_INTPBSPLINEUNIFORM1)
+    Precall();
+    extern void TestIntpBSplineUniform1();
+    TestIntpBSplineUniform1();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_INTPHERMITECUBIC1)
     Precall();
     extern void TestIntpHermiteCubic1();
@@ -2175,6 +2182,13 @@ void UTMathematics::Interpolation2D::Execute()
     Precall();
     extern void TestIntpAkimaUniform2();
     TestIntpAkimaUniform2();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_INTPBSPLINEUNIFORM2)
+    Precall();
+    extern void TestIntpBSplineUniform2();
+    TestIntpBSplineUniform2();
     Postcall();
 #endif
 
@@ -2245,6 +2259,13 @@ void UTMathematics::Interpolation3D::Execute()
     Precall();
     extern void TestIntpAkimaUniform3();
     TestIntpAkimaUniform3();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_INTPBSPLINEUNIFORM3)
+    Precall();
+    extern void TestIntpBSplineUniform3();
+    TestIntpBSplineUniform3();
     Postcall();
 #endif
 

@@ -230,13 +230,18 @@
     <ClCompile Include="Mathematics\Integration\TestIntgGaussianQuadrature.cpp" />
     <ClCompile Include="Mathematics\Integration\TestIntgRomberg.cpp" />
     <ClCompile Include="Mathematics\Integration\TestIntgTrapezoidRule.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\1D\TestIntpBSplineUniform1.cpp" />
     <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteCubic1.cpp" />
     <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteQuintic1.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpBSplineUniform2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteCubic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteQuintic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpQuadraticNonuniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpBSplineUniform3.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteCubic3.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteQuintic3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniform.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniformShared.cpp" />
     <ClCompile Include="Mathematics\Intersection\1D\TestIntrIntervals.cpp" />
     <ClCompile Include="Mathematics\Intersection\2D\TestIntrAreaEllipse2Ellipse2.cpp" />
     <ClCompile Include="Mathematics\Intersection\2D\TestIntrEllipse2Ellipse2.cpp" />
@@ -400,6 +405,9 @@
     <Text Include="GTEFilesToPortToGTL.txt" />
     <Text Include="Mathematics\Geometry\2D\Input\Delaunay2DExpectedTriangles.txt" />
     <Text Include="Mathematics\ImageProcessing\Input\RealSurfaceExtractionMCTest.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Mathematics\Interpolation\2D\Input\Magician.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

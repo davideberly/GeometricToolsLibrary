@@ -1170,5 +1170,20 @@
     <ClInclude Include="Geometry\2D\PolygonWindingOrder.h">
       <Filter>Geometry\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolation\1D\IntpBSplineUniform1.h">
+      <Filter>Interpolation\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\ND\IntpBSplineUniformShared.h">
+      <Filter>Interpolation\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpBSplineUniform2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpBSplineUniform3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\ND\IntpBSplineUniform.h">
+      <Filter>Interpolation\ND</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -139,8 +139,6 @@ Interpolation
         IntpLinearNonuniform3
         IntpSphere3
         IntpThinPlateSpline3
-    ND
-        IntpBSplineUniform
 
 Intersection
     2D
@@ -506,15 +504,21 @@ Integration
 
 Interpolation
     1D
+        IntpBSplineUniform1
         IntpHermiteCubic1
         IntpHermiteQuintic1
     2D
+        IntpBSplineUniform2
         IntpHermiteCubic2
         IntpHermiteQuintic2
         IntpQuadraticNonuniform2
     3D
+        IntpBSplineUniform3
         IntpHermiteCubic3
         IntpHermiteQuintic3
+    ND
+        IntpBSplineUniformShared (unit tested by its derived classes)
+        IntpBSplineUniform
 
 Intersection
     IntersectionQuery (no unit test, template definitions)
