@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2025.03.26
 
 #pragma once
 
@@ -303,7 +303,7 @@ namespace gtl
             mNumElements(0),
             mSizes{}
         {
-            InternalReset(sizes);
+            InternalResize(sizes);
         }
 
         // The lattice has the specified sizes.
@@ -312,20 +312,20 @@ namespace gtl
             mNumElements(0),
             mSizes{}
         {
-            InternalReset(sizes);
+            InternalResize(sizes);
         }
 
         // Support for deferred construction where the initial lattice is
         // created by the default constructor. During later execution, the
         // lattice sizes can be set as needed.
-        void reset(std::vector<std::size_t> const& sizes)
+        void resize(std::vector<std::size_t> const& sizes)
         {
-            InternalReset(sizes);
+            InternalResize(sizes);
         }
 
-        void reset(std::initializer_list<std::size_t> const& sizes)
+        void resize(std::initializer_list<std::size_t> const& sizes)
         {
-            InternalReset(sizes);
+            InternalResize(sizes);
         }
 
         ~Lattice() = default;
@@ -515,7 +515,7 @@ namespace gtl
 
     private:
         template <typename Container>
-        void InternalReset(Container const& container)
+        void InternalResize(Container const& container)
         {
             GTL_ARGUMENT_ASSERT(
                 container.size() > 0,

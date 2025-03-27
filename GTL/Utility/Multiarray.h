@@ -201,15 +201,15 @@ namespace gtl
         // Support for deferred construction where the initial multiarray is
         // created by the default constructor. During later execution, the
         // multiarray sizes can be set as needed.
-        void reset(std::vector<std::size_t> const& sizes)
+        void resize(std::vector<std::size_t> const& sizes)
         {
-            Lattice<OrderLtoR>::reset(sizes);
+            Lattice<OrderLtoR>::resize(sizes);
             mContainer.resize(this->size());
         }
 
-        void reset(std::initializer_list<std::size_t> const& sizes)
+        void resize(std::initializer_list<std::size_t> const& sizes)
         {
-            Lattice<OrderLtoR>::reset(sizes);
+            Lattice<OrderLtoR>::resize(sizes);
             mContainer.resize(this->size());
         }
 

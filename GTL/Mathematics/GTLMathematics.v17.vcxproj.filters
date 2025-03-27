@@ -1185,5 +1185,20 @@
     <ClInclude Include="Interpolation\ND\IntpBSplineUniform.h">
       <Filter>Interpolation\ND</Filter>
     </ClInclude>
+    <ClInclude Include="ImageProcessing\Image.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Image2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Image3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\MarchingCubes.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\SurfaceExtractorMC.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

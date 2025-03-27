@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -213,7 +213,12 @@
     <ClInclude Include="Geometry\3D\ExactToCircumsphere3.h" />
     <ClInclude Include="Geometry\3D\ExactToPlane3.h" />
     <ClInclude Include="Geometry\3D\ExactToTetrahedron3.h" />
+    <ClInclude Include="ImageProcessing\Image.h" />
+    <ClInclude Include="ImageProcessing\Image2.h" />
+    <ClInclude Include="ImageProcessing\Image3.h" />
+    <ClInclude Include="ImageProcessing\MarchingCubes.h" />
     <ClInclude Include="ImageProcessing\Rasterize2.h" />
+    <ClInclude Include="ImageProcessing\SurfaceExtractorMC.h" />
     <ClInclude Include="Integration\IntgGaussianQuadrature.h" />
     <ClInclude Include="Integration\IntgRomberg.h" />
     <ClInclude Include="Integration\IntgTrapezoidRule.h" />

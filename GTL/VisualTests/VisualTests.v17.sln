@@ -123,6 +123,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DistancePoint3Parallelepipe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DistancePoint3Parallelepiped3DX11.v17", "Mathematics\Distance\DistancePoint3Parallelepiped3\DistancePoint3Parallelepiped3DX11.v17.vcxproj", "{257A53AF-8528-449B-BD27-204600D1A4EF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageProcessing", "ImageProcessing", "{BACEFD4D-07BB-4972-881C-8CC2CABC433F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisualizeMarchingCubes", "VisualizeMarchingCubes", "{89B60CD5-5914-43CD-B604-BED4BE17086E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VisualizeMarchingCubesDX11.v17", "Mathematics\ImageProcessing\VisualizeMarchingCubes\VisualizeMarchingCubesDX11.v17.vcxproj", "{35EA9D60-AFDA-4717-A62B-9814D1C00952}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -355,6 +361,14 @@ Global
 		{257A53AF-8528-449B-BD27-204600D1A4EF}.Release|x64.Build.0 = Release|x64
 		{257A53AF-8528-449B-BD27-204600D1A4EF}.Release|x86.ActiveCfg = Release|Win32
 		{257A53AF-8528-449B-BD27-204600D1A4EF}.Release|x86.Build.0 = Release|Win32
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Debug|x64.ActiveCfg = Debug|x64
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Debug|x64.Build.0 = Debug|x64
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Debug|x86.ActiveCfg = Debug|Win32
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Debug|x86.Build.0 = Debug|Win32
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Release|x64.ActiveCfg = Release|x64
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Release|x64.Build.0 = Release|x64
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Release|x86.ActiveCfg = Release|Win32
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -418,6 +432,9 @@ Global
 		{EB602772-947D-4761-99FD-290BB8183884} = {19A52FAA-2E21-4E1C-AB1D-2125E798440E}
 		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {ACA03EDB-3386-44C5-82CD-D3927AC10533}
 		{257A53AF-8528-449B-BD27-204600D1A4EF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BACEFD4D-07BB-4972-881C-8CC2CABC433F} = {CC9BA1B2-0436-4724-A166-5689A7C23E9F}
+		{89B60CD5-5914-43CD-B604-BED4BE17086E} = {BACEFD4D-07BB-4972-881C-8CC2CABC433F}
+		{35EA9D60-AFDA-4717-A62B-9814D1C00952} = {89B60CD5-5914-43CD-B604-BED4BE17086E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B221E3AF-C24E-4402-A655-E8A88A66988A}
