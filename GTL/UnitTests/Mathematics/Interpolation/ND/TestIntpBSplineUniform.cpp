@@ -182,7 +182,7 @@ void UnitTestIntpBSplineUniform::Test2()
         }
     }
 
-    filename = "Mathematics/Interpolation/2D/_Output/MagicianBSpline.png";
+    filename = "Mathematics/Interpolation/2D/Output/MagicianBSpline.png";
     WICFileIONative::SaveToPNG(filename, format, controls.size[0], controls.size[1], outImage.data());
 }
 
@@ -256,7 +256,7 @@ void UnitTestIntpBSplineUniform::Test3()
             break;
         }
     }
-    filename = "Mathematics/Interpolation/3D/_Output/moleculeOriginal.png";
+    filename = "Mathematics/Interpolation/3D/Output/moleculeOriginal.png";
     WICFileIONative::SaveToPNG(filename, WICFileIONative::R8, textureWidth, textureHeight, texture.data());
 
     float zero = 0.0f;
@@ -305,7 +305,7 @@ void UnitTestIntpBSplineUniform::Test3()
             break;
         }
     }
-    filename = "Mathematics/Interpolation/3D/_Output/moleculeBSpline.png";
+    filename = "Mathematics/Interpolation/3D/Output/moleculeBSpline.png";
     WICFileIONative::SaveToPNG(filename, WICFileIONative::R8, textureWidth, textureHeight, texture.data());
 }
 

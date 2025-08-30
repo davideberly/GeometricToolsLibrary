@@ -119,7 +119,7 @@ void UnitTestIntpBSplineUniform2::Test()
         }
     }
 
-    filename = "Mathematics/Interpolation/2D/_Output/MagicianBSpline.png";
+    filename = "Mathematics/Interpolation/2D/Output/MagicianBSpline.png";
     WICFileIONative::SaveToPNG(filename, format, controls.size[0], controls.size[1], outImage.data());
 }
 

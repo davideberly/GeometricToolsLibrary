@@ -42,7 +42,7 @@ void UnitTestGaussNewtonMinimizer::Test()
     }
 
     // To verify with Mathematica.
-    std::ofstream pointfile("Mathematics/Minimizers/_Output/points.txt");
+    std::ofstream pointfile("Mathematics/Minimizers/Output/points.txt");
     for (std::size_t i = 0; i < numPoints; ++i)
     {
         pointfile << points[i][0] << ", " << points[i][1] << std::endl;

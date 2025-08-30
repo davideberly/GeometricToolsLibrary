@@ -505,7 +505,7 @@ void UnitTestRootsPolynomial::TestRandomNonsimple()
     // The coefficients of p are written to a text file to be read by
     // Mathematica for experiments and verification.
     Polynomial1<double> temp(p.GetDegree());
-    std::ofstream output("Mathematics/NumericalMethods/RootFinders/_Output/Coefficients.txt");
+    std::ofstream output("Mathematics/NumericalMethods/RootFinders/Output/Coefficients.txt");
     for (std::size_t i = 0; i <= p.GetDegree(); ++i)
     {
         temp[i] = (double)p[i];

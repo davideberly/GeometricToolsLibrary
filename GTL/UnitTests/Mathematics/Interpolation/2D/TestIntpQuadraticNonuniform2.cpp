@@ -70,7 +70,7 @@ void UnitTestIntpQuadraticNonuniform2::TestSingleTriangle()
     interpolator.Evaluate(point, Finterp, DFDXinterp, DFDYinterp);
     // F = 1.1373549941184307, DFDX = 0.73149885271494197, DFDY = 0.61421265138182335
 
-    std::ofstream output("Mathematics/Interpolation/2D/_Output/CendesWong1.txt");
+    std::ofstream output("Mathematics/Interpolation/2D/Output/CendesWong1.txt");
     std::size_t numX = 128, numY = 128;
     for (std::size_t x = 0; x <= numX; ++x)
     {
@@ -108,7 +108,7 @@ void UnitTestIntpQuadraticNonuniform2::TestTwoTriangles()
     double Finterp{}, DFDXinterp{}, DFDYinterp{};
 
     // The plot in Mathematica appears to be correct.
-    std::ofstream output("Mathematics/Interpolation/2D/_Output/CendesWong2.txt");
+    std::ofstream output("Mathematics/Interpolation/2D/Output/CendesWong2.txt");
     std::size_t numX = 128, numY = 128;
     for (std::size_t x = 0; x <= numX; ++x)
     {

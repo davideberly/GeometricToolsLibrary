@@ -216,40 +216,61 @@ namespace gtl
             std::fill(mBits.begin(), mBits.end(), 0u);
         }
 
-        // Disk input/output. The fstream objects should be created using
-        // std::ios::binary. The return value is 'true' iff the operation
-        // is successful.
-        bool Write(std::ostream& output) const
+        // Stream binary output. The return value is the number of bytes
+        // written if all 'output' operations succeed but 0 otherwise.
+        std::size_t Write(std::ostream& output) const
         {
+            std::size_t numWritten = 0;
+
             if (output.write((char const*)&mNumBits, sizeof(mNumBits)).bad())
             {
-                return false;
+                return 0;
             }
+            numWritten += sizeof(mNumBits);
 
             std::size_t numBlocks = mBits.size();
             if (output.write((char const*)&numBlocks, sizeof(numBlocks)).bad())
             {
-                return false;
+                return 0;
             }
+            numWritten += sizeof(numBlocks);
 
-            return output.write((char const*)&mBits[0], numBlocks * sizeof(mBits[0])).good();
+            if (output.write((char const*)&mBits[0], numBlocks * sizeof(mBits[0])).bad())
+            {
+                return 0;
+            }
+            numWritten += numBlocks * sizeof(mBits[0]);
+
+            return numWritten;
         }
 
-        bool Read(std::istream& input)
+        // Stream binary input. The return value is the number of bytes
+        // read if all 'output' operations succeed but 0 otherwise.
+        std::size_t Read(std::istream& input)
         {
+            std::size_t numRead = 0;
+
             if (input.read((char*)&mNumBits, sizeof(mNumBits)).bad())
             {
-                return false;
+                return 0;
             }
+            numRead += sizeof(mNumBits);
 
             std::size_t numBlocks = 0;
             if (input.read((char*)&numBlocks, sizeof(numBlocks)).bad())
             {
-                return false;
+                return 0;
             }
+            numRead += sizeof(numBlocks);
 
             mBits.resize(numBlocks);
-            return input.read((char*)&mBits[0], numBlocks * sizeof(mBits[0])).good();
+            if (input.read((char*)&mBits[0], numBlocks * sizeof(mBits[0])).bad())
+            {
+                return 0;
+            }
+            numRead += numBlocks * sizeof(mBits[0]);
+
+            return numRead;
         }
 
     private:

@@ -52,7 +52,7 @@ void UnitTestNURBSCircle::Test()
     Draw(&fullCircleDegree3, C_TWO_PI<double>, 3 * dx, 3 * dy, radius, size, canvas);
 
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/Curves/_Output/NURBSCircle.png",
+    WICFileIONative::SaveToPNG("Mathematics/Curves/Output/NURBSCircle.png",
         WICFileIONative::R8G8B8A8, (std::uint32_t)size, (std::uint32_t)size,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

@@ -84,7 +84,7 @@ void UnitTestOdeEuler::Test2()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumEuler.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumEuler.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -113,7 +113,7 @@ void UnitTestOdeEuler::Test2()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumEuler.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/Output/PendulumEuler.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
@@ -145,7 +145,7 @@ void UnitTestOdeEuler::TestDynamic()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumEulerD.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumEulerD.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -174,7 +174,7 @@ void UnitTestOdeEuler::TestDynamic()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumEulerD.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/Output/PendulumEulerD.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif

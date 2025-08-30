@@ -98,7 +98,7 @@ void UnitTestIntpBSplineUniform3::Test()
             break;
         }
     }
-    filename = "Mathematics/Interpolation/3D/_Output/moleculeOriginal.png";
+    filename = "Mathematics/Interpolation/3D/Output/moleculeOriginal.png";
     WICFileIONative::SaveToPNG(filename, WICFileIONative::R8, textureWidth, textureHeight, texture.data());
 
     float zero = 0.0f;
@@ -147,7 +147,7 @@ void UnitTestIntpBSplineUniform3::Test()
             break;
         }
     }
-    filename = "Mathematics/Interpolation/3D/_Output/moleculeBSpline.png";
+    filename = "Mathematics/Interpolation/3D/Output/moleculeBSpline.png";
     WICFileIONative::SaveToPNG(filename, WICFileIONative::R8, textureWidth, textureHeight, texture.data());
 }
 

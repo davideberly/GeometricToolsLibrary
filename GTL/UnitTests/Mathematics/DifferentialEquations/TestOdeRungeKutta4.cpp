@@ -84,7 +84,7 @@ void UnitTestOdeRungeKutta4::Test2()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumRungeKutta4.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -113,7 +113,7 @@ void UnitTestOdeRungeKutta4::Test2()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumRungeKutta4.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
@@ -145,7 +145,7 @@ void UnitTestOdeRungeKutta4::TestDynamic()
     }
 
     // Write the approximation solution as text.
-    std::ofstream outFile("Mathematics/DifferentialEquations/_Output/PendulumRungeKutta4D.txt");
+    std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4D.txt");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -174,7 +174,7 @@ void UnitTestOdeRungeKutta4::TestDynamic()
         iY0 = iY1;
     }
 #if defined(GTL_USE_MSWINDOWS)
-    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/_Output/PendulumRungeKutta4D.png",
+    WICFileIONative::SaveToPNG("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4D.png",
         WICFileIONative::R8G8B8A8, numOutputs, numOutputs,
         reinterpret_cast<std::uint8_t*>(canvas.data()));
 #endif
