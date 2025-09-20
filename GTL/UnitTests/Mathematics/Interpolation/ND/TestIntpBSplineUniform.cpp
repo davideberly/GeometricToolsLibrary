@@ -350,12 +350,12 @@ namespace gtl
         std::vector<T> mSignal;
     };
 
-    template class IntpBSplineUniformN<float, Controls<float>>;
-    template class IntpBSplineUniformN<double, Controls<double>>;
+    template class IntpBSplineUniform<float, Controls<float>>;
+    template class IntpBSplineUniform<double, Controls<double>>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
-    template class IntpBSplineUniformN<Rational, Controls<Rational>>;
+    template class IntpBSplineUniform<Rational, Controls<Rational>>;
 #endif
 }
 
