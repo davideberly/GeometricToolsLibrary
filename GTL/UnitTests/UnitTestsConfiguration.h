@@ -10,7 +10,7 @@
 // Top-level control over which tests are executed. The individual classes
 // need unit testing.
 
-//#define UT_UTILITY
+#define UT_UTILITY
 #define UT_MATHEMATICS
 #define UT_MATHEMATICS_ALGEBRA
 #define UT_MATHEMATICS_APPROXIMATION_2D
