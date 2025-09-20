@@ -1200,5 +1200,8 @@
     <ClInclude Include="ImageProcessing\SurfaceExtractorMC.h">
       <Filter>ImageProcessing</Filter>
     </ClInclude>
+    <ClInclude Include="Approximation\2D\ApprParallelLines2.h">
+      <Filter>Approximation\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

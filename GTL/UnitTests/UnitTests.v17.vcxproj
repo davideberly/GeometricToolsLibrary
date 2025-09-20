@@ -46,6 +46,7 @@
     <ClCompile Include="Mathematics\Approximation\2D\TestApprHeightLine2.cpp" />
     <ClCompile Include="Mathematics\Approximation\2D\TestApprOrthogonalLine2.cpp" />
     <ClCompile Include="Mathematics\Approximation\2D\TestApprParabola2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprParallelLines2.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprCone3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHeightPlane3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHelmertTransformation3.cpp" />

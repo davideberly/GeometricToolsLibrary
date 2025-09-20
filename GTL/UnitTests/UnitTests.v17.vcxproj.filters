@@ -1248,6 +1248,9 @@
     <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniform.cpp">
       <Filter>Mathematics\Interpolation\ND</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprParallelLines2.cpp">
+      <Filter>Mathematics\Approximation\2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
