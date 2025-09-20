@@ -9,6 +9,7 @@
 
 #include <GTL/Utility/Exceptions.h>
 #include <GTL/Mathematics/Algebra/Polynomial.h>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <limits>
