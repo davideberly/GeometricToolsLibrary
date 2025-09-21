@@ -133,6 +133,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApproximateHelmertTransform
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ApproximateHelmertTransformationDX11.v17", "Mathematics\Approximation\ApproximateHelmertTransformation\ApproximateHelmertTransformationDX11.v17.vcxproj", "{254B2CE7-B578-4211-A0FA-2A9540BBC69F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApproximateCylinder3", "ApproximateCylinder3", "{66B7E362-AB6C-45EC-ABBC-EB8D361115F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ApproximateCylinder3DX11.v17", "Mathematics\Approximation\ApproximateCylinder3\ApproximateCylinder3DX11.v17.vcxproj", "{DCF63F55-F194-4627-A2E3-2A8896627024}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -381,6 +385,14 @@ Global
 		{254B2CE7-B578-4211-A0FA-2A9540BBC69F}.Release|x64.Build.0 = Release|x64
 		{254B2CE7-B578-4211-A0FA-2A9540BBC69F}.Release|x86.ActiveCfg = Release|Win32
 		{254B2CE7-B578-4211-A0FA-2A9540BBC69F}.Release|x86.Build.0 = Release|Win32
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Debug|x64.ActiveCfg = Debug|x64
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Debug|x64.Build.0 = Debug|x64
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Debug|x86.ActiveCfg = Debug|Win32
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Debug|x86.Build.0 = Debug|Win32
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Release|x64.ActiveCfg = Release|x64
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Release|x64.Build.0 = Release|x64
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Release|x86.ActiveCfg = Release|Win32
+		{DCF63F55-F194-4627-A2E3-2A8896627024}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -449,6 +461,8 @@ Global
 		{35EA9D60-AFDA-4717-A62B-9814D1C00952} = {89B60CD5-5914-43CD-B604-BED4BE17086E}
 		{A21AB139-CA9D-4B0A-BE64-2AE29450E4F6} = {621456BA-3BAB-4531-9DD0-0225EEAD672F}
 		{254B2CE7-B578-4211-A0FA-2A9540BBC69F} = {A21AB139-CA9D-4B0A-BE64-2AE29450E4F6}
+		{66B7E362-AB6C-45EC-ABBC-EB8D361115F1} = {621456BA-3BAB-4531-9DD0-0225EEAD672F}
+		{DCF63F55-F194-4627-A2E3-2A8896627024} = {66B7E362-AB6C-45EC-ABBC-EB8D361115F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B221E3AF-C24E-4402-A655-E8A88A66988A}

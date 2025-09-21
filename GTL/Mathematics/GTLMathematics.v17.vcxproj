@@ -33,6 +33,7 @@
     <ClInclude Include="Approximation\2D\ApprParabola2.h" />
     <ClInclude Include="Approximation\2D\ApprParallelLines2.h" />
     <ClInclude Include="Approximation\3D\ApprCone3.h" />
+    <ClInclude Include="Approximation\3D\ApprCylinder3.h" />
     <ClInclude Include="Approximation\3D\ApprHeightPlane3.h" />
     <ClInclude Include="Approximation\3D\ApprHelmertTransformation3.h" />
     <ClInclude Include="Approximation\3D\ApprOrthogonalLine3.h" />

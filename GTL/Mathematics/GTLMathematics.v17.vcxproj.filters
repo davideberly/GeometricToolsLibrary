@@ -1203,5 +1203,8 @@
     <ClInclude Include="Approximation\2D\ApprParallelLines2.h">
       <Filter>Approximation\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprCylinder3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
