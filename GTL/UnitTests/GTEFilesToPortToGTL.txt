@@ -19,8 +19,6 @@ Meshes (finish the mesh PDF and redesign the code)
 NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
 
 Approximation
-    2D
-        ApprParallelLines2
     3D
         ApprCylinder3
         ApprEllipsoid3
@@ -287,10 +285,11 @@ Approximation
         ApprHeightLine2
         ApprOrthogonalLine2
         ApprParabola2
+        ApprParallelLines2
     3D
         ApprCone3
         ApprHeightPlane3
-        ApprHelmertTransformation3
+        ApprHelmertTransformation3 (also tested by GTL/VisualTests/Mathematics/Approximation/ApproximateHelmertTransformation)
         ApprOrthogonalLine3
         ApprOrthogonalPlane3
         ApprParaboloid3

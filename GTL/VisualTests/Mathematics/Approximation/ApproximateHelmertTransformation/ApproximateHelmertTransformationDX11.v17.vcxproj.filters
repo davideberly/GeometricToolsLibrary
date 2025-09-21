@@ -11,15 +11,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TestHelmertTransformationWindow3.cpp">
+    <ClCompile Include="ApproximateHelmertTransformationWindow3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestHelmertTransformationMain.cpp">
+    <ClCompile Include="ApproximateHelmertTransformationMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestHelmertTransformationWindow3.h">
+    <ClInclude Include="ApproximateHelmertTransformationWindow3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

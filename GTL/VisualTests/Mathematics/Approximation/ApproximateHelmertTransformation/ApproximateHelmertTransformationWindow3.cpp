@@ -1,12 +1,21 @@
-#include "TestHelmertTransformationWindow3.h"
-#include <Graphics/ConstantColorEffect.h>
-#include <Graphics/MeshFactory.h>
-#include <Mathematics/Rotation.h>
+// Geometric Tools Library
+// https://www.geometrictools.com
+// Copyright (c) 2025 Geometric Tools LLC
+// Distributed under the Boost Software License, Version 1.0
+// https://www.boost.org/LICENSE_1_0.txt
+// File Version: 0.0.2025.09.21
+
+#include "ApproximateHelmertTransformationWindow3.h"
+#include <GTL/Graphics/Effects/ConstantColorEffect.h>
+#include <GTL/Graphics/SceneGraph/MeshFactory.h>
+#include <GTL/Mathematics/Algebra/Rotation.h>
+#include <cstddef>
+#include <iomanip>
+#include <memory>
 #include <random>
 #include <sstream>
-#include <iomanip>
 
-TestHelmertTransformationWindow3::TestHelmertTransformationWindow3(Parameters& parameters)
+ApproximateHelmertTransformationWindow3::ApproximateHelmertTransformationWindow3(Parameters& parameters)
     :
     Window3(parameters),
     mPPoints(numPoints),
@@ -22,7 +31,7 @@ TestHelmertTransformationWindow3::TestHelmertTransformationWindow3(Parameters& p
     CreateScene();
 }
 
-void TestHelmertTransformationWindow3::OnIdle()
+void ApproximateHelmertTransformationWindow3::OnIdle()
 {
     mTimer.Measure();
 
@@ -44,7 +53,7 @@ void TestHelmertTransformationWindow3::OnIdle()
     mTimer.UpdateFrameCount();
 }
 
-bool TestHelmertTransformationWindow3::OnCharPress(uint8_t key, int32_t x, int32_t y)
+bool ApproximateHelmertTransformationWindow3::OnCharPress(uint8_t key, int32_t x, int32_t y)
 {
     if (key == ' ')
     {
@@ -55,13 +64,13 @@ bool TestHelmertTransformationWindow3::OnCharPress(uint8_t key, int32_t x, int32
     return Window3::OnCharPress(key, x, y);
 }
 
-void TestHelmertTransformationWindow3::CreateScene()
+void ApproximateHelmertTransformationWindow3::CreateScene()
 {
     std::default_random_engine dre{};
     std::uniform_real_distribution<double> urd(-1.0, 1.0);
     Quaternion<double> qq(urd(dre), urd(dre), urd(dre), urd(dre));
     Normalize(qq);
-    Matrix3x3<double> rotate = Rotation<3, double>(qq);
+    Matrix3x3<double> rotate = Rotation<double>(qq);
     Vector3<double> translate{ urd(dre), urd(dre), urd(dre) };
     double scale = 1.01;
 
@@ -110,13 +119,13 @@ void TestHelmertTransformationWindow3::CreateScene()
     mPVWMatrices.Update();
 }
 
-void TestHelmertTransformationWindow3::Align()
+void ApproximateHelmertTransformationWindow3::Align()
 {
     Matrix3x3<double> outRotate{};
     Vector3<double> outTranslate{};
     double outScale{};
     double outFunction{};
-    std::size_t iteration = mHelmert.Execute(mPPoints, mQPoints, numIterations,
+    std::size_t iteration = mHelmert.Fit(mPPoints, mQPoints, numIterations,
         outRotate, outTranslate, outScale, outFunction);
 
     for (std::size_t i = 0; i < numPoints; ++i)

@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{254B2CE7-B578-4211-A0FA-2A9540BBC69F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>TestHelmertTransformation.v17</RootNamespace>
+    <RootNamespace>ApproximateHelmertTransformation.v17</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -96,8 +96,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(GTE_PATH)</AdditionalIncludeDirectories>
+     <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -115,8 +115,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(GTE_PATH)</AdditionalIncludeDirectories>
+     <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -136,8 +136,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(GTE_PATH)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -159,8 +159,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(GTE_PATH)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -175,21 +175,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="TestHelmertTransformationWindow3.cpp" />
-    <ClCompile Include="TestHelmertTransformationMain.cpp" />
+    <ClCompile Include="ApproximateHelmertTransformationWindow3.cpp" />
+    <ClCompile Include="ApproximateHelmertTransformationMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestHelmertTransformationWindow3.h" />
+    <ClInclude Include="ApproximateHelmertTransformationWindow3.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GTE\GTApplicationsDX11.v17.vcxproj">
+    <ProjectReference Include="..\..\..\..\Applications\GTLApplicationsDX11.v17.vcxproj">
       <Project>{8bb237c2-2d3a-41ad-9b98-a35ba75d5dea}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\GTE\GTGraphics.v17.vcxproj">
-      <Project>{b15cb711-f650-4063-9c7c-e7a5f88139a2}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\GTE\GTGraphicsDX11.v17.vcxproj">
+    <ProjectReference Include="..\..\..\..\Graphics\DX11\GTLGraphicsDX11.v17.vcxproj">
       <Project>{00deff42-0f7c-4a7c-9c1f-59322b9e9004}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Graphics\GTLGraphics.v17.vcxproj">
+      <Project>{b15cb711-f650-4063-9c7c-e7a5f88139a2}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
