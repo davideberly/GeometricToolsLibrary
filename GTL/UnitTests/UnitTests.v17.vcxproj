@@ -48,6 +48,8 @@
     <ClCompile Include="Mathematics\Approximation\2D\TestApprParabola2.cpp" />
     <ClCompile Include="Mathematics\Approximation\2D\TestApprParallelLines2.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprCone3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprCylinder3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprEllipsoid3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHeightPlane3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHelmertTransformation3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprOrthogonalLine3.cpp" />
@@ -74,6 +76,7 @@
     <ClCompile Include="Mathematics\Arithmetic\TestUIntegerFP32.cpp" />
     <ClCompile Include="Mathematics\Containment\2D\TestContOrientedBox2.cpp" />
     <ClCompile Include="Mathematics\Containment\2D\TestContScribeCircle2.cpp" />
+    <ClCompile Include="Mathematics\Containment\3D\TestContOrientedBox3.cpp" />
     <ClCompile Include="Mathematics\Containment\3D\TestContTetrahedron3.cpp" />
     <ClCompile Include="Mathematics\Containment\ND\TestContAlignedBox.cpp" />
     <ClCompile Include="Mathematics\Curves\TestBasisFunction.cpp" />

@@ -1206,5 +1206,11 @@
     <ClInclude Include="Approximation\3D\ApprCylinder3.h">
       <Filter>Approximation\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprEllipsoid3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContOrientedBox3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{DCF63F55-F194-4627-A2E3-2A8896627024}</ProjectGuid>
+    <ProjectGuid>{D3BA09AE-92A9-47B1-858A-D059613C2200}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ApproximateCylinder3.v17</RootNamespace>
+    <RootNamespace>ApproximateEllipsoid3.v17</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -136,8 +136,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -159,8 +159,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../../../.</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GTE_USE_MSWINDOWS;GTE_USE_ROW_MAJOR;GTE_USE_MAT_VEC;GTE_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\.</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
       <TreatWarningAsError>true</TreatWarningAsError>
       <ConformanceMode>true</ConformanceMode>
@@ -175,11 +175,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ApproximateCylinder3Window3.cpp" />
-    <ClCompile Include="ApproximateCylinder3Main.cpp" />
+    <ClCompile Include="ApproximateEllipsoid3Window3.cpp" />
+    <ClCompile Include="ApproximateEllipsoid3Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApproximateCylinder3Window3.h" />
+    <ClInclude Include="ApproximateEllipsoid3Window3.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Applications\GTLApplicationsDX11.v17.vcxproj">

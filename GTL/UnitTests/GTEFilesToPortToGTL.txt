@@ -20,14 +20,12 @@ NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
 
 Approximation
     3D
-        ApprCylinder3
-        ApprEllipsoid3
         ApprGreatArc3
         ApprGreatCircle3
     Polynomial
         ApprPolynomial3
         ApprPolynomial4
-        ApprPolynomialSpecial (merged the 2/3/4D versions into generic ND version)
+        ApprPolynomialSpecial (merged the 2D/3D/4D versions into generic ND version)
 
 Containment
     2D
@@ -42,7 +40,6 @@ Containment
         ContEllipsoid3
         ContEllipsoid3MinCR
         ContLozenge3
-        ContOrientedBox3
         ContPointInPolyhedron3
         ContScribeCircle3
         ContScribeSphere3
@@ -280,16 +277,18 @@ Approximation
     2D
         ApprCircle2
         ApprCurveByArcs (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateBezierCurveByArcs)
-        ApprEllipse2 (tested by GTL/VisualTests/Mathematics/Approximation/Approximation/ApproximateEllipse2)
-        ApprEllipseByArcs (tested by GTL/VisualTests/Mathematics/Approximation/Approximation/ApproximateEllipsesByArcs)
+        ApprEllipse2 (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateEllipse2)
+        ApprEllipseByArcs (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateEllipsesByArcs)
         ApprHeightLine2
         ApprOrthogonalLine2
         ApprParabola2
         ApprParallelLines2
     3D
         ApprCone3
+        ApprCylinder3 (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateCylinder3)
+        ApprEllipsoid3 (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateEllipsoid3)
         ApprHeightPlane3
-        ApprHelmertTransformation3 (also tested by GTL/VisualTests/Mathematics/Approximation/ApproximateHelmertTransformation)
+        ApprHelmertTransformation3 (and tested by GTL/VisualTests/Mathematics/Approximation/ApproximateHelmertTransformation)
         ApprOrthogonalLine3
         ApprOrthogonalPlane3
         ApprParaboloid3
@@ -321,8 +320,9 @@ Arithmetic
 Containment
     2D
         ContScribeCircle2
-        ContOrientedBox2 (tested by ApprEllipse)
+        ContOrientedBox2 (tested by ApprEllipse2)
     3D
+        ContOrientedBox3 (and tested by ApprEllipsoid3)
         ContTetrahedron3
     ND
         ContAlignedBox

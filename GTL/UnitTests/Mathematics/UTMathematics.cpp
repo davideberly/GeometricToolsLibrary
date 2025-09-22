@@ -2466,13 +2466,6 @@ void UTMathematics::Intersection2D::Execute()
     Postcall();
 #endif
 
-#if defined(UT_MATHEMATICS_INTRLINE2SEGMENTMESH2)
-    Precall();
-    extern void TestIntrLine2SegmentMesh2();
-    TestIntrLine2SegmentMesh2();
-    Postcall();
-#endif
-
 #if defined(UT_MATHEMATICS_INTRLINE2TRIANGLE2)
     Precall();
     extern void TestIntrLine2Triangle2();
@@ -2536,13 +2529,6 @@ void UTMathematics::Intersection2D::Execute()
     Postcall();
 #endif
 
-#if defined(UT_MATHEMATICS_INTRRAY2SEGMENTMESH2)
-    Precall();
-    extern void TestIntrRay2SegmentMesh2();
-    TestIntrRay2SegmentMesh2();
-    Postcall();
-#endif
-
 #if defined(UT_MATHEMATICS_INTRRAY2TRIANGLE2)
     Precall();
     extern void TestIntrRay2Triangle2();
@@ -2582,13 +2568,6 @@ void UTMathematics::Intersection2D::Execute()
     Precall();
     extern void TestIntrSegment2Segment2();
     TestIntrSegment2Segment2();
-    Postcall();
-#endif
-
-#if defined(UT_MATHEMATICS_INTRSEGMENT2SEGMENTMESH2)
-    Precall();
-    extern void TestIntrSegment2SegmentMesh2();
-    TestIntrSegment2SegmentMesh2();
     Postcall();
 #endif
 

@@ -1251,6 +1251,15 @@
     <ClCompile Include="Mathematics\Approximation\2D\TestApprParallelLines2.cpp">
       <Filter>Mathematics\Approximation\2D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Containment\3D\TestContOrientedBox3.cpp">
+      <Filter>Mathematics\Containment\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprEllipsoid3.cpp">
+      <Filter>Mathematics\Approximation\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprCylinder3.cpp">
+      <Filter>Mathematics\Approximation\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

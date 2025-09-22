@@ -34,6 +34,7 @@
     <ClInclude Include="Approximation\2D\ApprParallelLines2.h" />
     <ClInclude Include="Approximation\3D\ApprCone3.h" />
     <ClInclude Include="Approximation\3D\ApprCylinder3.h" />
+    <ClInclude Include="Approximation\3D\ApprEllipsoid3.h" />
     <ClInclude Include="Approximation\3D\ApprHeightPlane3.h" />
     <ClInclude Include="Approximation\3D\ApprHelmertTransformation3.h" />
     <ClInclude Include="Approximation\3D\ApprOrthogonalLine3.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="Arithmetic\UIntegerFP32.h" />
     <ClInclude Include="Containment\2D\ContOrientedBox2.h" />
     <ClInclude Include="Containment\2D\ContScribeCircle2.h" />
+    <ClInclude Include="Containment\3D\ContOrientedBox3.h" />
     <ClInclude Include="Containment\3D\ContTetrahedron3.h" />
     <ClInclude Include="Containment\ND\ContAlignedBox.h" />
     <ClInclude Include="Curves\BasisFunction.h" />

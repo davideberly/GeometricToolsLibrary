@@ -14,7 +14,7 @@ namespace gtl
 
 UnitTestContOrientedBox2::UnitTestContOrientedBox2()
 {
-    UTInformation("Mathematics/Containment/2D/ContOrientedBox2 [tested by GTL/VisualTests/Mathematics/Approximation/2D/ApproximationEllipse2]");
+    UTInformation("Mathematics/Containment/2D/ContOrientedBox2 [tested by GTL/VisualTests/Mathematics/Approximation/2D/ApproximateEllipse2]");
 }
 
 #else
