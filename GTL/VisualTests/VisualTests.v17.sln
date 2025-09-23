@@ -141,6 +141,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApproximateEllipsoid3", "Ap
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ApproximateEllipsoid3DX11.v17", "Mathematics\Approximation\ApproximateEllipsoid3\ApproximateEllipsoid3DX11.v17.vcxproj", "{D3BA09AE-92A9-47B1-858A-D059613C2200}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntersectMovingBoxSphere", "IntersectMovingBoxSphere", "{03F29E31-B3DB-4DE0-89F6-0AE3E20D1903}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntersectMovingSphereBoxDX11.v17", "Mathematics\Intersection\IntersectMovingSphereBox\IntersectMovingSphereBoxDX11.v17.vcxproj", "{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -405,6 +409,14 @@ Global
 		{D3BA09AE-92A9-47B1-858A-D059613C2200}.Release|x64.Build.0 = Release|x64
 		{D3BA09AE-92A9-47B1-858A-D059613C2200}.Release|x86.ActiveCfg = Release|Win32
 		{D3BA09AE-92A9-47B1-858A-D059613C2200}.Release|x86.Build.0 = Release|Win32
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Debug|x64.ActiveCfg = Debug|x64
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Debug|x64.Build.0 = Debug|x64
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Debug|x86.ActiveCfg = Debug|Win32
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Debug|x86.Build.0 = Debug|Win32
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Release|x64.ActiveCfg = Release|x64
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Release|x64.Build.0 = Release|x64
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Release|x86.ActiveCfg = Release|Win32
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -477,6 +489,8 @@ Global
 		{DCF63F55-F194-4627-A2E3-2A8896627024} = {66B7E362-AB6C-45EC-ABBC-EB8D361115F1}
 		{A6C642FB-ACE9-4119-AE71-A28602F5BD9D} = {621456BA-3BAB-4531-9DD0-0225EEAD672F}
 		{D3BA09AE-92A9-47B1-858A-D059613C2200} = {A6C642FB-ACE9-4119-AE71-A28602F5BD9D}
+		{03F29E31-B3DB-4DE0-89F6-0AE3E20D1903} = {321BF7A1-4131-4E02-A82C-49EEB21F994E}
+		{0B0B0AF8-CCAA-4CBE-BE89-D0B1A72AA256} = {03F29E31-B3DB-4DE0-89F6-0AE3E20D1903}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B221E3AF-C24E-4402-A655-E8A88A66988A}

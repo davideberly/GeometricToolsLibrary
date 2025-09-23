@@ -251,6 +251,7 @@
     <ClInclude Include="Intersection\2D\IntrSegment2Segment2.h" />
     <ClInclude Include="Intersection\2D\IntrSegment2Triangle2.h" />
     <ClInclude Include="Intersection\2D\IntrTriangle2Triangle2.h" />
+    <ClInclude Include="Intersection\3D\IntrAlignedBox3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrCylinder3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3AlignedBox3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Capsule3.h" />
@@ -259,6 +260,7 @@
     <ClInclude Include="Intersection\3D\IntrLine3OrientedBox3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Triangle3.h" />
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrPlane3Circle3.h" />
     <ClInclude Include="Intersection\3D\IntrPlane3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrPlane3Plane3.h" />

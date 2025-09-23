@@ -1212,5 +1212,11 @@
     <ClInclude Include="Containment\3D\ContOrientedBox3.h">
       <Filter>Containment\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrAlignedBox3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

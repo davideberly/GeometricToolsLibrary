@@ -164,7 +164,6 @@ Intersection
         IntrAlignedBox3Cone3
         IntrAlignedBox3Cylinder3
         IntrAlignedBox3OrientedBox3
-        IntrAlignedBox3Sphere3
         IntrCanonicalBox3Cylinder3
         IntrCapsule3Capsule3
         IntrConvexMesh3Plane3
@@ -182,7 +181,6 @@ Intersection
         IntrOrientedBox3Cylinder3
         IntrOrientedBox3Frustum3
         IntrOrientedBox3OrientedBox3
-        IntrOrientedBox3Sphere3
         IntrPlane3Capsule3
         IntrPlane3Ellipsoid3
         IntrPlane3OrientedBox3
@@ -537,6 +535,7 @@ Intersection
         IntrSegment2Triangle2
         IntrTriangle2Triangle2
     3D
+        IntrAlignedBox3Sphere3 (tested by GTL/VisualTests/Mathematics/Intersection/IntersectMovingBoxSphere)
         IntrCylinder3Cylinder3 (unit tested and tested by GTL/VisualTests/Mathematics/Intersection/IntersectCylinders)
         IntrLine3AlignedBox3
         IntrLine3Capsule3
@@ -545,6 +544,7 @@ Intersection
         IntrLine3OrientedBox3
         IntrLine3Sphere3
         IntrLine3Triangle3 (unit tested by GTL/VisualTests/Graphics/SceneGraphics/Picking)
+        IntrOrientedBox3Sphere3 (tested by GTL/VisualTests/Mathematics/Intersection/IntersectMovingBoxSphere)
         IntrPlane3Circle3
         IntrPlane3Cylinder3
         IntrPlane3Plane3 (unit tested by TestIntrPlane3Circle3)

@@ -1,20 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="DebugInstantiateRational|x64">
-      <Configuration>DebugInstantiateRational</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="DebugInstantiate|x64">
       <Configuration>DebugInstantiate</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseInstantiateRational|x64">
-      <Configuration>ReleaseInstantiateRational</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="ReleaseInstantiate|x64">
@@ -259,6 +251,7 @@
     <ClCompile Include="Mathematics\Intersection\2D\TestIntrSegment2Segment2.cpp" />
     <ClCompile Include="Mathematics\Intersection\2D\TestIntrSegment2Triangle2.cpp" />
     <ClCompile Include="Mathematics\Intersection\2D\TestIntrTriangle2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrAlignedBox3Sphere3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrCylinder3Cylinder3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3AlignedBox3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Capsule3.cpp" />
@@ -267,6 +260,7 @@
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3OrientedBox3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Sphere3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrOrientedBox3Sphere3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Circle3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Cylinder3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Plane3.cpp" />
@@ -433,12 +427,6 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiateRational|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -447,13 +435,6 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiateRational|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
@@ -471,16 +452,10 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiateRational|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiateRational|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -494,22 +469,12 @@
     <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiateRational|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiateRational|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
@@ -536,28 +501,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level4</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>
-      </PrecompiledHeaderOutputFile>
-      <LanguageStandard>Default</LanguageStandard>
-      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiateRational|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
@@ -604,32 +547,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">
-    <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level4</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>
-      </PrecompiledHeaderOutputFile>
-      <LanguageStandard>Default</LanguageStandard>
-      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiateRational|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>

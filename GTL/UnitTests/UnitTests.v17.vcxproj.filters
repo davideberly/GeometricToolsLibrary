@@ -936,9 +936,6 @@
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Cylinder3.cpp">
       <Filter>Mathematics\Intersection\3D</Filter>
     </ClCompile>
-    <ClCompile Include="Mathematics\Intersection\ND\TestIntrConvexPolygonHyperplane.cpp">
-      <Filter>Mathematics\Intersection\ND</Filter>
-    </ClCompile>
     <ClCompile Include="Mathematics\Meshes\TestTetrahedronKey.cpp">
       <Filter>Mathematics\Meshes</Filter>
     </ClCompile>
@@ -1259,6 +1256,15 @@
     </ClCompile>
     <ClCompile Include="Mathematics\Approximation\3D\TestApprCylinder3.cpp">
       <Filter>Mathematics\Approximation\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrAlignedBox3Sphere3.cpp">
+      <Filter>Mathematics\Intersection\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Intersection\ND\TestIntrConvexPolygonHyperplane.cpp">
+      <Filter>Mathematics\Intersection\ND</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrOrientedBox3Sphere3.cpp">
+      <Filter>Mathematics\Intersection\3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
