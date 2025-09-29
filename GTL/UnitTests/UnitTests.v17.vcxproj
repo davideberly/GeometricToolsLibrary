@@ -233,9 +233,11 @@
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteCubic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteQuintic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpQuadraticNonuniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpThinPlateSpline2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpBSplineUniform3.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteCubic3.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteQuintic3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpThinPlateSpline3.cpp" />
     <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniform.cpp" />
     <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniformShared.cpp" />
     <ClCompile Include="Mathematics\Intersection\1D\TestIntrIntervals.cpp" />
@@ -398,6 +400,14 @@
     <None Include="Mathematics\Approximation\ND\Input\RandomUnitPoints4D_Double_1024.binary" />
     <None Include="Mathematics\Geometry\2D\Input\ConvexHull2DRandom256.binary" />
     <None Include="Mathematics\Geometry\2D\Input\Delaunay2DRandom256.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2NoSmooth.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power-1.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power0.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power1.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power2.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power3.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power4.binary" />
+    <None Include="Mathematics\Interpolation\3D\Input\molecule97x97x116.binary" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="GTEFilesToPortToGTL.txt" />

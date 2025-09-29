@@ -1218,5 +1218,11 @@
     <ClInclude Include="Intersection\3D\IntrOrientedBox3Sphere3.h">
       <Filter>Intersection\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpThinPlateSpline2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpThinPlateSpline3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

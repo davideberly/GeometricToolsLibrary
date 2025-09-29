@@ -233,9 +233,11 @@
     <ClInclude Include="Interpolation\2D\IntpHermiteCubic2.h" />
     <ClInclude Include="Interpolation\2D\IntpHermiteQuintic2.h" />
     <ClInclude Include="Interpolation\2D\IntpQuadraticNonuniform2.h" />
+    <ClInclude Include="Interpolation\2D\IntpThinPlateSpline2.h" />
     <ClInclude Include="Interpolation\3D\IntpBSplineUniform3.h" />
     <ClInclude Include="Interpolation\3D\IntpHermiteCubic3.h" />
     <ClInclude Include="Interpolation\3D\IntpHermiteQuintic3.h" />
+    <ClInclude Include="Interpolation\3D\IntpThinPlateSpline3.h" />
     <ClInclude Include="Interpolation\ND\IntpBSplineUniform.h" />
     <ClInclude Include="Interpolation\ND\IntpBSplineUniformShared.h" />
     <ClInclude Include="Intersection\1D\IntrIntervals.h" />

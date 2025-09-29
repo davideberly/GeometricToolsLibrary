@@ -125,7 +125,6 @@ Interpolation
         IntpCubic2
         IntpLinear2
         IntpLinearNonuniform2
-        IntpThinPlateSpline2
         IntpVectorField2
     3D
         IntpAkimaUniform3
@@ -133,7 +132,6 @@ Interpolation
         IntpLinear3
         IntpLinearNonuniform3
         IntpSphere3
-        IntpThinPlateSpline3
 
 Intersection
     2D
@@ -214,7 +212,7 @@ Meshes
     VolumeMesh
 
 Minimizers
-    PowellsMinimizer (not unit tested, was MinimizeN)
+    PowellsMinimizer (was MinimizeN)
 
 Miscellaneous
     SortPointsOnCircle
@@ -509,10 +507,12 @@ Interpolation
         IntpHermiteCubic2
         IntpHermiteQuintic2
         IntpQuadraticNonuniform2
+        IntpThinPlateSpline2
     3D
         IntpBSplineUniform3
         IntpHermiteCubic3
         IntpHermiteQuintic3
+        IntpThinPlateSpline3
     ND
         IntpBSplineUniformShared (unit tested by its derived classes)
         IntpBSplineUniform
