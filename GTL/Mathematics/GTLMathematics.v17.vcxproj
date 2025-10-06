@@ -210,6 +210,7 @@
     <ClInclude Include="Geometry\2D\PolygonWindingOrder.h" />
     <ClInclude Include="Geometry\2D\RotatingCalipers.h" />
     <ClInclude Include="Geometry\2D\TriangulateCDT.h" />
+    <ClInclude Include="Geometry\2D\TriangulateEC.h" />
     <ClInclude Include="Geometry\3D\ConvexHull3.h" />
     <ClInclude Include="Geometry\3D\Delaunay3.h" />
     <ClInclude Include="Geometry\3D\ExactColinear3.h" />

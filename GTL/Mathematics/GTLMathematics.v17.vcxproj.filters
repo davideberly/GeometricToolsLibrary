@@ -1224,5 +1224,8 @@
     <ClInclude Include="Interpolation\3D\IntpThinPlateSpline3.h">
       <Filter>Interpolation\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\2D\TriangulateEC.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
