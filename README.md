@@ -13,7 +13,7 @@ GTL is licensed under the
 GTL is a major revision of the Geometric Tools Engine (GTE). A large portion
 of GTL development has been porting code from GTE, dealing with size_t versus
 signed integer compiler complaints, and adding new features. An equally
-large portion has been writing unit tests and end-to-end tests for the
+large portion has been writing unit tests and visual tests for the
 mathematics code. The project has taken a significant amount of time and
 effort. I do not yet have a reliable schedule to post the final distribution.
 
@@ -21,7 +21,7 @@ GTE allowed you to specify major storage order (GTE_USE_ROW_MAJOR or
 GTE_USE_COL_MAJOR). It also allowed you to specify order of matrix M and
 vector V in a transformation (GTE_USE_MAT_VEC for MV or GTE_USE_VEC_MAT
 for VM). To reduce code maintenance time, these are not supported in GTL.
-The conventions always to use row-major storage order and vector-on-the-right
+The conventions are now row-major storage order and vector-on-the-right
 transformations (MV).
 
 ## Supported Platforms ##
@@ -46,7 +46,7 @@ potentially fail on different platforms because of small rounding errors.
 Once all the unit tests are in place, I will modify the unit tests to use
 epsilon values to account for the small rounding errors. For now, it is
 convenient to me simply to run the exact-comparison tests to speed up the
-port and adding unit tests.
+port and add unit tests.
 
 ## Current Distribution ##
 
