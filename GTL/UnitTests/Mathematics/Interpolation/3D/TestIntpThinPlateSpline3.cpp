@@ -156,7 +156,7 @@ void UnitTestIntpThinPlateSpline3::Test()
 #if defined(GTL_INSTANTIATE_RATIONAL)
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #endif
-#include <GTL/Mathematics/Interpolation/2D/IntpThinPlateSpline3.h>
+#include <GTL/Mathematics/Interpolation/3D/IntpThinPlateSpline3.h>
 
 namespace gtl
 {

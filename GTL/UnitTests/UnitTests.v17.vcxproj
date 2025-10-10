@@ -229,9 +229,13 @@
     <ClCompile Include="Mathematics\Interpolation\1D\TestIntpBSplineUniform1.cpp" />
     <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteCubic1.cpp" />
     <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteQuintic1.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpAkimaUniform2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpBSplineUniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpCubic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteCubic2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteQuintic2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinear2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinearNonuniform2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpQuadraticNonuniform2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpThinPlateSpline2.cpp" />
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpBSplineUniform3.cpp" />

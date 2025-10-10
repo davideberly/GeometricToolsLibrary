@@ -121,10 +121,6 @@ Interpolation
         IntpAkimaNonuniform1
         IntpAkimaUniform1
     2D
-        IntpAkimaUniform2
-        IntpCubic2
-        IntpLinear2
-        IntpLinearNonuniform2
         IntpVectorField2
     3D
         IntpAkimaUniform3
@@ -503,11 +499,15 @@ Interpolation
         IntpHermiteCubic1
         IntpHermiteQuintic1
     2D
+        IntpAkimaUniform2 (tested by GTL/VisualTests/Mathematics/Interpolation/Interpolation2D)
         IntpBSplineUniform2
+        IntpCubic2 (tested by GTL/VisualTests/Mathematics/Interpolation/Interpolation2D)
         IntpHermiteCubic2
         IntpHermiteQuintic2
+        IntpLinear2 (tested by GTL/VisualTests/Mathematics/Interpolation/Interpolation2D)
+        IntpLinearNonuniform2 (tested by GTL/VisualTests/Mathematics/Interpolation/Interpolation2D)
         IntpQuadraticNonuniform2
-        IntpThinPlateSpline2
+        IntpThinPlateSpline2 (unit tested and tested by GTL/VisualTests/Mathematics/Interpolation/Interpolation2D)
     3D
         IntpBSplineUniform3
         IntpHermiteCubic3

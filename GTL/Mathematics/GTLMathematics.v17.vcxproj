@@ -230,9 +230,13 @@
     <ClInclude Include="Interpolation\1D\IntpBSplineUniform1.h" />
     <ClInclude Include="Interpolation\1D\IntpHermiteCubic1.h" />
     <ClInclude Include="Interpolation\1D\IntpHermiteQuintic1.h" />
+    <ClInclude Include="Interpolation\2D\IntpAkimaUniform2.h" />
     <ClInclude Include="Interpolation\2D\IntpBSplineUniform2.h" />
+    <ClInclude Include="Interpolation\2D\IntpCubic2.h" />
     <ClInclude Include="Interpolation\2D\IntpHermiteCubic2.h" />
     <ClInclude Include="Interpolation\2D\IntpHermiteQuintic2.h" />
+    <ClInclude Include="Interpolation\2D\IntpLinear2.h" />
+    <ClInclude Include="Interpolation\2D\IntpLinearNonuniform2.h" />
     <ClInclude Include="Interpolation\2D\IntpQuadraticNonuniform2.h" />
     <ClInclude Include="Interpolation\2D\IntpThinPlateSpline2.h" />
     <ClInclude Include="Interpolation\3D\IntpBSplineUniform3.h" />

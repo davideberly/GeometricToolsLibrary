@@ -1227,5 +1227,17 @@
     <ClInclude Include="Geometry\2D\TriangulateEC.h">
       <Filter>Geometry\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpAkimaUniform2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpCubic2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpLinear2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpLinearNonuniform2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

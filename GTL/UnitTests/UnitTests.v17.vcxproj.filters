@@ -1275,6 +1275,18 @@
     <ClCompile Include="Mathematics\Interpolation\3D\TestIntpThinPlateSpline3.cpp">
       <Filter>Mathematics\Interpolation\3D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinearNonuniform2.cpp">
+      <Filter>Mathematics\Interpolation\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpAkimaUniform2.cpp">
+      <Filter>Mathematics\Interpolation\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpCubic2.cpp">
+      <Filter>Mathematics\Interpolation\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinear2.cpp">
+      <Filter>Mathematics\Interpolation\2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
