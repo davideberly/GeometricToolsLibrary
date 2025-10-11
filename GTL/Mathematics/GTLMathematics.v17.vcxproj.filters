@@ -1239,5 +1239,8 @@
     <ClInclude Include="Interpolation\2D\IntpLinearNonuniform2.h">
       <Filter>Interpolation\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Minimizers\PowellsMinimizer.h">
+      <Filter>Minimizers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

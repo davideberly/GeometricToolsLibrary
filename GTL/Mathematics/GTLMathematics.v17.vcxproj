@@ -314,6 +314,7 @@
     <ClInclude Include="Minimizers\GaussNewtonMinimizer.h" />
     <ClInclude Include="Minimizers\LCPSolver.h" />
     <ClInclude Include="Minimizers\LevenbergMarquardtMinimizer.h" />
+    <ClInclude Include="Minimizers\PowellsMinimizer.h" />
     <ClInclude Include="Miscellaneous\CircleThroughPointSpecifiedTangentAndRadius.h" />
     <ClInclude Include="Miscellaneous\CircleThroughTwoPointsSpecifiedRadius.h" />
     <ClInclude Include="Miscellaneous\InscribedFixedAspectRectInQuad.h" />

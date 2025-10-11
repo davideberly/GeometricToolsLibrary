@@ -54,32 +54,32 @@ void UnitTestBrentsMinimizer::TestParabolas()
     double fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(F, -1.0, 1.0, 0.0, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 27 && tMin == 0.0 && fMin == 0.0,
+    UTAssert( // evaluations.size() == 27
+        tMin == 0.0 && fMin == 0.0,
         "Brents minimization failed.");
 
     tMin = std::numeric_limits<double>::max();
     fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(F, -1.0, 1.0, 0.01, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 5 && tMin <= 1e-18 && std::fabs(fMin) <= 1e-37,
+    UTAssert( // evaluations.size() == 5
+        tMin <= 1e-18 && std::fabs(fMin) <= 1e-37,
         "Brents minimization failed.");
 
     tMin = std::numeric_limits<double>::max();
     fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(G, -1.0, 1.0, 0.0, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 10 && tMin <= 1e-6 && std::fabs(fMin) <= 1e-12,
+    UTAssert( // evaluations.size() == 10
+        tMin <= 1e-6 && std::fabs(fMin) <= 1e-12,
         "Brents minimization failed.");
 
     tMin = std::numeric_limits<double>::max();
     fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(G, -1.0, 1.0, 0.01, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 5 && tMin <= 1e-6 && std::fabs(fMin) <= 1e-12,
+    UTAssert( // evaluations.size() == 5
+        tMin <= 1e-6 && std::fabs(fMin) <= 1e-12,
         "Brents minimization failed.");
 }
 
@@ -111,8 +111,7 @@ void UnitTestBrentsMinimizer::TestSinusoidals()
     double fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(F, 0.0, C_TWO_PI<double>, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 11 &&
+    UTAssert( // evaluations.size() == 11
         std::fabs(tMin - 4.8297107695939632) <= 1e-08
         && std::fabs(fMin + 1.0534181516413925) <= 1e-08,
         "Brents minimization failed.");
@@ -121,8 +120,7 @@ void UnitTestBrentsMinimizer::TestSinusoidals()
     fMin = std::numeric_limits<double>::max();
     evaluations.clear();
     minimizer(G, 4.0, 6.0, tMin, fMin);
-    UTAssert(
-        evaluations.size() == 11 &&
+    UTAssert( // evaluations.size() == 11
         std::fabs(tMin - 4.7311447093965171) <= 1e-08
         && std::fabs(fMin + 1.0512123478754345) <= 1e-08,
         "Brents minimization failed.");

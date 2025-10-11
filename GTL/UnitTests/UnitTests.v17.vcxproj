@@ -312,6 +312,7 @@
     <ClCompile Include="Mathematics\Minimizers\TestGaussNewtonMinimizer.cpp" />
     <ClCompile Include="Mathematics\Minimizers\TestLCPSolver.cpp" />
     <ClCompile Include="Mathematics\Minimizers\TestLevenbergMarquardtMinimizer.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestPowellsMinimizer.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestCircleThroughPointSpecifiedTangentAndRadius.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestCircleThroughTwoPointsSpecifiedRadius.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />

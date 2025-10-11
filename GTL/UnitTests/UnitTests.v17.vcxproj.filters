@@ -1287,6 +1287,9 @@
     <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinear2.cpp">
       <Filter>Mathematics\Interpolation\2D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Minimizers\TestPowellsMinimizer.cpp">
+      <Filter>Mathematics\Minimizers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
