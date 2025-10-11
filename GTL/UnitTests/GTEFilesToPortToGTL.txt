@@ -207,9 +207,6 @@ Meshes
     VertexLayout (NOT FINISHED)
     VolumeMesh
 
-Minimizers
-    PowellsMinimizer (was MinimizeN)
-
 Miscellaneous
     SortPointsOnCircle
 
@@ -597,6 +594,7 @@ Minimizers
     GaussNewtonMinimizer
     LCPSolver (tested by GTE/VisualTests/Mathematcs/Distance/DistanceOrientedBoxCone)
     LevenbergMarquardtMinimizer
+    PowellsMinimizer
 
 Miscellaneous
     CircleThroughPointSpecifiedTangentAndRadius
