@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2025.10.11
 
 #pragma once
 
@@ -191,8 +191,8 @@ namespace gtl
                     { v1, v0 }
                 }};
 
-                // The LogAssert calls are required if validateInput is false
-                // in the call to Execute(...).
+                // The GTL_RUNTIME_ASSERT call is required if validateInput is
+                // false in the call to Execute(...).
                 for (std::size_t i = 0; i < 2; ++i)
                 {
                     auto result = edgeMap.insert(std::make_pair(remapped[i], weight));

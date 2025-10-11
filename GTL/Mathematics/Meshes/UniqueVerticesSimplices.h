@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2025.10.11
 
 #pragma once
 
@@ -61,8 +61,7 @@ namespace gtl
             // bool. MSVS 2019 16.7.3 does not trigger this static assertion
             // when IndexType is bool. Instead, it complains about using
             // .data() for the std::vector<bool> objects and about comparing
-            // bool values to 0 in the LogAssert statements, after which the
-            // compilation terminates.
+            // bool values to 0, after which the compilation terminates.
             static_assert(
                 std::is_integral<IndexType>::value &&
                 !std::is_same<IndexType, bool>::value,
