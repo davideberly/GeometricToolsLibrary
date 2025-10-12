@@ -12,15 +12,15 @@
 // tRoot. Additionally, fAtTRoot = F(tRoot) is returned in case the caller
 // wants to know how close to zero the function is at the root; numerical
 // rounding errors can cause fAtTRoot not to be exactly zero. The returned
-// std::uint32_t is the number of iterations used by the bisector. If that number
-// is 0, F(tMin)*F(tMax) > 0 and it is unknown whether [tMin,tMax] contains
-// a root. If that number is 1, either F(tMin) = 0 or F(tMax) = 0 (exactly),
-// and tRoot is the corresponding interval endpoint. If that number is 2 or
-// larger, the bisection is applied until tRoot is found for which F(tRoot)
-// is exactly 0 or until the current root estimate is equal to tMin or tMax.
-// The latter conditions can occur because of the fixed precision used in
-// the computations: 24-bit precision for 'float', 53-bit precision for
-// 'double' or a user-specified precision for arbitrary-precision numbers.
+// std::uint32_t is the number of iterations used by the bisector. If that
+// number is 0, F(tMin)*F(tMax) > 0 and it is unknown whether [tMin,tMax]
+// contains a root. If that number is 1, either F(tMin) = 0 or F(tMax) = 0
+// (exactly), and tRoot is the corresponding interval endpoint. If that number
+// is 2 or larger, the bisection is applied until tRoot is found for which
+// F(tRoot) is exactly 0 or until the current root estimate is equal to tMin
+// or tMax. The latter conditions can occur because of the fixed precision
+// used in the computations: 24-bit precision for 'float', 53-bit precision
+// for 'double' or a user-specified precision for arbitrary-precision numbers.
 
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #include <cmath>
@@ -54,9 +54,10 @@ namespace gtl
 
         // Use this constructor when T is an arbitrary-precision type. If you
         // want infinite precision (no rounding of any computational results),
-        // set precision to std::numeric_limits<std::size_t>::max(). For rounding
-        // of each computational result throughout the process, set precision
-        // to be a number smaller than std::numeric_limits<std::size_t>::max().
+        // set precision to std::numeric_limits<std::size_t>::max(). For
+        // rounding of each computational result throughout the process, set
+        // precision to be a number smaller than
+        // std::numeric_limits<std::size_t>::max().
         template <typename Numeric = T, IsAPType<Numeric> = 0>
         RootsBisection1(std::size_t maxIterations, std::size_t precision)
             :

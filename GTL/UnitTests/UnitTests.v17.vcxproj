@@ -284,6 +284,7 @@
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3OrientedBox3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Sphere3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrTetrahedron3Tetrahedron3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Cylinder3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Triangle3.cpp" />
     <ClCompile Include="Mathematics\Intersection\ND\TestIntrAlignedBoxAlignedBox.cpp" />
@@ -319,6 +320,7 @@
     <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
     <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRigidBody.cpp" />
     <ClCompile Include="Mathematics\Primitives\2D\TestArc2.cpp" />

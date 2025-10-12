@@ -188,9 +188,6 @@
     <ClInclude Include="RigidSphere.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Initial.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Applications\GTLApplicationsDX11.v17.vcxproj">
       <Project>{8bb237c2-2d3a-41ad-9b98-a35ba75d5dea}</Project>
     </ProjectReference>
@@ -200,6 +197,9 @@
     <ProjectReference Include="..\..\..\..\Graphics\GTLGraphics.v17.vcxproj">
       <Project>{b15cb711-f650-4063-9c7c-e7a5f88139a2}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\Initial.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

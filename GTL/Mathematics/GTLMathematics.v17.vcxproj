@@ -285,6 +285,7 @@
     <ClInclude Include="Intersection\3D\IntrSegment3OrientedBox3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3Triangle3.h" />
+    <ClInclude Include="Intersection\3D\IntrTetrahedron3Tetrahedron3.h" />
     <ClInclude Include="Intersection\3D\IntrTriangle3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrTriangle3Triangle3.h" />
     <ClInclude Include="Intersection\IntersectionQuery.h" />
@@ -322,6 +323,7 @@
     <ClInclude Include="Miscellaneous\RandomPointOnHypersphere.h" />
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
     <ClInclude Include="Physics\BoxManager.h" />
+    <ClInclude Include="Physics\PolyhedralMassProperties.h" />
     <ClInclude Include="Physics\RectangleManager.h" />
     <ClInclude Include="Physics\RigidBody.h" />
     <ClInclude Include="Primitives\2D\Arc2.h" />

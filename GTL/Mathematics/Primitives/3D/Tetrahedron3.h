@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2025.10.12
 
 #pragma once
 
@@ -146,7 +146,7 @@ namespace gtl
         // Compute an edge normal, an average of the normals of the 2 faces
         // sharing the edge. The input 'edge' must be in {0,1,2,3,4,5} and
         // correspond to edges {{0,1},{0,2},{0,3},{1,2},{1,3},{2,3}}.
-        Vector3<T> ComputeEdgeNormal(std::size_t edge)
+        Vector3<T> ComputeEdgeNormal(std::size_t edge) const
         {
             // Compute the weighted average of normals for faces <v0,a0,v1>
             // and <v0,v1,a1> shared by edge <v0,v1>. In the comments,
@@ -168,7 +168,7 @@ namespace gtl
         // are the indices into the tetrahedron vertex array. The algebra
         // shows that the vertex normal is the negative normal of the face
         // opposite the vertex.
-        Vector3<T> ComputeVertexNormal(std::size_t vertex)
+        Vector3<T> ComputeVertexNormal(std::size_t vertex) const
         {
             // Compute the weighted average of normals for faces <v0,v1,v2>,
             // <v0,v2,v3> and <v0,v3,v1>. In the comments, E10 = V[v1]-V[v0],

@@ -1254,5 +1254,11 @@
     <ClInclude Include="Physics\RigidBody.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\PolyhedralMassProperties.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTetrahedron3Tetrahedron3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1302,6 +1302,12 @@
     <ClCompile Include="Mathematics\Physics\TestRigidBody.cpp">
       <Filter>Mathematics\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrTetrahedron3Tetrahedron3.cpp">
+      <Filter>Mathematics\Intersection\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
