@@ -1296,6 +1296,9 @@
     <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp">
       <Filter>Mathematics\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

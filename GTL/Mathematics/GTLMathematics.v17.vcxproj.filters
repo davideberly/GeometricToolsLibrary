@@ -1248,5 +1248,8 @@
     <ClInclude Include="Physics\RectangleManager.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\BoxManager.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

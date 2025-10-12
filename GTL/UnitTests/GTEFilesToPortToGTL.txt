@@ -209,7 +209,6 @@ Miscellaneous
     SortPointsOnCircle
 
 Physics
-    BoxManager
     MassSpringArbitrary
     MassSpringCurve
     MassSpringSurface
@@ -602,7 +601,8 @@ Miscellaneous
     STLBinaryFile (worked in GTE, no code changes in port to GTL)
 
 Physics
-    RectangleManager
+    BoxManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingBoxes)
+    RectangleManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingRectangles)
 
 Primitives
     2D

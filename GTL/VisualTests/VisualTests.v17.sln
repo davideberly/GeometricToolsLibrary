@@ -163,6 +163,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntersectingRectangles", "I
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntersectingRectanglesDX11.v17", "Mathematics\Physics\IntersectingRectangles\IntersectingRectanglesDX11.v17.vcxproj", "{656E0692-A649-4E16-B6F3-D52DC93A9B03}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntersectingBoxes", "IntersectingBoxes", "{527730FF-05C2-41E3-888C-BCB480ACFB63}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntersectingBoxesDX11.v17", "Mathematics\Physics\IntersectingBoxes\IntersectingBoxesDX11.v17.vcxproj", "{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -459,6 +463,14 @@ Global
 		{656E0692-A649-4E16-B6F3-D52DC93A9B03}.Release|x64.Build.0 = Release|x64
 		{656E0692-A649-4E16-B6F3-D52DC93A9B03}.Release|x86.ActiveCfg = Release|Win32
 		{656E0692-A649-4E16-B6F3-D52DC93A9B03}.Release|x86.Build.0 = Release|Win32
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Debug|x64.ActiveCfg = Debug|x64
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Debug|x64.Build.0 = Debug|x64
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Debug|x86.Build.0 = Debug|Win32
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Release|x64.ActiveCfg = Release|x64
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Release|x64.Build.0 = Release|x64
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Release|x86.ActiveCfg = Release|Win32
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -542,6 +554,8 @@ Global
 		{CA2178AF-1D84-415E-B8B2-5CEDCF7D94E7} = {365B8B62-6B03-426D-A696-00A7FDB1096B}
 		{FA1B9790-2112-49D6-8973-3397F45189D6} = {CA2178AF-1D84-415E-B8B2-5CEDCF7D94E7}
 		{656E0692-A649-4E16-B6F3-D52DC93A9B03} = {FA1B9790-2112-49D6-8973-3397F45189D6}
+		{527730FF-05C2-41E3-888C-BCB480ACFB63} = {CA2178AF-1D84-415E-B8B2-5CEDCF7D94E7}
+		{6E067AE7-A48B-403C-82F1-167FBAD3CBF9} = {527730FF-05C2-41E3-888C-BCB480ACFB63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B221E3AF-C24E-4402-A655-E8A88A66988A}
