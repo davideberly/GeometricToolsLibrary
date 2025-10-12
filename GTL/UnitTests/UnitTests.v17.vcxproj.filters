@@ -1293,6 +1293,9 @@
     <ClCompile Include="Mathematics\Intersection\ND\TestIntrAlignedBoxAlignedBox.cpp">
       <Filter>Mathematics\Intersection\ND</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

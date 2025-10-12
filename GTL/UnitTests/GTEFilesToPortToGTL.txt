@@ -216,7 +216,6 @@ Physics
     MassSpringVolume
     ParticleSystem
     PolyhedralMassProperties
-    RectangleManager
     RigidBody
 
 Volumes
@@ -603,6 +602,7 @@ Miscellaneous
     STLBinaryFile (worked in GTE, no code changes in port to GTL)
 
 Physics
+    RectangleManager
 
 Primitives
     2D

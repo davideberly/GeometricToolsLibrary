@@ -321,6 +321,7 @@
     <ClInclude Include="Miscellaneous\InscribedFixedAspectRectInQuad.h" />
     <ClInclude Include="Miscellaneous\RandomPointOnHypersphere.h" />
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
+    <ClInclude Include="Physics\RectangleManager.h" />
     <ClInclude Include="Primitives\2D\Arc2.h" />
     <ClInclude Include="Primitives\2D\Circle2.h" />
     <ClInclude Include="Primitives\2D\Ellipse2.h" />

@@ -1245,5 +1245,8 @@
     <ClInclude Include="Intersection\ND\IntrAlignedBoxAlignedBox.h">
       <Filter>Intersection\ND</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\RectangleManager.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -318,6 +318,7 @@
     <ClCompile Include="Mathematics\Miscellaneous\TestCircleThroughTwoPointsSpecifiedRadius.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />
     <ClCompile Include="Mathematics\Primitives\2D\TestArc2.cpp" />
     <ClCompile Include="Mathematics\Primitives\2D\TestParallelogram2.cpp" />
     <ClCompile Include="Mathematics\Primitives\2D\TestPolygon2.cpp" />
