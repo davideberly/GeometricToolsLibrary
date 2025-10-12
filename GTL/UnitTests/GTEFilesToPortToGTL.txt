@@ -215,7 +215,6 @@ Physics
     MassSpringVolume
     ParticleSystem
     PolyhedralMassProperties
-    RigidBody
 
 Volumes
     BSplineVolume
@@ -603,6 +602,7 @@ Miscellaneous
 Physics
     BoxManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingBoxes)
     RectangleManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingRectangles)
+    RigidBody (tested by GTL/VisualTests/Mathematics/Physics/BouncingSpheres)
 
 Primitives
     2D

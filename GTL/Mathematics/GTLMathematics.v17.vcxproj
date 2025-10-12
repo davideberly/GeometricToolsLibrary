@@ -323,6 +323,7 @@
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
     <ClInclude Include="Physics\BoxManager.h" />
     <ClInclude Include="Physics\RectangleManager.h" />
+    <ClInclude Include="Physics\RigidBody.h" />
     <ClInclude Include="Primitives\2D\Arc2.h" />
     <ClInclude Include="Primitives\2D\Circle2.h" />
     <ClInclude Include="Primitives\2D\Ellipse2.h" />

@@ -1251,5 +1251,8 @@
     <ClInclude Include="Physics\BoxManager.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\RigidBody.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
