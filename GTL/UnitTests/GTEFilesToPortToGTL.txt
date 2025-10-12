@@ -131,7 +131,6 @@ Interpolation
 
 Intersection
     2D
-        IntrAlignedBox2AlignedBox2
         IntrAlignedBox2Circle2
         IntrAlignedBox2OrientedBox2
         IntrArc2Arc2
@@ -154,7 +153,6 @@ Intersection
         IntrSegment2Circle2
         IntrSegment2OrientedBox2
    3D
-        IntrAlignedBox3AlignedBox3
         IntrAlignedBox3Cone3
         IntrAlignedBox3Cylinder3
         IntrAlignedBox3OrientedBox3
@@ -562,6 +560,7 @@ Intersection
         IntrTriangle3Cylinder3
         IntrTriangle3Triangle3
     ND
+        IntrAlignedBoxAlignedBox (general N, used to be for only dimensions 2 or 3)
         IntrConvexPolygonHyperplane
 
 MatrixAnalysis
@@ -717,6 +716,8 @@ OBSOLETE FILES:
     ImageUtility2 (now Rasterize2 and Morphology2)
     ImageUtility3 (now Rasterize2 and Morphology2)
     Integration (now IntgGaussianQuadrature, IngtgRomberg, IntgTrapezoidRule)
+    IntrAlignedBox2AlignedBox2 (now covered by IntrAlignedBoxAlignedBox)
+    IntrAlignedBox3AlignedBox3 (now covered by IntrAlignedBoxAlignedBox)
     IntrDisk2Sector2 (not used in GTE)
     IntrOrientedBox2Sector2 (not used in GTE)
 	IntrLine2SegmentMesh2

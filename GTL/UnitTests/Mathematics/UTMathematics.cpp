@@ -2353,13 +2353,6 @@ void UTMathematics::Intersection2D::Execute()
 #if defined(UT_MATHEMATICS_INTERSECTION_2D)
     UTInformation("Mathematics/Intersection/2D");
 
-#if defined(UT_MATHEMATICS_INTRALIGNEDBOX2ALIGNEDBOX2)
-    Precall();
-    extern void TestIntrAlignedBox2AlignedBox2();
-    TestIntrAlignedBox2AlignedBox2();
-    Postcall();
-#endif
-
 #if defined(UT_MATHEMATICS_INTRALIGNEDBOX2CIRCLE2)
     Precall();
     extern void TestIntrAlignedBox2Circle2();
@@ -2591,13 +2584,6 @@ void UTMathematics::Intersection3D::Execute()
 {
 #if defined(UT_MATHEMATICS_INTERSECTION_3D)
     UTInformation("Mathematics/Intersection/3D");
-
-#if defined(UT_MATHEMATICS_INTRALIGNEDBOX3ALIGNEDBOX3)
-    Precall();
-    extern void TestIntrAlignedBox3AlignedBox3();
-    TestIntrAlignedBox3AlignedBox3();
-    Postcall();
-#endif
 
 #if defined(UT_MATHEMATICS_INTRALIGNEDBOX3CONE3)
     Precall();
@@ -3032,6 +3018,13 @@ void UTMathematics::IntersectionND::Execute()
 {
 #if defined(UT_MATHEMATICS_INTERSECTION_ND)
     UTInformation("Mathematics/Intersection/ND");
+
+#if defined(UT_MATHEMATICS_INTRALIGNEDBOXALIGNEDBOX)
+    Precall();
+    extern void TestIntrAlignedBoxAlignedBox();
+    TestIntrAlignedBoxAlignedBox();
+    Postcall();
+#endif
 
 #if defined(UT_MATHEMATICS_INTRCONVEXPOLYGONHYPERPLANE)
     Precall();

@@ -1290,6 +1290,9 @@
     <ClCompile Include="Mathematics\Minimizers\TestPowellsMinimizer.cpp">
       <Filter>Mathematics\Minimizers</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Intersection\ND\TestIntrAlignedBoxAlignedBox.cpp">
+      <Filter>Mathematics\Intersection\ND</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

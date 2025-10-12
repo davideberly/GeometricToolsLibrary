@@ -1242,5 +1242,8 @@
     <ClInclude Include="Minimizers\PowellsMinimizer.h">
       <Filter>Minimizers</Filter>
     </ClInclude>
+    <ClInclude Include="Intersection\ND\IntrAlignedBoxAlignedBox.h">
+      <Filter>Intersection\ND</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

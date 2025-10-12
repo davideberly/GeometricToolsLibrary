@@ -288,6 +288,7 @@
     <ClInclude Include="Intersection\3D\IntrTriangle3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrTriangle3Triangle3.h" />
     <ClInclude Include="Intersection\IntersectionQuery.h" />
+    <ClInclude Include="Intersection\ND\IntrAlignedBoxAlignedBox.h" />
     <ClInclude Include="Intersection\ND\IntrConvexPolygonHyperplane.h" />
     <ClInclude Include="MatrixAnalysis\BandedMatrix.h" />
     <ClInclude Include="MatrixAnalysis\BlockCholeskyDecomposition.h" />

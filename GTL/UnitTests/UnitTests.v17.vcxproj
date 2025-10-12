@@ -286,6 +286,7 @@
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Triangle3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Cylinder3.cpp" />
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\ND\TestIntrAlignedBoxAlignedBox.cpp" />
     <ClCompile Include="Mathematics\Intersection\ND\TestIntrConvexPolygonHyperplane.cpp" />
     <ClCompile Include="Mathematics\MatrixAnalysis\TestBandedMatrix.cpp" />
     <ClCompile Include="Mathematics\MatrixAnalysis\TestBlockCholeskyDecomposition.cpp" />
