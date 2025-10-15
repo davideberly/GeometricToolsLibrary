@@ -305,11 +305,15 @@
     <ClInclude Include="Meshes\DynamicVETManifoldMesh.h" />
     <ClInclude Include="Meshes\EdgeKey.h" />
     <ClInclude Include="Meshes\FeatureKey.h" />
+    <ClInclude Include="Meshes\IndexAttribute.h" />
+    <ClInclude Include="Meshes\Mesh.h" />
     <ClInclude Include="Meshes\PlanarMesh.h" />
     <ClInclude Include="Meshes\StaticVETManifoldMesh.h" />
     <ClInclude Include="Meshes\TetrahedronKey.h" />
     <ClInclude Include="Meshes\TriangleKey.h" />
+    <ClInclude Include="Meshes\TubeMesh.h" />
     <ClInclude Include="Meshes\UniqueVerticesSimplices.h" />
+    <ClInclude Include="Meshes\VertexAttribute.h" />
     <ClInclude Include="Meshes\VETFeaturesKS.h" />
     <ClInclude Include="Meshes\VETManifoldMeshKS.h" />
     <ClInclude Include="Minimizers\BrentsMinimizer.h" />
@@ -323,6 +327,8 @@
     <ClInclude Include="Miscellaneous\RandomPointOnHypersphere.h" />
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
     <ClInclude Include="Physics\BoxManager.h" />
+    <ClInclude Include="Physics\MassSpringCurve.h" />
+    <ClInclude Include="Physics\ParticleSystem.h" />
     <ClInclude Include="Physics\PolyhedralMassProperties.h" />
     <ClInclude Include="Physics\RectangleManager.h" />
     <ClInclude Include="Physics\RigidBody.h" />

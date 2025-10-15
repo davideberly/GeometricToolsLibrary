@@ -303,11 +303,15 @@
     <ClCompile Include="Mathematics\Meshes\TestDynamicVETManifoldMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestEdgeKey.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestFeatureKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestIndexAttribute.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestPlanarMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestStaticVETManifoldMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestTetrahedronKey.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestTriangleKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestTubeMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestUniqueVerticesSimplices.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestVertexAttribute.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestVETFeaturesKS.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestVETManifoldMeshKS.cpp" />
     <ClCompile Include="Mathematics\Minimizers\TestBrentsMinimizer.cpp" />
@@ -320,6 +324,8 @@
     <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
     <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestParticleSystem.cpp" />
     <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRigidBody.cpp" />

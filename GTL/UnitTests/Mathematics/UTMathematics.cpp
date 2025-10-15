@@ -3180,6 +3180,20 @@ void UTMathematics::Meshes::Execute()
     Postcall();
 #endif
 
+#if defined(UT_MATHEMATICS_FEATUREKEY)
+    Precall();
+    extern void TestFeatureKey();
+    TestFeatureKey();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_INDEXATTRIBUTE)
+    Precall();
+    extern void TestIndexAttribute();
+    TestIndexAttribute();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_MESH)
     Precall();
     extern void TestMesh();
@@ -3250,10 +3264,24 @@ void UTMathematics::Meshes::Execute()
     Postcall();
 #endif
 
+#if defined(UT_MATHEMATICS_TUBEMESH)
+    Precall();
+    extern void TestTubeMesh();
+    TestTubeMesh();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_UNIQUEVERTICESSIMPLICES)
     Precall();
     extern void TestUniqueVerticesSimplices();
     TestUniqueVerticesSimplices();
+    Postcall();
+#endif
+
+#if defined(UT_MATHEMATICS_VERTEXATTRIBUTE)
+    Precall();
+    extern void TestVertexAttribute();
+    TestVertexAttribute();
     Postcall();
 #endif
 

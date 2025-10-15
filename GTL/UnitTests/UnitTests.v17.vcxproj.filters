@@ -1308,6 +1308,24 @@
     <ClCompile Include="Mathematics\Intersection\3D\TestIntrTetrahedron3Tetrahedron3.cpp">
       <Filter>Mathematics\Intersection\3D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Meshes\TestMesh.cpp">
+      <Filter>Mathematics\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Meshes\TestTubeMesh.cpp">
+      <Filter>Mathematics\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestParticleSystem.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Meshes\TestIndexAttribute.cpp">
+      <Filter>Mathematics\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Meshes\TestVertexAttribute.cpp">
+      <Filter>Mathematics\Meshes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

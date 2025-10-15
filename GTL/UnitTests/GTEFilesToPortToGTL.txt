@@ -10,10 +10,12 @@ Distance/3D
 
 Meshes (finish the mesh PDF and redesign the code)
     IndexAttribute
+    Mesh
     RevolutionMesh
     TubeMesh
     VEManifoldMesh
     VertexAttribute
+    VertexLayout
 
 ==============================================================================
 NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
@@ -193,9 +195,8 @@ Intersection
 
 Meshes
     DynamicETNonmanifoldMesh
-    DynamicVETNonmanifoldeMesh
+    DynamicVETNonmanifoldMesh
     DynamicVTSManifoldMesh
-    Mesh (NOT FINISHED)
     MeshCurvature
     MeshSmoother
     RectangleMesh (NOT FINISHED)
@@ -210,10 +211,8 @@ Miscellaneous
 
 Physics
     MassSpringArbitrary
-    MassSpringCurve
     MassSpringSurface
     MassSpringVolume
-    ParticleSystem
 
 Volumes
     BSplineVolume
@@ -576,11 +575,15 @@ Meshes
     DynamicVETManifoldMesh
     EdgeKey (tested by ManifoldMesh classes)
     FeatureKey (tested by ManifoldMesh classes)
+    IndexAttribute (tested by GTL/VisualTests/Mathematics/Physics/Rope)
+    Mesh (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     PlanarMesh (tested by TestIntpQuadraticNonuniform2)
     StaticVETManifoldMesh
     TetrahedronKey (tested by ManifoldMesh classes)
     TriangleKey (tested by ManifoldMesh classes)
+    TubeMesh (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     UniqueVerticesSimplices (tested by GTL/VisualTests/Mathematics/Distance/DistanceOrientedBoxCone)	
+    VertexAttribute (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     VETFeaturesKS (tested by ConvexHull3 and Delaunay2)
     VETManifoldMeshKS (tested by ConvexHull3 and Delaunay2)
 
@@ -602,6 +605,8 @@ Physics
     BoxManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingBoxes)
     RectangleManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingRectangles)
     RigidBody (tested by GTL/VisualTests/Mathematics/Physics/BouncingSpheres)
+    MassSpringCurve (tested by GTL/VisualTests/Mathematics/Physics/Rope)
+    ParticleSystems (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     PolyhedralMassProperties (tested by GTL/VisualTests/Mathematics/Physics/BouncingTetrahedra)
 
 Primitives
