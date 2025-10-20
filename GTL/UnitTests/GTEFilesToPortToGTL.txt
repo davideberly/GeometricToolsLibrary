@@ -11,11 +11,13 @@ Distance/3D
 Meshes (finish the mesh PDF and redesign the code)
     IndexAttribute
     Mesh
+    RectangleMesh
+    RectanglePatchMesh
     RevolutionMesh
     TubeMesh
-    VEManifoldMesh
     VertexAttribute
     VertexLayout
+    VEManifoldMesh (I do not believe this is useful.)
 
 ==============================================================================
 NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
@@ -200,7 +202,6 @@ Meshes
     MeshCurvature
     MeshSmoother
     RectangleMesh (NOT FINISHED)
-    RectanglePatchMesh (NOT FINISHED)
     StaticVTSManifoldMesh
     VertexCollapseMesh
     VertexLayout (NOT FINISHED)
@@ -578,6 +579,7 @@ Meshes
     IndexAttribute (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     Mesh (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     PlanarMesh (tested by TestIntpQuadraticNonuniform2)
+    RectanglePatchMesh (tested by GTL/VisualTests/Mathematics/Physics/Cloth)
     StaticVETManifoldMesh
     TetrahedronKey (tested by ManifoldMesh classes)
     TriangleKey (tested by ManifoldMesh classes)
@@ -606,6 +608,7 @@ Physics
     RectangleManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingRectangles)
     RigidBody (tested by GTL/VisualTests/Mathematics/Physics/BouncingSpheres)
     MassSpringCurve (tested by GTL/VisualTests/Mathematics/Physics/Rope)
+    MassSpringSurface (tested by GTL/VisualTests/Mathematics/Physics/Cloth)
     ParticleSystems (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     PolyhedralMassProperties (tested by GTL/VisualTests/Mathematics/Physics/BouncingTetrahedra)
 

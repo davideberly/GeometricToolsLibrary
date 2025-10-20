@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.15
+// File Version: 0.0.2025.10.19
 
 #pragma once
 
@@ -14,14 +14,6 @@ namespace gtl
 {
     struct VertexAttribute
     {
-        VertexAttribute(std::string inSemantic = "", void* inSource = nullptr, size_t inStride = 0)
-            :
-            semantic(inSemantic),
-            source(inSource),
-            stride(inStride)
-        {
-        }
-
         // The 'semantic' string allows you to query for a specific vertex
         // attribute and use the 'source' and 'stride' to access the data
         // of the attribute. For example, you might use the semantics
@@ -33,11 +25,19 @@ namespace gtl
         // The source pointer must be 4-byte aligned. The stride must be
         // positive and a multiple of 4. The pointer alignment constraint is
         // guaranteed on 32-bit and 64-bit architectures. The stride constraint
-        // is reasonable given that (usually) geometric attributes are usually
-        // arrays of 'float' or 'double'.
+        // is reasonable given that geometric attributes are usually arrays of
+        // 'float' or 'double'.
+
+        VertexAttribute(std::string inSemantic = "", void* inSource = nullptr, std::size_t inStride = 0)
+            :
+            semantic(inSemantic),
+            source(inSource),
+            stride(inStride)
+        {
+        }
 
         std::string semantic;
         void* source;
-        size_t stride;
+        std::size_t stride;
     };
 }

@@ -3292,13 +3292,6 @@ void UTMathematics::Meshes::Execute()
     Postcall();
 #endif
 
-#if defined(UT_MATHEMATICS_VERTEXLAYOUT)
-    Precall();
-    extern void TestVertexLayout();
-    TestVertexLayout();
-    Postcall();
-#endif
-
 #if defined(UT_MATHEMATICS_VETFEATURESKS)
     Precall();
     extern void TestVETFeaturesKS();

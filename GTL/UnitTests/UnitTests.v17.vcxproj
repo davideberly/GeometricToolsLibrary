@@ -306,6 +306,7 @@
     <ClCompile Include="Mathematics\Meshes\TestIndexAttribute.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestPlanarMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestRectanglePatchMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestStaticVETManifoldMesh.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestTetrahedronKey.cpp" />
     <ClCompile Include="Mathematics\Meshes\TestTriangleKey.cpp" />
@@ -325,6 +326,7 @@
     <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
     <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp" />
     <ClCompile Include="Mathematics\Physics\TestParticleSystem.cpp" />
     <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />

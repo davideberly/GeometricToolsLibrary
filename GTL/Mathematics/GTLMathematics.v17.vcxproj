@@ -308,6 +308,7 @@
     <ClInclude Include="Meshes\IndexAttribute.h" />
     <ClInclude Include="Meshes\Mesh.h" />
     <ClInclude Include="Meshes\PlanarMesh.h" />
+    <ClInclude Include="Meshes\RectanglePatchMesh.h" />
     <ClInclude Include="Meshes\StaticVETManifoldMesh.h" />
     <ClInclude Include="Meshes\TetrahedronKey.h" />
     <ClInclude Include="Meshes\TriangleKey.h" />
@@ -328,6 +329,7 @@
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
     <ClInclude Include="Physics\BoxManager.h" />
     <ClInclude Include="Physics\MassSpringCurve.h" />
+    <ClInclude Include="Physics\MassSpringSurface.h" />
     <ClInclude Include="Physics\ParticleSystem.h" />
     <ClInclude Include="Physics\PolyhedralMassProperties.h" />
     <ClInclude Include="Physics\RectangleManager.h" />

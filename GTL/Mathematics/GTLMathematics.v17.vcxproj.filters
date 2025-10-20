@@ -1266,9 +1266,6 @@
     <ClInclude Include="Physics\ParticleSystem.h">
       <Filter>Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Meshes\IndexAttribute.h">
-      <Filter>Meshes</Filter>
-    </ClInclude>
     <ClInclude Include="Meshes\Mesh.h">
       <Filter>Meshes</Filter>
     </ClInclude>
@@ -1276,6 +1273,15 @@
       <Filter>Meshes</Filter>
     </ClInclude>
     <ClInclude Include="Meshes\TubeMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\MassSpringSurface.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\RectanglePatchMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\IndexAttribute.h">
       <Filter>Meshes</Filter>
     </ClInclude>
   </ItemGroup>

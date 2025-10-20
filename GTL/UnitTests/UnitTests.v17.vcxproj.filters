@@ -1326,6 +1326,12 @@
     <ClCompile Include="Mathematics\Meshes\TestVertexAttribute.cpp">
       <Filter>Mathematics\Meshes</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Meshes\TestRectanglePatchMesh.cpp">
+      <Filter>Mathematics\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">
