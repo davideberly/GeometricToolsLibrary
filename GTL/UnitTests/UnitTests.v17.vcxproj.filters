@@ -1332,6 +1332,15 @@
     <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp">
       <Filter>Mathematics\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Physics\TestMassSpringVolume.cpp">
+      <Filter>Mathematics\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Volumes\TestParametricVolume.cpp">
+      <Filter>Mathematics\Volumes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Volumes\TestBSplineVolume.cpp">
+      <Filter>Mathematics\Volumes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

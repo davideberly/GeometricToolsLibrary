@@ -1284,5 +1284,14 @@
     <ClInclude Include="Meshes\IndexAttribute.h">
       <Filter>Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\MassSpringVolume.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Volumes\ParametricVolume.h">
+      <Filter>Volumes</Filter>
+    </ClInclude>
+    <ClInclude Include="Volumes\BSplineVolume.h">
+      <Filter>Volumes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

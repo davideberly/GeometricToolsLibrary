@@ -330,6 +330,7 @@
     <ClInclude Include="Physics\BoxManager.h" />
     <ClInclude Include="Physics\MassSpringCurve.h" />
     <ClInclude Include="Physics\MassSpringSurface.h" />
+    <ClInclude Include="Physics\MassSpringVolume.h" />
     <ClInclude Include="Physics\ParticleSystem.h" />
     <ClInclude Include="Physics\PolyhedralMassProperties.h" />
     <ClInclude Include="Physics\RectangleManager.h" />
@@ -390,6 +391,8 @@
     <ClInclude Include="Surfaces\NURBSSurface.h" />
     <ClInclude Include="Surfaces\ParametricSurface.h" />
     <ClInclude Include="Surfaces\QuadricSurface.h" />
+    <ClInclude Include="Volumes\BSplineVolume.h" />
+    <ClInclude Include="Volumes\ParametricVolume.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

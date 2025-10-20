@@ -212,13 +212,9 @@ Miscellaneous
 
 Physics
     MassSpringArbitrary
-    MassSpringSurface
-    MassSpringVolume
 
 Volumes
-    BSplineVolume
     NURBSVolume
-    ParametricVolume
 
 ==============================================================================
 PORTED CODE, UNIT/VISUAL TESTED, POSTED TO GITHUB
@@ -298,7 +294,6 @@ Arithmetic
 	UIntegerALU32
 	UIntegerAP32
 	UIntegerFP32
-	
 
 Containment
     2D
@@ -609,6 +604,7 @@ Physics
     RigidBody (tested by GTL/VisualTests/Mathematics/Physics/BouncingSpheres)
     MassSpringCurve (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     MassSpringSurface (tested by GTL/VisualTests/Mathematics/Physics/Cloth)
+    MassSpringVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)
     ParticleSystems (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     PolyhedralMassProperties (tested by GTL/VisualTests/Mathematics/Physics/BouncingTetrahedra)
 
@@ -680,6 +676,8 @@ Surfaces
     QuadricSurface
 
 Volumes
+    BSplineVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)
+    ParametricVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)
 
 ==============================================================================
 PORTED LIBRARIES, POSTED TO GITHUB

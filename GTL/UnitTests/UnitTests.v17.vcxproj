@@ -327,6 +327,7 @@
     <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringVolume.cpp" />
     <ClCompile Include="Mathematics\Physics\TestParticleSystem.cpp" />
     <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp" />
     <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />
@@ -383,6 +384,8 @@
     <ClCompile Include="Mathematics\Surfaces\TestParametricSurface.cpp" />
     <ClCompile Include="Mathematics\Surfaces\TestQuadricSurface.cpp" />
     <ClCompile Include="Mathematics\UTMathematics.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestBSplineVolume.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestParametricVolume.cpp" />
     <ClCompile Include="UnitTestInstantiate.cpp" />
     <ClCompile Include="UnitTestsExceptions.cpp" />
     <ClCompile Include="UnitTestsMain.cpp" />

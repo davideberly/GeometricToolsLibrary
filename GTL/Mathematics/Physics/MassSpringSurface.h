@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.17
+// File Version: 0.0.2025.10.20
 
 #pragma once
 
@@ -114,25 +114,25 @@ namespace gtl
             mLengthC[GetIndex(r, c)] = length;
         }
 
-        // Set constant of spring from (r,c) to (r+1,c).
+        // Get constant of spring from (r,c) to (r+1,c).
         inline T const& GetConstantR(std::size_t r, std::size_t c) const
         {
             return mConstantR[GetIndex(r, c)];
         }
 
-        // Set length of spring from (r,c) to (r+1,c).
+        // Get length of spring from (r,c) to (r+1,c).
         inline T const& GetLengthR(std::size_t r, std::size_t c) const
         {
             return mLengthR[GetIndex(r, c)];
         }
 
-        // Set constant of spring from (r,c) to (r,c+1).
+        // Get constant of spring from (r,c) to (r,c+1).
         inline T const& GetConstantC(std::size_t r, std::size_t c) const
         {
             return mConstantC[GetIndex(r, c)];
         }
 
-        // Set length of spring from (r,c) to (r,c+1).
+        // Get length of spring from (r,c) to (r,c+1).
         inline T const& GetLengthC(std::size_t r, std::size_t c) const
         {
             return mLengthC[GetIndex(r, c)];
