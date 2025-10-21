@@ -210,9 +210,6 @@ Meshes
 Miscellaneous
     SortPointsOnCircle
 
-Physics
-    MassSpringArbitrary
-
 Volumes
     NURBSVolume
 
@@ -602,6 +599,7 @@ Physics
     BoxManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingBoxes)
     RectangleManager (tested by GTL/VisualTests/Mathematics/Physics/IntersectingRectangles)
     RigidBody (tested by GTL/VisualTests/Mathematics/Physics/BouncingSpheres)
+    MassSpringArbitrary (tested by GTL/VisualTests/Mathematics/Physics/GelatinBlob)
     MassSpringCurve (tested by GTL/VisualTests/Mathematics/Physics/Rope)
     MassSpringSurface (tested by GTL/VisualTests/Mathematics/Physics/Cloth)
     MassSpringVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)

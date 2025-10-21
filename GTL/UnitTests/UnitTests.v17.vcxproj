@@ -325,6 +325,7 @@
     <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />
     <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
     <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringArbitrary.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp" />
     <ClCompile Include="Mathematics\Physics\TestMassSpringVolume.cpp" />

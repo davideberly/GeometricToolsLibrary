@@ -328,6 +328,7 @@
     <ClInclude Include="Miscellaneous\RandomPointOnHypersphere.h" />
     <ClInclude Include="Miscellaneous\STLBinaryFile.h" />
     <ClInclude Include="Physics\BoxManager.h" />
+    <ClInclude Include="Physics\MassSpringArbitrary.h" />
     <ClInclude Include="Physics\MassSpringCurve.h" />
     <ClInclude Include="Physics\MassSpringSurface.h" />
     <ClInclude Include="Physics\MassSpringVolume.h" />

@@ -1293,5 +1293,8 @@
     <ClInclude Include="Volumes\BSplineVolume.h">
       <Filter>Volumes</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\MassSpringArbitrary.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
