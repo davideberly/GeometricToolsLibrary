@@ -386,6 +386,7 @@
     <ClCompile Include="Mathematics\Surfaces\TestQuadricSurface.cpp" />
     <ClCompile Include="Mathematics\UTMathematics.cpp" />
     <ClCompile Include="Mathematics\Volumes\TestBSplineVolume.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestNURBSVolume.cpp" />
     <ClCompile Include="Mathematics\Volumes\TestParametricVolume.cpp" />
     <ClCompile Include="UnitTestInstantiate.cpp" />
     <ClCompile Include="UnitTestsExceptions.cpp" />

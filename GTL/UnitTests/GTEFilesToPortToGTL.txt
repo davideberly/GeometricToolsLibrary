@@ -210,9 +210,6 @@ Meshes
 Miscellaneous
     SortPointsOnCircle
 
-Volumes
-    NURBSVolume
-
 ==============================================================================
 PORTED CODE, UNIT/VISUAL TESTED, POSTED TO GITHUB
 
@@ -675,6 +672,7 @@ Surfaces
 
 Volumes
     BSplineVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)
+    NURBSVolume (tested by GTL/VisualTests/Mathematics/Physics/FreeFormDeformation)
     ParametricVolume (tested by GTL/VisualTests/Mathematics/Physics/GelatinCube)
 
 ==============================================================================

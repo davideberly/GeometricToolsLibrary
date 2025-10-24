@@ -1344,6 +1344,9 @@
     <ClCompile Include="Mathematics\Physics\TestMassSpringArbitrary.cpp">
       <Filter>Mathematics\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Volumes\TestNURBSVolume.cpp">
+      <Filter>Mathematics\Volumes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

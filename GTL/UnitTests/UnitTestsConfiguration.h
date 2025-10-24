@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.20
+// File Version: 0.0.2025.10.24
 
 #pragma once
 
@@ -741,7 +741,7 @@
 // Mathematics/Volumes
 #if defined(UT_MATHEMATICS_VOLUMES)
 #define UT_MATHEMATICS_BSPLINEVOLUME
-// #define UT_MATHEMATICS_NURBSVOLUME
+#define UT_MATHEMATICS_NURBSVOLUME
 #define UT_MATHEMATICS_PARAMETRICVOLUME
 #endif
 

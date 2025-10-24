@@ -393,6 +393,7 @@
     <ClInclude Include="Surfaces\ParametricSurface.h" />
     <ClInclude Include="Surfaces\QuadricSurface.h" />
     <ClInclude Include="Volumes\BSplineVolume.h" />
+    <ClInclude Include="Volumes\NURBSVolume.h" />
     <ClInclude Include="Volumes\ParametricVolume.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
