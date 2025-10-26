@@ -1347,6 +1347,12 @@
     <ClCompile Include="Mathematics\Volumes\TestNURBSVolume.cpp">
       <Filter>Mathematics\Volumes</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatCircle3.cpp">
+      <Filter>Mathematics\Approximation\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatArc3.cpp">
+      <Filter>Mathematics\Approximation\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

@@ -1299,5 +1299,11 @@
     <ClInclude Include="Volumes\NURBSVolume.h">
       <Filter>Volumes</Filter>
     </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprGreatCircle3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Approximation\3D\ApprGreatArc3.h">
+      <Filter>Approximation\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

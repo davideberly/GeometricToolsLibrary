@@ -42,6 +42,8 @@
     <ClCompile Include="Mathematics\Approximation\3D\TestApprCone3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprCylinder3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprEllipsoid3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatArc3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatCircle3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHeightPlane3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprHelmertTransformation3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprOrthogonalLine3.cpp" />

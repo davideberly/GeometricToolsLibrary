@@ -8,24 +8,24 @@ Distance/3D
     DistCircle3Arc3
     DistArc3Arc3
 
-Meshes (finish the mesh PDF and redesign the code)
+Meshes. Finish the mesh PDF and redesign the code. The classes in the redesign
+are
     IndexAttribute
-    Mesh
-    RectangleMesh
-    RectanglePatchMesh
-    RevolutionMesh
-    TubeMesh
     VertexAttribute
     VertexLayout
-    VEManifoldMesh (I do not believe this is useful.)
+    Mesh
+    TubeMesh
+    RectangleMesh (mesh of planar 2D rectangle in 3D, let RectanglePatchMesh
+        handle this with a simple3 D parametric surface, then rename
+        RectanglePatchMesh to RectangleMesh)
+    RectanglePatchMesh (mesh of 3D parametric surface)
+    RevolutionMesh
+    VolumetricMesh
 
 ==============================================================================
 NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
 
 Approximation
-    3D
-        ApprGreatArc3
-        ApprGreatCircle3
     Polynomial
         ApprPolynomial3
         ApprPolynomial4
@@ -104,6 +104,7 @@ ImageProcessing
     GradientAnisotropic2
     GradientAnisotropic3
     Histogram
+    Image
     Image2
     Image3
     MarchingCubes
@@ -201,11 +202,12 @@ Meshes
     DynamicVTSManifoldMesh
     MeshCurvature
     MeshSmoother
-    RectangleMesh (NOT FINISHED)
+    RectangleMesh
+    RevolutionMesh
     StaticVTSManifoldMesh
     VertexCollapseMesh
     VertexLayout (NOT FINISHED)
-    VolumeMesh
+    VolumetricMesh
 
 Miscellaneous
     SortPointsOnCircle
@@ -260,6 +262,8 @@ Approximation
         ApprCone3
         ApprCylinder3 (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateCylinder3)
         ApprEllipsoid3 (tested by GTL/VisualTests/Mathematics/Approximation/ApproximateEllipsoid3)
+        ApprGreatArc3
+        ApprGreatCircle3
         ApprHeightPlane3
         ApprHelmertTransformation3 (and tested by GTL/VisualTests/Mathematics/Approximation/ApproximateHelmertTransformation)
         ApprOrthogonalLine3
@@ -752,6 +756,7 @@ OBSOLETE FILES:
     TSManifoldMesh (renamed to DynamicTSManifoldMesh)
     UniqueVerticesTriangles (deprecated, use UniqueVerticesSimplices)
     UnsymmetricEigenvalues (does not work, needs help)
+    VEManifoldMesh (not useful)
     VETManifoldMesh (renamed to DynamicVETManifoldMesh)
     VETNonmanifoldMesh (renamed to DynamicVETNonmanifoldMesh)
     VETManifoldMeshNR (replaced by StaticVETManifoldMesh)
