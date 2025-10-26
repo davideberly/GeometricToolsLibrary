@@ -26,9 +26,10 @@ UnitTestApprOrthogonalLine2::UnitTestApprOrthogonalLine2()
 void UnitTestApprOrthogonalLine2::Test()
 {
     std::vector<Vector<double, 2>> points(1024);
-    std::ifstream input("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
-    input.read((char*)points.data(), points.size() * sizeof(points[0]));
-    input.close();
+    std::ifstream inFile("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read((char*)points.data(), points.size() * sizeof(points[0]));
+    inFile.close();
 
     Line2<double> line{};
     ApprOrthogonalLine2<double>::Fit(points, line);

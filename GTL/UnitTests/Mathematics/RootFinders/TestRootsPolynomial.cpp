@@ -178,10 +178,11 @@ void UnitTestRootsPolynomial::TestRandomRealLargeDegree()
 {
     std::size_t const degree = 33;
     Polynomial1<float> p(degree);
-    std::ifstream input("Mathematics/RootFinders/Input/RandomRealLargeDegree.binary", std::ios::binary);
-    input.read((char*)p.GetCoefficients().data(),
+    std::ifstream inFile("Mathematics/RootFinders/Input/RandomRealLargeDegree.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read((char*)p.GetCoefficients().data(),
         p.GetCoefficients().size() * sizeof(float));
-    input.close();
+    inFile.close();
 
     RootsPolynomial finder(mMaxBisections, mPrecision);
     std::vector<BSN> roots{};
@@ -505,13 +506,14 @@ void UnitTestRootsPolynomial::TestRandomNonsimple()
     // The coefficients of p are written to a text file to be read by
     // Mathematica for experiments and verification.
     Polynomial1<double> temp(p.GetDegree());
-    std::ofstream output("Mathematics/NumericalMethods/RootFinders/Output/Coefficients.txt");
+    std::ofstream outFile("Mathematics/RootFinders/Output/Coefficients.txt");
+    UTAssert(outFile, "Failed to open output file.");
     for (std::size_t i = 0; i <= p.GetDegree(); ++i)
     {
         temp[i] = (double)p[i];
-        output << temp[i] << std::endl;
+        outFile << temp[i] << std::endl;
     }
-    output.close();
+    outFile.close();
 
     Timer timer{};
     std::int64_t msecs{};

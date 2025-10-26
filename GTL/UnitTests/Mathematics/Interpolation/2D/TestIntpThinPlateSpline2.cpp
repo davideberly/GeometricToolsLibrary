@@ -63,17 +63,19 @@ void UnitTestIntpThinPlateSpline2::Test()
 
     std::string prefix = "Mathematics/Interpolation/2D/Input/";
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outfile(prefix + "Input2NoSmooth.binary", std::ios::binary);
-    outfile.write(reinterpret_cast<char const*>(output.data()), output.size() * sizeof(double));
-    outfile.write(reinterpret_cast<char const*>(&outFunctional), sizeof(double));
-    outfile.close();
+    std::ofstream outFile(prefix + "Input2NoSmooth.binary", std::ios::binary);
+    UTAssert(outFile, "Failed to open output file.");
+    outFile.write(reinterpret_cast<char const*>(output.data()), output.size() * sizeof(double));
+    outFile.write(reinterpret_cast<char const*>(&outFunctional), sizeof(double));
+    outFile.close();
 #else
     std::vector<double> input(numSamples);
     double inFunctional{}, error{};
-    std::ifstream infile(prefix + "Input2NoSmooth.binary", std::ios::binary);
-    infile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
-    infile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
-    infile.close();
+    std::ifstream inFile(prefix + "Input2NoSmooth.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
+    inFile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
+    inFile.close();
     for (std::size_t index = 0; index < numSamples; ++index)
     {
         error = std::fabs(output[index] - input[index]);
@@ -103,15 +105,17 @@ void UnitTestIntpThinPlateSpline2::Test()
         outFunctional = spline.ComputeFunctional();
 
 #if defined(INTERNAL_GENERATE_DATA)
-        outfile.open(prefix + "Input2Power" + std::to_string(power[k]) + ".binary", std::ios::binary);
-        outfile.write(reinterpret_cast<char const*>(output.data()), output.size() * sizeof(double));
-        outfile.write(reinterpret_cast<char const*>(&outFunctional), sizeof(double));
-        outfile.close();
+        outFile.open(prefix + "Input2Power" + std::to_string(power[k]) + ".binary", std::ios::binary);
+        UTAssert(outFile, "Failed to open output file.");
+        outFile.write(reinterpret_cast<char const*>(output.data()), output.size() * sizeof(double));
+        outFile.write(reinterpret_cast<char const*>(&outFunctional), sizeof(double));
+        outFile.close();
 #else
-        infile.open(prefix + "Input2Power" + std::to_string(power[k]) + ".binary", std::ios::binary);
-        infile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
-        infile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
-        infile.close();
+        inFile.open(prefix + "Input2Power" + std::to_string(power[k]) + ".binary", std::ios::binary);
+        UTAssert(inFile, "Failed to open input file.");
+        inFile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
+        inFile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
+        inFile.close();
         for (std::size_t index = 0; index < numSamples; ++index)
         {
             error = std::fabs(output[index] - input[index]);

@@ -4,8 +4,8 @@
 #include <GTL/Mathematics/Algebra/RigidMotion.h>
 using namespace gtl;
 
-//#define TEST_DISTPOINT3FRUSTUM3_GENERATE
-#if defined(TEST_DISTPOINT3FRUSTUM3_GENERATE)
+//#define INTERNAL_GENERATE_DATA
+#if defined(INTERNAL_GENERATE_DATA)
 #include <map>
 #include <random>
 #include <fstream>
@@ -120,7 +120,7 @@ void UnitTestDistPoint3Frustum3::Test()
         Validate(output, sqrDistance, { point, closest });
     }
 
-#if defined(TEST_DISTPOINT3FRUSTUM3_GENERATE)
+#if defined(INTERNAL_GENERATE_DATA)
     // Randomly generate points in a bounding box containing the frustum.
     double xBound = 2.0 * dMax * rBound / dMin;
     double yBound = 2.0 * dMax * uBound / dMin;
@@ -140,10 +140,11 @@ void UnitTestDistPoint3Frustum3::Test()
         }
     }
 
-    std::ofstream outfile("Mathematics/Distance/3D/Output/TestDistPoint3Frustum3_data.txt");
+    std::ofstream outFile("Mathematics/Distance/3D/Output/TestDistPoint3Frustum3_data.txt");
+    UTAssert(outFile, "Failed to open output file.");
     for (auto const& result : cases)
     {
-        outfile << std::setprecision(20)
+        outFile << std::setprecision(20)
             << "std::array<double, 7>{ "
             << result.second.sqrDistance << ", "
             << result.second.closest[0][0] << ", "
@@ -154,7 +155,7 @@ void UnitTestDistPoint3Frustum3::Test()
             << result.second.closest[1][2] << " }, "
             << std::endl;
     }
-    outfile.close();
+    outFile.close();
 #endif
 }
 

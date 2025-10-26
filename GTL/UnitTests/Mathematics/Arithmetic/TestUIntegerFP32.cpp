@@ -329,15 +329,17 @@ void UnitTestUIntegerFP32::TestWriteAndRead()
 {
     std::uint64_t u0 = 0x1291BB5C22AE9EF7ull;
     UInteger n0(u0);
-    std::ofstream output("Mathematics/Arithmetic/Output/UIntegerFP32Number.binary", std::ios::binary);
-    bool success = n0.Write(output);
-    output.close();
+    std::ofstream outFile("Mathematics/Arithmetic/Output/UIntegerFP32Number.binary", std::ios::binary);
+    UTAssert(outFile, "Failed to open outFile file.");
+    bool success = n0.Write(outFile);
+    outFile.close();
     UTAssert(success == true, "Write failed.");
 
     UInteger n1;
-    std::ifstream input("Mathematics/Arithmetic/Output/UIntegerFP32Number.binary", std::ios::binary);
-    success = n1.Read(input);
-    input.close();
+    std::ifstream inFile("Mathematics/Arithmetic/Output/UIntegerFP32Number.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    success = n1.Read(inFile);
+    inFile.close();
     UTAssert(success == true, "Read failed.");
 
     success = (n0 == n1);

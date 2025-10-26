@@ -320,7 +320,7 @@ void UTMathematics::ApproximationND::Execute()
 
 void UTMathematics::ApproximationPolynomial::Execute()
 {
-#if defined(UT_MATHEMATICS_APPROXIMATION)
+#if defined(UT_MATHEMATICS_APPROXIMATION_POLYNOMIAL)
     UTInformation("Mathematics/Approximation");
 
 #if defined(UT_MATHEMATICS_APPRPOLYNOMIAL2)

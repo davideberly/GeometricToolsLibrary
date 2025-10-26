@@ -26,9 +26,10 @@ UnitTestApprOrthogonalPlane3::UnitTestApprOrthogonalPlane3()
 void UnitTestApprOrthogonalPlane3::Test()
 {
     std::vector<Vector<double, 3>> points(1024);
-    std::ifstream input("Mathematics/Approximation/3D/Input/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
-    input.read((char*)points.data(), points.size() * sizeof(points[0]));
-    input.close();
+    std::ifstream inFile("Mathematics/Approximation/3D/Input/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read((char*)points.data(), points.size() * sizeof(points[0]));
+    inFile.close();
 
     Vector3<double> origin{}, normal{};
     ApprOrthogonalPlane3<double>::Fit(points, origin, normal);

@@ -67,23 +67,24 @@ void UnitTestDistPoint2Parallelogram2::Test0()
     Query::Output output{};
     Vector2<double> P{};
 
-    std::ofstream outfile("Mathematics/Distance/2D/Output/Output0.txt");
+    std::ofstream outFile("Mathematics/Distance/2D/Output/Output0.txt");
+    UTAssert(outFile, "Failed to open output file.");
     std::size_t imax = 1024;
     for (std::size_t i : {0, 146, 400, 450, 456, 490, 658, 912, 962, 968})
     {
         double angle = C_TWO_PI<double> * static_cast<double>(i) / static_cast<double>(imax);
         P = pgm.center + 3.0 * Vector2<double>{ std::cos(angle), std::sin(angle) };
         output = query(P, pgm);
-        outfile << "i = " << i << std::endl;
-        outfile << std::setprecision(17)
+        outFile << "i = " << i << std::endl;
+        outFile << std::setprecision(17)
             << "P = { " << P[0] << ", " << P[1] << " }" << std::endl;
-        outfile << std::setprecision(17) << "distance = " << output.distance << std::endl;
-        outfile << std::setprecision(17) << "sqrDistance = " << output.sqrDistance << std::endl;
-        outfile << std::setprecision(17)
+        outFile << std::setprecision(17) << "distance = " << output.distance << std::endl;
+        outFile << std::setprecision(17) << "sqrDistance = " << output.sqrDistance << std::endl;
+        outFile << std::setprecision(17)
             << "closest[1] = { " << output.closest[1][0] << ", " << output.closest[1][1] << " }" << std::endl;
-        outfile << std::endl;
+        outFile << std::endl;
     }
-    outfile.close();
+    outFile.close();
 
     // i = 0
     // P = {2.2709540085935611, 0.67001717998915900}
@@ -206,23 +207,24 @@ void UnitTestDistPoint2Parallelogram2::Test1()
     Query::Output output{};
     Vector2<double> P{};
 
-    std::ofstream outfile("Mathematics/Distance/2D/Output/Output1.txt");
+    std::ofstream outFile("Mathematics/Distance/2D/Output/Output1.txt");
+    UTAssert(outFile, "Failed to open output file.");
     std::size_t imax = 1024;
     for (std::size_t i : {158, 670})
     {
         double angle = C_TWO_PI<double> * static_cast<double>(i) / static_cast<double>(imax);
         P = pgm.center + 3.0 * Vector2<double>{ std::cos(angle), std::sin(angle) };
         output = query(P, pgm);
-        outfile << "i = " << i << std::endl;
-        outfile << std::setprecision(17)
+        outFile << "i = " << i << std::endl;
+        outFile << std::setprecision(17)
             << "P = { " << P[0] << ", " << P[1] << " }" << std::endl;
-        outfile << std::setprecision(17) << "distance = " << output.distance << std::endl;
-        outfile << std::setprecision(17) << "sqrDistance = " << output.sqrDistance << std::endl;
-        outfile << std::setprecision(17)
+        outFile << std::setprecision(17) << "distance = " << output.distance << std::endl;
+        outFile << std::setprecision(17) << "sqrDistance = " << output.sqrDistance << std::endl;
+        outFile << std::setprecision(17)
             << "closest[1] = { " << output.closest[1][0] << ", " << output.closest[1][1] << " }" << std::endl;
-        outfile << std::endl;
+        outFile << std::endl;
     }
-    outfile.close();
+    outFile.close();
 
     // i = 158
     // P = {0.96814944094440081, 3.1437850883442353}

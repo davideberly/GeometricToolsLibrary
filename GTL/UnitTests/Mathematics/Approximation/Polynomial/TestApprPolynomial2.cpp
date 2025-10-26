@@ -26,9 +26,10 @@ UnitTestApprPolynomial2::UnitTestApprPolynomial2()
 void UnitTestApprPolynomial2::Test()
 {
     std::vector<std::array<double, 2>> observations(1024);
-    std::ifstream input("Mathematics/Approximation/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
-    input.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
-    input.close();
+    std::ifstream inFile("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
+    inFile.close();
 
     std::size_t degree = 3;
     Polynomial<double, 1> polynomial{};

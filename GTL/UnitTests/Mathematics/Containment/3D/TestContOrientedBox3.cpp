@@ -3,9 +3,13 @@
 #include <GTL/Mathematics/Containment/3D/ContOrientedBox3.h>
 #include <GTL/Mathematics/Algebra/Rotation.h>
 #include <fstream>
+using namespace gtl;
+
+//#define INTERNAL_GENERATE_DATA
+#if defined(INTERNAL_GENERATE_DATA)
 #include <iomanip>
 #include <random>
-using namespace gtl;
+#endif
 
 namespace gtl
 {
@@ -40,32 +44,36 @@ void UnitTestContOrientedBox3::TestGetContainer()
 {
     std::vector<Vector3<double>> points(128);
 
-    //std::default_random_engine dre{};
-    //std::uniform_real_distribution<double> urd(-1.0, 1.0);
-    //for (auto& p : points)
-    //{
-    //    for (std::size_t i = 0; i < 3; ++i)
-    //    {
-    //        p[i] = urd(dre);
-    //    }
-    //}
-    //
-    //std::ofstream output("Mathematics/Containment/3D/Input/points3.binary", std::ios::binary);
-    //output.write(reinterpret_cast<const char*>(points.data()), points.size() * sizeof(points[0]));
-    //output.close();
+#if defined(INTERNAL_GENERATE_DATA)
+    std::default_random_engine dre{};
+    std::uniform_real_distribution<double> urd(-1.0, 1.0);
+    for (auto& p : points)
+    {
+        for (std::size_t i = 0; i < 3; ++i)
+        {
+            p[i] = urd(dre);
+        }
+    }
+    
+    std::ofstream outFile("Mathematics/Containment/3D/Input/points3.binary", std::ios::binary);
+    UTAssert(outFile, "Failed to open outFile file.");
+    outFile.write(reinterpret_cast<const char*>(points.data()), points.size() * sizeof(points[0]));
+    outFile.close();
 
     // For Mathematica.
-    //std::ofstream output("Mathematics/Containment/3D/Mathematica/points3.txt");
-    //for (auto const& p : points)
-    //{
-    //    output << std::setprecision(17) << p[0] << ", " << p[1] << ", " << p[2] << std::endl;
-    //}
-    //output.close();
-
-    std::ifstream input("Mathematics/Containment/3D/Input/points3.binary", std::ios::binary);
-    UTAssert(input, "Cannot open input file.");
-    input.read(reinterpret_cast<char*>(points.data()), points.size() * sizeof(points[0]));
-    input.close();
+    std::ofstream outFile("Mathematics/Containment/3D/Mathematica/points3.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
+    for (auto const& p : points)
+    {
+        outFile << std::setprecision(17) << p[0] << ", " << p[1] << ", " << p[2] << std::endl;
+    }
+    outFile.close();
+#else
+    std::ifstream inFile("Mathematics/Containment/3D/Input/points3.binary", std::ios::binary);
+    UTAssert(inFile, "Cannot open input file.");
+    inFile.read(reinterpret_cast<char*>(points.data()), points.size() * sizeof(points[0]));
+    inFile.close();
+#endif
 
     OrientedBox3<double> box{};
     box.center = { 0.072465408805427900, 0.022150223692974959, -0.055530845512644020 };
@@ -74,15 +82,18 @@ void UnitTestContOrientedBox3::TestGetContainer()
     box.axis[2] = { 0.85266586457462568, -0.48227281859042881, 0.20093245591006340 };
     box.extent = { 1.3221047875843510, 1.3190622415322544, 1.2413169254676579 };
 
+#if defined(INTERNAL_GENERATE_DATA)
     // For Mathematica.
-    //std::array<Vector3<double>, 8> vertices{};
-    //box.GetVertices(vertices);
-    //std::ofstream output("Mathematics/Containment/3D/Mathematica/vertices3.txt");
-    //for (auto const& v : vertices)
-    //{
-    //    output << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
-    //}
-    //output.close();
+    std::array<Vector3<double>, 8> vertices{};
+    box.GetVertices(vertices);
+    std::ofstream outFile("Mathematics/Containment/3D/Mathematica/vertices3.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
+    for (auto const& v : vertices)
+    {
+        outFile << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
+    }
+    outFile.close();
+#endif
 
     OrientedBox3<double> estimatedBox{};
     GetContainer(points, estimatedBox);
@@ -171,49 +182,46 @@ void UnitTestContOrientedBox3::TestInContainer()
 
 void UnitTestContOrientedBox3::TestMergeContainers()
 {
-    std::default_random_engine dre{};
-    std::uniform_real_distribution<double> urd(-1.0, 1.0);
-
     OrientedBox3<double> box0{};
-    box0.center = { 8.0 + urd(dre), 8.0 + urd(dre), 8.0 + urd(dre) };
-    box0.extent = { 2.0 + urd(dre), 2.0 + urd(dre), 2.0 + urd(dre) };
-    box0.axis[0] = { urd(dre), urd(dre), urd(dre) };
+    box0.center = { 8.9377355422484630, 8.6700171799891592, 7.2709540085935611 };
+    box0.extent = { 2.0944411927357036, 1.6163341010140064, 1.4420680859654098 };
+    box0.axis[0] = { 0.64825684721228793, 0.64358221353584077, -0.40689678600683471 };
     ComputeOrthonormalBasis(1, box0.axis[0], box0.axis[1], box0.axis[2]);
-    // box0.center = (8.9377355422484630, 8.6700171799891592, 7.2709540085935611)
-    // box0.axis[0] = (0.64825684721228793, 0.64358221353584077, -0.40689678600683471)
     // box0.axis[1] = (0.53162923912927207, 0.0000000000000000, 0.84697718511352549)
     // box0.axis[2] = (0.54509945160971829, -0.76537698843139224, -0.34214712249919171)
-    // box0.extent = (2.0944411927357036, 1.6163341010140064, 1.4420680859654098)
 
+#if defined(INTERNAL_GENERATE_DATA)
     // For Mathematica.
-    //std::array<Vector3<double>, 8> vertices{};
-    //box0.GetVertices(vertices);
-    //std::ofstream output("Mathematics/Containment/3D/Mathematica/box0vertices3.txt");
-    //for (auto const& v : vertices)
-    //{
-    //    output << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
-    //}
-    //output.close();
+    std::array<Vector3<double>, 8> vertices{};
+    box0.GetVertices(vertices);
+    std::ofstream outFile("Mathematics/Containment/3D/Mathematica/box0vertices3.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
+    for (auto const& v : vertices)
+    {
+        outFile << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
+    }
+    outFile.close();
+#endif
 
     OrientedBox3<double> box1{};
-    box1.center = { urd(dre), urd(dre), urd(dre) };
-    box1.extent = { 4.0 + urd(dre), 4.0 + urd(dre), 4.0 + urd(dre) };
-    box1.axis[0] = { urd(dre), urd(dre), urd(dre) };
+    box1.center = { 0.96221938355387771, 0.45167792642377913, 0.93538987402100493 };
+    box1.extent = { 3.5940588991159013, 4.5962117134990983, 3.2197235016884127 };
+    box1.axis[0] = { 0.21696606135482288, -0.60160294752706056, -0.76876499773788354 };
     ComputeOrthonormalBasis(1, box1.axis[0], box1.axis[1], box1.axis[2]);
-    // box1.center = (0.96221938355387771, 0.45167792642377913, 0.93538987402100493)
-    // box1.axis[0] = (0.21696606135482288, -0.60160294752706056, -0.76876499773788354)
     // box1.axis[1] = (0.0000000000000000, -0.78752450267295693, 0.61628334205113144)
     // box1.axis[2] = (-0.97617914760569202, -0.13371256940342108, -0.17086608956536714)
-    // box1.extent = (3.5940588991159013, 4.5962117134990983, 3.2197235016884127)
 
+#if defined(INTERNAL_GENERATE_DATA)
     // For Mathematica.
-    //box1.GetVertices(vertices);
-    //output.open("Mathematics/Containment/3D/Mathematica/box1vertices3.txt");
-    //for (auto const& v : vertices)
-    //{
-    //    output << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
-    //}
-    //output.close();
+    box1.GetVertices(vertices);
+    outFile.open("Mathematics/Containment/3D/Mathematica/box1vertices3.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
+    for (auto const& v : vertices)
+    {
+        outFile << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
+    }
+    outFile.close();
+#endif
 
     OrientedBox3<double> merge{};
     merge.center = { 2.8780763585458917, 4.1089808903634886, 2.8191562835269419 };
@@ -222,14 +230,17 @@ void UnitTestContOrientedBox3::TestMergeContainers()
     merge.axis[2] = { -0.39143629639421462, -0.84215278404203031, -0.37088585062716733 };
     merge.extent = { 6.0087501887857089, 6.2516895069169731, 10.863638237139167 };
 
+#if defined(INTERNAL_GENERATE_DATA)
     // For Mathematica.
-    //merge.GetVertices(vertices);
-    //output.open("Mathematics/Containment/3D/Mathematica/mergevertices3.txt");
-    //for (auto const& v : vertices)
-    //{
-    //    output << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
-    //}
-    //output.close();
+    merge.GetVertices(vertices);
+    outFile.open("Mathematics/Containment/3D/Mathematica/mergevertices3.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
+    for (auto const& v : vertices)
+    {
+        outFile << std::setprecision(17) << v[0] << ", " << v[1] << ", " << v[2] << std::endl;
+    }
+    outFile.close();
+#endif
 
     OrientedBox3<double> estimatedMerge{};
     MergeContainers(box0, box1, estimatedMerge);

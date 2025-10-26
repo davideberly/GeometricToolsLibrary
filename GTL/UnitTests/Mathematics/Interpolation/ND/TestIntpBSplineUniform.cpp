@@ -214,15 +214,16 @@ void UnitTestIntpBSplineUniform::Test3()
     using Interpolator = IntpBSplineUniform<float, Controls>;
 
     std::string filename = "Mathematics/Interpolation/3D/Input/molecule97x97x116.binary";
-    std::ifstream input(filename, std::ios::binary);
+    std::ifstream inFile(filename, std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
 
     Controls controls{};
-    input.read(reinterpret_cast<char*>(&controls.size[0]), sizeof(uint32_t));
-    input.read(reinterpret_cast<char*>(&controls.size[1]), sizeof(uint32_t));
-    input.read(reinterpret_cast<char*>(&controls.size[2]), sizeof(uint32_t));
+    inFile.read(reinterpret_cast<char*>(&controls.size[0]), sizeof(uint32_t));
+    inFile.read(reinterpret_cast<char*>(&controls.size[1]), sizeof(uint32_t));
+    inFile.read(reinterpret_cast<char*>(&controls.size[2]), sizeof(uint32_t));
     controls.image.resize(controls.size[0] * controls.size[1] * controls.size[2]);
-    input.read(reinterpret_cast<char*>(controls.image.data()), controls.image.size());
-    input.close();
+    inFile.read(reinterpret_cast<char*>(controls.image.data()), controls.image.size());
+    inFile.close();
 
     // Write the input 3D image as an array of 2D slices.
     std::size_t textureWidth = 16 * controls.size[0];

@@ -85,6 +85,7 @@ void UnitTestOdeRungeKutta4::Test2()
 
     // Write the approximation solution as text.
     std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4.txt");
+    UTAssert(outFile, "Failed to open output file.");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;
@@ -146,6 +147,7 @@ void UnitTestOdeRungeKutta4::TestDynamic()
 
     // Write the approximation solution as text.
     std::ofstream outFile("Mathematics/DifferentialEquations/Output/PendulumRungeKutta4D.txt");
+    UTAssert(outFile, "Failed to open output file.");
     for (std::size_t i = 0; i < output.size(); ++i)
     {
         outFile << "i = " << i << ", " << output[i] << std::endl;

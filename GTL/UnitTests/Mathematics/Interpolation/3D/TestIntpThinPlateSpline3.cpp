@@ -92,10 +92,11 @@ void UnitTestIntpThinPlateSpline3::Test()
 #else
     std::vector<double> input(numSamples);
     double inFunctional{}, error{};
-    std::ifstream infile(prefix + "Input3NoSmooth.binary", std::ios::binary);
-    infile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
-    infile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
-    infile.close();
+    std::ifstream inFile(prefix + "Input3NoSmooth.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
+    inFile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
+    inFile.close();
     for (std::size_t index = 0; index < numSamples; ++index)
     {
         error = std::fabs(output[index] - input[index]);
@@ -134,10 +135,11 @@ void UnitTestIntpThinPlateSpline3::Test()
         outfile.write(reinterpret_cast<char const*>(&outFunctional), sizeof(double));
         outfile.close();
 #else
-        infile.open(prefix + "Input3Power" + std::to_string(power[ell]) + ".binary", std::ios::binary);
-        infile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
-        infile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
-        infile.close();
+        inFile.open(prefix + "Input3Power" + std::to_string(power[ell]) + ".binary", std::ios::binary);
+        UTAssert(inFile, "Failed to open input file.");
+        inFile.read(reinterpret_cast<char*>(input.data()), input.size() * sizeof(double));
+        inFile.read(reinterpret_cast<char*>(&inFunctional), sizeof(double));
+        inFile.close();
         for (std::size_t index = 0; index < numSamples; ++index)
         {
             error = std::fabs(output[index] - input[index]);

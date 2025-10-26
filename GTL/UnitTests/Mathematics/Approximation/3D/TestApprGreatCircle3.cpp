@@ -2,8 +2,12 @@
 #include <UnitTestsExceptions.h>
 #include <GTL/Mathematics/Approximation/3D/ApprGreatCircle3.h>
 #include <fstream>
-#include <random>
 using namespace gtl;
+
+//#define INTERNAL_GENERATE_DATA
+#if defined(INTERNAL_GENERATE_DATA)
+#include <random>
+#endif
 
 namespace gtl
 {
@@ -30,7 +34,7 @@ void UnitTestApprGreatCircle3::Test()
     ComputeOrthonormalBasis(1, N, U, V);
 
     std::vector<Vector3<double>> points(1024);
-#if 0
+#if defined(INTERNAL_GENERATE_DATA)
     std::default_random_engine dre{};
     std::uniform_real_distribution<double> urd(-1.0, 1.0);
     for (auto& p : points)
@@ -41,20 +45,24 @@ void UnitTestApprGreatCircle3::Test()
         p = cosAngle * U + sinAngle * V + 1.0e-03 * urd(dre) * N;
         Normalize(p);
     }
-    std::ofstream output("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.binary", std::ios::binary);
-    output.write(reinterpret_cast<char const*>(points.data()), points.size() * sizeof(Vector3<double>));
-    output.close();
+    std::ofstream outFile("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.binary", std::ios::binary);
+    UTAssert(outFile, "Failed to open outFile file.");
+    outFile.write(reinterpret_cast<char const*>(points.data()), points.size() * sizeof(Vector3<double>));
+    outFile.close();
 
-    output.open("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.txt");
+    // For Mathematica visualization.
+    outFile.open("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
     for (auto const& p : points)
     {
-        output << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << std::endl;
+        outFile << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << std::endl;
     }
-    output.close();
+    outFile.close();
 #else
-    std::ifstream input("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.binary", std::ios::binary);
-    input.read(reinterpret_cast<char*>(points.data()), points.size() * sizeof(Vector3<double>));
-    input.close();
+    std::ifstream inFile("Mathematics/Approximation/3D/Input/ApprGreatCircle3Points.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read(reinterpret_cast<char*>(points.data()), points.size() * sizeof(Vector3<double>));
+    inFile.close();
 #endif
 
     // NOTE: There are 2 possible normals based on how the eigensolver

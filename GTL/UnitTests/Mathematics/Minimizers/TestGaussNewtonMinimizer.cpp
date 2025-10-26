@@ -2,9 +2,13 @@
 #include <UnitTestsExceptions.h>
 #include <GTL/Mathematics/Arithmetic/Constants.h>
 #include <GTL/Mathematics/Minimizers/GaussNewtonMinimizer.h>
-#include <random>
 #include <fstream>
 using namespace gtl;
+
+//#define INTERNAL_GENERATE_DATA
+#if defined(INTERNAL_GENERATE_DATA)
+#include <random>
+#endif
 
 namespace gtl
 {
@@ -27,27 +31,37 @@ UnitTestGaussNewtonMinimizer::UnitTestGaussNewtonMinimizer()
 
 void UnitTestGaussNewtonMinimizer::Test()
 {
+    std::vector<Vector2<double>> points(1024);
+#if defined(INTERNAL_GENERATE_DATA)
     std::default_random_engine dre;
     std::uniform_real_distribution<double> urd(0.0, C_TWO_PI<double>);
     std::uniform_real_distribution<double> perturb(-0.1, 0.1);
     Vector2<double> center{ 0.1, 0.2 };
     double a = 2.0, b = 1.0;
-    std::size_t const numPoints = 1024;
-    std::vector<Vector2<double>> points(numPoints);
-    for (std::size_t i = 0; i < numPoints; ++i)
+    for (std::size_t i = 0; i < points.size(); ++i)
     {
         double angle = urd(dre);
         points[i][0] = center[0] + a * cos(angle) + perturb(dre);
         points[i][1] = center[1] + b * sin(angle) + perturb(dre);
     }
+    std::ofstream outFile("Mathematics/Minimizers/Input/GaussNewtonInput.binary", std::ios::binary);
+    UTAssert(outFile, "Failed to open output file.");
+    outFile.write(reinterpret_cast<char const*>(points.data()), points.size() * sizeof(Vector3<double>));
+    outFile.close();
 
     // To verify with Mathematica.
     std::ofstream pointfile("Mathematics/Minimizers/Output/points.txt");
-    for (std::size_t i = 0; i < numPoints; ++i)
+    for (std::size_t i = 0; i < points.size(); ++i)
     {
         pointfile << points[i][0] << ", " << points[i][1] << std::endl;
     }
     pointfile.close();
+#else
+    std::ifstream inFile("Mathematics/Minimizers/Input/GaussNewtonInput.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read(reinterpret_cast<char*>(points.data()), points.size() * sizeof(Vector2<double>));
+    inFile.close();
+#endif
 
     // F_{i}(C,r) = |C - X_{i}|^2 - r^2
     auto F = [&points](Vector<double> const& input, Vector<double>& output)
@@ -72,7 +86,7 @@ void UnitTestGaussNewtonMinimizer::Test()
         }
     };
 
-    GaussNewtonMinimizer<double> minimizer(3, numPoints,
+    GaussNewtonMinimizer<double> minimizer(3, points.size(),
         (GaussNewtonMinimizer<double>::FFunction const&)F,
         (GaussNewtonMinimizer<double>::JFunction const&)J);
     Vector<double> initial{ 0.0, 0.0, 0.5 };

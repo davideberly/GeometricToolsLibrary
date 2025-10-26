@@ -34,12 +34,11 @@ UnitTestDelaunay2::UnitTestDelaunay2()
 
 void UnitTestDelaunay2::TestSorting()
 {
-    std::ifstream input(
-        "Mathematics/Geometry/2D/Input/Delaunay2DRandom256.binary",
-        std::ios::binary);
+    std::ifstream inFile("Mathematics/Geometry/2D/Input/Delaunay2DRandom256.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
     std::vector<Vector2<float>> points(256);
-    input.read((char*)points.data(), 256 * sizeof(Vector2<float>));
-    input.close();
+    inFile.read((char*)points.data(), 256 * sizeof(Vector2<float>));
+    inFile.close();
 
     points[100] = points[17];
     points[150] = points[17];
@@ -59,21 +58,21 @@ void UnitTestDelaunay2::TestSorting()
 
 void UnitTestDelaunay2::TestRandom()
 {
-    std::ifstream input(
-        "Mathematics/Geometry/2D/Input/Delaunay2DRandom256.binary",
-        std::ios::binary);
+    std::ifstream inFile("Mathematics/Geometry/2D/Input/Delaunay2DRandom256.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
     std::vector<Vector2<float>> points(256);
-    input.read((char*)points.data(), 256 * sizeof(Vector2<float>));
-    input.close();
+    inFile.read((char*)points.data(), 256 * sizeof(Vector2<float>));
+    inFile.close();
 
-    input.open("Mathematics/Geometry/2D/Input/Delaunay2DExpectedTriangles.txt");
+    inFile.open("Mathematics/Geometry/2D/Input/Delaunay2DExpectedTriangles.txt");
+    UTAssert(inFile, "Failed to open input file.");
     std::size_t const numTriangles = 497;
     std::vector<TriangleKey<true>> expectedTriangles(numTriangles);
     for (auto& tri : expectedTriangles)
     {
-        input >> tri[0] >> tri[1] >> tri[2];
+        inFile >> tri[0] >> tri[1] >> tri[2];
     }
-    input.close();
+    inFile.close();
 
     Delaunay2<float> del2;
     del2(points);

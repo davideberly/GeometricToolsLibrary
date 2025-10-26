@@ -26,9 +26,10 @@ UnitTestApprHeightLine2::UnitTestApprHeightLine2()
 void UnitTestApprHeightLine2::Test()
 {
     std::vector<Vector<double, 2>> points(1024);
-    std::ifstream input("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
-    input.read((char*)points.data(), points.size() * sizeof(points[0]));
-    input.close();
+    std::ifstream inFile("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
+    UTAssert(inFile, "Failed to open input file.");
+    inFile.read((char*)points.data(), points.size() * sizeof(points[0]));
+    inFile.close();
 
     Vector2<double> average{};
     double slope{};

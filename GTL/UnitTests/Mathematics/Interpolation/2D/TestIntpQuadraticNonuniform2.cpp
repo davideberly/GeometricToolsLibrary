@@ -70,7 +70,8 @@ void UnitTestIntpQuadraticNonuniform2::TestSingleTriangle()
     interpolator.Evaluate(point, Finterp, DFDXinterp, DFDYinterp);
     // F = 1.1373549941184307, DFDX = 0.73149885271494197, DFDY = 0.61421265138182335
 
-    std::ofstream output("Mathematics/Interpolation/2D/Output/CendesWong1.txt");
+    std::ofstream outFile("Mathematics/Interpolation/2D/Output/CendesWong1.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
     std::size_t numX = 128, numY = 128;
     for (std::size_t x = 0; x <= numX; ++x)
     {
@@ -80,11 +81,11 @@ void UnitTestIntpQuadraticNonuniform2::TestSingleTriangle()
             point[1] = static_cast<double>(y) / static_cast<double>(numY);
             if (interpolator.Evaluate(point, Finterp, DFDXinterp, DFDYinterp))
             {
-                output << point[0] << ", " << point[1] << ", " << Finterp << std::endl;
+                outFile << point[0] << ", " << point[1] << ", " << Finterp << std::endl;
             }
         }
     }
-    output.close();
+    outFile.close();
 }
 
 void UnitTestIntpQuadraticNonuniform2::TestTwoTriangles()
@@ -108,7 +109,8 @@ void UnitTestIntpQuadraticNonuniform2::TestTwoTriangles()
     double Finterp{}, DFDXinterp{}, DFDYinterp{};
 
     // The plot in Mathematica appears to be correct.
-    std::ofstream output("Mathematics/Interpolation/2D/Output/CendesWong2.txt");
+    std::ofstream outFile("Mathematics/Interpolation/2D/Output/CendesWong2.txt");
+    UTAssert(outFile, "Failed to open outFile file.");
     std::size_t numX = 128, numY = 128;
     for (std::size_t x = 0; x <= numX; ++x)
     {
@@ -118,11 +120,11 @@ void UnitTestIntpQuadraticNonuniform2::TestTwoTriangles()
             point[1] = static_cast<double>(y) / static_cast<double>(numY);
             if (interpolator.Evaluate(point, Finterp, DFDXinterp, DFDYinterp))
             {
-                output << point[0] << ", " << point[1] << ", " << Finterp << std::endl;
+                outFile << point[0] << ", " << point[1] << ", " << Finterp << std::endl;
             }
         }
     }
-    output.close();
+    outFile.close();
 }
 
 #else
