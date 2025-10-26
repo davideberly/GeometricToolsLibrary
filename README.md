@@ -41,8 +41,8 @@ I have not yet tested code on Linux distributions, even for compilation. This
 will occur once I get the unit tests and visual tests in place for GTL on
 Microsoft Windows 11.
 
-The unit tests use exact comparison to floating-point numbers. These can
-potentially fail on different platforms because of small rounding errors.
+Some of the unit tests use exact comparison to floating-point numbers. These
+can potentially fail on different platforms because of small rounding errors.
 Once all the unit tests are in place, I will modify the unit tests to use
 epsilon values to account for the small rounding errors. For now, it is
 convenient to me simply to run the exact-comparison tests to speed up the
@@ -61,6 +61,13 @@ exist only for visual testing of the GTL code. These libraries are a direct
 port of the GTE libraries except that header file organization has been
 modified. The LogAssert and LogError exception macros have different names;
 there are more macros for specialized exceptions that C++ supports.
+
+The plan for graphics support in GTL is to wrap Vulkan for a cross-platform
+graphics engine. Later I might consider writing a wrapper for DirectX 12,
+but this depends on how much the quality of Microsoft Windows 11 continues to
+decline. It also depends on how much more Microsoft ties their technologies
+into Microsoft Windows and Microsoft 365 with the goal of vendor lock-in,
+which in my opinion (and others' opinions) is extremely undesirable.
 
 ## Documentation ##
 
