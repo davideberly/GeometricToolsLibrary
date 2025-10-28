@@ -27,8 +27,6 @@ NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
 
 Approximation
     Polynomial
-        ApprPolynomial3
-        ApprPolynomial4
         ApprPolynomialSpecial (merged the 2D/3D/4D versions into generic ND version)
 
 Containment
@@ -275,6 +273,8 @@ Approximation
         ApprGaussianDistribution
     Polynomial
         ApprPolynomial2
+        ApprPolynomial3
+        ApprPolynomial4
 		
 Arithmetic
     APConversion

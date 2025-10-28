@@ -1353,6 +1353,12 @@
     <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatArc3.cpp">
       <Filter>Mathematics\Approximation\3D</Filter>
     </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial3.cpp">
+      <Filter>Mathematics\Approximation\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial4.cpp">
+      <Filter>Mathematics\Approximation\Polynomial</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnitTestsConfiguration.h">

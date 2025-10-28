@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2025.10.27
 
 #pragma once
 
@@ -40,14 +40,14 @@ namespace gtl
     class ApprPolynomial2
     {
     public:
-        static bool Fit(std::size_t degree,
+        static bool Fit(std::size_t xDegree,
             std::vector<std::array<T, 2>> const& observations,
             Polynomial<T, 1>& polynomial, std::array<T, 2>& xExtreme,
             std::array<T, 2>& wExtreme)
         {
             // Compute the powers of x.
-            std::size_t const twoDegree = 2 * degree;
-            Matrix<T> xPower(observations.size(), twoDegree + 1);
+            std::size_t const twoXDegree = 2 * xDegree;
+            Matrix<T> xPower(observations.size(), twoXDegree + 1);
             xExtreme[0] = observations[0][0];
             xExtreme[1] = xExtreme[0];
             wExtreme[0] = observations[0][1];
@@ -76,7 +76,7 @@ namespace gtl
                 }
 
                 xPower(s, 0) = C_<T>(1);
-                for (std::size_t j0 = 0, j1 = 1; j1 <= twoDegree; j0 = j1++)
+                for (std::size_t j0 = 0, j1 = 1; j1 <= twoXDegree; j0 = j1++)
                 {
                     xPower(s, j1) = x * xPower(s, j0);
                 }
@@ -84,10 +84,10 @@ namespace gtl
 
             // Matrix A is the Vandermonde matrix and vector B is the
             // right-hand side of the linear system A*X = B.
-            std::size_t const numCoefficients = degree + 1;
+            std::size_t const numCoefficients = xDegree + 1;
             Matrix<T> A(numCoefficients, numCoefficients);
             Vector<T> B(numCoefficients);
-            for (std::size_t j0 = 0; j0 <= degree; ++j0)
+            for (std::size_t j0 = 0; j0 <= xDegree; ++j0)
             {
                 T sum = C_<T>(0);
                 for (std::size_t s = 0; s < observations.size(); ++s)
@@ -98,7 +98,7 @@ namespace gtl
 
                 B[j0] = sum;
 
-                for (std::size_t j1 = 0; j1 <= degree; ++j1)
+                for (std::size_t j1 = 0; j1 <= xDegree; ++j1)
                 {
                     sum = C_<T>(0);
                     for (std::size_t s = 0; s < observations.size(); ++s)
@@ -114,8 +114,8 @@ namespace gtl
             Vector<T> coefficient(numCoefficients);
             if (LinearSystem<T>::Solve(A, B, coefficient))
             {
-                polynomial.SetDegree(degree);
-                for (std::size_t i = 0; i <= degree; ++i)
+                polynomial.SetDegree(xDegree);
+                for (std::size_t i = 0; i <= xDegree; ++i)
                 {
                     polynomial[i] = std::move(coefficient[i]);
                 }
