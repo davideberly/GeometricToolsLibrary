@@ -1,31 +1,31 @@
 #if defined(GTL_UNIT_TESTS)
 #include <UnitTestsExceptions.h>
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial4.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial3.h>
 #include <fstream>
 using namespace gtl;
 
-#define INTERNAL_GENERATE_DATA
+//#define INTERNAL_GENERATE_DATA
 
 namespace gtl
 {
-    class UnitTestApprPolynomial4
+    class UnitTestApprPolynomial3
     {
     public:
-        UnitTestApprPolynomial4();
+        UnitTestApprPolynomial3();
 
     private:
         void Test();
     };
 }
 
-UnitTestApprPolynomial4::UnitTestApprPolynomial4()
+UnitTestApprPolynomial3::UnitTestApprPolynomial3()
 {
-    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial4");
+    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial3");
 
     Test();
 }
 
-void UnitTestApprPolynomial4::Test()
+void UnitTestApprPolynomial3::Test()
 {
     std::vector<std::array<double, 4>> observations(1024);
     std::ifstream inFile("Mathematics/Approximation/ND/Input/RandomUnitPoints4D_Double_1024.binary", std::ios::binary);
@@ -33,7 +33,7 @@ void UnitTestApprPolynomial4::Test()
     inFile.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
     inFile.close();
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial4Input.txt");
+    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial3Input.txt");
     for (auto const& p : observations)
     {
         outFile << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << "," << p[3] << std::endl;
@@ -44,7 +44,7 @@ void UnitTestApprPolynomial4::Test()
     std::size_t constexpr xDegree = 3, yDegree = 2, zDegree = 1;
     Polynomial<double, 3> polynomial{};
     std::array<double, 2> xExtreme{}, yExtreme{}, zExtreme{}, wExtreme{};
-    bool success = ApprPolynomial4<double>::Fit(xDegree, yDegree, zDegree, observations,
+    bool success = ApprPolynomial3<double>::Fit(xDegree, yDegree, zDegree, observations,
         polynomial, xExtreme, yExtreme, zExtreme, wExtreme);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
@@ -127,20 +127,20 @@ void UnitTestApprPolynomial4::Test()
 #if defined(GTL_INSTANTIATE_RATIONAL)
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #endif
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial4.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial3.h>
 
 namespace gtl
 {
-    template class ApprPolynomial4<float>;
-    template class ApprPolynomial4<double>;
+    template class ApprPolynomial3<float>;
+    template class ApprPolynomial3<double>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
-    template class ApprPolynomial4<Rational>;
+    template class ApprPolynomial3<Rational>;
 #endif
 }
 
 #endif
 
 #include <UnitTestsNamespaces.h>
-GTL_TEST_FUNCTION(ApprPolynomial4)
+GTL_TEST_FUNCTION(ApprPolynomial3)

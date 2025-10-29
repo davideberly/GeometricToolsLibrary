@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.27
+// File Version: 0.0.2025.10.29
 
 #pragma once
 
@@ -45,7 +45,7 @@
 namespace gtl
 {
     template <typename T>
-    class ApprPolynomial4
+    class ApprPolynomial3
     {
     public:
         static bool Fit(std::size_t xDegree, std::size_t yDegree, std::size_t zDegree,

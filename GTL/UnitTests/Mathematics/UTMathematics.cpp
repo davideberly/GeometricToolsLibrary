@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2025.10.29
 
 #include "UTMathematics.h"
 #include <UnitTestsExceptions.h>
@@ -323,6 +323,13 @@ void UTMathematics::ApproximationPolynomial::Execute()
 #if defined(UT_MATHEMATICS_APPROXIMATION_POLYNOMIAL)
     UTInformation("Mathematics/Approximation");
 
+#if defined(UT_MATHEMATICS_APPRPOLYNOMIAL1)
+    Precall();
+    extern void TestApprPolynomial1();
+    TestApprPolynomial1();
+    Postcall();
+#endif
+
 #if defined(UT_MATHEMATICS_APPRPOLYNOMIAL2)
     Precall();
     extern void TestApprPolynomial2();
@@ -334,13 +341,6 @@ void UTMathematics::ApproximationPolynomial::Execute()
     Precall();
     extern void TestApprPolynomial3();
     TestApprPolynomial3();
-    Postcall();
-#endif
-
-#if defined(UT_MATHEMATICS_APPRPOLYNOMIAL4)
-    Precall();
-    extern void TestApprPolynomial4();
-    TestApprPolynomial4();
     Postcall();
 #endif
 

@@ -27,7 +27,7 @@ NEEDS-FINAL-REFORMATTING-AND-UNIT-TESTING
 
 Approximation
     Polynomial
-        ApprPolynomialSpecial (merged the 2D/3D/4D versions into generic ND version)
+        ApprPolynomialSpecial
 
 Containment
     2D
@@ -272,9 +272,9 @@ Approximation
     ND
         ApprGaussianDistribution
     Polynomial
+        ApprPolynomial1
         ApprPolynomial2
         ApprPolynomial3
-        ApprPolynomial4
 		
 Arithmetic
     APConversion
@@ -696,6 +696,9 @@ OBSOLETE FILES:
     ApprConvexQuadByRect
     ApprGaussian2 (subset of ApprGaussianDistribution)
     ApprGaussian3 (subset of ApprGaussianDistribution)
+    ApprPolynomial2 (renamed to ApprPolynomial1, 1 is number of independent variables)
+    ApprPolynomial3 (renamed to ApprPolynomial2, 2 is number of independent variables)
+    ApprPolynomial4 (renamed to ApprPolynomial3, 3 is number of independent variables)
     ApprQuadratic2
     ApprQuadratic3
     ApprQuery

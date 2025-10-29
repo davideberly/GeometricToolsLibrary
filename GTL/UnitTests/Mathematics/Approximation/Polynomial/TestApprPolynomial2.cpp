@@ -1,6 +1,6 @@
 #if defined(GTL_UNIT_TESTS)
 #include <UnitTestsExceptions.h>
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial3.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial2.h>
 #include <fstream>
 using namespace gtl;
 
@@ -8,10 +8,10 @@ using namespace gtl;
 
 namespace gtl
 {
-    class UnitTestApprPolynomial3
+    class UnitTestApprPolynomial2
     {
     public:
-        UnitTestApprPolynomial3();
+        UnitTestApprPolynomial2();
 
     private:
         void TestSameDegree();
@@ -19,15 +19,15 @@ namespace gtl
     };
 }
 
-UnitTestApprPolynomial3::UnitTestApprPolynomial3()
+UnitTestApprPolynomial2::UnitTestApprPolynomial2()
 {
-    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial3");
+    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial2");
 
     TestSameDegree();
     TestDifferentDegrees();
 }
 
-void UnitTestApprPolynomial3::TestSameDegree()
+void UnitTestApprPolynomial2::TestSameDegree()
 {
     std::vector<std::array<double, 3>> observations(1024);
     std::ifstream inFile("Mathematics/Approximation/3D/Input/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
@@ -35,7 +35,7 @@ void UnitTestApprPolynomial3::TestSameDegree()
     inFile.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
     inFile.close();
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial3Input.txt");
+    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial2Input.txt");
     for (auto const& p : observations)
     {
         outFile << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << std::endl;
@@ -46,7 +46,7 @@ void UnitTestApprPolynomial3::TestSameDegree()
     std::size_t constexpr xDegree = 3, yDegree = 3;
     Polynomial<double, 2> polynomial{};
     std::array<double, 2> xExtreme{}, yExtreme{}, wExtreme{};
-    bool success = ApprPolynomial3<double>::Fit(xDegree, yDegree, observations,
+    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations,
         polynomial, xExtreme, yExtreme, wExtreme);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
@@ -107,7 +107,7 @@ void UnitTestApprPolynomial3::TestSameDegree()
     UTAssert(error <= maxError, "The w-value is incorrect.");
 }
 
-void UnitTestApprPolynomial3::TestDifferentDegrees()
+void UnitTestApprPolynomial2::TestDifferentDegrees()
 {
     std::vector<std::array<double, 3>> observations(1024);
     std::ifstream inFile("Mathematics/Approximation/3D/Input/RandomUnitPoints3D_Double_1024.binary", std::ios::binary);
@@ -115,7 +115,7 @@ void UnitTestApprPolynomial3::TestDifferentDegrees()
     inFile.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
     inFile.close();
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial3Input.txt");
+    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial2Input.txt");
     for (auto const& p : observations)
     {
         outFile << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << std::endl;
@@ -126,7 +126,7 @@ void UnitTestApprPolynomial3::TestDifferentDegrees()
     std::size_t constexpr xDegree = 3, yDegree = 1;
     Polynomial<double, 2> polynomial{};
     std::array<double, 2> xExtreme{}, yExtreme{}, wExtreme{};
-    bool success = ApprPolynomial3<double>::Fit(xDegree, yDegree, observations,
+    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations,
         polynomial, xExtreme, yExtreme, wExtreme);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
@@ -184,20 +184,20 @@ void UnitTestApprPolynomial3::TestDifferentDegrees()
 #if defined(GTL_INSTANTIATE_RATIONAL)
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #endif
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial3.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial2.h>
 
 namespace gtl
 {
-    template class ApprPolynomial3<float>;
-    template class ApprPolynomial3<double>;
+    template class ApprPolynomial2<float>;
+    template class ApprPolynomial2<double>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
-    template class ApprPolynomial3<Rational>;
+    template class ApprPolynomial2<Rational>;
 #endif
 }
 
 #endif
 
 #include <UnitTestsNamespaces.h>
-GTL_TEST_FUNCTION(ApprPolynomial3)
+GTL_TEST_FUNCTION(ApprPolynomial2)

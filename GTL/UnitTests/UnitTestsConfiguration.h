@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.27
+// File Version: 0.0.2025.10.29
 
 #pragma once
 
@@ -125,9 +125,9 @@
 
 // Mathematics/Approximation/Polynomial
 #if defined(UT_MATHEMATICS_APPROXIMATION_POLYNOMIAL)
+#define UT_MATHEMATICS_APPRPOLYNOMIAL1
 #define UT_MATHEMATICS_APPRPOLYNOMIAL2
 #define UT_MATHEMATICS_APPRPOLYNOMIAL3
-#define UT_MATHEMATICS_APPRPOLYNOMIAL4
 //#define UT_MATHEMATICS_APPRPOLYNOMIALSPECIAL
 #endif
 

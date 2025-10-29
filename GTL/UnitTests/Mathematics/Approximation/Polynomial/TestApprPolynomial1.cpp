@@ -1,6 +1,6 @@
 #if defined(GTL_UNIT_TESTS)
 #include <UnitTestsExceptions.h>
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial2.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial1.h>
 #include <fstream>
 using namespace gtl;
 
@@ -8,24 +8,24 @@ using namespace gtl;
 
 namespace gtl
 {
-    class UnitTestApprPolynomial2
+    class UnitTestApprPolynomial1
     {
     public:
-        UnitTestApprPolynomial2();
+        UnitTestApprPolynomial1();
 
     private:
         void Test();
     };
 }
 
-UnitTestApprPolynomial2::UnitTestApprPolynomial2()
+UnitTestApprPolynomial1::UnitTestApprPolynomial1()
 {
-    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial2");
+    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial1");
 
     Test();
 }
 
-void UnitTestApprPolynomial2::Test()
+void UnitTestApprPolynomial1::Test()
 {
     std::vector<std::array<double, 2>> observations(1024);
     std::ifstream inFile("Mathematics/Approximation/2D/Input/RandomUnitPoints2D_Double_1024.binary", std::ios::binary);
@@ -33,7 +33,7 @@ void UnitTestApprPolynomial2::Test()
     inFile.read((char*)observations.data(), observations.size() * sizeof(observations[0]));
     inFile.close();
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial2Input.txt");
+    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomial1Input.txt");
     for (auto const& p : observations)
     {
         outFile << std::setprecision(17) << p[0] << "," << p[1] << std::endl;
@@ -44,7 +44,7 @@ void UnitTestApprPolynomial2::Test()
     std::size_t constexpr xDegree = 3;
     Polynomial<double, 1> polynomial{};
     std::array<double, 2> xExtreme{}, wExtreme{};
-    bool success = ApprPolynomial2<double>::Fit(xDegree, observations,
+    bool success = ApprPolynomial1<double>::Fit(xDegree, observations,
         polynomial, xExtreme, wExtreme);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
@@ -99,20 +99,20 @@ void UnitTestApprPolynomial2::Test()
 #if defined(GTL_INSTANTIATE_RATIONAL)
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #endif
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial2.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial1.h>
 
 namespace gtl
 {
-    template class ApprPolynomial2<float>;
-    template class ApprPolynomial2<double>;
+    template class ApprPolynomial1<float>;
+    template class ApprPolynomial1<double>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
-    template class ApprPolynomial2<Rational>;
+    template class ApprPolynomial1<Rational>;
 #endif
 }
 
 #endif
 
 #include <UnitTestsNamespaces.h>
-GTL_TEST_FUNCTION(ApprPolynomial2)
+GTL_TEST_FUNCTION(ApprPolynomial1)

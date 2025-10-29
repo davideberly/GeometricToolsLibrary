@@ -1350,7 +1350,13 @@
     <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatArc3.cpp">
       <Filter>Mathematics\Approximation\3D</Filter>
     </ClCompile>
-    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomialSpecial.cpp">
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial1.cpp">
+      <Filter>Mathematics\Approximation\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial2.cpp">
+      <Filter>Mathematics\Approximation\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial3.cpp">
       <Filter>Mathematics\Approximation\Polynomial</Filter>
     </ClCompile>
   </ItemGroup>
