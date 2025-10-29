@@ -52,9 +52,7 @@
     <ClCompile Include="Mathematics\Approximation\3D\TestApprSphere3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprTorus3.cpp" />
     <ClCompile Include="Mathematics\Approximation\ND\TestApprGaussianDistribution.cpp" />
-    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial2.cpp" />
-    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial3.cpp" />
-    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial4.cpp" />
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomialSpecial.cpp" />
     <ClCompile Include="Mathematics\Arithmetic\TestAPConversion.cpp" />
     <ClCompile Include="Mathematics\Arithmetic\TestAPInterval.cpp" />
     <ClCompile Include="Mathematics\Arithmetic\TestBitHacks.cpp" />

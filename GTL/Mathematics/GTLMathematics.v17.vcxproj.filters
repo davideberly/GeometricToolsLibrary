@@ -363,9 +363,6 @@
     <ClInclude Include="Approximation\ND\ApprGaussianDistribution.h">
       <Filter>Approximation\ND</Filter>
     </ClInclude>
-    <ClInclude Include="Approximation\Polynomial\ApprPolynomial2.h">
-      <Filter>Approximation\Polynomial</Filter>
-    </ClInclude>
     <ClInclude Include="Containment\2D\ContScribeCircle2.h">
       <Filter>Containment\2D</Filter>
     </ClInclude>
@@ -1305,10 +1302,7 @@
     <ClInclude Include="Approximation\3D\ApprGreatArc3.h">
       <Filter>Approximation\3D</Filter>
     </ClInclude>
-    <ClInclude Include="Approximation\Polynomial\ApprPolynomial3.h">
-      <Filter>Approximation\Polynomial</Filter>
-    </ClInclude>
-    <ClInclude Include="Approximation\Polynomial\ApprPolynomial4.h">
+    <ClInclude Include="Approximation\Polynomial\ApprPolynomialSpecial.h">
       <Filter>Approximation\Polynomial</Filter>
     </ClInclude>
   </ItemGroup>
