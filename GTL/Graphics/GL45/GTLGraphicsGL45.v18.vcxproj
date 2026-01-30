@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTLGraphics.v18.vcxproj">
+      <Project>{b15cb711-f650-4063-9c7c-e7a5f88139a2}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\GL45.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\GL45Engine.cpp" />
+    <ClCompile Include="Engine\GL45GraphicsObject.cpp" />
+    <ClCompile Include="GLSL\GLSLComputeProgram.cpp" />
+    <ClCompile Include="GLSL\GLSLProgramFactory.cpp" />
+    <ClCompile Include="GLSL\GLSLReflection.cpp" />
+    <ClCompile Include="GLSL\GLSLShader.cpp" />
+    <ClCompile Include="GLSL\GLSLVisualProgram.cpp" />
+    <ClCompile Include="GLX\GLXEngine.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GLX\GLXExtensions.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GTLGraphicsGL45.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="InputLayout\GL45InputLayout.cpp" />
+    <ClCompile Include="InputLayout\GL45InputLayoutManager.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45AtomicCounterBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45Buffer.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45ConstantBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45IndexBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45StructuredBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\GL45VertexBuffer.cpp" />
+    <ClCompile Include="Resources\GL45Resource.cpp" />
+    <ClCompile Include="Resources\Textures\GL45DrawTarget.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture1.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture1Array.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture2.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture2Array.cpp" />
+    <ClCompile Include="Resources\Textures\GL45Texture3.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureArray.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureCube.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureCubeArray.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureDS.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureRT.cpp" />
+    <ClCompile Include="Resources\Textures\GL45TextureSingle.cpp" />
+    <ClCompile Include="State\GL45BlendState.cpp" />
+    <ClCompile Include="State\GL45DepthStencilState.cpp" />
+    <ClCompile Include="State\GL45DrawingState.cpp" />
+    <ClCompile Include="State\GL45RasterizerState.cpp" />
+    <ClCompile Include="State\GL45SamplerState.cpp" />
+    <ClCompile Include="WGL\WGLEngine.cpp" />
+    <ClCompile Include="WGL\WGLExtensions.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\GL45.h" />
+    <ClInclude Include="Engine\GL45Engine.h" />
+    <ClInclude Include="Engine\GL45GraphicsObject.h" />
+    <ClInclude Include="GLSL\GLSLComputeProgram.h" />
+    <ClInclude Include="GLSL\GLSLProgramFactory.h" />
+    <ClInclude Include="GLSL\GLSLReflection.h" />
+    <ClInclude Include="GLSL\GLSLShader.h" />
+    <ClInclude Include="GLSL\GLSLVisualProgram.h" />
+    <ClInclude Include="GLX\GLXEngine.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="GL\glcorearb.h" />
+    <ClInclude Include="GL\glext.h" />
+    <ClInclude Include="GL\glxext.h" />
+    <ClInclude Include="GL\wglext.h" />
+    <ClInclude Include="GTLGraphicsGL45.h" />
+    <ClInclude Include="GTLGraphicsGL45PCH.h" />
+    <ClInclude Include="InputLayout\GL45InputLayout.h" />
+    <ClInclude Include="InputLayout\GL45InputLayoutManager.h" />
+    <ClInclude Include="Resources\Buffers\GL45AtomicCounterBuffer.h" />
+    <ClInclude Include="Resources\Buffers\GL45Buffer.h" />
+    <ClInclude Include="Resources\Buffers\GL45ConstantBuffer.h" />
+    <ClInclude Include="Resources\Buffers\GL45IndexBuffer.h" />
+    <ClInclude Include="Resources\Buffers\GL45StructuredBuffer.h" />
+    <ClInclude Include="Resources\Buffers\GL45VertexBuffer.h" />
+    <ClInclude Include="Resources\GL45Resource.h" />
+    <ClInclude Include="Resources\Textures\GL45DrawTarget.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture1.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture1Array.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture2.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture2Array.h" />
+    <ClInclude Include="Resources\Textures\GL45Texture3.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureArray.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureCube.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureCubeArray.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureDS.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureRT.h" />
+    <ClInclude Include="Resources\Textures\GL45TextureSingle.h" />
+    <ClInclude Include="State\GL45BlendState.h" />
+    <ClInclude Include="State\GL45DepthStencilState.h" />
+    <ClInclude Include="State\GL45DrawingState.h" />
+    <ClInclude Include="State\GL45RasterizerState.h" />
+    <ClInclude Include="State\GL45SamplerState.h" />
+    <ClInclude Include="WGL\WGLEngine.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <ProjectGuid>{00DEFF42-0F7C-4A7C-9C1F-59322B9E9004}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GTLGraphicsDX11.v18</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;../../../.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>GTLGraphicsGL45PCH.h</PrecompiledHeaderFile>
+      <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_OPENGL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;../../../.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>GTLGraphicsGL45PCH.h</PrecompiledHeaderFile>
+      <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

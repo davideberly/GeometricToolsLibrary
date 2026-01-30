@@ -43,9 +43,7 @@ void UnitTestApprPolynomial3::Test()
 
     std::size_t constexpr xDegree = 3, yDegree = 2, zDegree = 1;
     Polynomial<double, 3> polynomial{};
-    std::array<double, 2> xExtreme{}, yExtreme{}, zExtreme{}, wExtreme{};
-    bool success = ApprPolynomial3<double>::Fit(xDegree, yDegree, zDegree, observations,
-        polynomial, xExtreme, yExtreme, zExtreme, wExtreme);
+    bool success = ApprPolynomial3<double>::Fit(xDegree, yDegree, zDegree, observations, polynomial);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
     //   {1, x, x^2, x^3} [polynomial.mCoefficient[0].mCoefficient[0].mCoefficient[0..3]]
@@ -96,23 +94,6 @@ void UnitTestApprPolynomial3::Test()
                     + "][" + std::to_string(r) + "][" + std::to_string(c) + "]");
             }
         }
-    }
-
-    std::array<double, 2> expectedXExtreme{ -0.99651681129409786, 0.99988315531559957 };
-    std::array<double, 2> expectedYExtreme{ -0.99606591039127690, 0.99972259312224510 };
-    std::array<double, 2> expectedZExtreme{ -0.99997571560185605, 0.99608215171706327 };
-    std::array<double, 2> expectedWExtreme{ -0.99874379726483786, 0.99838581631689394 };
-
-    for (std::size_t i = 0; i < 2; ++i)
-    {
-        error = std::fabs(xExtreme[i] - expectedXExtreme[i]);
-        UTAssert(error <= maxError, "The x-extreme value is incorrect.");
-        error = std::fabs(yExtreme[i] - expectedYExtreme[i]);
-        UTAssert(error <= maxError, "The y-extreme value is incorrect.");
-        error = std::fabs(zExtreme[i] - expectedZExtreme[i]);
-        UTAssert(error <= maxError, "The z-extreme value is incorrect.");
-        error = std::fabs(wExtreme[i] - expectedWExtreme[i]);
-        UTAssert(error <= maxError, "The w-extreme value is incorrect.");
     }
 
     std::array<double, 3> x = { 0.0, 0.0, 0.0 };

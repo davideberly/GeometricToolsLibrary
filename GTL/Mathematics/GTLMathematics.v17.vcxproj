@@ -45,6 +45,7 @@
     <ClInclude Include="Approximation\3D\ApprSphere3.h" />
     <ClInclude Include="Approximation\3D\ApprTorus3.h" />
     <ClInclude Include="Approximation\ND\ApprGaussianDistribution.h" />
+    <ClInclude Include="Approximation\Polynomial\ApprPolynomial.h" />
     <ClInclude Include="Approximation\Polynomial\ApprPolynomial1.h" />
     <ClInclude Include="Approximation\Polynomial\ApprPolynomial2.h" />
     <ClInclude Include="Approximation\Polynomial\ApprPolynomial3.h" />

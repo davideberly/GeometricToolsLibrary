@@ -7,11 +7,11 @@
 
 #pragma once
 
-// Fit a polynomial to data, where the polynomial terms have specially chosen
+// Fit a polynomial to data, where the polynomial terms have user-specified
 // powers. Let N be the number of independent variables X = (x[0],...,x[N-1]).
 // The polynomial is
 //   y = sum_{j=0}^{m-1} c[j] * prod_{i=0}^{N-1} x[i]^{d[j][i]}
-// Each m-tuple of degrees D[j] = (d[j][0], ..., d[j][N-1]) must be unique;
+// Each N-tuple of degrees D[j] = (d[j][0], ..., d[j][N-1]) must be unique;
 // that is, D[j0] != D[j1] for j0 != j1. A least-squares fitting algorithm is
 // used, but the input data is first mapped to (x',y') in [-1,1]^{N+1} for
 // numerical robustness.
@@ -20,12 +20,13 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
+#include <map>
 #include <vector>
 
 namespace gtl
 {
     template <typename T, std::size_t N>
-    class ApprPolynomialSpecial
+    class ApprPolynomial
     {
     public:
         class Polynomial
@@ -121,7 +122,7 @@ namespace gtl
         private:
             // Allow the approximator to set the members of Polynomial without
             // having to expose them in public scope.
-            friend class ApprPolynomialSpecial<T, N>;
+            friend class ApprPolynomial<T, N>;
 
             // The mDegrees and mCoefficients have the same size.
             std::vector<std::array<std::size_t, N>> mDegrees;
@@ -134,10 +135,13 @@ namespace gtl
             mutable std::array<std::vector<T>, N> mPowers;
         };
 
+        using BasisElement = std::array<std::size_t, N>;
+        using Observation = std::array<T, N + 1>;
+
         static bool Fit(
-            std::vector<std::array<T, N + 1>> const& observations,
-            std::vector<std::array<std::size_t, N>> const& degrees,
-            Polynomial& polynomial)
+            std::vector<BasisElement> const& basis,
+            std::vector<Observation> const& observations,
+            std::map<std::array<std::size_t, N>, T>& polynomial)
         {
             GTL_ARGUMENT_ASSERT(
                 observations.size() > 0 && degrees.size() > 0,
@@ -306,6 +310,6 @@ namespace gtl
         }
 
     private:
-        friend class UnitTestApprPolynomialSpecial;
+        friend class UnitTestApprPolynomial;
     };
 }

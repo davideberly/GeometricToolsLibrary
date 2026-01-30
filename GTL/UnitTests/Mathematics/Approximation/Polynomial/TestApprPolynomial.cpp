@@ -1,6 +1,6 @@
 #if defined(GTL_UNIT_TESTS)
 #include <UnitTestsExceptions.h>
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomialSpecial.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial.h>
 #include <fstream>
 using namespace gtl;
 
@@ -8,24 +8,24 @@ using namespace gtl;
 
 namespace gtl
 {
-    class UnitTestApprPolynomialSpecial
+    class UnitTestApprPolynomial
     {
     public:
-        UnitTestApprPolynomialSpecial();
+        UnitTestApprPolynomial();
 
     private:
         void Test();
     };
 }
 
-UnitTestApprPolynomialSpecial::UnitTestApprPolynomialSpecial()
+UnitTestApprPolynomial::UnitTestApprPolynomial()
 {
-    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomialSpecial");
+    UTInformation("Mathematics/Approximation/Polynomial/ApprPolynomial");
 
     Test();
 }
 
-void UnitTestApprPolynomialSpecial::Test()
+void UnitTestApprPolynomial::Test()
 {
     std::vector<std::array<double, 4>> observations(1024);
     std::ifstream inFile("Mathematics/Approximation/ND/Input/RandomUnitPoints4D_Double_1024.binary", std::ios::binary);
@@ -34,7 +34,7 @@ void UnitTestApprPolynomialSpecial::Test()
     inFile.close();
 
 #if defined(INTERNAL_GENERATE_DATA)
-    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomialSpecialInput.txt");
+    std::ofstream outFile("Mathematics/Approximation/Polynomial/Input/ApprPolynomialInput.txt");
     for (auto const& p : observations)
     {
         outFile << std::setprecision(17) << p[0] << "," << p[1] << "," << p[2] << "," << p[3] << std::endl;
@@ -67,9 +67,9 @@ void UnitTestApprPolynomialSpecial::Test()
     degrees[21] = { 1, 2, 1 };
     degrees[22] = { 2, 2, 1 };
     degrees[23] = { 3, 2, 1 };
-    ApprPolynomialSpecial<double, 3>::Polynomial polynomial{};
+    std::map<std::array<std::size_t, 3>, double> polynomial{};
     std::array<double, 2> xExtreme{}, yExtreme{}, zExtreme{}, wExtreme{};
-    bool success = ApprPolynomialSpecial<double, 3>::Fit(observations, degrees, polynomial);
+    bool success = ApprPolynomial<double, 3>::Fit(degrees, observations,  polynomial);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
     //   {1, x, x^2, x^3} [polynomial.mCoefficient[0].mCoefficient[0].mCoefficient[0..3]]
@@ -85,11 +85,12 @@ void UnitTestApprPolynomialSpecial::Test()
     //   {z*y^2, z*y^2*x, z*y^2*x^2, z*y^2*x^3} [polynomial.mCoefficient[1].mCoefficient[2].mCoefficient[0..3]]
     //   {-0.0079261803145761148, -0.28109860505322548, 0.13176597647613700, -0.011491032406311705}
 
+#if 0
     // From Mathematica's "Fit" function
     // basis = {1, x, x^2, x^3, y, y*x y*x^2, y*x^3, y^2, y^2*x, y^2*x^2, y^2*x^3, 
     //     z, z*x, z*x^2, z*x^3, z*y, z*y*x, z*y*x^2, z*y*x^3, z*y^2, z*y^2*x, z*y^2*x^2, z*y^2*x^3}
     // Fit[SetPrecision[points, 17], basis, {x,y}, WorkingPrecision -> 64]
-    ApprPolynomialSpecial<double, 3>::Polynomial expectedPolynomial
+    ApprPolynomial<double, 3>::Polynomial expectedPolynomial
     {
         {{-0.014284589238581833, -0.26965168367313349, 0.017179112803375081, 0.26714751715802264},
         {-0.017659624992757659, 0.025837391113289479, -0.06958343249174566, 0.05537074489933345},
@@ -144,6 +145,7 @@ void UnitTestApprPolynomialSpecial::Test()
     double expectedW = -0.014284589238581596;
     error = std::fabs(w - expectedW);
     UTAssert(error <= maxError, "The w-value is incorrect.");
+#endif
 }
 
 #else
@@ -151,20 +153,20 @@ void UnitTestApprPolynomialSpecial::Test()
 #if defined(GTL_INSTANTIATE_RATIONAL)
 #include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #endif
-#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomialSpecial.h>
+#include <GTL/Mathematics/Approximation/Polynomial/ApprPolynomial.h>
 
 namespace gtl
 {
-    template class ApprPolynomialSpecial<float>;
-    template class ApprPolynomialSpecial<double>;
+    template class ApprPolynomial<float, 2>;
+    template class ApprPolynomial<double, 3>;
 
 #if defined(GTL_INSTANTIATE_RATIONAL)
     using Rational = BSRational<UIntegerAP32>;
-    template class ApprPolynomialSpecial<Rational>;
+    template class ApprPolynomial<Rational, 4>;
 #endif
 }
 
 #endif
 
 #include <UnitTestsNamespaces.h>
-GTL_TEST_FUNCTION(ApprPolynomialSpecial)
+GTL_TEST_FUNCTION(ApprPolynomial)

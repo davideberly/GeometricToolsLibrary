@@ -8,8 +8,8 @@
 #pragma once
 
 // The samples are (x[i],y[i],w[i]) for 0 <= i < S. Think of w as a function
-// of x and y, say w = f(x,y). The function fits the samples with a
-// polynomial of degree d0 in x and degree d1 in y, say
+// of x and y, say w = f(x,y). The function fits the samples with a polynomial
+// of degree d0 in x and degree d1 in y, 
 //   w = sum_{i=0}^{d0} sum_{j=0}^{d1} c[i][j]*x^i*y^j
 // The method is a least-squares fitting algorithm. The observation type is
 // std::array<T,2>, which represents a 3-tuple (x,y,w).
@@ -43,54 +43,20 @@ namespace gtl
     class ApprPolynomial2
     {
     public:
-        static bool Fit(std::size_t xDegree, std::size_t yDegree,
+        static bool Fit(
+            std::size_t xDegree, std::size_t yDegree,
             std::vector<std::array<T, 3>> const& observations,
-            Polynomial<T, 2>& polynomial, std::array<T, 2>& xExtreme,
-            std::array<T, 2>& yExtreme, std::array<T, 2>& wExtreme)
+            Polynomial<T, 2>& polynomial)
         {
             // Compute the powers of x and y.
             std::size_t const twoXDegree = 2 * xDegree;
             std::size_t const twoYDegree = 2 * yDegree;
             Matrix<T> xPower(observations.size(), twoXDegree + 1);
             Matrix<T> yPower(observations.size(), twoYDegree + 1);
-            xExtreme[0] = observations[0][0];
-            xExtreme[1] = xExtreme[0];
-            yExtreme[0] = observations[0][1];
-            yExtreme[1] = yExtreme[0];
-            wExtreme[0] = observations[0][2];
-            wExtreme[1] = wExtreme[0];
             for (std::size_t s = 0; s < observations.size(); ++s)
             {
                 T const& x = observations[s][0];
                 T const& y = observations[s][1];
-                T const& w = observations[s][2];
-
-                if (x < xExtreme[0])
-                {
-                    xExtreme[0] = x;
-                }
-                else if (x > xExtreme[1])
-                {
-                    xExtreme[1] = x;
-                }
-
-                if (y < yExtreme[0])
-                {
-                    yExtreme[0] = y;
-                }
-                else if (y > yExtreme[1])
-                {
-                    yExtreme[1] = y;
-                }
-
-                if (w < wExtreme[0])
-                {
-                    wExtreme[0] = w;
-                }
-                else if (w > wExtreme[1])
-                {
-                    wExtreme[1] = w;
-                }
 
                 xPower(s, 0) = C_<T>(1);
                 for (std::size_t j0 = 0, j1 = 1; j1 <= twoXDegree; j0 = j1++)

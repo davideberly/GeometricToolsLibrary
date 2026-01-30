@@ -43,9 +43,7 @@ void UnitTestApprPolynomial1::Test()
 
     std::size_t constexpr xDegree = 3;
     Polynomial<double, 1> polynomial{};
-    std::array<double, 2> xExtreme{}, wExtreme{};
-    bool success = ApprPolynomial1<double>::Fit(xDegree, observations,
-        polynomial, xExtreme, wExtreme);
+    bool success = ApprPolynomial1<double>::Fit(xDegree, observations, polynomial);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
     // {1, x, x^2, x^3}
@@ -73,18 +71,6 @@ void UnitTestApprPolynomial1::Test()
     {
         error = std::fabs(diff[i]);
         UTAssert(error <= maxError, "Inaccurate result diff[" + std::to_string(i) + "].");;
-    }
-
-    std::array<double, 2> expectedXExtreme{ -2.8077941722892099, 4.8079669163559924 };
-    std::array<double, 2> expectedWExtreme{ -1.8078876442533560, 5.8078827166748379 };
-
-    for (std::size_t i = 0; i < 2; ++i)
-    {
-        error = std::fabs(xExtreme[i] - expectedXExtreme[i]);
-        UTAssert(error <= maxError, "The x-extreme value is incorrect.");
-
-        error = std::fabs(wExtreme[i] - expectedWExtreme[i]);
-        UTAssert(error <= maxError, "The w-extreme value is incorrect.");
     }
 
     double x = 0.0;

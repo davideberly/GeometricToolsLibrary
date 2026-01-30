@@ -40,40 +40,17 @@ namespace gtl
     class ApprPolynomial1
     {
     public:
-        static bool Fit(std::size_t xDegree,
+        static bool Fit(
+            std::size_t xDegree,
             std::vector<std::array<T, 2>> const& observations,
-            Polynomial<T, 1>& polynomial, std::array<T, 2>& xExtreme,
-            std::array<T, 2>& wExtreme)
+            Polynomial<T, 1>& polynomial)
         {
             // Compute the powers of x.
             std::size_t const twoXDegree = 2 * xDegree;
             Matrix<T> xPower(observations.size(), twoXDegree + 1);
-            xExtreme[0] = observations[0][0];
-            xExtreme[1] = xExtreme[0];
-            wExtreme[0] = observations[0][1];
-            wExtreme[1] = wExtreme[0];
             for (std::size_t s = 0; s < observations.size(); ++s)
             {
                 T const& x = observations[s][0];
-                T const& w = observations[s][1];
-
-                if (x < xExtreme[0])
-                {
-                    xExtreme[0] = x;
-                }
-                else if (x > xExtreme[1])
-                {
-                    xExtreme[1] = x;
-                }
-
-                if (w < wExtreme[0])
-                {
-                    wExtreme[0] = w;
-                }
-                else if (w > wExtreme[1])
-                {
-                    wExtreme[1] = w;
-                }
 
                 xPower(s, 0) = C_<T>(1);
                 for (std::size_t j0 = 0, j1 = 1; j1 <= twoXDegree; j0 = j1++)

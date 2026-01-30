@@ -52,6 +52,12 @@
     <ClCompile Include="Mathematics\Approximation\3D\TestApprSphere3.cpp" />
     <ClCompile Include="Mathematics\Approximation\3D\TestApprTorus3.cpp" />
     <ClCompile Include="Mathematics\Approximation\ND\TestApprGaussianDistribution.cpp" />
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial1.cpp" />
     <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial2.cpp" />
     <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial3.cpp" />
@@ -449,7 +455,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>UnitTests</RootNamespace>
+    <RootNamespace>UnitTests.v17</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

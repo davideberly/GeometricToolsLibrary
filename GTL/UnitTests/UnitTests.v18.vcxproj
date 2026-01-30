@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugInstantiate|x64">
+      <Configuration>DebugInstantiate</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseInstantiate|x64">
+      <Configuration>ReleaseInstantiate</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Mathematics\Algebra\TestAffineTransform.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestAxisAngle.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestConvertCoordinates.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestDualQuaternion.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestEulerAngles.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestLieGroupsAlgebras.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestMatrix.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestMatrixAccessor.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestPolynomial.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestQuaternion.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestRigidMotion.cpp" />
+    <ClCompile Include="Mathematics\Algebra\TestVector.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprCircle2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprCurveByArcs.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprEllipse2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprEllipseByArcs.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprHeightLine2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprOrthogonalLine2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprParabola2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\2D\TestApprParallelLines2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprCone3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprCylinder3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprEllipsoid3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatArc3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprGreatCircle3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprHeightPlane3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprHelmertTransformation3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprOrthogonalLine3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprOrthogonalPlane3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprParaboloid3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprSphere3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\3D\TestApprTorus3.cpp" />
+    <ClCompile Include="Mathematics\Approximation\ND\TestApprGaussianDistribution.cpp" />
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial1.cpp" />
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial2.cpp" />
+    <ClCompile Include="Mathematics\Approximation\Polynomial\TestApprPolynomial3.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestAPConversion.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestAPInterval.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestBitHacks.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestBSNumber.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestBSPrecision.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestBSRational.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestConstants.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEBinary.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEBinary16.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestIEEEFunctions.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestQFNumber.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestSWInterval.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerALU32.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerAP32.cpp" />
+    <ClCompile Include="Mathematics\Arithmetic\TestUIntegerFP32.cpp" />
+    <ClCompile Include="Mathematics\Containment\2D\TestContOrientedBox2.cpp" />
+    <ClCompile Include="Mathematics\Containment\2D\TestContScribeCircle2.cpp" />
+    <ClCompile Include="Mathematics\Containment\3D\TestContOrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Containment\3D\TestContTetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\Containment\ND\TestContAlignedBox.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestBasisFunction.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestBezierCurve.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestBSplineCurve.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestBSplineCurveFit.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestBSplineGeodesic.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestEllipsoidGeodesic.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestFrenetFrame.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestImplicitCurve2.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestNaturalCubicSpline.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestNaturalQuinticSpline.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestNURBSCircle.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestNURBSCurve.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestParametricCurve.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestPolynomialCurve.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestReparameterizeByArclength.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestRiemannianGeodesic.cpp" />
+    <ClCompile Include="Mathematics\Curves\TestTCBSplineCurve.cpp" />
+    <ClCompile Include="Mathematics\DifferentialEquations\TestOdeEuler.cpp" />
+    <ClCompile Include="Mathematics\DifferentialEquations\TestOdeImplicitEuler.cpp" />
+    <ClCompile Include="Mathematics\DifferentialEquations\TestOdeMidpoint.cpp" />
+    <ClCompile Include="Mathematics\DifferentialEquations\TestOdeRungeKutta4.cpp" />
+    <ClCompile Include="Mathematics\DifferentialEquations\TestOdeSolver.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistCircle2Circle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistLine2AlignedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistLine2Arc2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistLine2Circle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistLine2OrientedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistLine2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistPoint2Arc2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistPoint2Circle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistPoint2Parallelogram2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistRay2AlignedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistRay2Arc2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistRay2Circle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistRay2OrientedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistRay2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistSegment2AlignedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistSegment2Arc2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistSegment2Circle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistSegment2OrientedBox2.cpp" />
+    <ClCompile Include="Mathematics\Distance\2D\TestDistSegment2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistAlignedBox3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistCircle3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3Arc3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3Rectangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLine3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistLinearCircularSupport3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistOrientedBox3Cone3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistOrientedBox3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPlane3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPlane3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPlane3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Arc3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3ConvexPolyhedron3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Frustum3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Parallelepiped.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistPoint3Tetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3Arc3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3Rectangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRay3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRectangle3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRectangle3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRectangle3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistRectangle3Rectangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3Arc3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3Rectangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistSegment3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTetrahedron3Tetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTriangle3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTriangle3CanonicalBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTriangle3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTriangle3Rectangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\3D\TestDistTriangle3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistAlignedBoxAlignedBox.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistLineLine.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistLineRay.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistLineSegment.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointAlignedBox.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointCanonicalBox.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointHyperellipsoid.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointHyperplane.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointLine.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointOrientedBox.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointRay.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointRectangle.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointSegment.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistPointTriangle.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistRayRay.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistRaySegment.cpp" />
+    <ClCompile Include="Mathematics\Distance\ND\TestDistSegmentSegment.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestACosEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestASinEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestATanEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestChebyshevRatio.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestChebyshevRatioEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestCosEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestExp2Estimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestExpEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestInvSqrtEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestLog2Estimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestLogEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestRemezAlgorithm.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestRotationEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestSinEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestSlerp.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestSlerpEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestSqrtEstimate.cpp" />
+    <ClCompile Include="Mathematics\Functions\TestTanEstimate.cpp" />
+    <ClCompile Include="Mathematics\Geometry\1D\TestDisjointIntervals.cpp" />
+    <ClCompile Include="Mathematics\Geometry\1D\TestExactSignDeterminant2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\1D\TestExactSignDeterminant3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\1D\TestExactSignDeterminant4.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestBSPPolygon2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestConstrainedDelaunay2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestConvexHull2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestConvexHullSimplePolygon.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestDelaunay2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestDisjointRectangles.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestExactColinear2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestExactToCircumcircle2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestExactToLine2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestExactToLineExtended2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestExactToTriangle2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestIncrementalDelaunay2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestMinimumAreaBox2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestMinimumWidthPoints2.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestPolygonTree.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestPolygonWindingOrder.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestRotatingCalipers.cpp" />
+    <ClCompile Include="Mathematics\Geometry\2D\TestTriangulateCDT.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestConvexHull3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestDelaunay3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestExactColinear3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestExactCoplanar3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestExactToCircumsphere3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestExactToPlane3.cpp" />
+    <ClCompile Include="Mathematics\Geometry\3D\TestExactToTetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\ImageProcessing\TestRasterize2.cpp" />
+    <ClCompile Include="Mathematics\Integration\TestIntgGaussianQuadrature.cpp" />
+    <ClCompile Include="Mathematics\Integration\TestIntgRomberg.cpp" />
+    <ClCompile Include="Mathematics\Integration\TestIntgTrapezoidRule.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\1D\TestIntpBSplineUniform1.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteCubic1.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\1D\TestIntpHermiteQuintic1.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpAkimaUniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpBSplineUniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpCubic2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteCubic2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpHermiteQuintic2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinear2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpLinearNonuniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpQuadraticNonuniform2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\2D\TestIntpThinPlateSpline2.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpBSplineUniform3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteCubic3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpHermiteQuintic3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\3D\TestIntpThinPlateSpline3.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniform.cpp" />
+    <ClCompile Include="Mathematics\Interpolation\ND\TestIntpBSplineUniformShared.cpp" />
+    <ClCompile Include="Mathematics\Intersection\1D\TestIntrIntervals.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrAreaEllipse2Ellipse2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrEllipse2Ellipse2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrLine2Line2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrLine2Ray2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrLine2Segment2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrLine2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrRay2Ray2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrRay2Segment2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrRay2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrSegment2Segment2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrSegment2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\2D\TestIntrTriangle2Triangle2.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrAlignedBox3Sphere3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrCylinder3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Capsule3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Ellipsoid3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Sphere3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrLine3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrOrientedBox3Sphere3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Circle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrPlane3Plane3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3Capsule3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3Ellipsoid3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3Sphere3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrRay3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3AlignedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Capsule3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Ellipsoid3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3OrientedBox3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Sphere3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrSegment3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrTetrahedron3Tetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Cylinder3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\3D\TestIntrTriangle3Triangle3.cpp" />
+    <ClCompile Include="Mathematics\Intersection\ND\TestIntrAlignedBoxAlignedBox.cpp" />
+    <ClCompile Include="Mathematics\Intersection\ND\TestIntrConvexPolygonHyperplane.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBandedMatrix.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBlockCholeskyDecomposition.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestBlockLDLTDecomposition.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestCholeskyDecomposition.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestGaussianElimination.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestLDLTDecomposition.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestLinearSystem.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestSingularValueDecomposition.cpp" />
+    <ClCompile Include="Mathematics\MatrixAnalysis\TestSymmetricEigensolver.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestDynamicETManifoldMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestDynamicTSManifoldMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestDynamicVETManifoldMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestEdgeKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestFeatureKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestIndexAttribute.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestPlanarMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestRectanglePatchMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestStaticVETManifoldMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestTetrahedronKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestTriangleKey.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestTubeMesh.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestUniqueVerticesSimplices.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestVertexAttribute.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestVETFeaturesKS.cpp" />
+    <ClCompile Include="Mathematics\Meshes\TestVETManifoldMeshKS.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestBrentsMinimizer.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestGaussNewtonMinimizer.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestLCPSolver.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestLevenbergMarquardtMinimizer.cpp" />
+    <ClCompile Include="Mathematics\Minimizers\TestPowellsMinimizer.cpp" />
+    <ClCompile Include="Mathematics\Miscellaneous\TestCircleThroughPointSpecifiedTangentAndRadius.cpp" />
+    <ClCompile Include="Mathematics\Miscellaneous\TestCircleThroughTwoPointsSpecifiedRadius.cpp" />
+    <ClCompile Include="Mathematics\Miscellaneous\TestInscribedFixedAxisRectInQuad.cpp" />
+    <ClCompile Include="Mathematics\Miscellaneous\TestRandomPointOnHypersphere.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestBoxManager.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringArbitrary.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringCurve.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringSurface.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestMassSpringVolume.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestParticleSystem.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestPolyhedralMassProperties.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestRectangleManager.cpp" />
+    <ClCompile Include="Mathematics\Physics\TestRigidBody.cpp" />
+    <ClCompile Include="Mathematics\Primitives\2D\TestArc2.cpp" />
+    <ClCompile Include="Mathematics\Primitives\2D\TestParallelogram2.cpp" />
+    <ClCompile Include="Mathematics\Primitives\2D\TestPolygon2.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestArc3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestCircle3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestConvexMesh3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestConvexPolyhedron3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestEllipse3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestFrustum3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestParallelepiped3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestPolyhedron3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestTetrahedron3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\3D\TestTorus3.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestAlignedBox.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestCanonicalBox.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestCapsule.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestCone.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestCylinder.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestHalfspace.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestHyperellipsoid.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestHyperplane.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestHypersphere.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestLine.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestLozenge.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestOrientedBox.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestRay.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestRectangle.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestSegment.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestSegmentMesh.cpp" />
+    <ClCompile Include="Mathematics\Primitives\ND\TestTriangle.cpp" />
+    <ClCompile Include="Mathematics\Projection\TestProjectEllipsoidToPlane.cpp" />
+    <ClCompile Include="Mathematics\Projection\TestProjectHyperellipsoidToLine.cpp" />
+    <ClCompile Include="Mathematics\Projection\TestProjectPointsToCoordinatePlane.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestPolynomialRoot.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsBisection1.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsBisection2.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsBrentsMethod.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsCubic.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsGeneralPolynomial.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsLinear.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsPolynomial.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsQuadratic.cpp" />
+    <ClCompile Include="Mathematics\RootFinders\TestRootsQuartic.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestBSplineSurface.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestBSplineSurfaceFit.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestDarbouxFrame.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestImplicitSurface3.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestNURBSSphere.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestNURBSSurface.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestParametricSurface.cpp" />
+    <ClCompile Include="Mathematics\Surfaces\TestQuadricSurface.cpp" />
+    <ClCompile Include="Mathematics\UTMathematics.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestBSplineVolume.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestNURBSVolume.cpp" />
+    <ClCompile Include="Mathematics\Volumes\TestParametricVolume.cpp" />
+    <ClCompile Include="UnitTestInstantiate.cpp" />
+    <ClCompile Include="UnitTestsExceptions.cpp" />
+    <ClCompile Include="UnitTestsMain.cpp" />
+    <ClCompile Include="Utility\TestAtomicMinMax.cpp" />
+    <ClCompile Include="Utility\TestContainerAdapter.cpp" />
+    <ClCompile Include="Utility\TestHashCombine.cpp" />
+    <ClCompile Include="Utility\TestLattice.cpp" />
+    <ClCompile Include="Utility\TestMinHeap.cpp" />
+    <ClCompile Include="Utility\TestMinimumSpanningTree.cpp" />
+    <ClCompile Include="Utility\TestMultiarray.cpp" />
+    <ClCompile Include="Utility\TestMultiarrayAdapter.cpp" />
+    <ClCompile Include="Utility\TestRangeIteration.cpp" />
+    <ClCompile Include="Utility\TestRawPtrCompare.cpp" />
+    <ClCompile Include="Utility\TestSharedPtrCompare.cpp" />
+    <ClCompile Include="Utility\TestStringUtility.cpp" />
+    <ClCompile Include="Utility\TestWeakPtrCompare.cpp" />
+    <ClCompile Include="Utility\UTUtility.cpp" />
+    <ClCompile Include="UTLibrary.cpp" />
+    <ClCompile Include="WICFileIONative.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DrawLine.h" />
+    <ClInclude Include="Mathematics\UTMathematics.h" />
+    <ClInclude Include="UnitTestsConfiguration.h" />
+    <ClInclude Include="UnitTestsExceptions.h" />
+    <ClInclude Include="UnitTestsNamespaces.h" />
+    <ClInclude Include="Utility\UTUtility.h" />
+    <ClInclude Include="UTLibrary.h" />
+    <ClInclude Include="WICFileIONative.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Mathematics\Approximation\2D\Input\RandomUnitPoints2D_Double_1024.binary" />
+    <None Include="Mathematics\Approximation\3D\Input\RandomUnitPoints3D_Double_1024.binary" />
+    <None Include="Mathematics\Approximation\ND\Input\RandomUnitPoints4D_Double_1024.binary" />
+    <None Include="Mathematics\Geometry\2D\Input\ConvexHull2DRandom256.binary" />
+    <None Include="Mathematics\Geometry\2D\Input\Delaunay2DRandom256.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2NoSmooth.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power-1.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power0.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power1.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power2.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power3.binary" />
+    <None Include="Mathematics\Interpolation\2D\Input\Input2Power4.binary" />
+    <None Include="Mathematics\Interpolation\3D\Input\molecule97x97x116.binary" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="GTEFilesToPortToGTL.txt" />
+    <Text Include="Mathematics\Geometry\2D\Input\Delaunay2DExpectedTriangles.txt" />
+    <Text Include="Mathematics\ImageProcessing\Input\RealSurfaceExtractionMCTest.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Mathematics\Interpolation\2D\Input\Magician.png" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <ProjectGuid>{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UnitTests.v18</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;GTL_UNIT_TESTS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>Default</LanguageStandard>
+      <AdditionalOptions>/Zc:nrvo- %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugInstantiate|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;GTL_INSTANTIATE_RATIONAL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+      <LanguageStandard>Default</LanguageStandard>
+      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;GTL_UNIT_TESTS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile />
+      <PrecompiledHeaderOutputFile />
+      <LanguageStandard>Default</LanguageStandard>
+      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseInstantiate|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_THROW_ON_INVALID_APINTERVAL;GTL_THROW_ON_BIT_HACKS_ERROR;GTL_THROW_ON_INVALID_BSNUMBER;GTL_THROW_ON_CONVERT_FROM_INFINITY_OR_NAN;GTL_THROW_ON_QFNUMBER_MISMATCHED_D;GTL_THROW_ON_INVALID_SWINTERVAL;GTL_COLLECT_UINTEGERAP32_STATISTICS;GTL_COLLECT_UINTEGERFP32_STATISTICS;GTL_BINARY_SCIENTIFIC_SHOW_DOUBLE;GTL_INSTANTIATE_RATIONAL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;..\..\.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>
+      </PrecompiledHeaderOutputFile>
+      <LanguageStandard>Default</LanguageStandard>
+      <DisableSpecificWarnings>6262</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

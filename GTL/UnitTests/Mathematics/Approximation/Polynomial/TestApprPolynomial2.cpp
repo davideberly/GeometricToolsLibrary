@@ -45,9 +45,7 @@ void UnitTestApprPolynomial2::TestSameDegree()
 
     std::size_t constexpr xDegree = 3, yDegree = 3;
     Polynomial<double, 2> polynomial{};
-    std::array<double, 2> xExtreme{}, yExtreme{}, wExtreme{};
-    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations,
-        polynomial, xExtreme, yExtreme, wExtreme);
+    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations, polynomial);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
     //    {1, y, y^2, y^3}
@@ -87,19 +85,6 @@ void UnitTestApprPolynomial2::TestSameDegree()
         }
     }
 
-    std::array<double, 2> expectedXExtreme{ -0.99874379726483786, 0.99988315531559957 };
-    std::array<double, 2> expectedYExtreme{ -0.99680419189214831, 0.99972259312224510 };
-    std::array<double, 2> expectedWExtreme{ -0.99697032390997875, 0.99608215171706327 };
-    for (std::size_t i = 0; i < 2; ++i)
-    {
-        error = std::fabs(xExtreme[i] - expectedXExtreme[i]);
-        UTAssert(error <= maxError, "The x-extreme value is incorrect.");
-        error = std::fabs(yExtreme[i] - expectedYExtreme[i]);
-        UTAssert(error <= maxError, "The y-extreme value is incorrect.");
-        error = std::fabs(wExtreme[i] - expectedWExtreme[i]);
-        UTAssert(error <= maxError, "The w-extreme value is incorrect.");
-    }
-
     std::array<double, 2> x = { 0.0, 0.0 };
     double w = polynomial(x.data());
     double expectedW = -0.036601514495418062;
@@ -126,8 +111,7 @@ void UnitTestApprPolynomial2::TestDifferentDegrees()
     std::size_t constexpr xDegree = 3, yDegree = 1;
     Polynomial<double, 2> polynomial{};
     std::array<double, 2> xExtreme{}, yExtreme{}, wExtreme{};
-    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations,
-        polynomial, xExtreme, yExtreme, wExtreme);
+    bool success = ApprPolynomial2<double>::Fit(xDegree, yDegree, observations, polynomial);
     UTAssert(success, "The fit failed.");
     // coefficients of polynomial
     //   {1, x, x^2, x^3} [polynomial.mCoefficient[0].mCoefficient[0..3]]

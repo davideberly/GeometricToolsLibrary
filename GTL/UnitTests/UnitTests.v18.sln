@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests.v18", "UnitTests.v18.vcxproj", "{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Required", "Required", "{FB0EACAD-5521-4A7F-9442-8C7F499ED899}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTLUtility.v18", "..\Utility\GTLUtility.v18.vcxproj", "{331349F5-C668-4D28-8A79-5441DAB2BD75}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GTLMathematics.v18", "..\Mathematics\GTLMathematics.v18.vcxproj", "{A51C6FA7-9082-4ECF-B024-A9DF098572A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		DebugInstantiate|x64 = DebugInstantiate|x64
+		Release|x64 = Release|x64
+		ReleaseInstantiate|x64 = ReleaseInstantiate|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.Debug|x64.ActiveCfg = Debug|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.Debug|x64.Build.0 = Debug|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.DebugInstantiate|x64.ActiveCfg = DebugInstantiate|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.DebugInstantiate|x64.Build.0 = DebugInstantiate|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.Release|x64.ActiveCfg = Release|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.Release|x64.Build.0 = Release|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.ReleaseInstantiate|x64.ActiveCfg = ReleaseInstantiate|x64
+		{A7AE15C7-3DA2-4C0B-8CE4-C03EC4DA5052}.ReleaseInstantiate|x64.Build.0 = ReleaseInstantiate|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.Debug|x64.ActiveCfg = Debug|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.Debug|x64.Build.0 = Debug|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.DebugInstantiate|x64.ActiveCfg = Debug|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.DebugInstantiate|x64.Build.0 = Debug|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.Release|x64.ActiveCfg = Release|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.Release|x64.Build.0 = Release|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.ReleaseInstantiate|x64.ActiveCfg = Release|x64
+		{331349F5-C668-4D28-8A79-5441DAB2BD75}.ReleaseInstantiate|x64.Build.0 = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Debug|x64.ActiveCfg = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Debug|x64.Build.0 = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiate|x64.ActiveCfg = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.DebugInstantiate|x64.Build.0 = Debug|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Release|x64.ActiveCfg = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.Release|x64.Build.0 = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiate|x64.ActiveCfg = Release|x64
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7}.ReleaseInstantiate|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{331349F5-C668-4D28-8A79-5441DAB2BD75} = {FB0EACAD-5521-4A7F-9442-8C7F499ED899}
+		{A51C6FA7-9082-4ECF-B024-A9DF098572A7} = {FB0EACAD-5521-4A7F-9442-8C7F499ED899}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB2BFB79-B603-4C16-80B6-E84FB05B4EE3}
+	EndGlobalSection
+EndGlobal

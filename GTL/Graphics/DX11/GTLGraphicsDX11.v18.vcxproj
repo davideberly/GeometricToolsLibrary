@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTLGraphics.v18.vcxproj">
+      <Project>{b15cb711-f650-4063-9c7c-e7a5f88139a2}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DXGI\DXGIAdapter.cpp" />
+    <ClCompile Include="DXGI\DXGIOutput.cpp" />
+    <ClCompile Include="Engine\DX11.cpp" />
+    <ClCompile Include="Engine\DX11Engine.cpp" />
+    <ClCompile Include="Engine\DX11GraphicsObject.cpp" />
+    <ClCompile Include="Engine\DX11PerformanceCounter.cpp" />
+    <ClCompile Include="GTLGraphicsDX11.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="HLSL\HLSLBaseBuffer.cpp" />
+    <ClCompile Include="HLSL\HLSLByteAddressBuffer.cpp" />
+    <ClCompile Include="HLSL\HLSLConstantBuffer.cpp" />
+    <ClCompile Include="HLSL\HLSLParameter.cpp" />
+    <ClCompile Include="HLSL\HLSLProgramFactory.cpp" />
+    <ClCompile Include="HLSL\HLSLReflection.cpp" />
+    <ClCompile Include="HLSL\HLSLResource.cpp" />
+    <ClCompile Include="HLSL\HLSLResourceBindInfo.cpp" />
+    <ClCompile Include="HLSL\HLSLSamplerState.cpp" />
+    <ClCompile Include="HLSL\HLSLShader.cpp" />
+    <ClCompile Include="HLSL\HLSLShaderFactory.cpp" />
+    <ClCompile Include="HLSL\HLSLShaderType.cpp" />
+    <ClCompile Include="HLSL\HLSLShaderVariable.cpp" />
+    <ClCompile Include="HLSL\HLSLStructuredBuffer.cpp" />
+    <ClCompile Include="HLSL\HLSLTexture.cpp" />
+    <ClCompile Include="HLSL\HLSLTextureArray.cpp" />
+    <ClCompile Include="HLSL\HLSLTextureBuffer.cpp" />
+    <ClCompile Include="InputLayout\DX11InputLayout.cpp" />
+    <ClCompile Include="InputLayout\DX11InputLayoutManager.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11Buffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11ConstantBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11IndexBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11IndirectArgumentsBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11RawBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11StructuredBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11TextureBuffer.cpp" />
+    <ClCompile Include="Resources\Buffers\DX11VertexBuffer.cpp" />
+    <ClCompile Include="Resources\DX11Resource.cpp" />
+    <ClCompile Include="Resources\Textures\DX11DrawTarget.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture1.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture1Array.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture2.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture2Array.cpp" />
+    <ClCompile Include="Resources\Textures\DX11Texture3.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureArray.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureCube.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureCubeArray.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureDS.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureRT.cpp" />
+    <ClCompile Include="Resources\Textures\DX11TextureSingle.cpp" />
+    <ClCompile Include="Shaders\DX11ComputeShader.cpp" />
+    <ClCompile Include="Shaders\DX11GeometryShader.cpp" />
+    <ClCompile Include="Shaders\DX11PixelShader.cpp" />
+    <ClCompile Include="Shaders\DX11Shader.cpp" />
+    <ClCompile Include="Shaders\DX11VertexShader.cpp" />
+    <ClCompile Include="State\DX11BlendState.cpp" />
+    <ClCompile Include="State\DX11DepthStencilState.cpp" />
+    <ClCompile Include="State\DX11DrawingState.cpp" />
+    <ClCompile Include="State\DX11RasterizerState.cpp" />
+    <ClCompile Include="State\DX11SamplerState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DXGI\DXGIAdapter.h" />
+    <ClInclude Include="DXGI\DXGIOutput.h" />
+    <ClInclude Include="Engine\DX11.h" />
+    <ClInclude Include="Engine\DX11Engine.h" />
+    <ClInclude Include="Engine\DX11GraphicsObject.h" />
+    <ClInclude Include="Engine\DX11PerformanceCounter.h" />
+    <ClInclude Include="GTLGraphicsDX11.h" />
+    <ClInclude Include="GTLGraphicsDX11PCH.h" />
+    <ClInclude Include="HLSL\HLSLBaseBuffer.h" />
+    <ClInclude Include="HLSL\HLSLByteAddressBuffer.h" />
+    <ClInclude Include="HLSL\HLSLComputeProgram.h" />
+    <ClInclude Include="HLSL\HLSLConstantBuffer.h" />
+    <ClInclude Include="HLSL\HLSLFactory.h" />
+    <ClInclude Include="HLSL\HLSLParameter.h" />
+    <ClInclude Include="HLSL\HLSLProgramFactory.h" />
+    <ClInclude Include="HLSL\HLSLReflection.h" />
+    <ClInclude Include="HLSL\HLSLResource.h" />
+    <ClInclude Include="HLSL\HLSLResourceBindInfo.h" />
+    <ClInclude Include="HLSL\HLSLSamplerState.h" />
+    <ClInclude Include="HLSL\HLSLShader.h" />
+    <ClInclude Include="HLSL\HLSLShaderFactory.h" />
+    <ClInclude Include="HLSL\HLSLShaderType.h" />
+    <ClInclude Include="HLSL\HLSLShaderVariable.h" />
+    <ClInclude Include="HLSL\HLSLStructuredBuffer.h" />
+    <ClInclude Include="HLSL\HLSLTexture.h" />
+    <ClInclude Include="HLSL\HLSLTextureArray.h" />
+    <ClInclude Include="HLSL\HLSLTextureBuffer.h" />
+    <ClInclude Include="HLSL\HLSLVisualProgram.h" />
+    <ClInclude Include="InputLayout\DX11InputLayout.h" />
+    <ClInclude Include="InputLayout\DX11InputLayoutManager.h" />
+    <ClInclude Include="Resources\Buffers\DX11Buffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11ConstantBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11IndexBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11IndirectArgumentsBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11RawBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11StructuredBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11TextureBuffer.h" />
+    <ClInclude Include="Resources\Buffers\DX11VertexBuffer.h" />
+    <ClInclude Include="Resources\DX11Resource.h" />
+    <ClInclude Include="Resources\Textures\DX11DrawTarget.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture1.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture1Array.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture2.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture2Array.h" />
+    <ClInclude Include="Resources\Textures\DX11Texture3.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureArray.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureCube.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureCubeArray.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureDS.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureRT.h" />
+    <ClInclude Include="Resources\Textures\DX11TextureSingle.h" />
+    <ClInclude Include="Shaders\DX11ComputeShader.h" />
+    <ClInclude Include="Shaders\DX11GeometryShader.h" />
+    <ClInclude Include="Shaders\DX11PixelShader.h" />
+    <ClInclude Include="Shaders\DX11Shader.h" />
+    <ClInclude Include="Shaders\DX11VertexShader.h" />
+    <ClInclude Include="State\DX11BlendState.h" />
+    <ClInclude Include="State\DX11DepthStencilState.h" />
+    <ClInclude Include="State\DX11DrawingState.h" />
+    <ClInclude Include="State\DX11RasterizerState.h" />
+    <ClInclude Include="State\DX11SamplerState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HLSL\HLSLI\FloatFunction.hlsli" />
+    <None Include="HLSL\HLSLI\SqrtEstimate.hlsli" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{00DEFF42-0F7C-4A7C-9C1F-59322B9E9004}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GTLGraphicsDX11.v18</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>_Output\Graphics\DX11\$(PlatformToolset)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;../../../.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>GTLGraphicsDX11PCH.h</PrecompiledHeaderFile>
+      <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>GTL_USE_MSWINDOWS;GTL_USE_DIRECTX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.;../../../.</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PrecompiledHeaderFile>GTLGraphicsDX11PCH.h</PrecompiledHeaderFile>
+      <DisableSpecificWarnings>6262;26812</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

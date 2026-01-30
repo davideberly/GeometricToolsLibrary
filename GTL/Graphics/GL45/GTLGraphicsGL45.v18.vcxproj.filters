@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{236f8e6f-e5b6-4d5a-a4cf-f21d1a2cd89b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputLayout">
+      <UniqueIdentifier>{8fb07dc8-21f3-4060-8c36-d5eaccf11f41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{69f2c72a-90bf-43ca-be7f-9322df44aaad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Buffers">
+      <UniqueIdentifier>{20bc44a1-ef5c-4730-aa93-78bc75c5751e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Textures">
+      <UniqueIdentifier>{2e16e0a1-3840-4f90-8123-a631d64a59a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{cb3e7dd9-62d4-47e1-ac94-ba56d24effae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLSL">
+      <UniqueIdentifier>{160bfb52-3104-47fd-8158-e51999c5dc7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GL">
+      <UniqueIdentifier>{bef2606f-df2d-4bcd-80a3-5e9a9a27b00d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLX">
+      <UniqueIdentifier>{7300712c-0372-4aa4-8b5a-34251a38a357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WGL">
+      <UniqueIdentifier>{d4e10ab6-f93c-4908-be7d-ab3a027c900e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GTLGraphicsGL45.cpp" />
+    <ClCompile Include="GLX\GLXEngine.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="GLX\GLXExtensions.cpp">
+      <Filter>GLX</Filter>
+    </ClCompile>
+    <ClCompile Include="WGL\WGLEngine.cpp">
+      <Filter>WGL</Filter>
+    </ClCompile>
+    <ClCompile Include="WGL\WGLExtensions.cpp">
+      <Filter>WGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\GL45Resource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45AtomicCounterBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45Buffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45ConstantBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45IndexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45StructuredBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\GL45VertexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45DrawTarget.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture1.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture1Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture2.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture2Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45Texture3.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureCube.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureCubeArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureDS.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureRT.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\GL45TextureSingle.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GL45.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GL45Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GL45GraphicsObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLComputeProgram.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLProgramFactory.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLReflection.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLShader.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSL\GLSLVisualProgram.cpp">
+      <Filter>GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout\GL45InputLayoutManager.cpp">
+      <Filter>InputLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout\GL45InputLayout.cpp">
+      <Filter>InputLayout</Filter>
+    </ClCompile>
+    <ClCompile Include="State\GL45BlendState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\GL45DepthStencilState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\GL45DrawingState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\GL45RasterizerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\GL45SamplerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GTLGraphicsGL45.h" />
+    <ClInclude Include="GTLGraphicsGL45PCH.h" />
+    <ClInclude Include="GL\glcorearb.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glext.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glxext.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\wglext.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLX\GLXEngine.h">
+      <Filter>GLX</Filter>
+    </ClInclude>
+    <ClInclude Include="WGL\WGLEngine.h">
+      <Filter>WGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\GL45Resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45AtomicCounterBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45Buffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45ConstantBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45IndexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45StructuredBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\GL45VertexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45DrawTarget.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture1.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture1Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture2.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture2Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45Texture3.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureCube.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureCubeArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureDS.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureRT.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\GL45TextureSingle.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GL45.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GL45Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GL45GraphicsObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLComputeProgram.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLProgramFactory.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLReflection.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLShader.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="GLSL\GLSLVisualProgram.h">
+      <Filter>GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout\GL45InputLayout.h">
+      <Filter>InputLayout</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout\GL45InputLayoutManager.h">
+      <Filter>InputLayout</Filter>
+    </ClInclude>
+    <ClInclude Include="State\GL45BlendState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\GL45DepthStencilState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\GL45DrawingState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\GL45RasterizerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\GL45SamplerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

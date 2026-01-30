@@ -321,7 +321,14 @@ void UTMathematics::ApproximationND::Execute()
 void UTMathematics::ApproximationPolynomial::Execute()
 {
 #if defined(UT_MATHEMATICS_APPROXIMATION_POLYNOMIAL)
-    UTInformation("Mathematics/Approximation");
+    UTInformation("Mathematics/Approximation/Polynomial");
+
+#if defined(UT_MATHEMATICS_APPRPOLYNOMIAL)
+    Precall();
+    extern void TestApprPolynomial();
+    TestApprPolynomial();
+    Postcall();
+#endif
 
 #if defined(UT_MATHEMATICS_APPRPOLYNOMIAL1)
     Precall();
@@ -341,13 +348,6 @@ void UTMathematics::ApproximationPolynomial::Execute()
     Precall();
     extern void TestApprPolynomial3();
     TestApprPolynomial3();
-    Postcall();
-#endif
-
-#if defined(UT_MATHEMATICS_APPRPOLYNOMIALSPECIAL)
-    Precall();
-    extern void TestApprPolynomialSpecial();
-    TestApprPolynomialSpecial();
     Postcall();
 #endif
 #endif

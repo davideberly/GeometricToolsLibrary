@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{2b86b5b2-caaa-4111-93ec-cc3e08787061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effects">
+      <UniqueIdentifier>{4682bb34-9056-419c-8ff3-b454b83147f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{debe2ba4-c89d-4a68-9b70-50196fca9f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Buffers">
+      <UniqueIdentifier>{68666929-39a4-42ad-b067-209807cdbccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Textures">
+      <UniqueIdentifier>{7cad17b6-1b50-499c-8a88-2800017d61e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph">
+      <UniqueIdentifier>{8fe90d50-4ae7-4684-be00-e7ae3982948f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Controllers">
+      <UniqueIdentifier>{2fdb0666-510c-42a0-9826-1107b73b8fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Detail">
+      <UniqueIdentifier>{34585c34-7cd7-4dd0-b848-48fc0ca2eaf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Hierarchy">
+      <UniqueIdentifier>{dc5774a1-254e-40ef-8122-b23f31baa37a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Picking">
+      <UniqueIdentifier>{fc56d736-6011-4000-a904-cade85eedb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Sorting">
+      <UniqueIdentifier>{da82e941-2b08-4d83-9ab5-a0f1ec16ec29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Terrain">
+      <UniqueIdentifier>{13c38d02-8837-4eed-8185-9d8b35ba7012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\Visibility">
+      <UniqueIdentifier>{dac368fd-130f-4a0f-9aee-e814e8751346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneGraph\CollisionDetection">
+      <UniqueIdentifier>{330927f4-251d-493a-8efc-2e486372167e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{c9ed8d7d-b19b-4c00-bb73-eedde70fe455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{247bb867-1c7a-4201-8e31-9ab8bd497aa4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GTLGraphics.cpp" />
+    <ClCompile Include="Base\BaseEngine.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GEDrawTarget.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GEObject.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GraphicsEngine.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GraphicsObject.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\AmbientLightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\AreaLightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\BumpMapEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\ConstantColorEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\CubeMapEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\DirectionalLightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\DirectionalLightTextureEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\Font.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW400H12.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW400H14.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW400H16.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW400H18.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW700H12.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW700H14.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW700H16.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\FontArialW700H18.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\GlossMapEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\LightCameraGeometry.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\LightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\Lighting.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\Material.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\OverlayEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\PlanarReflectionEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\PlanarShadowEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\PointLightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\PointLightTextureEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\ProjectedTextureEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\SphereMapEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\SpotLightEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\TextEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\Texture2Effect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\Texture3Effect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\VertexColorEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\VisualEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Effects\VolumeFogEffect.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\DataFormat.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Resource.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\Buffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\ConstantBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\IndexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\IndirectArgumentsBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\RawBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\StructuredBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\TextureBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\TypedBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\VertexBuffer.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Buffers\VertexFormat.cpp">
+      <Filter>Resources\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\DrawTarget.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture1.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture1Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture2.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture2Array.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\Texture3.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureCube.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureCubeArray.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureDS.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureRT.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\Textures\TextureSingle.cpp">
+      <Filter>Resources\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\MeshFactory.cpp">
+      <Filter>SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\CollisionDetection\CollisionMesh.cpp">
+      <Filter>SceneGraph\CollisionDetection</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\BlendTransformController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\ControlledObject.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\Controller.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\IKController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\KeyframeController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\MorphController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\ParticleController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\PointController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\SkinController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Controllers\TransformController.cpp">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Detail\BillboardNode.cpp">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Detail\CLODMesh.cpp">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Detail\DLODNode.cpp">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Detail\SwitchNode.cpp">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Camera.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Light.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Node.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Particles.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\PVWUpdater.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Spatial.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\ViewVolume.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\ViewVolumeNode.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Hierarchy\Visual.cpp">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Picking\Picker.cpp">
+      <Filter>SceneGraph\Picking</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Picking\PickRecord.cpp">
+      <Filter>SceneGraph\Picking</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Sorting\BspNode.cpp">
+      <Filter>SceneGraph\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Terrain\Terrain.cpp">
+      <Filter>SceneGraph\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraph\Visibility\Culler.cpp">
+      <Filter>SceneGraph\Visibility</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\ProgramDefines.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\ProgramFactory.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Shaders\Shader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="State\BlendState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DepthStencilState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\DrawingState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\RasterizerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="State\SamplerState.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GTLGraphics.h" />
+    <ClInclude Include="GTLGraphicsPCH.h" />
+    <ClInclude Include="Base\BaseEngine.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GEDrawTarget.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GEInputLayoutManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GEObject.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Graphics.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GraphicsEngine.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GraphicsObject.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\AmbientLightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\AreaLightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\BumpMapEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\ConstantColorEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\CubeMapEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\DirectionalLightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\DirectionalLightTextureEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Font.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW400H12.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW400H14.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW400H16.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW400H18.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW700H12.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW700H14.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW700H16.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\FontArialW700H18.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\GlossMapEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\LightCameraGeometry.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\LightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Lighting.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Material.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\OverlayEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\PlanarReflectionEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\PlanarShadowEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\PointLightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\PointLightTextureEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\ProjectedTextureEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\SphereMapEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\SpotLightEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\TextEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Texture2Effect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\Texture3Effect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\VertexColorEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\VisualEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Effects\VolumeFogEffect.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\DataFormat.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\Buffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\ConstantBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\IndexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\IndexFormat.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\IndirectArgumentsBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\MemberLayout.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\RawBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\StructuredBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\TextureBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\TypedBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\VertexBuffer.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Buffers\VertexFormat.h">
+      <Filter>Resources\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\DrawTarget.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture1.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture1Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture2.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture2Array.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\Texture3.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureCube.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureCubeArray.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureDS.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureRT.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\Textures\TextureSingle.h">
+      <Filter>Resources\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\MeshFactory.h">
+      <Filter>SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\CollisionDetection\BoundTree.h">
+      <Filter>SceneGraph\CollisionDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\CollisionDetection\CollisionGroup.h">
+      <Filter>SceneGraph\CollisionDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\CollisionDetection\CollisionMesh.h">
+      <Filter>SceneGraph\CollisionDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\CollisionDetection\CollisionRecord.h">
+      <Filter>SceneGraph\CollisionDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\BlendTransformController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\ControlledObject.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\Controller.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\IKController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\KeyframeController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\MorphController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\ParticleController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\PointController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\SkinController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Controllers\TransformController.h">
+      <Filter>SceneGraph\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\BillboardNode.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\CLODCollapseRecord.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\CLODMesh.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\CLODMeshCreator.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\DLODNode.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Detail\SwitchNode.h">
+      <Filter>SceneGraph\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\BoundingSphere.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Camera.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Light.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Node.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Particles.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\PVWUpdater.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Spatial.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\ViewVolume.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\ViewVolumeNode.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Hierarchy\Visual.h">
+      <Filter>SceneGraph\Hierarchy</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Picking\Picker.h">
+      <Filter>SceneGraph\Picking</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Picking\PickRecord.h">
+      <Filter>SceneGraph\Picking</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Sorting\BspNode.h">
+      <Filter>SceneGraph\Sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Terrain\Terrain.h">
+      <Filter>SceneGraph\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Visibility\Culler.h">
+      <Filter>SceneGraph\Visibility</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraph\Visibility\CullingPlane.h">
+      <Filter>SceneGraph\Visibility</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\ComputeProgram.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\ProgramDefines.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\ProgramFactory.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\Shader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\VisualProgram.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="State\BlendState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DepthStencilState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\DrawingState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\RasterizerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="State\SamplerState.h">
+      <Filter>State</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
