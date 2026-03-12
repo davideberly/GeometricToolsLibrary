@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2026.03.05
 
 #pragma once
 
@@ -1075,8 +1075,9 @@ namespace gtl
                     "Incorrect number format.");
 
                 BSNumber ten(10), pow10(10);
-                for (std::size_t i = 1, j = number.size() - 2; i < number.size(); ++i, --j)
+                for (std::size_t i = 0; i < number.size() - 1; ++i)
                 {
+                    std::size_t j = number.size() - 2 - i;
                     digit = static_cast<std::int32_t>(number[j]) - static_cast<std::int32_t>('0');
                     if (digit > 0)
                     {
