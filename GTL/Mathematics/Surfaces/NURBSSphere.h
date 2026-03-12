@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.03.05
 
 #pragma once
 
@@ -173,7 +173,7 @@ namespace gtl
                 T ThreeWmV = w + TwoWmV;
                 T Dsqr = D * D;
 
-                std::array<std::array<T, 5>, 5> Bu;
+                std::array<std::array<T, 5>, 5> Bu{};
                 Bu[0][0] = -C_<T>(4) * ww * w;
                 Bu[0][1] = -C_<T>(12) * v * ww;
                 Bu[0][2] = -C_<T>(12) * vv * w;
@@ -190,7 +190,7 @@ namespace gtl
                 Bu[3][1] = C_<T>(12) * uu * v;
                 Bu[4][0] = C_<T>(4) * uu * u;
 
-                std::array<std::array<T, 5>, 5> Bv;
+                std::array<std::array<T, 5>, 5> Bv{};
                 Bv[0][0] = -C_<T>(4) * ww * w;
                 Bv[0][1] = C_<T>(4) * ww * WmThreeV;
                 Bv[0][2] = C_<T>(12) * vw * WmV;
@@ -233,7 +233,7 @@ namespace gtl
                     // uninitialized but never used.
                     T Dcub = Dsqr * D;
 
-                    std::array<std::array<T, 5>, 5> Buu;
+                    std::array<std::array<T, 5>, 5> Buu{};
                     Buu[0][0] = C_<T>(12) * ww;
                     Buu[0][1] = C_<T>(24) * vw;
                     Buu[0][2] = C_<T>(12) * vv;
@@ -250,7 +250,7 @@ namespace gtl
                     Buu[3][1] = C_<T>(24) * uv;
                     Buu[4][0] = C_<T>(12) * uu;
 
-                    std::array<std::array<T, 5>, 5> Buv;
+                    std::array<std::array<T, 5>, 5> Buv{};
                     Buv[0][0] = C_<T>(12) * ww;
                     Buv[0][1] = -C_<T>(12) * w * WmTwoV;
                     Buv[0][2] = -C_<T>(12) * v * TwoWmV;
@@ -267,7 +267,7 @@ namespace gtl
                     Buv[3][1] = C_<T>(12) * uu;
                     Buv[4][0] = C_<T>(0);
 
-                    std::array<std::array<T, 5>, 5> Bvv;
+                    std::array<std::array<T, 5>, 5> Bvv{};
                     Bvv[0][0] = C_<T>(12) * ww;
                     Bvv[0][1] = -C_<T>(24) * w * WmV;
                     Bvv[0][2] = C_<T>(12) * (ww - C_<T>(4) * vw + vv);
