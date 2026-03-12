@@ -5,8 +5,8 @@
 // https://www.boost.org/LICENSE_1_0.txt
 // File Version: 2025.01.19
 
-#include <Applications/GTApplicationsPCH.h>
-#include <Applications/GLX/Console.h>
+#include <GTL/Applications/GTLApplicationsPCH.h>
+#include <GTL/Applications/GLX/Console.h>
 using namespace gte;
 
 Console::Parameters::Parameters()
