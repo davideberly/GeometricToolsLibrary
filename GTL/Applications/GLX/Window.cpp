@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <Applications/GTApplicationsPCH.h>
 #include <Applications/GLX/Window.h>
@@ -196,11 +196,11 @@ namespace gte
             {
                 if (evt.type == KeyPress)
                 {
-                    OnKeyDown(key, evt.xbutton.x, evt.xbutton.y);
+                    OnKeyDown(key, evt.xkey.x, evt.xkey.y);
                 }
                 else
                 {
-                    OnKeyUp(key, evt.xbutton.x, evt.xbutton.y);
+                    OnKeyUp(key, evt.xkey.x, evt.xkey.y);
                 }
             }
             else
@@ -213,7 +213,7 @@ namespace gte
                     {
                         ucKey = static_cast<uint8_t>(key - 32);
                     }
-                    OnCharPress(ucKey, evt.xbutton.x, evt.xbutton.y);
+                    OnCharPress(ucKey, evt.xkey.x, evt.xkey.y);
                 }
             }
             XFree(pKeySym);
@@ -236,14 +236,16 @@ namespace gte
         if (evt.type == ClientMessage)
         {
             Atom* wmDelete = nullptr;
-            int32_t count;
+            int32_t count = 0;
             if (XGetWMProtocols(mDisplay, mWindow, &wmDelete, &count))
             {
                 if ((unsigned long)evt.xclient.data.l[0] == *wmDelete)
                 {
+                    XFree(wmDelete);
                     return EVT_QUIT;
                 }
             }
+            XFree(wmDelete);
         }
 
         return EVT_NONE_PENDING;
