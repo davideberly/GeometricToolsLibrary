@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <GTLApplicationsPCH.h>
 #include <GTL/Applications/OnIdleTimer.h>
@@ -63,7 +63,7 @@ double OnIdleTimer::GetSecondsPerFrame() const
     {
         double numFrames = static_cast<double>(mAccumulatedFrameCount);
         double numMilliseconds = static_cast<double>(mAccumulatedTime);
-        return 1000.0 * numMilliseconds / numFrames;
+        return 1000.0 * numFrames / numMilliseconds;
     }
     else
     {
