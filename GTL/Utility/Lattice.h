@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.03.26
+// File Version: 0.0.2026.03.05
 
 #pragma once
 
@@ -505,7 +505,7 @@ namespace gtl
 
         inline bool operator>(Lattice const& other) const
         {
-            return mSizes < other.mSizes;
+            return mSizes > other.mSizes;
         }
 
         inline bool operator>=(Lattice const& other) const
