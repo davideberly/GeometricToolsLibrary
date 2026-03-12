@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.03.05
 
 #pragma once
 
@@ -201,7 +201,7 @@ namespace gtl
                 mUniqueKnots.begin());
 
             T u = mUniqueKnots.front().t;
-            for (std::size_t i = 1; i < numUniqueKnots - 1; ++i)
+            for (std::size_t i = 1; i < numUniqueKnots; ++i)
             {
                 T uNext = mUniqueKnots[i].t;
                 GTL_RUNTIME_ASSERT(
