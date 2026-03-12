@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <GTLApplicationsPCH.h>
 #include <GTL/Utility/Exceptions.h>
@@ -124,7 +124,6 @@ size_t Command::GetBoolean(std::string const& name, bool& value)
 
     for (size_t i = 1; i < mArguments.size(); ++i)
     {
-        std::string tmp = mArguments[i];
         if (!mProcessed[i] && mArguments[i] == (msDash + name))
         {
             mProcessed[i] = true;
@@ -150,9 +149,17 @@ size_t Command::GetInteger(std::string const& name, int32_t& value)
     {
         if (!mProcessed[i] && mArguments[i] == (msDash + name))
         {
+            if (i + 1 >= mArguments.size())
+            {
+                mLastError = msArgRequired;
+                return 0;
+            }
+
             std::string argument = mArguments[i + 1];
             if (mProcessed[i + 1] ||
-                (argument[0] == '-' && !isdigit(static_cast<int32_t>(argument[1]))))
+                (argument[0] == '-' &&
+                    argument.size() > 1 &&
+                    !isdigit(static_cast<int32_t>(argument[1]))))
             {
                 mLastError = msArgRequired;
                 return 0;
@@ -194,11 +201,19 @@ size_t Command::GetFloat(std::string const& name, float& value)
 
     for (size_t i = 1; i < mArguments.size(); ++i)
     {
+        if (i + 1 >= mArguments.size())
+        {
+            mLastError = msArgRequired;
+            return 0;
+        }
+
         if (!mProcessed[i] && mArguments[i] == (msDash + name))
         {
             std::string argument = mArguments[i + 1];
             if (mProcessed[i + 1] ||
-                (argument[0] == '-' && !isdigit(static_cast<int32_t>(argument[1]))))
+                (argument[0] == '-' &&
+                    argument.size() > 1 &&
+                    !isdigit(static_cast<int32_t>(argument[1]))))
             {
                 mLastError = msArgRequired;
                 return 0;
@@ -242,9 +257,17 @@ size_t Command::GetDouble(std::string const& name, double& value)
     {
         if (!mProcessed[i] && mArguments[i] == (msDash + name))
         {
+            if (i + 1 >= mArguments.size())
+            {
+                mLastError = msArgRequired;
+                return 0;
+            }
+
             std::string argument = mArguments[i + 1];
             if (mProcessed[i + 1] ||
-                (argument[0] == '-' && !isdigit(static_cast<int32_t>(argument[1]))))
+                (argument[0] == '-' &&
+                    argument.size() > 1 &&
+                    !isdigit(static_cast<int32_t>(argument[1]))))
             {
                 mLastError = msArgRequired;
                 return 0;
@@ -286,6 +309,12 @@ size_t Command::GetString(std::string const& name, std::string& value)
 
     for (size_t i = 1; i < mArguments.size(); ++i)
     {
+        if (i + 1 >= mArguments.size())
+        {
+            mLastError = msArgRequired;
+            return 0;
+        }
+
         if (!mProcessed[i] && mArguments[i] == (msDash + name))
         {
             std::string argument = mArguments[i + 1];
