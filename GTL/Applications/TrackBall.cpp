@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <GTLApplicationsPCH.h>
 #include <GTL/Applications/TrackBall.h>
@@ -11,7 +11,8 @@ using namespace gtl;
 
 TrackBall::TrackBall()
     :
-    TrackObject()
+    TrackObject(),
+    mInitialOrientation{}
 {
     mRoot = std::make_shared<Node>();
     MakeIdentity(mInitialOrientation);
@@ -19,10 +20,10 @@ TrackBall::TrackBall()
 
 TrackBall::TrackBall(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> const& camera)
     :
-    TrackObject(xSize, ySize, camera)
+    TrackObject(xSize, ySize, camera),
+    mInitialOrientation{}
 {
     Set(xSize, ySize, camera);
-    mRoot = std::make_shared<Node>();
     MakeIdentity(mInitialOrientation);
 }
 

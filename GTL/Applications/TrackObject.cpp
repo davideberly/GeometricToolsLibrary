@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <GTLApplicationsPCH.h>
 #include <GTL/Applications/TrackObject.h>
@@ -11,6 +11,8 @@ using namespace gtl;
 
 TrackObject::TrackObject()
     :
+    mCamera{},
+    mRoot{},
     mXSize(0),
     mYSize(0),
     mX0(0.0f),
@@ -21,11 +23,13 @@ TrackObject::TrackObject()
     mActive(false),
     mValid(false)
 {
-    mRoot = std::make_shared<Node>();
+    Set(0, 0, mCamera);
 }
 
 TrackObject::TrackObject(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> const& camera)
     :
+    mCamera{},
+    mRoot{},
     mXSize(0),
     mYSize(0),
     mX0(0.0f),
@@ -37,7 +41,6 @@ TrackObject::TrackObject(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> c
     mValid(false)
 {
     Set(xSize, ySize, camera);
-    mRoot = std::make_shared<Node>();
 }
 
 void TrackObject::Set(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> const& camera)
@@ -64,6 +67,8 @@ void TrackObject::Set(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> cons
         mMultiplier = 0.0f;
         mValid = false;
     }
+
+    mRoot = std::make_shared<Node>();
 }
 
 void TrackObject::Attach(std::shared_ptr<Spatial> const& object) const

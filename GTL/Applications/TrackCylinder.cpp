@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 2025.01.19
+// File Version: 2026.03.07
 
 #include <GTLApplicationsPCH.h>
 #include <GTL/Mathematics/Arithmetic/IEEEFunctions.h>
@@ -18,7 +18,6 @@ TrackCylinder::TrackCylinder()
     mInitialPitch(0.0f),
     mPitch(0.0f)
 {
-    mRoot = std::make_shared<Node>();
 }
 
 TrackCylinder::TrackCylinder(int32_t xSize, int32_t ySize, std::shared_ptr<Camera> const& camera)
@@ -30,7 +29,6 @@ TrackCylinder::TrackCylinder(int32_t xSize, int32_t ySize, std::shared_ptr<Camer
     mPitch(0.0f)
 {
     Set(xSize, ySize, camera);
-    mRoot = std::make_shared<Node>();
 }
 
 void TrackCylinder::Reset()
