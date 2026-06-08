@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.27
+// File Version: 0.0.2026.06.08
 
 #pragma once
 
@@ -12,15 +12,26 @@
 // The polynomial is
 //   y = sum_{j=0}^{m-1} c[j] * prod_{i=0}^{N-1} x[i]^{d[j][i]}
 // Each N-tuple of degrees D[j] = (d[j][0], ..., d[j][N-1]) must be unique;
-// that is, D[j0] != D[j1] for j0 != j1. A least-squares fitting algorithm is
-// used, but the input data is first mapped to (x',y') in [-1,1]^{N+1} for
-// numerical robustness.
+// that is, D[j0] != D[j1] for j0 != j1. The method is a least-squares fitting
+// algorithm. The observation type is std::array<T, N+1>, which represents an
+// (N+1)-tuple (x[0],...,x[N-1],y).
+//
+// WARNING. The fitting algorithm for polynomial terms is known to be
+// nonrobust for large degrees and for large magnitude data. One alternative
+// is to use orthogonal polynomials and apply the least-squares algorithm to
+// these. Another alternative is to transform the X-values to the hypercube
+// [-1,1]^N by subtracting the center of their axis-aligned bounding hypercube
+// and then uniformly scaling (X,y) so that the hypercube tightly contains
+// the X-values.
+//
+// The fitting algorithm is described in
+//   https://www.geometrictools.com/Documentation/PolynomialLeastSquares.pdf
 
 #include <GTL/Mathematics/MatrixAnalysis/LinearSystem.h>
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <map>
+#include <utility>
 #include <vector>
 
 namespace gtl
@@ -29,285 +40,205 @@ namespace gtl
     class ApprPolynomial
     {
     public:
-        class Polynomial
-        {
-        public:
-            Polynomial()
-                :
-                mDegrees{},
-                mCoefficients{},
-                mDomain{},
-                mScales{},
-                mPowers{}
-            {
-                for (std::size_t i = 0; i <= N; ++i)
-                {
-                    mDomain[i] = { C_<T>(0), C_<T>(0) };
-                    mScales[i] = C_<T>(0);
-                }
-            }
-
-            // Support for polynomial evaluation. The coefficients were
-            // generated for the samples mapped to [-1,1]^{N+1}. The
-            // operator()(...) function must transform X to X' in [-1,1]^N,
-            // compute y' in [-1,1] and then transform y' to y.
-            T operator()(std::array<T, N> const& inX) const
-            {
-                // Transform X to X' in [-1,1]^N.
-                std::array<T, N> x{};
-                for (std::size_t i = 0; i < N; ++i)
-                {
-                    x[i] = -C_<T>(1) + C_<T>(2) * mScales[i] * (inX[i] - mDomain[i][0]);
-                }
-
-                // Compute powers of x[i] from 1 through x[i]^{d[i][m-1]}.
-                // TODO: Some of these powers are unused, but the choice
-                // depends on the input degrees. Provide a mechanism to
-                // compute only the powers that are needed?
-                for (std::size_t i = 0; i < N; ++i)
-                {
-                    auto& powers = mPowers[i];
-                    std::size_t const kSup = powers.size();
-                    powers[0] = C_<T>(1);
-                    for (std::size_t k0 = 0, k1 = 1; k1 < kSup; k0 = k1++)
-                    {
-                        powers[k1] = powers[k0] * x[i];
-                    }
-                }
-
-                // y = sum_{j=0}^{m-1} c[j] * prod_{i=0}^{N-1} x[i]^{d[i][j]}
-                T y = C_<T>(0);
-                for (std::size_t j = 0; j < mCoefficients.size(); ++j)
-                {
-                    T term = mCoefficients[j];
-                    for (std::size_t i = 0; i < N; ++i)
-                    {
-                        term *= mPowers[i][mDegrees[j][i]];
-                    }
-                    y += term;
-                }
-
-                // Transform y' from [-1,1] back to the original space.
-                y = C_<T>(1, 2) * (y + C_<T>(1)) / mScales[N] + mDomain[N][0];
-                return y;
-            }
-
-            inline std::vector<std::array<std::size_t, N>> const& GetDegrees() const
-            {
-                return mDegrees;
-            }
-
-            // The input index must satisfy 0 <= i < N.
-            inline std::array<std::size_t, N> const& GetDegrees(std::size_t i) const
-            {
-                return mDegrees[i];
-            }
-
-            inline std::array<std::array<T, 2>, N + 1> const& GetDomain() const
-            {
-                return mDomain;
-            }
-
-            // The input index must satisfy 0 <= i <= N.
-            inline std::array<T, 2> const& GetDomain(std::size_t i) const
-            {
-                return mDomain[i];
-            }
-
-            inline std::vector<T> const& GetCoefficients() const
-            {
-                return mCoefficients;
-            }
-
-        private:
-            // Allow the approximator to set the members of Polynomial without
-            // having to expose them in public scope.
-            friend class ApprPolynomial<T, N>;
-
-            // The mDegrees and mCoefficients have the same size.
-            std::vector<std::array<std::size_t, N>> mDegrees;
-            std::vector<T> mCoefficients;
-            std::array<std::array<T, 2>, N + 1> mDomain;
-            std::array<T, N + 1> mScales;
-
-            // Storage for powers of the independent variables. The mutable
-            // tag allows the operator()(...) to have conceptual constness.
-            mutable std::array<std::vector<T>, N> mPowers;
-        };
-
-        using BasisElement = std::array<std::size_t, N>;
+        using Multiindex = std::array<std::size_t, N>;
         using Observation = std::array<T, N + 1>;
 
-        static bool Fit(
-            std::vector<BasisElement> const& basis,
+        ApprPolynomial()
+            :
+            mMultiindices{},
+            mObservations{},
+            mMaxMultiindex{},
+            mTwoMaxMultiindexP1{},
+            mPowers{},
+            mMaxMaxMultiindex(0),
+            mInterpolationProduct{}
+        {
+        }
+
+        // The index of 'polynomial' is an index into the multiindices. The T
+        // of 'polynomial' is the coefficient of the polynomial corresponding\
+        // to that index.
+        bool Fit(
+            std::vector<Multiindex> const& multiindices,
             std::vector<Observation> const& observations,
-            std::map<std::array<std::size_t, N>, T>& polynomial)
+            std::vector<T>& polynomial)
         {
             GTL_ARGUMENT_ASSERT(
-                observations.size() > 0 && degrees.size() > 0,
+                multiindices.size() > 0 && observations.size() > 0,
                 "Invalid input.");
 
-            std::size_t const numCoefficients = degrees.size();
-            polynomial = Polynomial{};
-            polynomial.mDegrees = degrees;
-            polynomial.mCoefficients.resize(numCoefficients);
-            std::fill(polynomial.mCoefficients.begin(), polynomial.mCoefficients.end(), C_<T>(0));
+            mMultiindices = &multiindices;
+            mObservations = &observations;
+            polynomial.resize(multiindices.size());
 
-            // Powers of x[i] are computed up to twice the degree when
-            // constructing the fitted polynomial. Powers of x[i] are
-            // computed up to the degree for the evaluation of the fitted
-            // polynomial. Allocate the maximum space for the powers.
-            for (std::size_t i = 0; i < N; ++i)
+            // Determine which powers need to be computed.
+            ComputeMaxMultiindex();
+
+            // Compute powers of T(j_m,k).
+            ComputePowers();
+
+            Matrix<T> A{};
+            Vector<T> B{};
+            ComputeLinearSystemComponents(A, B);
+
+            return SolveLinearSystem(A, B, polynomial);
+        }
+
+        T Evaluate(
+            std::array<T, N> const& x,
+            std::vector<T> const& polynomial)
+        {
+            T output = C_<T>(0);
+            for (std::size_t i = 0; i < mMultiindices->size(); ++i)
             {
-                std::size_t maxPower = 0;
-                for (std::size_t j = 0; j < numCoefficients; ++j)
-                {
-                    maxPower = std::max(maxPower, degrees[j][i]);
-                }
-                polynomial.mPowers[i].resize(2 * maxPower + 1);
+                output += ComputeInterpolationTerm(x, polynomial[i], (*mMultiindices)[i]);
             }
-
-            // Transform the observations to [-1,1]^{N+1} for numerical
-            // robustness.
-            std::vector<std::array<T, N + 1>> transformed{};
-            Transform(observations, transformed, polynomial);
-
-            // Fit the transformed data using a least-squares algorithm.
-            return DoLeastSquares(transformed, polynomial);
+            return output;
         }
 
     private:
-        // Transform (X,y) to (X',y') in [-1,1]^{N+1}.
-        static void Transform(
-            std::vector<std::array<T, N + 1>> const& observations,
-            std::vector<std::array<T, N + 1>>& transformed,
-            Polynomial& polynomial)
+        void ComputeMaxMultiindex()
         {
-            transformed.resize(observations.size());
-
-            std::array<T, N + 1> omin = observations[0];
-            std::array<T, N + 1> omax = omin;
-            for (std::size_t s = 1; s < observations.size(); ++s)
+            mMaxMultiindex.fill(0);
+            for (auto const& multiindex : *mMultiindices)
             {
-                auto const& observation = observations[s];
-                for (std::size_t i = 0; i <= N; ++i)
+                for (std::size_t i = 0; i < N; ++i)
                 {
-                    if (observation[i] < omin[i])
-                    {
-                        omin[i] = observation[i];
-                    }
-                    else if (observation[i] > omax[i])
-                    {
-                        omax[i] = observation[i];
-                    }
+                    mMaxMultiindex[i] = std::max(multiindex[i], mMaxMultiindex[i]);
+                    mTwoMaxMultiindexP1[i] = 2 * mMaxMultiindex[i] + 1;
                 }
             }
 
-            for (std::size_t i = 0; i <= N; ++i)
+            for (std::size_t i = 0; i < N; ++i)
             {
-                polynomial.mDomain[i][0] = omin[i];
-                polynomial.mDomain[i][1] = omax[i];
-                polynomial.mScales[i] = C_<T>(1) / (omax[i] - omin[i]);
+                GTL_ARGUMENT_ASSERT(
+                    mMaxMultiindex[i] > 0,
+                    "Multiindices must reference all N variables.");
             }
 
-            for (std::size_t s = 0; s < observations.size(); ++s)
+            mMaxMaxMultiindex = *std::max_element(mMaxMultiindex.begin(), mMaxMultiindex.end());
+            mInterpolationProduct.resize(mMaxMaxMultiindex + 1, 0);
+        }
+
+        void ComputePowers()
+        {
+            // Compute the maximum storage for powers, which occurs for the
+            // unconstrained least-squares fit.
+            for (std::size_t i = 0; i < N; ++i)
             {
-                auto const& observation = observations[s];
-                for (std::size_t i = 0; i <= N; ++i)
+                mPowers[i].resize(mObservations->size(), mTwoMaxMultiindexP1[i]);
+            }
+
+            for (std::size_t k = 0; k < mObservations->size(); ++k)
+            {
+                for (std::size_t i = 0; i < N; ++i)
                 {
-                    transformed[s][i] =
-                        -C_<T>(1) + C_<T>(2) * polynomial.mScales[i] * (observation[i] - omin[i]);
+                    T const& variable = (*mObservations)[k][i];
+                    mPowers[i](k, 0) = C_<T>(1);
+                    for (std::size_t j0 = 0, j1 = 1; j1 < mTwoMaxMultiindexP1[i]; j0 = j1++)
+                    {
+                        mPowers[i](k, j1) = variable * mPowers[i](k, j0);
+                    }
                 }
             }
         }
 
-        // The least-squares fitting algorithm for the transformed data.
-        static bool DoLeastSquares(std::vector<std::array<T, N + 1>> const& transformed,
-            Polynomial& polynomial)
+        T ComputeInterpolationTerm(
+            std::array<T, N> const& x,
+            T const& coefficient,
+            Multiindex const& multiindex)
         {
-            // Set up a linear system A*C = B, where C are the polynomial
-            // coefficients.
-            std::size_t size = polynomial.mCoefficients.size();
-            Matrix<T> A(size, size);  // zero matrix
-            Vector<T> B(size);  // zero vector
-
-            for (auto const& x : transformed)
+            T term = coefficient;
+            for (std::size_t i = 0; i < N; ++i)
             {
-                // Compute powers of x[i], 0 <= i < N. The y-value is x[N].
-                for (std::size_t i = 0; i < N; ++i)
+                // Powers of x for which a subset is used to compute the
+                // interpolation term.
+                mInterpolationProduct[0] = C_<T>(1);
+                for (std::size_t j0 = 0, j1 = 1; j1 <= mMaxMultiindex[i]; j0 = j1++)
                 {
-                    auto& powers = polynomial.mPowers[i];
-                    std::size_t const kSup = powers.size();
-                    powers[0] = C_<T>(1);
-                    for (std::size_t k0 = 0, k1 = 1; k1 < kSup; k0 = k1++)
-                    {
-                        powers[k1] = powers[k0] * x[i];
-                    }
+                    mInterpolationProduct[j1] = x[i] * mInterpolationProduct[j0];
+                }
+                term *= mInterpolationProduct[multiindex[i]];
+            }
+            return term;
+        }
+
+        T ComputeObservationTerm(
+            Multiindex const& multiindex,
+            std::size_t k)
+        {
+            T term = C_<T>(1);
+            for (std::size_t i = 0; i < N; ++i)
+            {
+                term *= mPowers[i](k, multiindex[i]);
+            }
+            return term;
+        }
+
+        void ComputeLinearSystemComponents(
+            Matrix<T>& A,
+            Vector<T>& B)
+        {
+            A.resize(mMultiindices->size(), mMultiindices->size());
+            B.resize(mMultiindices->size());
+
+            std::vector<T> rTerms(mObservations->size());
+            for (std::size_t k = 0; k < mObservations->size(); ++k)
+            {
+                // Compute B.
+                for (std::size_t r = 0; r < mMultiindices->size(); ++r)
+                {
+                    Multiindex const& jr = (*mMultiindices)[r];
+                    rTerms[r] = ComputeObservationTerm(jr, k);
+                    B[r] += (*mObservations)[k][N] * rTerms[r];
                 }
 
-                for (std::size_t row = 0; row < size; ++row)
+                // Compute A.
+                for (std::size_t m = 0; m < mMultiindices->size(); ++m)
                 {
-                    auto const& degreesRow = polynomial.mDegrees[row];
-
-                    // Update the upper-triangular portion of the symmetric
-                    // matrix.
-                    T term{};
-                    for (std::size_t col = row; col < size; ++col)
+                    Multiindex const& jm = (*mMultiindices)[m];
+                    for (std::size_t r = m; r < mMultiindices->size(); ++r)
                     {
-                        auto const& degreesCol = polynomial.mDegrees[col];
-
-                        term = C_<T>(1);
-                        for (std::size_t i = 0; i < N; ++i)
-                        {
-                            auto const& powers = polynomial.mPowers[i];
-                            term *= powers[degreesRow[i] + degreesCol[i]];
-                        }
-                        A(row, col) += term;
+                        A(m, r) += ComputeObservationTerm(jm, k) * rTerms[r];
                     }
 
-                    // Update the right-hand side of the system.
-                    term = x[N];
-                    for (std::size_t i = 0; i < N; ++i)
+                    // Fill in the lower-left portion of A for a symmetric matrix.
+                    for (std::size_t r = 0; r < m; ++r)
                     {
-                        auto const& powers = polynomial.mPowers[i];
-                        term *= powers[degreesRow[i]];
+                        A(m, r) = A(r, m);
                     }
-                    B[row] += term;
                 }
             }
+        }
 
-            // Copy the upper-triangular portion of the symmetric matrix to
-            // the lower-triangular portion.
-            for (std::size_t row = 0; row < size; ++row)
-            {
-                for (std::size_t col = 0; col < row; ++col)
-                {
-                    A(row, col) = A(col, row);
-                }
-            }
-
-            // Precondition by normalizing the sums.
-            T const tNumObservations = static_cast<T>(transformed.size());
-            A /= tNumObservations;
-            B /= tNumObservations;
-
-            // Solve for the polynomial coefficients.
-            Vector<T> coefficients{};
+        static bool SolveLinearSystem(
+            Matrix<T> const& A,
+            Vector<T> const& B,
+            std::vector<T>& polynomial)
+        {
+            Vector<T> coefficients(polynomial.size());
             if (LinearSystem<T>::Solve(A, B, coefficients))
             {
-                for (std::size_t i = 0; i < size; ++i)
+                for (std::size_t i = 0; i < polynomial.size(); ++i)
                 {
-                    polynomial.mCoefficients[i] = coefficients[i];
+                    polynomial[i] = coefficients[i];
                 }
                 return true;
             }
             else
             {
-                std::fill(polynomial.mCoefficients.begin(),
-                    polynomial.mCoefficients.end(), C_<T>(0));
+                std::fill(polynomial.begin(), polynomial.end(),C_<T>(0));
                 return false;
             }
         }
+
+        std::vector<Multiindex> const* mMultiindices;
+        std::vector<Observation> const* mObservations;
+        Multiindex mMaxMultiindex;
+        Multiindex mTwoMaxMultiindexP1;
+        std::array<Matrix<T>, N> mPowers;
+        std::size_t mMaxMaxMultiindex;
+        std::vector<T> mInterpolationProduct;
 
     private:
         friend class UnitTestApprPolynomial;

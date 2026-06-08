@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.29
+// File Version: 0.0.2026.06.08
 
 #pragma once
 
@@ -13,19 +13,16 @@
 // fitting algorithm. The observation type is std::array<T,2>, which
 // represents a 2-tuple (x,w).
 //
-// WARNING. The fitting algorithm for polynomial terms
-//   (1,x,x^2,...,x^d)
-// is known to be nonrobust for large degrees and for large magnitude data.
-// One alternative is to use orthogonal polynomials
-//   (f[0](x),...,f[d](x))
-// and apply the least-squares algorithm to these. Another alternative is to
-// transform
-//   (x',w') = ((x-xcen)/rng, w/rng)
-// where xmin = min(x[i]), xmax = max(x[i]), xcen = (xmin+xmax)/2, and
-// rng = xmax-xmin. Fit the (x',w') points,
-//   w' = sum_{i=0}^d c'[i]*(x')^i.
-// The original polynomial is evaluated as
-//   w = rng*sum_{i=0}^d c'[i]*((x-xcen)/rng)^i
+// WARNING. The fitting algorithm for polynomial terms is known to be
+// nonrobust for large degrees and for large magnitude data. One alternative
+// is to use orthogonal polynomials and apply the least-squares algorithm to
+// these. Another alternative is to transform the x-values to the square
+// [-1,1] by subtracting the center of the their axis-aligned bounding
+// interval and then uniformly scaling (x,w) so that the interval tightly
+// contains the x-values.
+//
+// The fitting algorithm is described in
+//   https://www.geometrictools.com/Documentation/PolynomialLeastSquares.pdf
 
 #include <GTL/Mathematics/Algebra/Polynomial.h>
 #include <GTL/Mathematics/MatrixAnalysis/LinearSystem.h>
@@ -43,28 +40,70 @@ namespace gtl
         static bool Fit(
             std::size_t xDegree,
             std::vector<std::array<T, 2>> const& observations,
+            bool validateInput,
             Polynomial<T, 1>& polynomial)
         {
-            // Compute the powers of x.
-            std::size_t const twoXDegree = 2 * xDegree;
-            Matrix<T> xPower(observations.size(), twoXDegree + 1);
+            if (validateInput)
+            {
+                ValidateInput(xDegree, observations);
+            }
+
+            Matrix<T> xPower{};
+            ComputePowers(xDegree, observations,
+                xPower);
+
+            Matrix<T> A{};
+            Vector<T> B{};
+            ComputeLinearSystemComponents(xDegree, observations,
+                xPower, A, B);
+
+            return SolveLinearSystem(xDegree,
+                A, B, polynomial);
+        }
+
+    private:
+        static void ValidateInput(
+            std::size_t xDegree,
+            std::vector<std::array<T, 2>> const& observations)
+        {
+            GTL_ARGUMENT_ASSERT(
+                xDegree > 0 && observations.size() > 0,
+                "Invalid input.");
+        }
+
+        // Compute the powers of x.
+        static void ComputePowers(
+            std::size_t xDegree,
+            std::vector<std::array<T, 2>> const& observations,
+            Matrix<T>& xPower)
+        {
+            std::size_t twoXDegreeP1 = 2 * xDegree + 1;
+            xPower.resize(observations.size(), twoXDegreeP1);
             for (std::size_t s = 0; s < observations.size(); ++s)
             {
                 T const& x = observations[s][0];
 
                 xPower(s, 0) = C_<T>(1);
-                for (std::size_t j0 = 0, j1 = 1; j1 <= twoXDegree; j0 = j1++)
+                for (std::size_t j0 = 0, j1 = 1; j1 < twoXDegreeP1; j0 = j1++)
                 {
                     xPower(s, j1) = x * xPower(s, j0);
                 }
             }
+        }
 
-            // Matrix A is the Vandermonde matrix and vector B is the
-            // right-hand side of the linear system A*X = B.
-            std::size_t const numCoefficients = xDegree + 1;
-            Matrix<T> A(numCoefficients, numCoefficients);
-            Vector<T> B(numCoefficients);
-            for (std::size_t j0 = 0; j0 <= xDegree; ++j0)
+        // Matrix A is the Vandermonde matrix and vector B is the
+        // right-hand side of the linear system A*X = B.
+        static void ComputeLinearSystemComponents(
+            std::size_t xDegree,
+            std::vector<std::array<T, 2>> const& observations,
+            Matrix<T>const & xPower,
+            Matrix<T>& A,
+            Vector<T>& B)
+        {
+            std::size_t xDegreeP1 = xDegree + 1;
+            A.resize(xDegreeP1, xDegreeP1);
+            B.resize(xDegreeP1);
+            for (std::size_t j0 = 0; j0 < xDegreeP1; ++j0)
             {
                 T sum = C_<T>(0);
                 for (std::size_t s = 0; s < observations.size(); ++s)
@@ -75,7 +114,7 @@ namespace gtl
 
                 B[j0] = sum;
 
-                for (std::size_t j1 = 0; j1 <= xDegree; ++j1)
+                for (std::size_t j1 = 0; j1 < xDegreeP1; ++j1)
                 {
                     sum = C_<T>(0);
                     for (std::size_t s = 0; s < observations.size(); ++s)
@@ -86,13 +125,21 @@ namespace gtl
                     A(j0, j1) = sum;
                 }
             }
+        }
 
-            // Solve for the polynomial coefficients.
-            Vector<T> coefficient(numCoefficients);
+        // Solve for the polynomial coefficients.
+        static bool SolveLinearSystem(
+            std::size_t xDegree,
+            Matrix<T> const& A,
+            Vector<T> const& B,
+            Polynomial<T, 1>& polynomial)
+        {
+            std::size_t xDegreeP1 = xDegree + 1;
+            Vector<T> coefficient(xDegreeP1);
             if (LinearSystem<T>::Solve(A, B, coefficient))
             {
                 polynomial.SetDegree(xDegree);
-                for (std::size_t i = 0; i <= xDegree; ++i)
+                for (std::size_t i = 0; i < xDegreeP1; ++i)
                 {
                     polynomial[i] = std::move(coefficient[i]);
                 }
@@ -106,6 +153,6 @@ namespace gtl
         }
 
     private:
-        friend class UnitTestApprPolynomial2;
+        friend class UnitTestApprPolynomial1;
     };
 }
