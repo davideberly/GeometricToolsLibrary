@@ -3,13 +3,14 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.10.06
+// File Version: 0.0.2026.07.13
 
 #pragma once
 
 // Triangulate polygons using ear clipping. The algorithm is described in
 // https://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf
 
+#include <GTL/Mathematics/Arithmetic/ArbitraryPrecision.h>
 #include <GTL/Mathematics/Geometry/2D/PolygonTree.h>
 #include <algorithm>
 #include <array>
@@ -28,7 +29,10 @@ namespace gtl
     template <typename InputType, typename ComputeType>
     class TriangulateEC
     {
+        // Use rational arithmetic to ensure a theoretically correct result.
+        //using ComputeType = BSRational<UIntegerAP32>;
     public:
+
         // The fundamental problem is to compute the triangulation of a
         // polygon tree. The outer polygons have counterclockwise ordered
         // vertices. The inner polygons have clockwise ordered vertices.
@@ -203,6 +207,20 @@ namespace gtl
         std::vector<std::array<std::size_t, 3>> mTriangles;
 
     private:
+        template <typename Dummy = InputType>
+        typename std::enable_if<!is_arbitrary_precision<Dummy>::value, std::int32_t>::type
+        Sign(ComputeType const& number) const
+        {
+            return (number > C_<ComputeType>(0) ? +1 : (number < C_<ComputeType>(0) ? -1 : 0));
+        }
+            
+        template <typename Dummy = InputType>
+        typename std::enable_if<is_arbitrary_precision<Dummy>::value, std::int32_t>::type
+        Sign(ComputeType const& number) const
+        {
+            return number.GetSign();
+        }
+
         // For a line with origin V0 and direction V1-V0, operator() returns
         //   +1, P on right of line
         //   -1, P on left of line
@@ -217,7 +235,7 @@ namespace gtl
             ComputeType x0y1 = x0 * y1;
             ComputeType x1y0 = x1 * y0;
             ComputeType det = x0y1 - x1y0;
-            return det.GetSign();
+            return Sign(det);
         }
 
         std::int32_t ToLine(std::size_t pIndex, std::size_t v0Index, std::size_t v1Index) const
@@ -735,10 +753,10 @@ namespace gtl
             combined = std::move(currentOuter);
         }
 
-        // The mutually visible vertices are VI = mPoints[inner[iVisibleIndex]]
+        // Mutually visible vertices are VI = mPoints[inner[iVisibleIndex]]
         // and VO = mPoints[outer[oVisibleIndex]]. Two coincident edges with
-        // these endpoints are inserted to connect the outer and inner polygons
-        // into a pseudosimple polygon.
+        // these endpoints are inserted to connect the outer and inner
+        // polygons into a pseudosimple polygon.
         void InsertBridge(Polygon const& outer, Polygon const& inner,
             std::size_t oVisibleIndex, std::size_t iVisibleIndex, Polygon& combined)
         {
@@ -798,10 +816,18 @@ namespace gtl
             {
             }
 
-            std::size_t index;           // index of vertex in mPoints array
-            std::size_t vPrev, vNext;    // vertex links for polygon
-            std::size_t sPrev, sNext;    // convex/reflex vertex links (disjoint lists)
-            std::size_t ePrev, eNext;    // ear links
+            // index of vertex in mPoints array
+            std::size_t index;
+
+            // vertex links for polygon
+            std::size_t vPrev, vNext;
+
+            // convex/reflex vertex links (disjoint lists)
+            std::size_t sPrev, sNext;
+
+            // ear links
+            std::size_t ePrev, eNext;
+
             bool isConvex, isEar;
         };
 
@@ -894,10 +920,10 @@ namespace gtl
                 }
 
                 // Identify the ears and build a circular list of them. Let
-                // V0, V1, and V2 be consecutive vertices forming triangle InputType.
+                // V0, V1, and V2 be consecutive vertices forming triangle T.
                 // The vertex V1 is an ear if no other vertices of the polygon
-                // lie inside InputType. Although it is enough to show that V1 is not
-                // an ear by finding at least one other vertex inside InputType, it is
+                // lie inside T. Although it is enough to show that V1 is not
+                // an ear by finding at least one other vertex inside T, it is
                 // sufficient to search only the reflex vertices. This is an
                 // O(C*R) process, where C is the number of convex vertices
                 // and R is the number of reflex vertices with N = C+R. The
@@ -997,8 +1023,8 @@ namespace gtl
             Vertex& V(std::size_t i)
             {
                 // If the assertion is triggered, do you have a coincident
-                // vertex-edge or edge-edge pair? These violate the assumptions
-                // for the algorithm.
+                // vertex-edge or edge-edge pair? These violate the
+                // assumptions for the algorithm.
                 GTL_ARGUMENT_ASSERT(
                     i != negOne,
                     "Index out of range..");
@@ -1194,11 +1220,20 @@ namespace gtl
 
             // The doubly linked list.
             std::vector<Vertex> mVertices;
-            std::size_t mCFirst, mCLast;  // linear list of convex vertices
-            std::size_t mRFirst, mRLast;  // linear list of reflex vertices
-            std::size_t mEFirst, mELast;  // cyclical list of ears
+
+            // linear list of convex vertices
+            std::size_t mCFirst, mCLast;
+
+            // linear list of reflex vertices
+            std::size_t mRFirst, mRLast;
+
+            // cyclical list of ears
+            std::size_t mEFirst, mELast;
         };
 
         VertexList mVertexList;
+
+    private:
+        friend class UnitTestTriangulateEC;
     };
 }

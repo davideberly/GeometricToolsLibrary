@@ -21,7 +21,7 @@
 //   https://www.geometrictools.com/Documentation/C1QQuadraticInterpolation.pdf
 
 #include <GTL/Mathematics/Meshes/PlanarMesh.h>
-#include <GTL/Mathematics/Containment/2D/ContScribeCircle2.h>
+#include <GTL/Mathematics/Containment/2D/ContCircle2.h>
 #include <GTL/Mathematics/Distance/ND/DistPointAlignedBox.h>
 #include <GTL/Mathematics/Intersection/2D/IntrSegment2Segment2.h>
 #include <algorithm>
@@ -308,7 +308,7 @@ namespace gtl
                 std::size_t i2 = triangle[2];
 
                 Circle2<T> circle{};
-                Inscribe(positions[i0], positions[i1], positions[i2], circle);
+                ContCircle2<T>::Inscribe(positions[i0], positions[i1], positions[i2], circle);
                 mTriangleData[t].center = circle.center;
             }
 

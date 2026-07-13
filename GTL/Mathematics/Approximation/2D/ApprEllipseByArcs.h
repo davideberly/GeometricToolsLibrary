@@ -17,7 +17,7 @@
 // is described in
 //   https://www.geometrictools.com/Documentation/ApproximateEllipse.pdf
 
-#include <GTL/Mathematics/Containment/2D/ContScribeCircle2.h>
+#include <GTL/Mathematics/Containment/2D/ContCircle2.h>
 #include <cmath>
 #include <cstddef>
 #include <vector>
@@ -83,7 +83,7 @@ namespace gtl
             Circle2<T> circle{};
             Vector2<T> const& p0 = points[0];
             Vector2<T> const& p1 = points[1];
-            if (!Circumscribe(Vector2<T>{ p1[0], -p1[1] }, p0, p1, circle))
+            if (!ContCircle2<T>::Circumscribe(Vector2<T>{ p1[0], -p1[1] }, p0, p1, circle))
             {
                 // This should not happen for the arc-fitting algorithm.
                 points.clear();
@@ -98,7 +98,7 @@ namespace gtl
             std::size_t last = numArcs - 1;
             Vector2<T> const& pNm1 = points[last];
             Vector2<T> const& pN = points[numArcs];
-            if (!Circumscribe(Vector2<T>{ -pNm1[0], pNm1[1] }, pN, pNm1, circle))
+            if (!ContCircle2<T>::Circumscribe(Vector2<T>{ -pNm1[0], pNm1[1] }, pN, pNm1, circle))
             {
                 // This should not happen for the arc-fitting algorithm.
                 points.clear();
@@ -113,7 +113,7 @@ namespace gtl
             // Compute arcs at intermediate points between (a,0) and (0,b).
             for (std::size_t iM = 0, i = 1, iP = 2; i < last; ++iM, ++i, ++iP)
             {
-                Circumscribe(points[iM], points[i], points[iP], circle);
+                ContCircle2<T>::Circumscribe(points[iM], points[i], points[iP], circle);
                 centers[i] = circle.center;
                 radii[i] = circle.radius;
             }

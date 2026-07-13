@@ -96,7 +96,7 @@ namespace gtl
             else
             {
                 OrientedBox2<T> box{};
-                GetContainer(points, box);
+                ContOrientedBox2<T>::GetContainer(points, box);
                 C = box.center;
                 for (std::size_t i = 0; i < 2; ++i)
                 {

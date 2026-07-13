@@ -117,7 +117,7 @@ namespace gtl
                 // The tetrahedra are either nested or separated. Test
                 // for containment of the centroids to decide which case.
                 Vector3<T> centroid0 = tetra0.ComputeCentroid();
-                bool centroid0InTetra1 = InContainer(centroid0, tetra1);
+                bool centroid0InTetra1 = ContTetrahedron3<T>::InContainer(centroid0, tetra1);
                 if (centroid0InTetra1)
                 {
                     // Tetra0 is nested inside tetra1. Choose the centroid
@@ -129,7 +129,7 @@ namespace gtl
                 }
 
                 Vector3<T> centroid1 = tetra1.ComputeCentroid();
-                bool centroid1InTetra0 = InContainer(centroid1, tetra0);
+                bool centroid1InTetra0 = ContTetrahedron3<T>::InContainer(centroid1, tetra0);
                 if (centroid1InTetra0)
                 {
                     // Tetra1 is nested inside tetra0. Choose the centroid

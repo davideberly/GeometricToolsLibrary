@@ -3,16 +3,15 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.03.27
+// File Version: 0.0.2026.07.10
 
 #pragma once
 
-#include <GTL/Utility/Exceptions.h>
 #include <GTL/Utility/Multiarray.h>
 #include <array>
 #include <cstddef>
 #include <cstdint>
-#include <string>
+#include <type_traits>
 
 namespace gtl
 {
@@ -20,326 +19,372 @@ namespace gtl
     class Image3 : public Multiarray<PixelType, true>
     {
     public:
-        // Construction and destruction.
+        // The inheritance does not use virtual destructors, so you cannot
+        // delete Image2 polymorphically via its base-class type.
         Image3() = default;
-        virtual ~Image3() = default;
+        ~Image3() = default;
 
-        Image3(std::size_t dimension0, std::size_t dimension1, std::size_t dimension2)
+        Image3(std::size_t bound0, std::size_t bound1, std::size_t bound2)
             :
-            Multiarray<PixelType, true>({ dimension0, dimension1, dimension2 })
+            Multiarray<PixelType, true>{ bound0, bound1, bound2 }
         {
         }
 
-        // Use default copy and move semantics.
-        Image3(Image3 const&) = default;
-        Image3& operator=(Image3 const&) = default;
-        Image3(Image3&&) noexcept = default;
-        Image3& operator=(Image3&& image) noexcept = default;
+        // In the following discussion, u, v and w are in {-1,1}. Given a
+        // voxel (x,y,z), the 6-connected neighbors have relative offsets
+        // (u,0,0), (0,v,0), and (0,0,w). The 18-connected neighbors include
+        // the 6-connected neighbors and have additional relative offsets
+        // (u,v,0), (u,0,w), and (0,v,w). The 26-connected neighbors include
+        // the 18-connected neighbors and have additional relative offsets
+        // (u,v,w). The corner neighbors have offsets (0,0,0), (1,0,0),
+        // (0,1,0), (1,1,0), (0,0,1), (1,0,1), (0,1,1), and (1,1,1) in that
+        // order. The full neighborhood is the set of 3x3x3 pixels centered
+        // at (x,y,z).
+        using SignedType = std::conditional<sizeof(std::size_t) == 8, std::int64_t, std::int32_t>::type;
 
-        // Support for resizing the image. All pixel data is lost by this
-        // operation.
-        void resize(std::size_t dimension0, std::size_t dimension1, std::size_t dimension2)
+        // The neighborhoods can be accessed as 1-dimensional indices using
+        // these functions. The first five functions provide 1-dimensional
+        // indices relative to any voxel location; these depend only on the
+        // image dimensions. The last five functions provide 1-dimensional
+        // indices for the actual voxels in the neighborhood; no clamping is
+        // used when (x,y,z) is on the boundary.
+        void GetNeighborhood(std::array<SignedType, 6>& offset) const
         {
-            Multiarray<PixelType, true>::resize({ dimension0, dimension1, dimension2 });
+            SignedType dim0 = static_cast<SignedType>(this->size(0));
+            SignedType dim01 = static_cast<SignedType>(this->size(0) * this->size(1));
+            offset[0] = -1;        // (x-1,y,z)
+            offset[1] = +1;        // (x+1,y,z)
+            offset[2] = -dim0;     // (x,y-1,z)
+            offset[3] = +dim0;     // (x,y+1,z)
+            offset[4] = -dim01;    // (x,y,z-1)
+            offset[5] = +dim01;    // (x,y,z+1)
         }
 
-        // Get the relative offsets for a neighborhood, accessed as a
-        // 1-dimensional array. The indices are relative to any pixel
-        // location.
-        void GetNeighborhood(std::array<std::int64_t, 6>& nbr) const
+        void GetNeighborhood(std::array<SignedType, 18>& offset) const
         {
-            std::int64_t dim0 = static_cast<std::int64_t>(this->size(0));
-            std::int64_t dim01 = static_cast<std::int64_t>(this->size(0) * this->size(1));
-            nbr[0] = -1;        // (x-1,y,z)
-            nbr[1] = +1;        // (x+1,y,z)
-            nbr[2] = -dim0;     // (x,y-1,z)
-            nbr[3] = +dim0;     // (x,y+1,z)
-            nbr[4] = -dim01;    // (x,y,z-1)
-            nbr[5] = +dim01;    // (x,y,z+1)
+            SignedType dim0 = static_cast<SignedType>(this->size(0));
+            SignedType dim01 = static_cast<SignedType>(this->size(0) * this->size(1));
+            offset[0] = -1;                // (x-1,y,z)
+            offset[1] = +1;                // (x+1,y,z)
+            offset[2] = -dim0;             // (x,y-1,z)
+            offset[3] = +dim0;             // (x,y+1,z)
+            offset[4] = -dim01;            // (x,y,z-1)
+            offset[5] = +dim01;            // (x,y,z+1)
+            offset[6] = -1 - dim0;         // (x-1,y-1,z)
+            offset[7] = +1 - dim0;         // (x+1,y-1,z)
+            offset[8] = -1 + dim0;         // (x-1,y+1,z)
+            offset[9] = +1 + dim0;         // (x+1,y+1,z)
+            offset[10] = -1 + dim01;       // (x-1,y,z+1)
+            offset[11] = +1 + dim01;       // (x+1,y,z+1)
+            offset[12] = -dim0 + dim01;    // (x,y-1,z+1)
+            offset[13] = +dim0 + dim01;    // (x,y+1,z+1)
+            offset[14] = -1 - dim01;       // (x-1,y,z-1)
+            offset[15] = +1 - dim01;       // (x+1,y,z-1)
+            offset[16] = -dim0 - dim01;    // (x,y-1,z-1)
+            offset[17] = +dim0 - dim01;    // (x,y+1,z-1)
         }
 
-        void GetNeighborhood(std::array<std::int64_t, 18>& nbr) const
+        void GetNeighborhood(std::array<SignedType, 26>& offset) const
         {
-            std::int64_t dim0 = static_cast<std::int64_t>(this->size(0));
-            std::int64_t dim01 = static_cast<std::int64_t>(this->size(0) * this->size(1));
-            nbr[0] = -1;                // (x-1,y,z)
-            nbr[1] = +1;                // (x+1,y,z)
-            nbr[2] = -dim0;             // (x,y-1,z)
-            nbr[3] = +dim0;             // (x,y+1,z)
-            nbr[4] = -dim01;            // (x,y,z-1)
-            nbr[5] = +dim01;            // (x,y,z+1)
-            nbr[6] = -1 - dim0;         // (x-1,y-1,z)
-            nbr[7] = +1 - dim0;         // (x+1,y-1,z)
-            nbr[8] = -1 + dim0;         // (x-1,y+1,z)
-            nbr[9] = +1 + dim0;         // (x+1,y+1,z)
-            nbr[10] = -1 + dim01;       // (x-1,y,z+1)
-            nbr[11] = +1 + dim01;       // (x+1,y,z+1)
-            nbr[12] = -dim0 + dim01;    // (x,y-1,z+1)
-            nbr[13] = +dim0 + dim01;    // (x,y+1,z+1)
-            nbr[14] = -1 - dim01;       // (x-1,y,z-1)
-            nbr[15] = +1 - dim01;       // (x+1,y,z-1)
-            nbr[16] = -dim0 - dim01;    // (x,y-1,z-1)
-            nbr[17] = +dim0 - dim01;    // (x,y+1,z-1)
+            SignedType dim0 = static_cast<SignedType>(this->size(0));
+            SignedType dim01 = static_cast<SignedType>(this->size(0) * this->size(1));
+            offset[0] = -1;                    // (x-1,y,z)
+            offset[1] = +1;                    // (x+1,y,z)
+            offset[2] = -dim0;                 // (x,y-1,z)
+            offset[3] = +dim0;                 // (x,y+1,z)
+            offset[4] = -dim01;                // (x,y,z-1)
+            offset[5] = +dim01;                // (x,y,z+1)
+            offset[6] = -1 - dim0;             // (x-1,y-1,z)
+            offset[7] = +1 - dim0;             // (x+1,y-1,z)
+            offset[8] = -1 + dim0;             // (x-1,y+1,z)
+            offset[9] = +1 + dim0;             // (x+1,y+1,z)
+            offset[10] = -1 + dim01;           // (x-1,y,z+1)
+            offset[11] = +1 + dim01;           // (x+1,y,z+1)
+            offset[12] = -dim0 + dim01;        // (x,y-1,z+1)
+            offset[13] = +dim0 + dim01;        // (x,y+1,z+1)
+            offset[14] = -1 - dim01;           // (x-1,y,z-1)
+            offset[15] = +1 - dim01;           // (x+1,y,z-1)
+            offset[16] = -dim0 - dim01;        // (x,y-1,z-1)
+            offset[17] = +dim0 - dim01;        // (x,y+1,z-1)
+            offset[18] = -1 - dim0 - dim01;    // (x-1,y-1,z-1)
+            offset[19] = +1 - dim0 - dim01;    // (x+1,y-1,z-1)
+            offset[20] = -1 + dim0 - dim01;    // (x-1,y+1,z-1)
+            offset[21] = +1 + dim0 - dim01;    // (x+1,y+1,z-1)
+            offset[22] = -1 - dim0 + dim01;    // (x-1,y-1,z+1)
+            offset[23] = +1 - dim0 + dim01;    // (x+1,y-1,z+1)
+            offset[24] = -1 + dim0 + dim01;    // (x-1,y+1,z+1)
+            offset[25] = +1 + dim0 + dim01;    // (x+1,y+1,z+1)
         }
 
-        void GetNeighborhood(std::array<std::int64_t, 26>& nbr) const
+        void GetCorners(std::array<SignedType, 8>& offset) const
         {
-            std::int64_t dim0 = static_cast<std::int64_t>(this->size(0));
-            std::int64_t dim01 = static_cast<std::int64_t>(this->size(0) * this->size(1));
-            nbr[0] = -1;                    // (x-1,y,z)
-            nbr[1] = +1;                    // (x+1,y,z)
-            nbr[2] = -dim0;                 // (x,y-1,z)
-            nbr[3] = +dim0;                 // (x,y+1,z)
-            nbr[4] = -dim01;                // (x,y,z-1)
-            nbr[5] = +dim01;                // (x,y,z+1)
-            nbr[6] = -1 - dim0;             // (x-1,y-1,z)
-            nbr[7] = +1 - dim0;             // (x+1,y-1,z)
-            nbr[8] = -1 + dim0;             // (x-1,y+1,z)
-            nbr[9] = +1 + dim0;             // (x+1,y+1,z)
-            nbr[10] = -1 + dim01;           // (x-1,y,z+1)
-            nbr[11] = +1 + dim01;           // (x+1,y,z+1)
-            nbr[12] = -dim0 + dim01;        // (x,y-1,z+1)
-            nbr[13] = +dim0 + dim01;        // (x,y+1,z+1)
-            nbr[14] = -1 - dim01;           // (x-1,y,z-1)
-            nbr[15] = +1 - dim01;           // (x+1,y,z-1)
-            nbr[16] = -dim0 - dim01;        // (x,y-1,z-1)
-            nbr[17] = +dim0 - dim01;        // (x,y+1,z-1)
-            nbr[18] = -1 - dim0 - dim01;    // (x-1,y-1,z-1)
-            nbr[19] = +1 - dim0 - dim01;    // (x+1,y-1,z-1)
-            nbr[20] = -1 + dim0 - dim01;    // (x-1,y+1,z-1)
-            nbr[21] = +1 + dim0 - dim01;    // (x+1,y+1,z-1)
-            nbr[22] = -1 - dim0 + dim01;    // (x-1,y-1,z+1)
-            nbr[23] = +1 - dim0 + dim01;    // (x+1,y-1,z+1)
-            nbr[24] = -1 + dim0 + dim01;    // (x-1,y+1,z+1)
-            nbr[25] = +1 + dim0 + dim01;    // (x+1,y+1,z+1)
+            SignedType dim0 = static_cast<SignedType>(this->size(0));
+            SignedType dim01 = static_cast<SignedType>(this->size(0) * this->size(1));
+            offset[0] = 0;                 // (x,y,z)
+            offset[1] = 1;                 // (x+1,y,z)
+            offset[2] = dim0;              // (x,y+1,z)
+            offset[3] = dim0 + 1;          // (x+1,y+1,z)
+            offset[4] = dim01;             // (x,y,z+1)
+            offset[5] = dim01 + 1;         // (x+1,y,z+1)
+            offset[6] = dim01 + dim0;      // (x,y+1,z+1)
+            offset[7] = dim01 + dim0 + 1;  // (x+1,y+1,z+1)
         }
 
-        void GetNeighborhood(std::array<std::int64_t, 27>& nbr) const
+        void GetFull(std::array<SignedType, 27>& offset) const
         {
-            std::int64_t dim0 = static_cast<std::int64_t>(this->size(0));
-            std::int64_t dim01 = static_cast<std::int64_t>(this->size(0) * this->size(1));
-            nbr[0] = -1 - dim0 - dim01;     // (x-1,y-1,z-1)
-            nbr[1] = -dim0 - dim01;         // (x,  y-1,z-1)
-            nbr[2] = +1 - dim0 - dim01;     // (x+1,y-1,z-1)
-            nbr[3] = -1 - dim01;            // (x-1,y,  z-1)
-            nbr[4] = -dim01;                // (x,  y,  z-1)
-            nbr[5] = +1 - dim01;            // (x+1,y,  z-1)
-            nbr[6] = -1 + dim0 - dim01;     // (x-1,y+1,z-1)
-            nbr[7] = +dim0 - dim01;         // (x,  y+1,z-1)
-            nbr[8] = +1 + dim0 - dim01;     // (x+1,y+1,z-1)
-            nbr[9] = -1 - dim0;             // (x-1,y-1,z)
-            nbr[10] = -dim0;                // (x,  y-1,z)
-            nbr[11] = +1 - dim0;            // (x+1,y-1,z)
-            nbr[12] = -1;                   // (x-1,y,  z)
-            nbr[13] = 0;                    // (x,  y,  z)
-            nbr[14] = +1;                   // (x+1,y,  z)
-            nbr[15] = -1 + dim0;            // (x-1,y+1,z)
-            nbr[16] = +dim0;                // (x,  y+1,z)
-            nbr[17] = +1 + dim0;            // (x+1,y+1,z)
-            nbr[18] = -1 - dim0 + dim01;    // (x-1,y-1,z+1)
-            nbr[19] = -dim0 + dim01;        // (x,  y-1,z+1)
-            nbr[20] = +1 - dim0 + dim01;    // (x+1,y-1,z+1)
-            nbr[21] = -1 + dim01;           // (x-1,y,  z+1)
-            nbr[22] = +dim01;               // (x,  y,  z+1)
-            nbr[23] = +1 + dim01;           // (x+1,y,  z+1)
-            nbr[24] = -1 + dim0 + dim01;    // (x-1,y+1,z+1)
-            nbr[25] = +dim0 + dim01;        // (x,  y+1,z+1)
-            nbr[26] = +1 + dim0 + dim01;    // (x+1,y+1,z+1)
+            SignedType dim0 = static_cast<SignedType>(this->size(0));
+            SignedType dim01 = static_cast<SignedType>(this->size(0) * this->size(1));
+            offset[0] = -1 - dim0 - dim01;     // (x-1,y-1,z-1)
+            offset[1] = -dim0 - dim01;         // (x,  y-1,z-1)
+            offset[2] = +1 - dim0 - dim01;     // (x+1,y-1,z-1)
+            offset[3] = -1 - dim01;            // (x-1,y,  z-1)
+            offset[4] = -dim01;                // (x,  y,  z-1)
+            offset[5] = +1 - dim01;            // (x+1,y,  z-1)
+            offset[6] = -1 + dim0 - dim01;     // (x-1,y+1,z-1)
+            offset[7] = +dim0 - dim01;         // (x,  y+1,z-1)
+            offset[8] = +1 + dim0 - dim01;     // (x+1,y+1,z-1)
+            offset[9] = -1 - dim0;             // (x-1,y-1,z)
+            offset[10] = -dim0;                // (x,  y-1,z)
+            offset[11] = +1 - dim0;            // (x+1,y-1,z)
+            offset[12] = -1;                   // (x-1,y,  z)
+            offset[13] = 0;                    // (x,  y,  z)
+            offset[14] = +1;                   // (x+1,y,  z)
+            offset[15] = -1 + dim0;            // (x-1,y+1,z)
+            offset[16] = +dim0;                // (x,  y+1,z)
+            offset[17] = +1 + dim0;            // (x+1,y+1,z)
+            offset[18] = -1 - dim0 + dim01;    // (x-1,y-1,z+1)
+            offset[19] = -dim0 + dim01;        // (x,  y-1,z+1)
+            offset[20] = +1 - dim0 + dim01;    // (x+1,y-1,z+1)
+            offset[21] = -1 + dim01;           // (x-1,y,  z+1)
+            offset[22] = +dim01;               // (x,  y,  z+1)
+            offset[23] = +1 + dim01;           // (x+1,y,  z+1)
+            offset[24] = -1 + dim0 + dim01;    // (x-1,y+1,z+1)
+            offset[25] = +dim0 + dim01;        // (x,  y+1,z+1)
+            offset[26] = +1 + dim0 + dim01;    // (x+1,y+1,z+1)
         }
 
-        // Get the relative offsets for a neighborhood, accessed as a
-        // 3-dimensional array. The 3-tuples are relative to any pixel
-        // location.
-        void GetNeighborhood(std::array<std::array<std::int64_t, 3>, 6>& nbr) const
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::size_t, 6>& nbr) const
         {
-            nbr[0] = { { -1, 0, 0 } };
-            nbr[1] = { { +1, 0, 0 } };
-            nbr[2] = { { 0, -1, 0 } };
-            nbr[3] = { { 0, +1, 0 } };
-            nbr[4] = { { 0, 0, -1 } };
-            nbr[5] = { { 0, 0, +1 } };
-        }
-
-        void GetNeighborhood(std::array<std::array<std::int64_t, 3>, 18>& nbr) const
-        {
-            nbr[0] = { { -1, 0, 0 } };
-            nbr[1] = { { +1, 0, 0 } };
-            nbr[2] = { { 0, -1, 0 } };
-            nbr[3] = { { 0, +1, 0 } };
-            nbr[4] = { { 0, 0, -1 } };
-            nbr[5] = { { 0, 0, +1 } };
-            nbr[6] = { { -1, -1, 0 } };
-            nbr[7] = { { +1, -1, 0 } };
-            nbr[8] = { { -1, +1, 0 } };
-            nbr[9] = { { +1, +1, 0 } };
-            nbr[10] = { { -1, 0, +1 } };
-            nbr[11] = { { +1, 0, +1 } };
-            nbr[12] = { { 0, -1, +1 } };
-            nbr[13] = { { 0, +1, +1 } };
-            nbr[14] = { { -1, 0, -1 } };
-            nbr[15] = { { +1, 0, -1 } };
-            nbr[16] = { { 0, -1, -1 } };
-            nbr[17] = { { 0, +1, -1 } };
-        }
-
-        void GetNeighborhood(std::array<std::array<std::int64_t, 3>, 26>& nbr) const
-        {
-            nbr[0] = { { -1, 0, 0 } };
-            nbr[1] = { { +1, 0, 0 } };
-            nbr[2] = { { 0, -1, 0 } };
-            nbr[3] = { { 0, +1, 0 } };
-            nbr[4] = { { 0, 0, -1 } };
-            nbr[5] = { { 0, 0, +1 } };
-            nbr[6] = { { -1, -1, 0 } };
-            nbr[7] = { { +1, -1, 0 } };
-            nbr[8] = { { -1, +1, 0 } };
-            nbr[9] = { { +1, +1, 0 } };
-            nbr[10] = { { -1, 0, +1 } };
-            nbr[11] = { { +1, 0, +1 } };
-            nbr[12] = { { 0, -1, +1 } };
-            nbr[13] = { { 0, +1, +1 } };
-            nbr[14] = { { -1, 0, -1 } };
-            nbr[15] = { { +1, 0, -1 } };
-            nbr[16] = { { 0, -1, -1 } };
-            nbr[17] = { { 0, +1, -1 } };
-            nbr[18] = { { -1, -1, -1 } };
-            nbr[19] = { { +1, -1, -1 } };
-            nbr[20] = { { -1, +1, -1 } };
-            nbr[21] = { { +1, +1, -1 } };
-            nbr[22] = { { -1, -1, +1 } };
-            nbr[23] = { { +1, -1, +1 } };
-            nbr[24] = { { -1, +1, +1 } };
-            nbr[25] = { { +1, +1, +1 } };
-        }
-
-        void GetNeighborhood(std::array<std::array<std::int64_t, 3>, 27>& nbr) const
-        {
-            nbr[0] = { { -1, -1, -1 } };
-            nbr[1] = { { 0, -1, -1 } };
-            nbr[2] = { { +1, -1, -1 } };
-            nbr[3] = { { -1, 0, -1 } };
-            nbr[4] = { { 0, 0, -1 } };
-            nbr[5] = { { +1, 0, -1 } };
-            nbr[6] = { { -1, +1, -1 } };
-            nbr[7] = { { 0, +1, -1 } };
-            nbr[8] = { { +1, +1, -1 } };
-            nbr[9] = { { -1, -1, 0 } };
-            nbr[10] = { { 0, -1, 0 } };
-            nbr[11] = { { +1, -1, 0 } };
-            nbr[12] = { { -1, 0, 0 } };
-            nbr[13] = { { 0, 0, 0 } };
-            nbr[14] = { { +1, 0, 0 } };
-            nbr[15] = { { -1, +1, 0 } };
-            nbr[16] = { { 0, +1, 0 } };
-            nbr[17] = { { +1, +1, 0 } };
-            nbr[18] = { { -1, -1, +1 } };
-            nbr[19] = { { 0, -1, +1 } };
-            nbr[20] = { { +1, -1, +1 } };
-            nbr[21] = { { -1, 0, +1 } };
-            nbr[22] = { { 0, 0, +1 } };
-            nbr[23] = { { +1, 0, +1 } };
-            nbr[24] = { { -1, +1, +1 } };
-            nbr[25] = { { 0, +1, +1 } };
-            nbr[26] = { { +1, +1, +1 } };
-        }
-
-        // Get the locations for a neighborhood of (x,y,z), accessed as a
-        // 1-dimensional array. The input (x,y,z) is required to be strictly
-        // inside the image. If you require neighborhoods of boundary pixels,
-        // you must computer your own or use GetNeighborhood(...) and extract
-        // the relevant elements.
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::size_t, 6>& nbr) const
-        {
-            GetNeighborhood1D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::size_t, 18>& nbr) const
-        {
-            GetNeighborhood1D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::size_t, 26>& nbr) const
-        {
-            GetNeighborhood1D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::size_t, 27>& nbr) const
-        {
-            GetNeighborhood1D(x, y, z, nbr);
-        }
-
-        // Get the locations for a neighborhood of (x,y,z), accessed as a
-        // 3-dimensional array. The input (x,y,z) is required to be strictly
-        // inside the image. If you require neighborhoods of boundary pixels,
-        // you must computer your own or use GetNeighborhood(...) and extract
-        // the relevant elements.
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::array<std::size_t, 3>, 6>& nbr) const
-        {
-            GetNeighborhood3D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::array<std::size_t, 3>, 18>& nbr) const
-        {
-            GetNeighborhood3D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(int32_t x, int32_t y, int32_t z,
-            std::array<std::array<std::size_t, 3>, 26>& nbr) const
-        {
-            GetNeighborhood3D(x, y, z, nbr);
-        }
-
-        void GetNeighborhood(int32_t x, int32_t y, int32_t z,
-            std::array<std::array<std::size_t, 3>, 27>& nbr) const
-        {
-            GetNeighborhood3D(x, y, z, nbr);
-        }
-
-    protected:
-        template <std::size_t n>
-        void GetNeighborhood1D(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::size_t, n>& nbr) const
-        {
-            auto const& dim = this->mSizes;
-            GTL_OUTOFRANGE_ASSERT(
-                1 <= x && x + 1 <= dim[0] && 1 <= y && y + 1 <= dim[1] && 1 <= z && z + 1 <= dim[2],
-                "Invalid (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ").");
-
-            std::int64_t index = static_cast<std::int64_t>(x + dim[0] * (y + dim[1] * z));
-            std::array<std::int64_t, 6> inbr{};
-            GetNeighborhood(inbr);
+            std::size_t center = this->index(x, y, z);
+            std::array<SignedType, 6> offset{};
+            GetNeighborhood(offset);
             for (std::size_t i = 0; i < 6; ++i)
             {
-                nbr[i] = static_cast<std::size_t>(index + inbr[i]);
+                nbr[i] = center + offset[i];
             }
         }
 
-        template <std::size_t n>
-        void GetNeighborhood3D(std::size_t x, std::size_t y, std::size_t z,
-            std::array<std::array<std::size_t, 3>, n>& nbr) const
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::size_t, 18>& nbr) const
         {
-            auto const& dim = this->mSizes;
-            GTL_OUTOFRANGE_ASSERT(
-                1 <= x && x + 1 <= dim[0] && 1 <= y && y + 1 <= dim[1] && 1 <= z && z + 1 <= dim[2],
-                "Invalid (" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ").");
-
-            std::int64_t ix = static_cast<std::int64_t>(x);
-            std::int64_t iy = static_cast<std::int64_t>(y);
-            std::int64_t iz = static_cast<std::int64_t>(z);
-
-            std::array<std::array<std::int64_t, 3>, n> inbr{};
-            GetNeighborhood(inbr);
-            for (std::size_t i = 0; i < n; ++i)
+            std::size_t center = this->index(x, y, z);
+            std::array<SignedType, 18> offset{};
+            GetNeighborhood(offset);
+            for (std::size_t i = 0; i < 18; ++i)
             {
-                nbr[i][0] = static_cast<std::size_t>(ix + inbr[i][0]);
-                nbr[i][1] = static_cast<std::size_t>(iy + inbr[i][1]);
-                nbr[i][2] = static_cast<std::size_t>(iz + inbr[i][2]);
+                nbr[i] = center + offset[i];
+            }
+        }
+
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::size_t, 26>& nbr) const
+        {
+            std::size_t center = this->index(x, y, z);
+            std::array<SignedType, 26> offset{};
+            GetNeighborhood(offset);
+            for (std::size_t i = 0; i < 26; ++i)
+            {
+                nbr[i] = center + offset[i];
+            }
+        }
+
+        void GetCorners(std::size_t x, std::size_t y, std::size_t z, std::array<std::size_t, 8>& nbr) const
+        {
+            std::size_t center = this->index(x, y, z);
+            std::array<SignedType, 8> offset{};
+            GetCorners(offset);
+            for (std::size_t i = 0; i < 8; ++i)
+            {
+                nbr[i] = center + offset[i];
+            }
+        }
+
+        void GetFull(std::size_t x, std::size_t y, std::size_t z, std::array<std::size_t, 27>& nbr) const
+        {
+            std::size_t center = this->index(x, y, z);
+            std::array<SignedType, 27> offset{};
+            GetFull(offset);
+            for (std::size_t i = 0; i < 27; ++i)
+            {
+                nbr[i] = center + offset[i];
+            }
+        }
+
+        // The neighborhoods can be accessed as 3-tuples using these
+        // functions.  The first five functions provide 3-tuples relative to
+        // any voxel location; these depend only on the image dimensions.  The
+        // last five functions provide 3-tuples for the actual voxels in the
+        // neighborhood; no clamping is used when (x,y,z) is on the boundary.
+        void GetNeighborhood(std::array<std::array<SignedType, 3>, 6>& offset) const
+        {
+            offset[0] = { { -1, 0, 0 } };
+            offset[1] = { { +1, 0, 0 } };
+            offset[2] = { { 0, -1, 0 } };
+            offset[3] = { { 0, +1, 0 } };
+            offset[4] = { { 0, 0, -1 } };
+            offset[5] = { { 0, 0, +1 } };
+        }
+
+        void GetNeighborhood(std::array<std::array<SignedType, 3>, 18>& offset) const
+        {
+            offset[0] = { { -1, 0, 0 } };
+            offset[1] = { { +1, 0, 0 } };
+            offset[2] = { { 0, -1, 0 } };
+            offset[3] = { { 0, +1, 0 } };
+            offset[4] = { { 0, 0, -1 } };
+            offset[5] = { { 0, 0, +1 } };
+            offset[6] = { { -1, -1, 0 } };
+            offset[7] = { { +1, -1, 0 } };
+            offset[8] = { { -1, +1, 0 } };
+            offset[9] = { { +1, +1, 0 } };
+            offset[10] = { { -1, 0, +1 } };
+            offset[11] = { { +1, 0, +1 } };
+            offset[12] = { { 0, -1, +1 } };
+            offset[13] = { { 0, +1, +1 } };
+            offset[14] = { { -1, 0, -1 } };
+            offset[15] = { { +1, 0, -1 } };
+            offset[16] = { { 0, -1, -1 } };
+            offset[17] = { { 0, +1, -1 } };
+        }
+
+        void GetNeighborhood(std::array<std::array<SignedType, 3>, 26>& offset) const
+        {
+            offset[0] = { { -1, 0, 0 } };
+            offset[1] = { { +1, 0, 0 } };
+            offset[2] = { { 0, -1, 0 } };
+            offset[3] = { { 0, +1, 0 } };
+            offset[4] = { { 0, 0, -1 } };
+            offset[5] = { { 0, 0, +1 } };
+            offset[6] = { { -1, -1, 0 } };
+            offset[7] = { { +1, -1, 0 } };
+            offset[8] = { { -1, +1, 0 } };
+            offset[9] = { { +1, +1, 0 } };
+            offset[10] = { { -1, 0, +1 } };
+            offset[11] = { { +1, 0, +1 } };
+            offset[12] = { { 0, -1, +1 } };
+            offset[13] = { { 0, +1, +1 } };
+            offset[14] = { { -1, 0, -1 } };
+            offset[15] = { { +1, 0, -1 } };
+            offset[16] = { { 0, -1, -1 } };
+            offset[17] = { { 0, +1, -1 } };
+            offset[18] = { { -1, -1, -1 } };
+            offset[19] = { { +1, -1, -1 } };
+            offset[20] = { { -1, +1, -1 } };
+            offset[21] = { { +1, +1, -1 } };
+            offset[22] = { { -1, -1, +1 } };
+            offset[23] = { { +1, -1, +1 } };
+            offset[24] = { { -1, +1, +1 } };
+            offset[25] = { { +1, +1, +1 } };
+        }
+
+        void GetCorners(std::array<std::array<SignedType, 3>, 8>& offset) const
+        {
+            offset[0] = { { 0, 0, 0 } };
+            offset[1] = { { 1, 0, 0 } };
+            offset[2] = { { 0, 1, 0 } };
+            offset[3] = { { 1, 1, 0 } };
+            offset[4] = { { 0, 0, 1 } };
+            offset[5] = { { 1, 0, 1 } };
+            offset[6] = { { 0, 1, 1 } };
+            offset[7] = { { 1, 1, 1 } };
+        }
+
+        void GetFull(std::array<std::array<SignedType, 3>, 27>& offset) const
+        {
+            offset[0] = { { -1, -1, -1 } };
+            offset[1] = { { 0, -1, -1 } };
+            offset[2] = { { +1, -1, -1 } };
+            offset[3] = { { -1, 0, -1 } };
+            offset[4] = { { 0, 0, -1 } };
+            offset[5] = { { +1, 0, -1 } };
+            offset[6] = { { -1, +1, -1 } };
+            offset[7] = { { 0, +1, -1 } };
+            offset[8] = { { +1, +1, -1 } };
+            offset[9] = { { -1, -1, 0 } };
+            offset[10] = { { 0, -1, 0 } };
+            offset[11] = { { +1, -1, 0 } };
+            offset[12] = { { -1, 0, 0 } };
+            offset[13] = { { 0, 0, 0 } };
+            offset[14] = { { +1, 0, 0 } };
+            offset[15] = { { -1, +1, 0 } };
+            offset[16] = { { 0, +1, 0 } };
+            offset[17] = { { +1, +1, 0 } };
+            offset[18] = { { -1, -1, +1 } };
+            offset[19] = { { 0, -1, +1 } };
+            offset[20] = { { +1, -1, +1 } };
+            offset[21] = { { -1, 0, +1 } };
+            offset[22] = { { 0, 0, +1 } };
+            offset[23] = { { +1, 0, +1 } };
+            offset[24] = { { -1, +1, +1 } };
+            offset[25] = { { 0, +1, +1 } };
+            offset[26] = { { +1, +1, +1 } };
+        }
+
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::array<std::size_t, 3>, 6>& nbr) const
+        {
+            std::array<std::array<SignedType, 3>, 6> offset{};
+            GetNeighborhood(offset);
+            for (std::size_t i = 0; i < 6; ++i)
+            {
+                nbr[i][0] = x + offset[i][0];
+                nbr[i][1] = y + offset[i][1];
+                nbr[i][2] = z + offset[i][2];
+            }
+        }
+
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::array<std::size_t, 3>, 18>& nbr) const
+        {
+            std::array<std::array<SignedType, 3>, 18> offset{};
+            GetNeighborhood(offset);
+            for (std::size_t i = 0; i < 18; ++i)
+            {
+                nbr[i][0] = x + offset[i][0];
+                nbr[i][1] = y + offset[i][1];
+                nbr[i][2] = z + offset[i][2];
+            }
+        }
+
+        void GetNeighborhood(std::size_t x, std::size_t y, std::size_t z, std::array<std::array<std::size_t, 3>, 26>& nbr) const
+        {
+            std::array<std::array<SignedType, 3>, 26> offset{};
+            GetNeighborhood(offset);
+            for (std::size_t i = 0; i < 26; ++i)
+            {
+                nbr[i][0] = x + offset[i][0];
+                nbr[i][1] = y + offset[i][1];
+                nbr[i][2] = z + offset[i][2];
+            }
+        }
+
+        void GetCorners(std::size_t x, std::size_t y, std::size_t z, std::array<std::array<std::size_t, 3>, 8>& nbr) const
+        {
+            std::array<std::array<SignedType, 3>, 8> offset{};
+            GetCorners(offset);
+            for (std::size_t i = 0; i < 8; ++i)
+            {
+                nbr[i][0] = x + offset[i][0];
+                nbr[i][1] = y + offset[i][1];
+                nbr[i][2] = z + offset[i][2];
+            }
+        }
+
+        void GetFull(std::size_t x, std::size_t y, std::size_t z, std::array<std::array<std::size_t, 3>, 27>& nbr) const
+        {
+            std::array<std::array<SignedType, 3>, 27> offset{};
+            GetFull(offset);
+            for (std::size_t i = 0; i < 27; ++i)
+            {
+                nbr[i][0] = x + offset[i][0];
+                nbr[i][1] = y + offset[i][1];
+                nbr[i][2] = z + offset[i][2];
             }
         }
 

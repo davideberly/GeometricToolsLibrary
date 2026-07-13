@@ -3,9 +3,13 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.03.27
+// File Version: 0.0.2026.07.10
 
 #pragma once
+
+// Surface extraction using the Marching Cubes algorithm. The algorithm is
+// modified to avoid the ambiguous topology on shared faces that occurs in
+// some circumstances.
 
 #include <GTL/Mathematics/ImageProcessing/MarchingCubes.h>
 #include <GTL/Mathematics/ImageProcessing/Image3.h>
@@ -15,38 +19,39 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <utility>
 #include <vector>
 
 namespace gtl
 {
-    template <typename T, typename IndexType>
+    template <typename IndexType, typename T>
     class SurfaceExtractorMC : public MarchingCubes<IndexType>
     {
     public:
-        // Construction and destruction.
-        virtual ~SurfaceExtractorMC() = default;
-
         SurfaceExtractorMC(Image3<T> const& image)
             :
+            MarchingCubes<IndexType>{},
             mImage(image)
         {
         }
 
-        // Object copies are not allowed.
+        virtual ~SurfaceExtractorMC() = default;
+
+        // Object copies and moves are not allowed.
         SurfaceExtractorMC() = delete;
         SurfaceExtractorMC(SurfaceExtractorMC const&) = delete;
         SurfaceExtractorMC const& operator=(SurfaceExtractorMC const&) = delete;
+        SurfaceExtractorMC(SurfaceExtractorMC&&) = delete;
+        SurfaceExtractorMC const& operator=(SurfaceExtractorMC&&) = delete;
 
         struct Mesh
         {
-            // All members are set to zeros.
             Mesh()
                 :
                 topology{},
                 vertices{}
             {
-                vertices.fill(Vector3<T>::Zero());
             }
 
             typename MarchingCubes<IndexType>::Topology topology;
@@ -81,8 +86,8 @@ namespace gtl
         bool Extract(T const& level, T const& perturb, std::array<T, 8> const& F,
             Mesh& mesh) const
         {
-            T const zero = C_<T>(0);
-            T const one = C_<T>(1);
+            T const zero = static_cast<T>(0);
+            T const one = static_cast<T>(1);
             std::array<T, 8> localF{};
 
             std::size_t entry = 0;
@@ -94,11 +99,11 @@ namespace gtl
                     localF[i] += perturb;
                 }
 
-                if (localF[i] < zero)
+                if (localF[i] < C_<T>(0))
                 {
                     entry |= mask;
                 }
-                else if (localF[i] == zero)
+                else if (localF[i] == C_<T>(0))
                 {
                     // If 'perturb' is zero, the function will report that no
                     // geometry is generated for this voxel. If 'perturb' is
@@ -113,8 +118,8 @@ namespace gtl
 
             for (std::size_t i = 0; i < mesh.topology.numVertices; ++i)
             {
-                IndexType j0 = mesh.topology.vpair[i][0];
-                IndexType j1 = mesh.topology.vpair[i][1];
+                std::size_t j0 = static_cast<std::size_t>(mesh.topology.vpair[i][0]);
+                std::size_t j1 = static_cast<std::size_t>(mesh.topology.vpair[i][1]);
 
                 // The vertex can be computed with 3D-only computations as
                 //   V = (F[j0] * k1 - F[j1] * k0) / (F[j1] - F[j0])
@@ -127,8 +132,8 @@ namespace gtl
                 // rounding errors. It is guaranteed that j0 < j1, so multiple
                 // voxels sharing the same edge will generate the same vertex.
                 auto& vertex = mesh.vertices[i];
-                std::array<IndexType, 3> k0 = { j0 & 1, (j0 & 2) >> 1, (j0 & 4) >> 2 };
-                std::array<IndexType, 3> k1 = { j1 & 1, (j1 & 2) >> 1, (j1 & 4) >> 2 };
+                std::array<std::size_t, 3> k0 = { j0 & 1, (j0 & 2) >> 1, (j0 & 4) >> 2 };
+                std::array<std::size_t, 3> k1 = { j1 & 1, (j1 & 2) >> 1, (j1 & 4) >> 2 };
                 for (std::size_t index = 0; index < 3; ++index)
                 {
                     if (k0[index] == 0)
@@ -186,15 +191,17 @@ namespace gtl
                 {
                     for (std::size_t x0 = 0, x1 = 1; x1 < mImage.size(0); x0 = x1++)
                     {
-                        std::array<T, 8> F{};
-                        F[0] = mImage(x0, y0, z0);
-                        F[1] = mImage(x1, y0, z0);
-                        F[2] = mImage(x0, y1, z0);
-                        F[3] = mImage(x1, y1, z0);
-                        F[4] = mImage(x0, y0, z1);
-                        F[5] = mImage(x1, y0, z1);
-                        F[6] = mImage(x0, y1, z1);
-                        F[7] = mImage(x1, y1, z1);
+                        std::array<T, 8> F =
+                        {
+                            mImage(x0, y0, z0),
+                            mImage(x1, y0, z0),
+                            mImage(x0, y1, z0),
+                            mImage(x1, y1, z0),
+                            mImage(x0, y0, z1),
+                            mImage(x1, y0, z1),
+                            mImage(x0, y1, z1),
+                            mImage(x1, y1, z1)
+                        };
 
                         Mesh mesh{};
 
@@ -237,20 +244,19 @@ namespace gtl
         }
 
         // The extraction does not use any topological information about the
-        // level surface.  The triangles can be a mixture of clockwise-ordered
-        // and counterclockwise-ordered.  This function is an attempt to give
+        // level surface. The triangles can be a mixture of clockwise-ordered
+        // and counterclockwise-ordered. This function is an attempt to give
         // the triangles a consistent ordering by selecting a normal in
         // approximately the same direction as the average gradient at the
         // vertices (when sameDir is true), or in the opposite direction (when
-        // sameDir is false).  This might not always produce a consistent
-        // order, but is fast.  A consistent order can be computed if you
-        // build a table of vertex, edge, and face adjacencies, but the
-        // resulting data structure is somewhat expensive to process to
-        // reorient triangles.
+        // sameDir is false). This might not always produce a consistent
+        // order, but is fast. A consistent order can be computed if you build
+        // a table of vertex, edge and face adjacencies, but the resulting
+        // data structure is somewhat expensive to process to reorient
+        // triangles.
         void OrientTriangles(std::vector<Vector3<T>> const& vertices,
-            std::vector<IndexType>&indices, bool sameDir) const
+            std::vector<IndexType>& indices, bool sameDir) const
         {
-            T const zero = static_cast<T>(0);
             std::size_t const numTriangles = indices.size() / 3;
             IndexType* triangle = indices.data();
             for (std::size_t t = 0; t < numTriangles; ++t, triangle += 3)
@@ -271,7 +277,7 @@ namespace gtl
                 Vector3<T> gradient2 = GetGradient(v2);
 
                 // Compute the average gradient.
-                Vector3<T> gradientAvr = (gradient0 + gradient1 + gradient2) / static_cast<T>(3);
+                Vector3<T> gradientAvr = (gradient0 + gradient1 + gradient2) / C_<T>(3);
 
                 // Compute the dot product of normal and average gradient.
                 T dot = Dot(gradientAvr, normal);
@@ -279,7 +285,7 @@ namespace gtl
                 // Choose triangle orientation based on gradient direction.
                 if (sameDir)
                 {
-                    if (dot < zero)
+                    if (dot < C_<T>(0))
                     {
                         // Wrong orientation, reorder it.
                         std::swap(triangle[1], triangle[2]);
@@ -287,7 +293,7 @@ namespace gtl
                 }
                 else
                 {
-                    if (dot > zero)
+                    if (dot > C_<T>(0))
                     {
                         // Wrong orientation, reorder it.
                         std::swap(triangle[1], triangle[2]);
@@ -303,11 +309,11 @@ namespace gtl
         {
             // Maintain a running sum of triangle normals at each vertex.
             normals.resize(vertices.size());
-            std::fill(normals.begin(), normals.end(), Vector3<T>::Zero());
+            std::fill(normals.begin(), normals.end(), Vector3<T>{});
 
             std::size_t const numTriangles = indices.size() / 3;
             IndexType const* triangle = indices.data();
-            for (std::size_t t = 0; t < numTriangles; ++t)
+            for (std::size_t t = 0; t < numTriangles; ++t, triangle += 3)
             {
                 std::size_t i0 = static_cast<std::size_t>(triangle[0]);
                 std::size_t i1 = static_cast<std::size_t>(triangle[1]);
@@ -341,69 +347,66 @@ namespace gtl
     protected:
         Vector3<T> GetGradient(Vector3<T> position) const
         {
-            T const zero = static_cast<T>(0);
-            Vector3<T> const vzero{};  // the zero vector
-
             std::size_t x = 0;
-            if (position[0] >= zero)
+            if (position[0] >= C_<T>(0))
             {
                 x = static_cast<std::size_t>(std::floor(position[0]));
                 if (x + 1 >= mImage.size(0))
                 {
-                    return vzero;
+                    return Vector3<T>{};
                 }
             }
             else
             {
-                return vzero;
+                return Vector3<T>{};
             }
 
             std::size_t y = 0;
-            if (position[1] >= zero)
+            if (position[1] >= C_<T>(0))
             {
                 y = static_cast<std::size_t>(std::floor(position[1]));
                 if (y + 1 >= mImage.size(1))
                 {
-                    return vzero;
+                    return Vector3<T>{};
                 }
             }
             else
             {
-                return vzero;
+                return Vector3<T>{};
             }
 
             std::size_t z = 0;
-            if (position[2] >= zero)
+            if (position[2] >= C_<T>(0))
             {
                 z = static_cast<std::size_t>(std::floor(position[2]));
                 if (z + 1 >= mImage.size(2))
                 {
-                    return vzero;
+                    return Vector3<T>{};
                 }
             }
             else
             {
-                return vzero;
+                return Vector3<T>{};
             }
 
-            T const one = static_cast<T>(1);
             position[0] -= static_cast<T>(x);
             position[1] -= static_cast<T>(y);
             position[2] -= static_cast<T>(z);
-            T oneMX = one - position[0];
-            T oneMY = one - position[1];
-            T oneMZ = one - position[2];
+            T oneMX = C_<T>(1) - position[0];
+            T oneMY = C_<T>(1) - position[1];
+            T oneMZ = C_<T>(1) - position[2];
 
             // Get image values at corners of voxel.
-            std::size_t xp1 = x + 1, yp1 = y + 1, zp1 = z + 1;
-            T f000 = mImage(x, y, z);
-            T f100 = mImage(xp1, y, z);
-            T f010 = mImage(x, yp1, z);
-            T f110 = mImage(xp1, yp1, z);
-            T f001 = mImage(x, y, zp1);
-            T f101 = mImage(xp1, y, zp1);
-            T f011 = mImage(x, yp1, zp1);
-            T f111 = mImage(xp1, yp1, zp1);
+            std::array<std::size_t, 8> corners{};
+            mImage.GetCorners(x, y, z, corners);
+            T f000 = mImage[corners[0]];
+            T f100 = mImage[corners[1]];
+            T f010 = mImage[corners[2]];
+            T f110 = mImage[corners[3]];
+            T f001 = mImage[corners[4]];
+            T f101 = mImage[corners[5]];
+            T f011 = mImage[corners[6]];
+            T f111 = mImage[corners[7]];
 
             Vector3<T> gradient{};
 

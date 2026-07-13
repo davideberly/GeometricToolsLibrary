@@ -363,9 +363,6 @@
     <ClInclude Include="Approximation\ND\ApprGaussianDistribution.h">
       <Filter>Approximation\ND</Filter>
     </ClInclude>
-    <ClInclude Include="Containment\2D\ContScribeCircle2.h">
-      <Filter>Containment\2D</Filter>
-    </ClInclude>
     <ClInclude Include="Containment\3D\ContTetrahedron3.h">
       <Filter>Containment\3D</Filter>
     </ClInclude>
@@ -1313,6 +1310,147 @@
     </ClInclude>
     <ClInclude Include="Approximation\Polynomial\ApprPolynomial.h">
       <Filter>Approximation\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\PDEFilter.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\PDEFilter1.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\PDEFilter2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\PDEFilter3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Rasterize3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\CurvatureFlow2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\CurvatureFlow3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\GaussianBlur2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\GaussianBlur3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\GradientAnisotropic2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\GradientAnisotropic3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Morphology.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Morphology2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Morphology3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastMarch.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastMarch2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastMarch3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\Histogram.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastGaussianBlur1.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastGaussianBlur2.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\FastGaussianBlur3.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\CurveExtractorTriangles.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\CurveExtractor.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\CurveExtractorSquares.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\SurfaceExtractor.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\SurfaceExtractorCubes.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcessing\SurfaceExtractorTetrahedra.h">
+      <Filter>ImageProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContCircle2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContEllipse2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContPolygon2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\2D\ContAlignedBox2.h">
+      <Filter>Containment\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContCapsule3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContCylinder3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContEllipsoid3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContLozenge3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContPolyhedron3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\ND\IntrLineHyperplane.h">
+      <Filter>Intersection\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\ND\IntrRayHyperplane.h">
+      <Filter>Intersection\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\ND\IntrSegmentHyperplane.h">
+      <Filter>Intersection\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContSphere3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\3D\ContCircle3.h">
+      <Filter>Containment\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containment\ND\ContCone.h">
+      <Filter>Containment\ND</Filter>
+    </ClInclude>
+    <ClInclude Include="Miscellaneous\SortPointsOnCircle.h">
+      <Filter>Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\IsPlanarGraph.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\MinimalCycleBasis.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\MinimumAreaCircle2.h">
+      <Filter>Geometry\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\2D\SeparatePoints2.h">
+      <Filter>Geometry\2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
