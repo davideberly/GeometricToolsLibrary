@@ -1452,5 +1452,56 @@
     <ClInclude Include="Geometry\2D\SeparatePoints2.h">
       <Filter>Geometry\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Interpolation\1D\IntpAkimaNonuniform1.h">
+      <Filter>Interpolation\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\1D\IntpAkimaUniform1.h">
+      <Filter>Interpolation\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\2D\IntpVectorField2.h">
+      <Filter>Interpolation\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpAkimaUniform3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpCubic3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpLinear3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpLinearNonuniform3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation\3D\IntpSphere3.h">
+      <Filter>Interpolation\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\VolumetricMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\StaticVTSManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicVTSManifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicETNonmanifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\DynamicVETNonmanifoldMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshCurvature.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\MeshSmoother.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Meshes\VertexCollapseMesh.h">
+      <Filter>Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\ND\CLODPolyline.h">
+      <Filter>Geometry\ND</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
