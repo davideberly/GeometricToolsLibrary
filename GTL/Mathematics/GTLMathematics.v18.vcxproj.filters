@@ -1566,5 +1566,68 @@
     <ClInclude Include="Geometry\3D\OrientedBoxTreeOfTriangles.h">
       <Filter>Geometry\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrAlignedBox2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrAlignedBox2OrientedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrArc2Arc2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrCircle2Arc2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrCircle2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrHalfspace2Polygon2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2AlignedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2OrientedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2AlignedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2OrientedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2AlignedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2OrientedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrOrientedBox2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrOrientedBox2Cone2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrOrientedBox2OrientedBox2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2Circle2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrLine2Arc2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrRay2Arc2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\2D\IntrSegment2Arc2.h">
+      <Filter>Intersection\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
