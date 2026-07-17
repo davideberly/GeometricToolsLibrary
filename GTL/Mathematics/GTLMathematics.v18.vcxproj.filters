@@ -1503,5 +1503,68 @@
     <ClInclude Include="Geometry\ND\CLODPolyline.h">
       <Filter>Geometry\ND</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry\3D\ConformalMapGenusZero.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExtremalQuery3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExtremalQuery3BSP.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\ExtremalQuery3PRJ.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\GenerateMeshUV.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\MinimumVolumeBox3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\MinimumVolumeSphere3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\SeparatePoints3.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\SplitMeshByPlane.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\AlignedBoxBV.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\OrientedBoxBV.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\BVTreeOfSegments.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\BVTreeOfTriangles.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\BVTree.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\BVTreeOfPoints.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\AlignedBoxTreeOfPoints.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\AlignedBoxTreeOfSegments.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\AlignedBoxTreeOfTriangles.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\OrientedBoxTreeOfPoints.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\OrientedBoxTreeOfSegments.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\3D\OrientedBoxTreeOfTriangles.h">
+      <Filter>Geometry\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
