@@ -1629,5 +1629,98 @@
     <ClInclude Include="Intersection\2D\IntrSegment2Arc2.h">
       <Filter>Intersection\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrAlignedBox3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrAlignedBox3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrAlignedBox3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrCanonicalBox3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrCapsule3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrConvexMesh3Plane3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrEllipsoid3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Segment3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrHalfspace3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Torus3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3Cylinder3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3Frustum3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrOrientedBox3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Capsule3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Ellipsoid3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrPlane3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSphere3Frustum3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSphere3Sphere3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSphere3Triangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSphere3Cone3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
