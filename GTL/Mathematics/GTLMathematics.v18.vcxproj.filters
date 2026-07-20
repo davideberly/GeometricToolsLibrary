@@ -1722,5 +1722,23 @@
     <ClInclude Include="Intersection\3D\IntrSphere3Cone3.h">
       <Filter>Intersection\3D</Filter>
     </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrLine3Rectangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrRay3Rectangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrSegment3Rectangle3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTriangle3CanonicalBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTriangle3AlignedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection\3D\IntrTriangle3OrientedBox3.h">
+      <Filter>Intersection\3D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

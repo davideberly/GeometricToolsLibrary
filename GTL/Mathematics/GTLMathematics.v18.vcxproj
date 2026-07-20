@@ -378,6 +378,7 @@
     <ClInclude Include="Intersection\3D\IntrLine3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Ellipsoid3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3OrientedBox3.h" />
+    <ClInclude Include="Intersection\3D\IntrLine3Rectangle3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Torus3.h" />
     <ClInclude Include="Intersection\3D\IntrLine3Triangle3.h" />
@@ -400,6 +401,7 @@
     <ClInclude Include="Intersection\3D\IntrRay3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrRay3Ellipsoid3.h" />
     <ClInclude Include="Intersection\3D\IntrRay3OrientedBox3.h" />
+    <ClInclude Include="Intersection\3D\IntrRay3Rectangle3.h" />
     <ClInclude Include="Intersection\3D\IntrRay3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrRay3Triangle3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3AlignedBox3.h" />
@@ -408,6 +410,7 @@
     <ClInclude Include="Intersection\3D\IntrSegment3Cylinder3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3Ellipsoid3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3OrientedBox3.h" />
+    <ClInclude Include="Intersection\3D\IntrSegment3Rectangle3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrSegment3Triangle3.h" />
     <ClInclude Include="Intersection\3D\IntrSphere3Cone3.h" />
@@ -415,7 +418,10 @@
     <ClInclude Include="Intersection\3D\IntrSphere3Sphere3.h" />
     <ClInclude Include="Intersection\3D\IntrSphere3Triangle3.h" />
     <ClInclude Include="Intersection\3D\IntrTetrahedron3Tetrahedron3.h" />
+    <ClInclude Include="Intersection\3D\IntrTriangle3AlignedBox3.h" />
+    <ClInclude Include="Intersection\3D\IntrTriangle3CanonicalBox3.h" />
     <ClInclude Include="Intersection\3D\IntrTriangle3Cylinder3.h" />
+    <ClInclude Include="Intersection\3D\IntrTriangle3OrientedBox3.h" />
     <ClInclude Include="Intersection\3D\IntrTriangle3Triangle3.h" />
     <ClInclude Include="Intersection\IntersectionQuery.h" />
     <ClInclude Include="Intersection\ND\IntrAlignedBoxAlignedBox.h" />
