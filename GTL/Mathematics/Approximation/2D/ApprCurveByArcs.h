@@ -60,114 +60,123 @@ namespace gtl
     // inaccurate center and radius.
 
     template <typename T>
-    void ApproximateCurveByArcs(
-        std::shared_ptr<ParametricCurve<T, 2>> const& curve,
-        std::size_t numArcs,
-        std::vector<T>& times,
-        std::vector<Vector2<T>>& points,
-        std::vector<Arc2<T>>& arcs,
-        T epsilon = static_cast<T>(0))
+    class ApprCurveByArcs
     {
-        static_assert(std::is_floating_point<T>::value,
-            "The template type must be 'float' or 'double'.");
-
-        GTL_ARGUMENT_ASSERT(
-            curve != nullptr && numArcs >= 1,
-            "Invalid input.");
-
-        std::size_t const numTimes = 2 * numArcs + 1;
-        times.resize(numTimes);
-        points.resize(numTimes);
-        arcs.resize(numArcs);
-
-        // Subdivide the curve by arc length. The arc length between any pair
-        // of consecutive points is constant. The consecutive points are
-        // stored in the even-indexed locations. The odd-indexed locations are
-        // assigned in the block of code after this one.
-        T totalLength = curve->GetTotalLength();
-        T deltaLength = totalLength / static_cast<T>(numTimes - 1);
-        for (std::size_t i = 0; i < numTimes; i += 2)
+    public:
+        static void Fit(
+            std::shared_ptr<ParametricCurve<T, 2>> const& curve,
+            std::size_t numArcs,
+            std::vector<T>& times,
+            std::vector<Vector2<T>>& points,
+            std::vector<Arc2<T>>& arcs,
+            T epsilon = static_cast<T>(0))
         {
-            T length = deltaLength * static_cast<T>(i);
-            times[i] = curve->GetTime(length);
-            points[i] = curve->GetPosition(times[i]);
+            //static_assert(std::is_floating_point<T>::value,
+            //   "The template type must be 'float' or 'double'.");
+
+            GTL_ARGUMENT_ASSERT(
+                curve != nullptr && numArcs >= 1,
+                "Invalid input.");
+
+            std::size_t const numTimes = 2 * numArcs + 1;
+            times.resize(numTimes);
+            points.resize(numTimes);
+            arcs.resize(numArcs);
+
+            // Subdivide the curve by arc length. The arc length between any pair
+            // of consecutive points is constant. The consecutive points are
+            // stored in the even-indexed locations. The odd-indexed locations are
+            // assigned in the block of code after this one.
+            T totalLength = curve->GetTotalLength();
+            T deltaLength = totalLength / static_cast<T>(numTimes - 1);
+            for (std::size_t i = 0; i < numTimes; i += 2)
+            {
+                T length = deltaLength * static_cast<T>(i);
+                times[i] = curve->GetTime(length);
+                points[i] = curve->GetPosition(times[i]);
+            }
+
+            T const zero = static_cast<T>(0);
+            T const half = static_cast<T>(0.5);
+            for (std::size_t i = 0, j0 = 0, j1 = 1, j2 = 2; i < numArcs; ++i, j0 += 2, j1 += 2, j2 += 2)
+            {
+                Arc2<T>& arc = arcs[i];
+                arc.end[0] = points[j0];
+                arc.end[1] = points[j2];
+                auto const& P0 = arc.end[0];
+                auto const& P1 = arc.end[1];
+
+                // Let P0 = arc.end[0] and P1 = arc.end[1]. Compute a point of
+                // intersection between the bisector of segment <P0, P1> and the
+                // curve X(t). This is accomplished using bisection for
+                // F(t) = Dot(D, X(t) - A) on [t0,t1] with P0 = X(t0), P1 = X(t1),
+                // D = P1 - P0, and A = (P0 + P1) / 2. Observe that
+                //   F(t0) = Dot(D, P0 - A) = -|D|^2/2 < 0
+                //   F(t1) = Dot(D, P1 - A) = +|D|^2/2 > 0
+                // There must be a tRoot in [t0,t1] for which F(tRoot) = 0.
+                // 
+                // The loop is guaranteed to terminate because a sufficient number
+                // of iterations will either find a tRoot where F(tRoot) = 0 using
+                // floating-point computations. or the interval to bisect has
+                // consecutive floating-point endpoints and the interval midpoint
+                // rounds to one of those endpoints.
+                Vector2<T> D = P1 - P0;
+                Vector2<T> A = half * (P0 + P1);
+                T t0 = times[j0], t1 = times[j2], tRoot{}, fAtRoot{};
+                for (;;)
+                {
+                    tRoot = half * (t0 + t1);
+                    fAtRoot = Dot(D, curve->GetPosition(tRoot) - A);
+                    std::int32_t signRoot = (fAtRoot > zero ? +1 : (fAtRoot < zero ? -1 : 0));
+                    if (signRoot == 0 || tRoot == t0 || tRoot == t1)
+                    {
+                        break;
+                    }
+
+                    if (signRoot == -1)
+                    {
+                        t0 = tRoot;
+                    }
+                    else // signRoot = +1
+                    {
+                        t1 = tRoot;
+                    }
+                }
+
+                // Fill in the odd-indexed values.
+                times[j1] = tRoot;
+                points[j1] = curve->GetPosition(tRoot);
+                auto const& M = points[j1];
+
+                // The points P0, X(tRoot), and P1 are circumscribed to determine
+                // the arc. If the three points are colinear, the center and
+                // radius of the arc are set to std::numeric_limits<T>::max() as
+                // a signal to the caller that the arc represents a line segment.
+                Vector2<T> diffP0M = P0 - M;
+                Vector2<T> diffP1M = P1 - M;
+                Vector2<T> avrgP0M = half * (P0 + M);
+                Vector2<T> avrgP1M = half * (P1 + M);
+                T dot0 = Dot(diffP0M, avrgP0M);
+                T dot1 = Dot(diffP1M, avrgP1M);
+                T det = DotPerp(diffP0M, diffP1M);
+                if (std::fabs(det) >= epsilon)
+                {
+                    arc.center[0] = (diffP1M[1] * dot0 - diffP0M[1] * dot1) / det;
+                    arc.center[1] = (diffP0M[0] * dot1 - diffP1M[0] * dot0) / det;
+                    arc.radius = Length(M - arc.center);
+                }
+                else
+                {
+                    // The linear system does not have a unique solution.
+                    // Return a circle centered at the origin but with
+                    // invalid radius -1.
+                    arc.center = { C_<T>(0), C_<T>(0) };
+                    arc.radius = C_<T>(-1);
+                }
+            }
         }
 
-        T const zero = static_cast<T>(0);
-        T const half = static_cast<T>(0.5);
-        for (std::size_t i = 0, j0 = 0, j1 = 1, j2 = 2; i < numArcs; ++i, j0 += 2, j1 += 2, j2 += 2)
-        {
-            Arc2<T>& arc = arcs[i];
-            arc.end[0] = points[j0];
-            arc.end[1] = points[j2];
-            auto const& P0 = arc.end[0];
-            auto const& P1 = arc.end[1];
-
-            // Let P0 = arc.end[0] and P1 = arc.end[1]. Compute a point of
-            // intersection between the bisector of segment <P0, P1> and the
-            // curve X(t). This is accomplished using bisection for
-            // F(t) = Dot(D, X(t) - A) on [t0,t1] with P0 = X(t0), P1 = X(t1),
-            // D = P1 - P0, and A = (P0 + P1) / 2. Observe that
-            //   F(t0) = Dot(D, P0 - A) = -|D|^2/2 < 0
-            //   F(t1) = Dot(D, P1 - A) = +|D|^2/2 > 0
-            // There must be a tRoot in [t0,t1] for which F(tRoot) = 0.
-            // 
-            // The loop is guaranteed to terminate because a sufficient number
-            // of iterations will either find a tRoot where F(tRoot) = 0 using
-            // floating-point computations. or the interval to bisect has
-            // consecutive floating-point endpoints and the interval midpoint
-            // rounds to one of those endpoints.
-            Vector2<T> D = P1 - P0;
-            Vector2<T> A = half * (P0 + P1);
-            T t0 = times[j0], t1 = times[j2], tRoot{}, fAtRoot{};
-            for (;;)
-            {
-                tRoot = half * (t0 + t1);
-                fAtRoot = Dot(D, curve->GetPosition(tRoot) - A);
-                std::int32_t signRoot = (fAtRoot > zero ? +1 : (fAtRoot < zero ? -1 : 0));
-                if (signRoot == 0 || tRoot == t0 || tRoot == t1)
-                {
-                    break;
-                }
-
-                if (signRoot == -1)
-                {
-                    t0 = tRoot;
-                }
-                else // signRoot = +1
-                {
-                    t1 = tRoot;
-                }
-            }
-
-            // Fill in the odd-indexed values.
-            times[j1] = tRoot;
-            points[j1] = curve->GetPosition(tRoot);
-            auto const& M = points[j1];
-
-            // The points P0, X(tRoot), and P1 are circumscribed to determine
-            // the arc. If the three points are colinear, the center and
-            // radius of the arc are set to std::numeric_limits<T>::max() as
-            // a signal to the caller that the arc represents a line segment.
-            Vector2<T> diffP0M = P0 - M;
-            Vector2<T> diffP1M = P1 - M;
-            Vector2<T> avrgP0M = half * (P0 + M);
-            Vector2<T> avrgP1M = half * (P1 + M);
-            T dot0 = Dot(diffP0M, avrgP0M);
-            T dot1 = Dot(diffP1M, avrgP1M);
-            T det = DotPerp(diffP0M, diffP1M);
-            if (std::fabs(det) >= epsilon)
-            {
-                arc.center[0] = (diffP1M[1] * dot0 - diffP0M[1] * dot1) / det;
-                arc.center[1] = (diffP0M[0] * dot1 - diffP1M[0] * dot0) / det;
-                arc.radius = Length(M - arc.center);
-            }
-            else
-            {
-                T constexpr tmax = std::numeric_limits<T>::max();
-                arc.center = { tmax, tmax };
-                arc.radius = tmax;
-            }
-        }
-    }
+    private:
+        friend class UnitTestApprCurveByArcs;
+    };
 }
