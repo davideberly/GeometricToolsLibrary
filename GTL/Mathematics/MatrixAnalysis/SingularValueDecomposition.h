@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2026.07.30
 
 #pragma once
 
@@ -709,10 +709,13 @@ namespace gtl
             // accumulation using DoHouseholderPostmultiply does not work
             // because the semantics of DoHouseholderPostmultiply are
             // slightly different from those of DoHouseholderPremultiply.
-            for (std::size_t k = 0, col = mNumCols - 3; k <= mNumCols - 3; ++k, --col)
+            if (mNumCols >= 3)
             {
-                DoHouseholderPremultiply(mNumCols, mNumCols, mRHouseholder[col].data(),
-                    col, mVMatrix.data());
+                for (std::size_t k = 0, col = mNumCols - 3; k <= mNumCols - 3; ++k, --col)
+                {
+                    DoHouseholderPremultiply(mNumCols, mNumCols, mRHouseholder[col].data(),
+                        col, mVMatrix.data());
+                }
             }
 
             // Multiply the Givens rotations using forward accumulation.
