@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.07.30
 
 #pragma once
 
@@ -54,12 +54,18 @@ namespace gtl
             Vector3<T> delta = point - cylinder.center;
             Vector3<T> P{ Dot(U0, delta), Dot(U1, delta), Dot(U2, delta) };
 
+            GTL_RUNTIME_ASSERT(cylinder.radius > C_<T>(0),
+                "The cylinder must have a positive radius.");
+
             if (cylinder.height == -C_<T>(1))
             {
                 DoQueryInfiniteCylinder(P, cylinder.radius, output);
             }
             else
             {
+                GTL_RUNTIME_ASSERT(cylinder.height > C_<T>(0),
+                    "The cylinder must have a positive height.");
+
                 DoQueryFiniteCylinder(P, cylinder.radius, cylinder.height, output);
             }
 
