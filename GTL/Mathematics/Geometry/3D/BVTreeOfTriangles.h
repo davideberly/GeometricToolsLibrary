@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.19
+// File Version: 0.0.2026.08.01
 
 #pragma once
 
@@ -167,7 +167,7 @@ namespace gtl
                     "Invalid query type.");
             }
 
-            std::vector<std::size_t> indexStack(2 * this->mHeight);
+            std::vector<std::size_t> indexStack(2 * this->mHeight + 1);
             std::size_t top = 0;
             indexStack[0] = 0;
             while (top != std::numeric_limits<std::size_t>::max())
