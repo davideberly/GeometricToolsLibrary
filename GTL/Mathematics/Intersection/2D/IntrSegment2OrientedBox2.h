@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.07.31
 
 #pragma once
 
@@ -13,6 +13,7 @@
 // The find-intersection queries use parametric clipping against the four
 // edges of the box.
 
+#include <GTL/Mathematics/Containment/2D/ContOrientedBox2.h>
 #include <GTL/Mathematics/Intersection/2D/IntrSegment2AlignedBox2.h>
 #include <GTL/Mathematics/Primitives/ND/OrientedBox.h>
 #include <array>
@@ -93,6 +94,8 @@ namespace gtl
 
         Output operator()(Segment2<T> const& segment, OrientedBox2<T> const& box)
         {
+            Output output{};
+
             // Transform the segment to the oriented-box coordinate system.
             Vector2<T> tmpOrigin{}, tmpDirection{};
             T segExtent{};
@@ -109,20 +112,39 @@ namespace gtl
                 Dot(tmpDirection, box.axis[1])
             };
 
-            Output output{};
-            this->DoQuery(segOrigin, segDirection, segExtent, box.extent, output);
-            for (std::size_t i = 0; i < output.numIntersections; ++i)
+            if (segExtent > C_<T>(0))
             {
-                // Compute the segment in the aligned-box coordinate system
-                // and then translate it back to the original coordinates
-                // using the box cener.
-                output.point[i] = box.center + (segOrigin + output.parameter[i] * segDirection);
-                output.cdeParameter[i] = output.parameter[i];
+                this->DoQuery(segOrigin, segDirection, segExtent, box.extent, output);
+                for (std::size_t i = 0; i < output.numIntersections; ++i)
+                {
+                    // Compute the segment in the aligned-box coordinate system
+                    // and then translate it back to the original coordinates
+                    // using the box cener.
+                    output.point[i] = box.center + (segOrigin + output.parameter[i] * segDirection);
+                    output.cdeParameter[i] = output.parameter[i];
 
-                // Convert the parameters from the centered form to the
-                // endpoint form.
-                output.parameter[i] = (output.parameter[i] / segExtent + C_<T>(1)) * C_<T>(1, 2);
+                    // Convert the parameters from the centered form to the
+                    // endpoint form.
+                    output.parameter[i] = (output.parameter[i] / segExtent + C_<T>(1)) * C_<T>(1, 2);
+                }
             }
+            else
+            {
+                // The segment is degenerate, representing a single point.
+                // Report an intersection when this point is contained by the
+                // box.
+                if (ContOrientedBox2<T>::InContainer(segment.p[0], box))
+                {
+                    output.intersect = true;
+                    output.numIntersections = 2;
+                    output.parameter[0] = static_cast<T>(0);
+                    output.parameter[1] = static_cast<T>(0);
+                    output.cdeParameter = output.cdeParameter;
+                    output.point[0] = segment.p[0];
+                    output.point[1] = segment.p[1];
+                }
+            }
+
             return output;
         }
 

@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.07.31
 
 #pragma once
 
@@ -13,6 +13,7 @@
 // The find-intersection queries use parametric clipping against the four
 // edges of the box.
 
+#include <GTL/Mathematics/Containment/2D/ContAlignedBox2.h>
 #include <GTL/Mathematics/Intersection/1D/IntrIntervals.h>
 #include <GTL/Mathematics/Intersection/2D/IntrLine2AlignedBox2.h>
 #include <GTL/Mathematics/Primitives/ND/Segment.h>
@@ -114,6 +115,8 @@ namespace gtl
 
         Output operator()(Segment2<T> const& segment, AlignedBox2<T> const& box)
         {
+            Output output{};
+
             // Get the centered form of the aligned box.  The axes are
             // implicitly Axis[d] = Vector2<T>::Unit(d).
             Vector2<T> boxCenter{}, boxExtent{};
@@ -128,20 +131,39 @@ namespace gtl
             T segExtent{};
             transformedSegment.GetCenteredForm(segOrigin, segDirection, segExtent);
 
-            Output output{};
-            DoQuery(segOrigin, segDirection, segExtent, boxExtent, output);
-            for (std::size_t i = 0; i < output.numIntersections; ++i)
+            if (segExtent > C_<T>(0))
             {
-                // Compute the segment in the aligned-box coordinate system
-                // and then translate it back to the original coordinates
-                // using the box cener.
-                output.point[i] = boxCenter + (segOrigin + output.parameter[i] * segDirection);
-                output.cdeParameter[i] = output.parameter[i];
+                DoQuery(segOrigin, segDirection, segExtent, boxExtent, output);
+                for (std::size_t i = 0; i < output.numIntersections; ++i)
+                {
+                    // Compute the segment in the aligned-box coordinate system
+                    // and then translate it back to the original coordinates
+                    // using the box cener.
+                    output.point[i] = boxCenter + (segOrigin + output.parameter[i] * segDirection);
+                    output.cdeParameter[i] = output.parameter[i];
 
-                // Convert the parameters from the centered form to the
-                // endpoint form.
-                output.parameter[i] = (output.parameter[i] / segExtent + C_<T>(1)) * C_<T>(1, 2);
+                    // Convert the parameters from the centered form to the
+                    // endpoint form.
+                    output.parameter[i] = (output.parameter[i] / segExtent + C_<T>(1)) * C_<T>(1, 2);
+                }
             }
+            else
+            {
+                // The segment is degenerate, representing a single point.
+                // Report an intersection when this point is contained by the
+                // box.
+                if (ContAlignedBox2<T>::InContainer(segment.p[0], box))
+                {
+                    output.intersect = true;
+                    output.numIntersections = 2;
+                    output.parameter[0] = static_cast<T>(0);
+                    output.parameter[1] = static_cast<T>(0);
+                    output.cdeParameter = output.cdeParameter;
+                    output.point[0] = segment.p[0];
+                    output.point[1] = segment.p[1];
+                }
+            }
+
             return output;
         }
 
@@ -165,6 +187,15 @@ namespace gtl
                 output.intersect = iiOutput.intersect;
                 output.numIntersections = iiOutput.numIntersections;
                 output.parameter = iiOutput.overlap;
+
+                // If a segment intersects a box at an endpoint, and if that
+                // endpoint is the only point of intersection, ensure the
+                // caller computes 2 points of intersection for a degenerate
+                // line segment representing a single point.
+                if (output.numIntersections == 1)
+                {
+                    output.numIntersections = 2;
+                }
             }
         }
 
