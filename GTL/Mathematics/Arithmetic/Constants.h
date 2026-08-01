@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2026.08.01
 
 #pragma once
 
@@ -48,11 +48,11 @@ namespace gtl
     template <typename T> const T C_PI_DIV_4 = static_cast<T>(0.7853981633974483);
     template <typename T> const T C_TWO_PI = static_cast<T>(6.2831853071795862);
     template <typename T> const T C_INV_PI = static_cast<T>(0.3183098861837907);
-    template <typename T> const T C_INV_TWO_PI = static_cast<T>(0.1591549430918953);
-    template <typename T> const T C_INV_HALF_PI = static_cast<T>(0.6366197723675813);
+    template <typename T> const T C_INV_TWO_PI = static_cast<T>(0.15915494309189535);
+    template <typename T> const T C_INV_HALF_PI = static_cast<T>(0.63661977236758138);
 
     // Named constants for conversions between degrees and radians.
-    template <typename T> const T C_DEG_TO_RAD = static_cast<T>(0.0174532925199433);
+    template <typename T> const T C_DEG_TO_RAD = static_cast<T>(0.017453292519943295);
     template <typename T> const T C_RAD_TO_DEG = static_cast<T>(57.295779513082321);
 
     // Named constants that are appear less frequently in the code.
