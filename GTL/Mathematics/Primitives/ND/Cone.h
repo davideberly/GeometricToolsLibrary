@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.08.06
 
 #pragma once
 
@@ -326,9 +326,13 @@ namespace gtl
             T hMax = GetMaxHeight();
             T rMin = hMin * tanAngle;
             T rMax = hMax * tanAngle;
-            T tNumExtra = static_cast<T>(0.5) * rMax / rMin - static_cast<T>(1);
+            // TODO: The next line used to be 0.5*rMax/rMin-1, but if hMin is
+            // zero, then rMin is zero and tNumExtra is 'inf'. How was this
+            // equation derived? For now, guard against the division by zero
+            // using 0.5*(1+rMax)/(1+rMin)-1.
+            T tNumExtra = C_<T>(0.5) * (C_<T>(1) + rMax) / (C_<T>(1) + rMin) - C_<T>(1);
             std::size_t numExtra = 0;
-            if (tNumExtra > static_cast<T>(0))
+            if (tNumExtra > C_<T>(0))
             {
                 numExtra = static_cast<std::size_t>(std::ceil(tNumExtra));
             }
@@ -336,7 +340,7 @@ namespace gtl
             vertices.clear();
             indices.clear();
 
-            std::vector<Vector2<T>> polygonMin, polygonMax;
+            std::vector<Vector2<T>> polygonMin{}, polygonMax{};
             if (inscribed)
             {
                 GenerateInscribed(numMinVertices, rMin, polygonMin);
@@ -348,17 +352,8 @@ namespace gtl
                 GenerateCircumscribed(numMaxVertices, rMax, polygonMax);
             }
 
-            if (hMin > static_cast<T>(0))
-            {
-                CreateConeFrustumMesh(numMinVertices, numMaxVertices, numExtra,
-                    hMin, hMax, polygonMin, polygonMax, vertices, indices);
-            }
-            else
-            {
-                // TODO:
-                // CreateFiniteTruncatedConeMesh(numMaxVertices, numExtra,
-                //     hMax, polygonMax, vertices, indices);
-            }
+            CreateConeFrustumMesh(numMinVertices, numMaxVertices, numExtra,
+                hMin, hMax, polygonMin, polygonMax, vertices, indices);
 
             // Transform to the coordinate system of the cone.
             std::array<Vector3<T>, 3> basis{};
@@ -478,7 +473,7 @@ namespace gtl
                 vertexPool.push_back(V2);
             }
 
-            UniqueVerticesSimplices<Vector3<T>, std::int32_t, 3> uvs;
+            UniqueVerticesSimplices<Vector3<T>, std::int32_t, 3> uvs{};
             uvs.GenerateIndexedSimplices(vertexPool, vertices, indices);
         }
 
