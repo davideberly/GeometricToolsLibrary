@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.10
+// File Version: 0.0.2026.08.07
 
 #pragma once
 
@@ -25,10 +25,13 @@ namespace gtl
     public:
         using OffsetType = std::conditional<sizeof(std::size_t) == 8, std::int64_t, std::int32_t>::type;
 
-    protected:
         // Connected component labeling using depth-first search.
-        static void GetComponents(std::size_t numNeighbors, OffsetType const* neighbors,
-            std::size_t numPixels, SInteger* image, std::vector<std::vector<std::size_t>>& components)
+        static void GetComponents(
+            std::size_t numPixels,
+            SInteger* image,
+            std::size_t numNeighbors,
+            OffsetType const* neighbors,
+            std::vector<std::vector<std::size_t>>& components)
         {
             static_assert(
                 std::is_same<SInteger, std::int32_t>::value ||

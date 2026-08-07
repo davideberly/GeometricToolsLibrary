@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.10
+// File Version: 0.0.2026.08.07
 
 #pragma once
 
@@ -26,54 +26,34 @@ namespace gtl
     public:
         using OffsetType = typename Morphology<SInteger>::OffsetType;
 
-        // Compute the 4-connected components of a binary image with
-        // background 0 and foreground 1. The input image is modified to
-        // avoid the cost of making a copy. On output, the image values
-        // are the labels for the components. The array components[k],
-        // k >= 1, contains the indices for the k-th component.
-        static void GetComponents4(Image2<SInteger>& image,
+        // Compute the N-connected components of a binary image (N is 4 or 8).
+        // The input image is modified to avoid the cost of making a copy. On
+        // output, the image values are the labels for the components. The
+        // array components[k], k >= 1, contains the indices for the k-th
+        // component.
+        template <std::size_t N>
+        static void GetComponents(
+            Image2<SInteger>& image,
             std::vector<std::vector<std::size_t>>& components)
         {
-            std::array<OffsetType, 4> neighbors{};
-            image.GetNeighborhood(neighbors);
-            Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
-                image.size(), image.data(), components);
-        }
+            static_assert(N == 4 || N == 8, "Invalid neighborhood type.");
 
-        // Compute the 8-connected components of a binary image with
-        // background 0 and foreground 1. The input image is modified to
-        // avoid the cost of making a copy. On output, the image values
-        // are the labels for the components. The array components[k],
-        // k >= 1, contains the indices for the k-th component.
-        static void GetComponents8(Image2<SInteger>& image,
-            std::vector<std::vector<std::size_t>>& components)
-        {
-            std::array<OffsetType, 8> neighbors{};
+            std::array<OffsetType, N> neighbors{};
             image.GetNeighborhood(neighbors);
-            Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
-                image.size(), image.data(), components);
+            Morphology<SInteger>::GetComponents(image.size(), image.data(),
+                neighbors.size(), neighbors.data(), components);
         }
 
         // Compute a dilation with a structuring element consisting of the
-        // 4-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image.
-        static void Dilate4(Image2<SInteger> const& input,
+        // N-connected neighbors of each pixel (N is 4 or 8). The input image
+        // is binary with 0 for background and 1 for foreground. The output
+        // image must be an object different from the input image.
+        template <std::size_t N>
+        static void Dilate4(
+            Image2<SInteger> const& input,
             Image2<SInteger>& output)
         {
-            std::array<std::array<OffsetType, 2>, 4> neighbors{};
-            input.GetNeighborhood(neighbors);
-            Dilate(input, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute a dilation with a structuring element consisting of the
-        // 8-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image.
-        static void Dilate8(Image2<SInteger> const& input,
-            Image2<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 2>, 8> neighbors{};
+            std::array<std::array<OffsetType, 2>, N> neighbors{};
             input.GetNeighborhood(neighbors);
             Dilate(input, neighbors.size(), neighbors.data(), output);
         }
@@ -82,8 +62,11 @@ namespace gtl
         // specified by offsets relative to the pixel. The input image is
         // binary with background 0 and foreground 1. The output image must
         // be an object different from the input image.
-        static void Dilate(Image2<SInteger> const& input, std::size_t numNeighbors,
-            std::array<OffsetType, 2> const* neighbors, Image2<SInteger>& output)
+        static void Dilate(
+            Image2<SInteger> const& input,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 2> const* neighbors,
+            Image2<SInteger>& output)
         {
             GTL_ARGUMENT_ASSERT(
                 &output != &input && input.size() > 0 &&
@@ -92,26 +75,26 @@ namespace gtl
 
             output = input;
 
-            // If the pixel at (x,y) is foreground, then the pixels at
-            // (x+dx,y+dy) are set to foreground where (dx,dy) is in the
+            // If the pixel at (i0,i1) is 1, then the pixels at (k0,i1) =
+            // (i0+nbr0,i1+nbr1) are set to 1 where (nbr0,nbr1) is in the
             // neighbors array. Boundary testing is used to avoid accessing
             // out-of-range pixels.
-            OffsetType const xSize = static_cast<OffsetType>(input.size(0));
-            OffsetType const ySize = static_cast<OffsetType>(input.size(1));
-            for (OffsetType y = 0; y < ySize; ++y)
+            OffsetType const dim0 = static_cast<OffsetType>(input.size(0));
+            OffsetType const dim1 = static_cast<OffsetType>(input.size(1));
+            for (OffsetType i1 = 0; i1 < dim1; ++i1)
             {
-                for (OffsetType x = 0; x < xSize; ++x)
+                for (OffsetType i0 = 0; i0 < dim0; ++i0)
                 {
-                    if (input(x, y) == 1)
+                    if (input(i0, i1) == 1)
                     {
                         for (std::size_t j = 0; j < numNeighbors; ++j)
                         {
-                            OffsetType xNbr = x + neighbors[j][0];
-                            OffsetType yNbr = y + neighbors[j][1];
-                            if (0 <= xNbr && xNbr < xSize &&
-                                0 <= yNbr && yNbr < ySize)
+                            OffsetType k0 = i0 + neighbors[j][0];
+                            OffsetType k1 = i1 + neighbors[j][1];
+                            if (0 <= k0 && k0 < dim0 &&
+                                0 <= k1 && k1 < dim1)
                             {
-                                output(xNbr, yNbr) = 1;
+                                output(k0, k1) = 1;
                             }
                         }
                     }
@@ -120,45 +103,37 @@ namespace gtl
         }
 
         // Compute an erosion with a structuring element consisting of the
-        // 4-connected neighbors of each pixel. The input image is binary with
-        // background 0 and foreground 1. The output image must be an object
-        // different from the input image. If zeroExterior is true, the image
-        // exterior is assumed to be 0, so 1-valued boundary pixels are set
-        // to 0; otherwise, boundary pixels are set to 0 only when they have
-        // neighboring image pixels that are 0.
-        static void Erode4(Image2<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each pixel (N is 4 or 8). The input image
+        // is binary with 0 for background and 1 for foreground. The output
+        // image must be an object different from the input image. If
+        // zeroExterior is true, the image exterior is assumed to be 0, so
+        // 1-valued boundary pixels are set to 0; otherwise, boundary pixels
+        // are set to 0 only when they have neighboring image pixels that
+        // are 0.
+        template <std::size_t N>
+        static void Erode(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
             Image2<SInteger>& output)
         {
-            std::array<std::array<OffsetType, 2>, 4> neighbors{};
-            input.GetNeighborhood(neighbors);
-            Erode(input, zeroExterior, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute an erosion with a structuring element consisting of the
-        // 8-connected neighbors of each pixel. The input image is binary with
-        // background 0 and foreground 1. The output image must be an object
-        // different from the input image. If zeroExterior is true, the image
-        // exterior is assumed to be 0, so 1-valued boundary pixels are set
-        // to 0; otherwise, boundary pixels are set to 0 only when they have
-        // neighboring image pixels that are 0.
-        static void Erode8(Image2<SInteger> const& input, bool zeroExterior,
-            Image2<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 2>, 8> neighbors{};
+            std::array<std::array<OffsetType, 2>, N> neighbors{};
             input.GetNeighborhood(neighbors);
             Erode(input, zeroExterior, neighbors.size(), neighbors.data(), output);
         }
 
         // Compute an erosion with a structuring element consisting of
         // neighbors specified by offsets relative to the pixel. The input
-        // image is binary with background 0 and foreground 1. The output
-        // image must be an object different from the input image. If
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image. If
         // zeroExterior is true, the image exterior is assumed to be 0, so
         // 1-valued boundary pixels are set to 0; otherwise, boundary pixels
         // are set to 0 only when they have neighboring image pixels that
         // are 0.
-        static void Erode(Image2<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 2> const* neighbors,
+        static void Erode(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 2> const* neighbors,
             Image2<SInteger>& output)
         {
             GTL_ARGUMENT_ASSERT(
@@ -168,33 +143,33 @@ namespace gtl
 
             output = input;
 
-            // If the pixel at (x,y) is foreground, it is changed to
-            // background when at least one neighbor (x+dx,y+dy) is
-            // background, where (dx,dy) is in the neighbors array.
-            OffsetType const xSize = static_cast<OffsetType>(input.size(0));
-            OffsetType const ySize = static_cast<OffsetType>(input.size(1));
-            for (OffsetType y = 0; y < ySize; ++y)
+            // If the pixel at (i0,i1) is 1, it is changed to 0 when at least
+            // one neighbor (k0,k1) = (i0+nbr0,i1+nbr1) is 0, where
+            // (nbr0,nbr1) is in the neighbors array.
+            OffsetType const dim0 = static_cast<OffsetType>(input.size(0));
+            OffsetType const dim1 = static_cast<OffsetType>(input.size(1));
+            for (OffsetType i1 = 0; i1 < dim1; ++i1)
             {
-                for (OffsetType x = 0; x < xSize; ++x)
+                for (OffsetType i0 = 0; i0 < dim0; ++i0)
                 {
-                    if (input(x, y) == 1)
+                    if (input(i0, i1) == 1)
                     {
                         for (std::size_t j = 0; j < numNeighbors; ++j)
                         {
-                            OffsetType xNbr = x + neighbors[j][0];
-                            OffsetType yNbr = y + neighbors[j][1];
-                            if (0 <= xNbr && xNbr < xSize &&
-                                0 <= yNbr && yNbr < ySize)
+                            OffsetType k0 = i0 + neighbors[j][0];
+                            OffsetType k1 = i1 + neighbors[j][1];
+                            if (0 <= k0 && k0 < dim0 &&
+                                0 <= k1 && k1 < dim1)
                             {
-                                if (input(xNbr, yNbr) == 0)
+                                if (input(k0, k1) == 0)
                                 {
-                                    output(x, y) = 0;
+                                    output(i0, i1) = 0;
                                     break;
                                 }
                             }
                             else if (zeroExterior)
                             {
-                                output(x, y) = 0;
+                                output(i0, i1) = 0;
                                 break;
                             }
                         }
@@ -204,31 +179,21 @@ namespace gtl
         }
 
         // Compute an opening with a structuring element consisting of the
-        // 4-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued pixels; otherwise,
-        // the image exterior is assumed to consist of 1-valued pixels.
-        static void Open4(Image2<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each pixel (N is 4 or 8). The input image
+        // is binary with 0 for background and 1 for foreground. The output
+        // image must be an object different from the input image. If
+        // zeroExterior is true, the image exterior is assumed to consist of
+        // 0-valued pixels; otherwise, the image exterior is assumed to
+        // consist of 1-valued pixels.
+        template <std::size_t N>
+        static void Open(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
             Image2<SInteger>& output)
         {
             Image2<SInteger> temp(input.size(0), input.size(1));
-            Erode4(input, zeroExterior, temp);
-            Dilate4(temp, output);
-        }
-
-        // Compute an opening with a structuring element consisting of the
-        // 8-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued pixels; otherwise,
-        // the image exterior is assumed to consist of 1-valued pixels.
-        static void Open8(Image2<SInteger> const& input, bool zeroExterior,
-            Image2<SInteger>& output)
-        {
-            Image2<SInteger> temp(input.size(0), input.size(1));
-            Erode8(input, zeroExterior, temp);
-            Dilate8(temp, output);
+            Erode<N>(input, zeroExterior, temp);
+            Dilate<N>(temp, output);
         }
 
         // Compute an opening with a structuring element consisting of
@@ -238,8 +203,11 @@ namespace gtl
         // zeroExterior is true, the image exterior is assumed to consist of
         // 0-valued pixels; otherwise, the image exterior is assumed to
         // consist of 1-valued pixels.
-        static void Open(Image2<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 2> const* neighbors,
+        static void Open(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 2> const* neighbors,
             Image2<SInteger>& output)
         {
             Image2<SInteger> temp(input.size(0), input.size(1));
@@ -248,42 +216,35 @@ namespace gtl
         }
 
         // Compute a closing with a structuring element consisting of the
-        // 4-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued pixels; otherwise,
-        // the image exterior is assumed to consist of 1-valued pixels.
-        static void Close4(Image2<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each pixel. The input image is binary
+        // with 0 for background and 1 for foreground. The output image must
+        // be an object different from the input image. If zeroExterior is
+        // true, the image exterior is assumed to consist of 0-valued pixels;
+        // otherwise, the image exterior is assumed to consist of 1-valued
+        // pixels.
+        template <std::size_t N>
+        static void Close(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
             Image2<SInteger>& output)
         {
             Image2<SInteger> temp(input.size(0), input.size(1));
-            Dilate4(input, temp);
-            Erode4(temp, zeroExterior, output);
-        }
-
-        // Compute a closing with a structuring element consisting of the
-        // 8-connected neighbors of each pixel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued pixels; otherwise,
-        // the image exterior is assumed to consist of 1-valued pixels.
-        static void Close8(Image2<SInteger> const& input, bool zeroExterior,
-            Image2<SInteger>& output)
-        {
-            Image2<SInteger> temp(input.size(0), input.size(1));
-            Dilate8(input, temp);
-            Erode8(temp, zeroExterior, output);
+            Dilate<N>(input, temp);
+            Erode<N>(temp, zeroExterior, output);
         }
 
         // Compute a closing with a structuring element consisting of
         // neighbors specified by offsets relative to the pixel. The input
-        // image is binary with background 0 and foreground 1. The output
-        // image must be an object different from the input image. If
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image. If
         // zeroExterior is true, the image exterior is assumed to consist of
         // 0-valued pixels; otherwise, the image exterior is assumed to
         // consist of 1-valued pixels.
-        static void Close(Image2<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 2> const* neighbors,
+        static void Close(
+            Image2<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 2> const* neighbors,
             Image2<SInteger>& output)
         {
             Image2<SInteger> temp(input.size(0), input.size(1));
@@ -302,7 +263,10 @@ namespace gtl
         // on a successful walk. The return value is 'false' when no boundary
         // was found from the starting pixel (x,y). On output, the image has
         // background 0, foreground 1 and boundary 2.
-        static bool ExtractBoundary(std::size_t x, std::size_t y, Image2<SInteger>& image,
+        static bool ExtractBoundary(
+            std::size_t x,
+            std::size_t y,
+            Image2<SInteger>& image,
             std::vector<std::size_t>& boundary)
         {
             // Find a first boundary pixel.
@@ -382,14 +346,17 @@ namespace gtl
         // is nonrecursive, simulated by using a heap-allocated stack. The
         // input (x,y) is the seed point that starts the fill. On output the
         // background is 0, foreground is 1 and the filled region is 2.
-        static void FloodFill4(Image2<SInteger>& image, std::size_t sx, std::size_t sy)
+        static void FloodFill4(
+            Image2<SInteger>& image,
+            std::size_t sx,
+            std::size_t sy)
         {
             // Test for a valid seed.
-            SInteger const xSize = static_cast<SInteger>(image.size(0));
-            SInteger const ySize = static_cast<SInteger>(image.size(1));
+            SInteger const dim0 = static_cast<SInteger>(image.size(0));
+            SInteger const dim1 = static_cast<SInteger>(image.size(1));
             SInteger const x = static_cast<SInteger>(sx);
             SInteger const y = static_cast<SInteger>(sy);
-            if (x >= xSize || y >= ySize)
+            if (x >= dim0 || y >= dim1)
             {
                 // The seed point is outside the image domain, so there is
                 // nothing to fill.
@@ -417,7 +384,7 @@ namespace gtl
                 image(x, y) = 2;
 
                 neighbor = { point[0] + 1, point[1] };
-                if (neighbor[0] < xSize &&
+                if (neighbor[0] < dim0 &&
                     image(neighbor[0], neighbor[1]) == 0)
                 {
                     // Push background pixel.
@@ -435,7 +402,7 @@ namespace gtl
                 }
 
                 neighbor = { point[0], point[1] + 1 };
-                if (neighbor[1] < ySize &&
+                if (neighbor[1] < dim1 &&
                     image(neighbor[0], neighbor[1]) == 0)
                 {
                     // Push background pixel.
@@ -462,8 +429,11 @@ namespace gtl
         // foreground is 1 and the background is 0. The function returns the
         // maximum distance and a point at which the maximum distance is
         // attained. Pixels outside the domain are assumed to be background.
-        static void GetL1Distance(Image2<SInteger>& image, std::size_t& maxDistance,
-            std::size_t& xMax, std::size_t& yMax)
+        static void GetL1Distance(
+            Image2<SInteger>& image,
+            std::size_t& maxDistance,
+            std::size_t& xMax,
+            std::size_t& yMax)
         {
             std::size_t const xSize = image.size(0);
             std::size_t const ySize = image.size(1);
@@ -471,7 +441,7 @@ namespace gtl
             // Use a grass-fire approach, computing distance from boundary to
             // interior one pass at a time.
             bool changeMade = true;
-            SInteger distance;
+            SInteger distance{};
             for (distance = 1, xMax = 0, yMax = 0; changeMade; ++distance)
             {
                 changeMade = false;

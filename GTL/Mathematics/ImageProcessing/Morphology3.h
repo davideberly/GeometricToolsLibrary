@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.10
+// File Version: 0.0.2026.08.07
 
 #pragma once
 
@@ -24,90 +24,45 @@ namespace gtl
     public:
         using OffsetType = typename Morphology<SInteger>::OffsetType;
 
-        // Compute the 6-connected components of a binary image with
-        // background 0 and foreground 1. The input image is modified to
-        // avoid the cost of making a copy. On output, the image values
-        // are the labels for the components. The array components[k],
-        // k >= 1, contains the indices for the k-th component.
-        static void GetComponents6(Image3<SInteger>& image,
+        // Compute the N-connected components of a binary image
+        // (N is 6, 18, or 26). The input image is modified to avoid the cost
+        // of making a copy. On output, the image values are the labels for
+        // the components. The array components[k], k >= 1, contains the
+        // indices for the k-th component.
+        template <std::size_t N>
+        static void GetComponents(
+            Image3<SInteger>& image,
             std::vector<std::vector<std::size_t>>& components)
         {
-            std::array<OffsetType, 6> neighbors{};
-            image.GetNeighborhood(neighbors);
-            Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
-                image.size(), image.data(), components);
-        }
-
-        // Compute the 18-connected components of a binary image with
-        // background 0 and foreground 1. The input image is modified to
-        // avoid the cost of making a copy. On output, the image values
-        // are the labels for the components. The array components[k],
-        // k >= 1, contains the indices for the k-th component.
-        static void GetComponents18(Image3<SInteger>& image,
-            std::vector<std::vector<std::size_t>>& components)
-        {
-            std::array<OffsetType, 18> neighbors{};
-            image.GetNeighborhood(neighbors);
-            Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
-                image.size(), image.data(), components);
-        }
-
-        // Compute the 26-connected components of a binary image with
-        // background 0 and foreground 1. The input image is modified to
-        // avoid the cost of making a copy. On output, the image values
-        // are the labels for the components. The array components[k],
-        // k >= 1, contains the indices for the k-th component.
-        static void GetComponents26(Image3<SInteger>& image,
-            std::vector<std::vector<std::size_t>>& components)
-        {
-            std::array<OffsetType, 26> neighbors{};
+            std::array<OffsetType, N> neighbors{};
             image.GetNeighborhood(neighbors);
             Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
                 image.size(), image.data(), components);
         }
 
         // Compute a dilation with a structuring element consisting of the
-        // 6-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image.
-        static void Dilate6(Image3<SInteger> const& input,
+        // N-connected neighbors of each voxel (N is 6, 18, or 26). The input
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image.
+        template <std::size_t N>
+        static void Dilate(
+            Image3<SInteger> const& input,
             Image3<SInteger>& output)
         {
-            std::array<std::array<OffsetType, 3>, 6> neighbors;
-            input.GetNeighborhood(neighbors);
-            Dilate(input, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute a dilation with a structuring element consisting of the
-        // 18-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image.
-        static void Dilate18(Image3<SInteger> const& input,
-            Image3<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 3>, 18> neighbors;
-            input.GetNeighborhood(neighbors);
-            Dilate(input, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute a dilation with a structuring element consisting of the
-        // 26-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image.
-        static void Dilate26(Image3<SInteger> const& input,
-            Image3<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 3>, 26> neighbors;
+            std::array<std::array<OffsetType, 3>, N> neighbors;
             input.GetNeighborhood(neighbors);
             Dilate(input, neighbors.size(), neighbors.data(), output);
         }
 
         // Compute a dilation with a structing element consisting of neighbors
         // specified by offsets relative to the voxel. The input image is
-        // binary with background 0 and foreground 1. The output image must
-        // be an object different from the input image.
-        static void Dilate(Image3<SInteger> const& input, std::size_t numNeighbors,
-            std::array<OffsetType, 3> const* neighbors, Image3<SInteger>& output)
+        // binary with 0 for background and 1 for foreground. The output
+        // image must be an object different from the input image.
+        static void Dilate(
+            Image3<SInteger> const& input,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 3> const* neighbors,
+            Image3<SInteger>& output)
         {
             GTL_ARGUMENT_ASSERT(
                 &output != &input && input.size() > 0 &&
@@ -116,31 +71,31 @@ namespace gtl
 
             output = input;
 
-            // If the voxel at (x,y,z) is foreground, then the voxels at
-            // (x+dx,y+dy,z+dz) are set to foreground where (dx,dy,dz) is in
-            // the neighbors array. Boundary testing is used to avoid
-            // accessing out-of-range voxels.
-            OffsetType const xSize = static_cast<OffsetType>(input.size(0));
-            OffsetType const ySize = static_cast<OffsetType>(input.size(1));
-            OffsetType const zSize = static_cast<OffsetType>(input.size(2));
-            for (OffsetType z = 0; z < zSize; ++z)
+            // If the voxel at (i0,i1,i2) is 1, then the voxels at
+            // (k0,k1,k2) = (i0+nbr0,i1+nbr1,i2+nbr2) are set to 1 where
+            // (nbr0,nbr1,nbr2) is in the neighbors array. Boundary
+            // testing is used to avoid accessing out-of-range pixels.
+            OffsetType const dim0 = static_cast<OffsetType>(input.size(0));
+            OffsetType const dim1 = static_cast<OffsetType>(input.size(1));
+            OffsetType const dim2 = static_cast<OffsetType>(input.size(2));
+            for (OffsetType i2 = 0; i2 < dim2; ++i2)
             {
-                for (OffsetType y = 0; y < ySize; ++y)
+                for (OffsetType i1 = 0; i1 < dim1; ++i1)
                 {
-                    for (OffsetType x = 0; x < xSize; ++x)
+                    for (OffsetType i0 = 0; i0 < dim0; ++i0)
                     {
-                        if (input(x, y, z) == 1)
+                        if (input(i0, i1, i2) == 1)
                         {
                             for (std::size_t j = 0; j < numNeighbors; ++j)
                             {
-                                OffsetType xNbr = x + neighbors[j][0];
-                                OffsetType yNbr = y + neighbors[j][1];
-                                OffsetType zNbr = z + neighbors[j][2];
-                                if (0 <= xNbr && xNbr < xSize &&
-                                    0 <= yNbr && yNbr < ySize &&
-                                    0 <= zNbr && zNbr < zSize)
+                                OffsetType k0 = i0 + neighbors[j][0];
+                                OffsetType k1 = i1 + neighbors[j][1];
+                                OffsetType k2 = i2 + neighbors[j][2];
+                                if (0 <= k0 && k0 < dim0 &&
+                                    0 <= k1 && k1 < dim1 &&
+                                    0 <= k2 && k2 < dim2)
                                 {
-                                    output(x, y, z) = 1;
+                                    output(k0, k1, k2) = 1;
                                 }
                             }
                         }
@@ -150,60 +105,37 @@ namespace gtl
         }
 
         // Compute an erosion with a structuring element consisting of the
-        // 6-connected neighbors of each voxel. The input image is binary with
-        // background 0 and foreground 1. The output image must be an object
-        // different from the input image. If zeroExterior is true, the image
-        // exterior is assumed to be 0, so 1-valued boundary voxels are set
-        // to 0; otherwise, boundary voxels are set to 0 only when they have
-        // neighboring image voxels that are 0.
-        static void Erode6(Image3<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each voxel (N is 6, 18, or 26). The input
+        // image is binary with 0 for background and 1 for foreground. The
+        // output/ image must be an object different from the input image. If
+        // zeroExterior is true, the image exterior is assumed to be 0, so
+        // 1-valued boundary voxels are set to 0; otherwise, boundary voxels
+        // are set to 0 only when they have neighboring image voxels that
+        // are 0.
+        template <std::size_t N>
+        static void Erode(
+            Image3<SInteger> const& input,
+            bool zeroExterior,
             Image3<SInteger>& output)
         {
-            std::array<std::array<OffsetType, 3>, 6> neighbors{};
-            input.GetNeighborhood(neighbors);
-            Erode(input, zeroExterior, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute an erosion with a structuring element consisting of the
-        // 18-connected neighbors of each voxel. The input image is binary with
-        // background 0 and foreground 1. The output image must be an object
-        // different from the input image. If zeroExterior is true, the image
-        // exterior is assumed to be 0, so 1-valued boundary voxels are set
-        // to 0; otherwise, boundary voxels are set to 0 only when they have
-        // neighboring image voxels that are 0.
-        static void Erode18(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 3>, 18> neighbors{};
-            input.GetNeighborhood(neighbors);
-            Erode(input, zeroExterior, neighbors.size(), neighbors.data(), output);
-        }
-
-        // Compute an erosion with a structuring element consisting of the
-        // 26-connected neighbors of each voxel. The input image is binary with
-        // background 0 and foreground 1. The output image must be an object
-        // different from the input image. If zeroExterior is true, the image
-        // exterior is assumed to be 0, so 1-valued boundary voxels are set
-        // to 0; otherwise, boundary voxels are set to 0 only when they have
-        // neighboring image voxels that are 0.
-        static void Erode26(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            std::array<std::array<OffsetType, 3>, 26> neighbors{};
+            std::array<std::array<OffsetType, 3>, N> neighbors{};
             input.GetNeighborhood(neighbors);
             Erode(input, zeroExterior, neighbors.size(), neighbors.data(), output);
         }
 
         // Compute an erosion with a structuring element consisting of
-        // neighbors specified by offsets relative to the pixel. The input
-        // image is binary with background 0 and foreground 1. The output
-        // image must be an object different from the input image. If
+        // neighbors specified by offsets relative to the voxel. The input
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image. If
         // zeroExterior is true, the image exterior is assumed to be 0, so
-        // 1-valued boundary pixels are set to 0; otherwise, boundary pixels
-        // are set to 0 only when they have neighboring image pixels that
+        // 1-valued boundary voxels are set to 0; otherwise, boundary voxels
+        // are set to 0 only when they have neighboring image voxels that
         // are 0.
-        static void Erode(Image3<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 3> const* neighbors,
+        static void Erode(
+            Image3<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 3> const* neighbors,
             Image3<SInteger>& output)
         {
             GTL_ARGUMENT_ASSERT(
@@ -213,38 +145,38 @@ namespace gtl
 
             output = input;
 
-            // If the voxel at (x,y,z) is foreground, it is changed to
-            // background when at least one neighbor (x+dx,y+dy,z+dz) is
-            // background, where (dx,dy,dz) is in the neighbors array.
-            OffsetType const xSize = static_cast<OffsetType>(input.size(0));
-            OffsetType const ySize = static_cast<OffsetType>(input.size(1));
-            OffsetType const zSize = static_cast<OffsetType>(input.size(2));
-            for (OffsetType z = 0; z < zSize; ++z)
+            // If the pixel at (i0,i1,i2) is 1, it is changed to 0 when at
+            // least one neighbor (k0,k1,k2) = (i0+nbr0,i1+nbr1,i2+nbr2) is 0,
+            // where (nbr0,nbr1,nbr2) is in the neighbors array.
+            OffsetType const dim0 = static_cast<OffsetType>(input.size(0));
+            OffsetType const dim1 = static_cast<OffsetType>(input.size(1));
+            OffsetType const dim2 = static_cast<OffsetType>(input.size(2));
+            for (OffsetType i2 = 0; i2 < dim2; ++i2)
             {
-                for (OffsetType y = 0; y < ySize; ++y)
+                for (OffsetType i1 = 0; i1 < dim1; ++i1)
                 {
-                    for (OffsetType x = 0; x < xSize; ++x)
+                    for (OffsetType i0 = 0; i0 < dim0; ++i0)
                     {
-                        if (input(x, y, z) == 1)
+                        if (input(i0, i1, i2) == 1)
                         {
                             for (std::size_t j = 0; j < numNeighbors; ++j)
                             {
-                                OffsetType xNbr = x + neighbors[j][0];
-                                OffsetType yNbr = y + neighbors[j][1];
-                                OffsetType zNbr = y + neighbors[j][2];
-                                if (0 <= xNbr && xNbr < xSize &&
-                                    0 <= yNbr && yNbr < ySize &&
-                                    0 <= zNbr && zNbr < zSize)
+                                OffsetType k0 = i0 + neighbors[j][0];
+                                OffsetType k1 = i1 + neighbors[j][1];
+                                OffsetType k2 = i1 + neighbors[j][2];
+                                if (0 <= k0 && k0 < dim0 &&
+                                    0 <= k1 && k1 < dim1 &&
+                                    0 <= k2 && k2 < dim2)
                                 {
-                                    if (input(xNbr, yNbr, zNbr) == 0)
+                                    if (input(k0, k1, k2) == 0)
                                     {
-                                        output(x, y, z) = 0;
+                                        output(i0, i1, i2) = 0;
                                         break;
                                     }
                                 }
                                 else if (zeroExterior)
                                 {
-                                    output(x, y, z) = 0;
+                                    output(i0, i1, i2) = 0;
                                     break;
                                 }
                             }
@@ -255,56 +187,35 @@ namespace gtl
         }
 
         // Compute an opening with a structuring element consisting of the
-        // 6-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Open6(Image3<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each pixel (N is 6, 18, or 26). The input image
+        // is binary with 0 for background and 1 for foreground. The output
+        // image must be an object different from the input image. If
+        // zeroExterior is true, the image exterior is assumed to consist of
+        // 0-valued pixels; otherwise, the image exterior is assumed to
+        // consist of 1-valued pixels.
+        template <std::size_t N>
+        static void Open(
+            Image3<SInteger> const& input,
+            bool zeroExterior,
             Image3<SInteger>& output)
         {
             Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Erode6(input, zeroExterior, temp);
-            Dilate6(temp, output);
-        }
-
-        // Compute an opening with a structuring element consisting of the
-        // 18-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Open18(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Erode18(input, zeroExterior, temp);
-            Dilate18(temp, output);
-        }
-
-        // Compute an opening with a structuring element consisting of the
-        // 26-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Open26(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Erode26(input, zeroExterior, temp);
-            Dilate26(temp, output);
+            Erode<N>(input, zeroExterior, temp);
+            Dilate<N>(temp, output);
         }
 
         // Compute an opening with a structuring element consisting of
         // neighbors specified by offsets relative to the voxel. The input
-        // image is binary with background 0 and foreground 1. The output
-        // image must be an object different from the input image. If
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image. If
         // zeroExterior is true, the image exterior is assumed to consist of
         // 0-valued voxels; otherwise, the image exterior is assumed to
         // consist of 1-valued voxels.
-        static void Open(Image3<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 3> const* neighbors,
+        static void Open(
+            Image3<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors,
+            std::array<OffsetType, 3> const* neighbors,
             Image3<SInteger>& output)
         {
             Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
@@ -313,56 +224,33 @@ namespace gtl
         }
 
         // Compute a closing with a structuring element consisting of the
-        // 6-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Close6(Image3<SInteger> const& input, bool zeroExterior,
+        // N-connected neighbors of each voxel. The input image is binary
+        // with 0 for background and 1 for foreground. The output image must
+        // be an object different from the input image. If zeroExterior is
+        // true, the image exterior is assumed to consist of 0-valued voxels;
+        // otherwise, the image exterior is assumed to consist of 1-valued
+        // voxels.
+        template <std::size_t N>
+        static void Close(Image3<SInteger> const& input, bool zeroExterior,
             Image3<SInteger>& output)
         {
             Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Dilate6(input, temp);
-            Erode6(temp, zeroExterior, output);
-        }
-
-        // Compute a closing with a structuring element consisting of the
-        // 18-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Close18(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Dilate18(input, temp);
-            Erode18(temp, zeroExterior, output);
-        }
-
-        // Compute a closing with a structuring element consisting of the
-        // 26-connected neighbors of each voxel. The input image is binary
-        // with background 0 and foreground 1. The output image must be an
-        // object different from the input image. If zeroExterior is true, the
-        // image exterior is assumed to consist of 0-valued voxels; otherwise,
-        // the image exterior is assumed to consist of 1-valued voxels.
-        static void Close26(Image3<SInteger> const& input, bool zeroExterior,
-            Image3<SInteger>& output)
-        {
-            Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
-            Dilate26(input, temp);
-            Erode26(temp, zeroExterior, output);
+            Dilate<N>(input, temp);
+            Erode<N>(temp, zeroExterior, output);
         }
 
         // Compute a closing with a structuring element consisting of
         // neighbors specified by offsets relative to the voxel. The input
-        // image is binary with background 0 and foreground 1. The output
-        // image must be an object different from the input image. If
+        // image is binary with 0 for background and 1 for foreground. The
+        // output image must be an object different from the input image. If
         // zeroExterior is true, the image exterior is assumed to consist of
         // 0-valued voxels; otherwise, the image exterior is assumed to
         // consist of 1-valued voxels.
-        static void Close(Image3<SInteger> const& input, bool zeroExterior,
-            std::size_t numNeighbors, std::array<OffsetType, 3> const* neighbors,
+        static void Close(
+            Image3<SInteger> const& input,
+            bool zeroExterior,
+            std::size_t numNeighbors, 
+            std::array<OffsetType, 3> const* neighbors,
             Image3<SInteger>& output)
         {
             Image3<SInteger> temp(input.size(0), input.size(1), input.size(2));
@@ -375,7 +263,11 @@ namespace gtl
         // is nonrecursive, simulated by using a heap-allocated stack. The
         // input (x,y,z) is the seed point that starts the fill. On output the
         // background is 0, foreground is 1 and the filled region is 2.
-        static void FloodFill6(Image3<SInteger>& image, std::size_t sx, std::size_t sy, std::size_t sz)
+        static void FloodFill6(
+            Image3<SInteger>& image,
+            std::size_t sx,
+            std::size_t sy,
+            std::size_t sz)
         {
             // Test for a valid seed.
             SInteger const xSize = static_cast<SInteger>(image.size(0));
@@ -475,8 +367,12 @@ namespace gtl
         // foreground is 1 and the background is 0. The function returns the
         // maximum distance and a point at which the maximum distance is
         // attained.
-        static void GetL1Distance(Image3<SInteger>& image, std::size_t& maxDistance,
-            std::size_t& xMax, std::size_t& yMax, std::size_t& zMax)
+        static void GetL1Distance(
+            Image3<SInteger>& image,
+            std::size_t& maxDistance,
+            std::size_t& xMax,
+            std::size_t& yMax,
+            std::size_t& zMax)
         {
             std::size_t const xSize = image.size(0);
             std::size_t const ySize = image.size(1);
