@@ -36,8 +36,8 @@ namespace gtl
         {
             std::array<OffsetType, N> neighbors{};
             image.GetNeighborhood(neighbors);
-            Morphology<SInteger>::GetComponents(neighbors.size(), neighbors.data(),
-                image.size(), image.data(), components);
+            Morphology<SInteger>::GetComponents(image.size(), image.data(),
+                neighbors.size(), neighbors.data(), components);
         }
 
         // Compute a dilation with a structuring element consisting of the
