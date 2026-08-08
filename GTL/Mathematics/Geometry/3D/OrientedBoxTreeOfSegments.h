@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.08.08
 
 #pragma once
 
@@ -30,7 +30,9 @@ namespace gtl
         // The bounding volume for the primitives' vertices depends on the
         // type of primitive. A derived class representing a primitive tree
         // must implement this.
-        virtual void ComputeInteriorBoundingVolume(std::size_t i0, std::size_t i1,
+        virtual void ComputeInteriorBoundingVolume(
+            std::size_t i0,
+            std::size_t i1,
             OrientedBoxBV<T>& boundingVolume) override
         {
             auto& box = boundingVolume.box;
@@ -49,7 +51,8 @@ namespace gtl
         // The bounding volume for a single primitive's vertices depends on
         // the type of primitive. A derived class representing a primitive
         // tree must implement this.
-        virtual void ComputeLeafBoundingVolume(std::size_t i,
+        virtual void ComputeLeafBoundingVolume(
+            std::size_t i,
             OrientedBoxBV<T>& boundingVolume) override
         {
             auto& box = boundingVolume.box;

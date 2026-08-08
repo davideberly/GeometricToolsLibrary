@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.08.01
+// File Version: 0.0.2026.08.08
 
 #pragma once
 
@@ -20,33 +20,11 @@
 #include <cstdint>
 #include <limits>
 #include <set>
+#include <utility>
 #include <vector>
 
 namespace gtl
 {
-    // To support the operations in BVTree<T,BoundingVolume>, the interface
-    // of class BoundingVolume must include
-    // 
-    //   BoundingVolume();
-    //   ~BoundingVolume();
-    //   void GetSplittingAxis(Vector3<T>& origin, Vector3<T>& direction);
-    // 
-    // To support the operations in BVTreeOfTriangles<T,BoundingVolume>, the
-    // interface of class BoundingVolume must include also
-    // 
-    //   static bool IntersectLine(Vector3<T> const& P, Vector3<T> const& Q,
-    //       BoundingVolume& boundingVolume);
-    // 
-    //   static bool IntersectRay(Vector3<T> const& P, Vector3<T> const& Q,
-    //       BoundingVolume& boundingVolume);
-    // 
-    //   static bool IntersectSegment(Vector3<T> const& P, Vector3<T> const& Q,
-    //       BoundingVolume& boundingVolume);
-    //
-    // The line is parameterized by P+t*Q for all real t. The ray is
-    // parameterized by P+t*Q for nonnegative t. The segment is parameterized
-    // by (1-t)*P+t*Q for t in [0,1].
-
     template <typename T, typename BoundingVolume>
     class BVTreeOfTriangles : public BVTree<T, BoundingVolume>
     {
@@ -55,7 +33,12 @@ namespace gtl
             :
             BVTree<T, BoundingVolume>{},
             mVertices{},
-            mTriangles{}
+            mTriangles{},
+            mLinearTriangleQuery{
+                IntersectLineTriangle,
+                IntersectRayTriangle,
+                IntersectSegmentTriangle
+            }
         {
         }
 
@@ -99,19 +82,9 @@ namespace gtl
             return mTriangles;
         }
 
-        // Generate a list of triangles intersected by a linear component
-        // (line, ray or segment). The line is parameterized by P + t * Q,
-        // where Q is a unit-length direction and t is any real number. The
-        // ray is parameterized by P + t * Q, where Q is a unit-length
-        // direction and t >= 0. The segment is parameterized by
-        // (1-t) * P + t * Q = P + t * (Q - P), where P and Q are the
-        // endpoints of the segment and 0 <= t <= 1.
-        static std::uint32_t constexpr LINE_QUERY = 0;
-        static std::uint32_t constexpr RAY_QUERY = 1;
-        static std::uint32_t constexpr SEGMENT_QUERY = 2;
-
-        struct Intersection
+        class Intersection
         {
+        public:
             Intersection()
                 :
                 triangleIndex(std::numeric_limits<std::size_t>::max()),
@@ -120,7 +93,10 @@ namespace gtl
             {
             }
 
-            Intersection(std::size_t inTriangleIndex, Vector3<T> const& inPoint, T const& inParameter)
+            Intersection(
+                std::size_t inTriangleIndex,
+                Vector3<T> const& inPoint,
+                T const& inParameter)
                 :
                 triangleIndex(inTriangleIndex),
                 point(inPoint),
@@ -140,91 +116,37 @@ namespace gtl
 
         // Compute intersections of the linear component and triangles. These
         // are sorted by the parameter of the linear component.
-        void Execute(std::uint32_t queryType, Vector3<T> const& P, Vector3<T> const& Q,
+        void Execute(
+            std::uint32_t queryType,
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
+            std::vector<std::size_t>& nodeIndices,
             std::set<Intersection>& intersections)
         {
-            std::size_t constexpr invalid = std::numeric_limits<std::size_t>::max();
+            this->GetLeafIndices(queryType, P, Q, nodeIndices);
+
+            LinearTriangleQuery linearTriangleQuery = mLinearTriangleQuery[queryType];
+            Vector3<T> point{};
+            T parameter{};
             intersections.clear();
-
-            BoundingVolumeQuery IntersectBoundingVolume{};
-            TriangleQuery IntersectTriangle{};
-            switch (queryType)
+            for (auto const& leafIndex : nodeIndices)
             {
-            case LINE_QUERY:
-                IntersectBoundingVolume = BoundingVolume::IntersectLine;
-                IntersectTriangle = IntersectLineTriangle;
-                break;
-            case RAY_QUERY:
-                IntersectBoundingVolume = BoundingVolume::IntersectRay;
-                IntersectTriangle = IntersectRayTriangle;
-                break;
-            case SEGMENT_QUERY:
-                IntersectBoundingVolume = BoundingVolume::IntersectSegment;
-                IntersectTriangle = IntersectSegmentTriangle;
-                break;
-            default:
-                GTL_ARGUMENT_ERROR(
-                    "Invalid query type.");
-            }
-
-            std::vector<std::size_t> indexStack(2 * this->mHeight + 1);
-            std::size_t top = 0;
-            indexStack[0] = 0;
-            while (top != std::numeric_limits<std::size_t>::max())
-            {
-                std::size_t nodeIndex = indexStack[top--];
-                auto const& node = this->mNodes[nodeIndex];
-
-                // For the balanced tree created by BVTree<T>, an interior
-                // node has two valid children and a leaf node has two invalid
-                // children. This is true even if the height passed to
-                // BVTree<T>::Create is smaller than the actual height.
-                if (node.leftChild != invalid && node.rightChild != invalid)
+                auto const& node = this->mNodes[leafIndex];
+                for (std::size_t i = node.minIndex; i <= node.maxIndex; ++i)
                 {
-                    // The node is interior.
-                    if (IntersectBoundingVolume(P, Q, node.boundingVolume))
+                    std::size_t triangleIndex = this->mPartition[i];
+                    auto const& tri = mTriangles[triangleIndex];
+                    Triangle3<T> triangle(mVertices[tri[0]], mVertices[tri[1]], mVertices[tri[2]]);
+                    if (linearTriangleQuery(P, Q, triangle, point, parameter))
                     {
-                        // The linear component intersects the box. Continue
-                        // the intersection search to child nodes if they
-                        // exist.
-                        indexStack[++top] = node.rightChild;
-                        indexStack[++top] = node.leftChild;
-                    }
-                    else
-                    {
-                        // The linear component does not intersect the box.
-                        // There are no triangles intersected in the subtree
-                        // rooted at this node. Do not continue the
-                        // intersection search to child nodes if they exist.
-                    }
-                }
-                else // node.leftChild == invalid && node.rightChild == invalid
-                {
-                    Vector3<T> point{};
-                    T parameter{};
-                    for (std::size_t i = node.minIndex; i <= node.maxIndex; ++i)
-                    {
-                        std::size_t triangleIndex = this->mPartition[i];
-                        auto const& tri = mTriangles[triangleIndex];
-                        Triangle3<T> triangle(mVertices[tri[0]], mVertices[tri[1]], mVertices[tri[2]]);
-                        if (IntersectTriangle(P, Q, triangle, point, parameter))
-                        {
-                            intersections.insert(Intersection(triangleIndex, point, parameter));
-                        }
+                        intersections.insert(Intersection(triangleIndex, point, parameter));
                     }
                 }
             }
         }
 
     protected:
-        // Function signature for {line,ray,segment}-boundingVolume
-        // test-intersection queries.
-        using BoundingVolumeQuery = bool (*)(Vector3<T> const&,
-            Vector3<T> const&, BoundingVolume const&);
-
-        // Function signature for {line,ray,segment}-triangle
-        // find-intersection queries.
-        using TriangleQuery = bool (*)(Vector3<T> const&, Vector3<T> const&,
+        using LinearTriangleQuery = bool (*)(Vector3<T> const&, Vector3<T> const&,
             Triangle3<T> const&, Vector3<T>&, T&);
 
         static bool IntersectLineTriangle(Vector3<T> const& P, Vector3<T> const& Q,
@@ -259,6 +181,7 @@ namespace gtl
 
         std::vector<Vector3<T>> mVertices;
         std::vector<std::array<std::size_t, 3>> mTriangles;
+        std::array<LinearTriangleQuery, 3> mLinearTriangleQuery;
 
     private:
         friend class UnitTestBVTreeOfTriangles;

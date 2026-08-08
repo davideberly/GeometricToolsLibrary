@@ -3,11 +3,11 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.08.08
 
 #pragma once
 
-// Class AlignedBoxBV is a bounding volume that supports the queries based on
+// Class OrientedBoxBV is a bounding volume that supports the queries based on
 // BVTree and its derived classes.
 
 #include <GTL/Mathematics/Intersection/3D/IntrLine3OrientedBox3.h>
@@ -27,7 +27,9 @@ namespace gtl
         {
         }
 
-        void GetSplittingAxis(Vector3<T>& origin, Vector3<T>& direction) const
+        void GetSplittingAxis(
+            Vector3<T>& origin,
+            Vector3<T>& direction) const
         {
             origin = box.center;
 
@@ -46,7 +48,9 @@ namespace gtl
             direction = box.axis[maxIndex];
         }
 
-        static bool IntersectLine(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectLine(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             OrientedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Line3<T>, OrientedBox3<T>> query{};
@@ -54,7 +58,9 @@ namespace gtl
             return output.intersect;
         }
 
-        static bool IntersectRay(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectRay(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             OrientedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Ray3<T>, OrientedBox3<T>> query{};
@@ -62,7 +68,9 @@ namespace gtl
             return output.intersect;
         }
 
-        static bool IntersectSegment(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectSegment(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             OrientedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Segment3<T>, OrientedBox3<T>> query{};

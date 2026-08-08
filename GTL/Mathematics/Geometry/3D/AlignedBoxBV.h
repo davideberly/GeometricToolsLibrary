@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.08.08
 
 #pragma once
 
@@ -13,6 +13,7 @@
 #include <GTL/Mathematics/Intersection/3D/IntrLine3AlignedBox3.h>
 #include <GTL/Mathematics/Intersection/3D/IntrRay3AlignedBox3.h>
 #include <GTL/Mathematics/Intersection/3D/IntrSegment3AlignedBox3.h>
+#include <cstddef>
 
 namespace gtl
 {
@@ -26,7 +27,9 @@ namespace gtl
         {
         }
 
-        void GetSplittingAxis(Vector3<T>& origin, Vector3<T>& direction) const
+        void GetSplittingAxis(
+            Vector3<T>& origin,
+            Vector3<T>& direction) const
         {
             T const half = static_cast<T>(0.5);
 
@@ -48,7 +51,9 @@ namespace gtl
             direction = Vector3<T>::Unit(maxIndex);
         }
 
-        static bool IntersectLine(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectLine(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             AlignedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Line3<T>, AlignedBox3<T>> query{};
@@ -56,7 +61,9 @@ namespace gtl
             return output.intersect;
         }
 
-        static bool IntersectRay(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectRay(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             AlignedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Ray3<T>, AlignedBox3<T>> query{};
@@ -64,7 +71,9 @@ namespace gtl
             return output.intersect;
         }
 
-        static bool IntersectSegment(Vector3<T> const& P, Vector3<T> const& Q,
+        static bool IntersectSegment(
+            Vector3<T> const& P,
+            Vector3<T> const& Q,
             AlignedBoxBV<T> const& boundingVolume)
         {
             TIQuery<T, Segment3<T>, AlignedBox3<T>> query{};
