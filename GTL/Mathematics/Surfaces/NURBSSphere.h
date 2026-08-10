@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.03.05
+// File Version: 0.0.2026.08.10
 
 #pragma once
 
@@ -21,6 +21,7 @@
 
 #include <GTL/Mathematics/Surfaces/NURBSSurface.h>
 #include <array>
+#include <cstddef>
 
 namespace gtl
 {
@@ -182,7 +183,7 @@ namespace gtl
                 Bu[1][0] = C_<T>(4) * ww * WmThreeU;
                 Bu[1][1] = C_<T>(12) * vw * WmTwoU;
                 Bu[1][2] = C_<T>(12) * vv * WmU;
-                Bu[1][3] = C_<T>(4) * vv;
+                Bu[1][3] = C_<T>(4) * v * vv;
                 Bu[2][0] = C_<T>(12) * uw * WmU;
                 Bu[2][1] = C_<T>(12) * uv * TwoWmU;
                 Bu[2][2] = C_<T>(12) * u * vv;
@@ -301,9 +302,9 @@ namespace gtl
                             Dvv += product;
                         }
                     }
-                    Vector3<T> termDuu = D * (D * Nuu - Duu * N);
-                    Vector3<T> termDuv = D * (D * Nuv - Duv * N - Du * Nv - Dv * Nu);
-                    Vector3<T> termDvv = D * (D * Nvv - Dvv * N);
+                    Vector3<T> termDuu = D * Nuu - Duu * N;
+                    Vector3<T> termDuv = D * Nuv - Duv * N - Du * Nv - Dv * Nu;
+                    Vector3<T> termDvv = D * Nvv - Dvv * N;
                     jet[3] = (D * termDuu - C_<T>(2) * Du * numerDU) / Dcub;
                     jet[4] = (D * termDuv + C_<T>(2) * Du * Dv * N) / Dcub;
                     jet[5] = (D * termDvv - C_<T>(2) * Dv * numerDV) / Dcub;
