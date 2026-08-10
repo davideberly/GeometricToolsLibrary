@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.08.10
 
 #pragma once
 
@@ -99,43 +99,28 @@ namespace gtl
             ToCoefficients(A, B, C);
             Convert(A, B, C, coeff);
 
-            // Arrange for one of the coefficients of the quadratic terms
-            // to be 1.
-            std::size_t quadIndex = numCoefficients - 1;
-            std::size_t maxIndex = quadIndex;
-            T maxValue = std::fabs(coeff[quadIndex]);
-#if defined(GTL_USE_MSWINDOWS)
-            // NOTE: When N = 2, MSVS 2019 16.7.5 generates:
-            //   warning C6294: Ill-defined for-loop: initial condition does
-            //   not satisfy test. Loop body not executed.
-            // Not executing the loop is the correct behavior for N = 2.
-#pragma warning(disable : 6294)
-#endif
-            for (std::size_t d = 2; d < N; ++d)
+            // For numerical robustness, divide the coefficients by the
+            // quadratic coefficient of largest magnitude. The resulting
+            // coefficients are in [-1,1]. The number of coefficients is
+            // (N+1)*(N+2)/2. Of these, 1 is the constant term, N are the
+            // linear terms, and (N+1)*(N+2)/2 - N - 1 = N(N+1)/2 are the
+            // quadratic terms. The i-values in coeff[i] for the quadratic
+            // terms satisfy: N + 1 <= i < (N+1)*(N+2)/2
+            T maxValue = C_<T>(0);
+            std::size_t maxIndex = std::numeric_limits<std::size_t>::max();
+            for (std::size_t i = N + 1; i < numCoefficients; ++i)
             {
-                quadIndex -= d;
-                T absValue = std::fabs(coeff[quadIndex]);
+                T absValue = std::fabs(coeff[i]);
                 if (absValue > maxValue)
                 {
-                    maxIndex = quadIndex;
                     maxValue = absValue;
+                    maxIndex = i;
                 }
             }
-#if defined(GTL_USE_MSWINDOWS)
-#pragma warning(default : 6294)
-#endif
 
-            T invMaxValue = C_<T>(1) / maxValue;
             for (std::size_t i = 0; i < numCoefficients; ++i)
             {
-                if (i != maxIndex)
-                {
-                    coeff[i] *= invMaxValue;
-                }
-                else
-                {
-                    coeff[i] = C_<T>(1);
-                }
+                coeff[i] /= maxValue;
             }
         }
 
