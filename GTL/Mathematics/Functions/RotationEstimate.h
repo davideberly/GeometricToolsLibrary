@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2026.08.10
 
 #pragma once
 
@@ -359,7 +359,7 @@ namespace gtl
             -8.333333333333333331e-03,
             +1.984126984126983769e-04,
             -2.755731922398382640e-06,
-            +2.505210838484547384e-08
+            +2.505210838484547384e-08,
             -1.605904373998917420e-10,
             +7.647154485773692262e-13,
             -2.810942149025141692e-15,
