@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.10
+// File Version: 0.0.2026.08.11
 
 #pragma once
 
@@ -417,17 +417,21 @@ namespace gtl
                 return;
             }
 
-            // Prevent double-sided triangles.
+            // Prevent double-sided triangles. Swap the last two vertices for
+            // the double-sided test.
             std::swap(triangle.v[1], triangle.v[2]);
             if (mTSet.find(triangle) != mTSet.end())
             {
                 return;
             }
 
+            // At this time the triangle is not double-sided in the mesh.
+            // Before inserting, we need to undo the previous swap.
+            std::swap(triangle.v[1], triangle.v[2]);
+
             mESet.insert(Edge(i0, i1));
             mESet.insert(Edge(i1, i2));
             mESet.insert(Edge(i2, i0));
-
             mTSet.insert(triangle);
         }
 
