@@ -39,62 +39,31 @@ namespace gtl
     class ContPolyhedron3
     {
     public:
-        // For simple polyhedra with triangle faces.
-        struct TriangleFace
+        enum FaceType
         {
-            TriangleFace()
+            TRIANGLE,
+            CONVEX,
+            SIMPLE
+        };
+
+        class Face
+        {
+        public:
+            // The members 'indices' and 'plane' are used for triangle faces,
+            // for convex polygon faces, and for simple polygon faces. The
+            // member 'triangles' is used only for simple faces that are not
+            // convex.
+            Face()
                 :
-                indices{ 0, 0, 0 },
-                plane{}
-            {
-            }
+                indices{},
+                plane{},
+                triangles{}
+            {}
 
             // When you view the face from outside, the vertices are
             // counterclockwise ordered. The indices array stores the indices
             // into the vertex array.
             std::array<std::size_t, 3> indices;
-
-            // The normal vector is unit length and points to the outside of
-            // the polyhedron.
-            Plane3<T> plane;
-        };
-
-        // For simple polyhedra with convex polygon faces.
-        struct ConvexFace
-        {
-            ConvexFace()
-                :
-                indices{},
-                plane{}
-            {
-            }
-
-            // When you view the face from outside, the vertices are
-            // counterclockwise ordered. The indices array stores the indices
-            // into the vertex array.
-            std::vector<std::size_t> indices;
-
-            // The normal vector is unit length and points to the outside of
-            // the polyhedron.
-            Plane3<T> plane;
-        };
-
-        // For simple polyhedra with simple polygon faces that are generally
-        // not all convex.
-        struct SimpleFace
-        {
-            SimpleFace()
-                :
-                indices{},
-                plane{},
-                triangles{}
-            {
-            }
-
-            // When you view the face from outside, the vertices are
-            // counterclockwise ordered. The Indices array stores the indices
-            // into the vertex array.
-            std::vector<std::size_t> indices;
 
             // The normal vector is unit length and points to the outside of
             // the polyhedron.
@@ -106,382 +75,74 @@ namespace gtl
             std::vector<std::size_t> triangles;
         };
 
-
         // Test whether P is contained by the polyhedron. The query uses
-        // ray-triangle intersection queries.
-        static bool InContainer(
-            Vector3<T> const& P,
-            std::vector<Vector3<T>> const& points,
-            std::vector<TriangleFace> const& faces,
-            std::vector<Vector3<T>> const& directions)
-        {
-            TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
-            Triangle3<T> triangle{};
-            Ray3<T> ray{};
-            ray.origin = P;
-
-            std::size_t insideCount = 0;
-            for (auto const& direction : directions)
-            {
-                ray.direction = direction;
-
-                // Zero intersections to start with.
-                bool odd = false;
-                for (auto const& face : faces)
-                {
-                    // Attempt to cull the triangle quickly.
-                    if (FastNoIntersect(ray, face.plane))
-                    {
-                        continue;
-                    }
-
-                    // Get the triangle vertices.
-                    for (std::size_t k = 0; k < 3; ++k)
-                    {
-                        triangle.v[k] = points[face.indices[k]];
-                    }
-
-                    // Test for intersection.
-                    auto rtOutput = rtQuery(ray, triangle);
-                    if (rtOutput.intersect)
-                    {
-                        // The ray intersects the triangle.
-                        odd = !odd;
-                    }
-                }
-
-                if (odd)
-                {
-                    ++insideCount;
-                }
-            }
-
-            // If more than half the directions report 'inside', then the
-            // vote is in favor of 'inside'.
-            return insideCount > directions.size() / 2;
-        }
-
-        // Test whether P is contained by the polyhedron. The query uses
-        // ray-convex_polygon intersection queries. A ray-convex_polygon
-        // intersection query can be implemented in many ways. In this
-        // context, 'method' is one of three values:
+        // ray-triangle intersection queries. This function will select the
+        // actual algorithm based on the face type. Each type can have
+        // multiple methods used for point-in-polygon tests where the
+        // polygons are in the planes of the faces.
+        // 
+        // Triangle faces.
+        //   0 : The parameter is unused. Ray-triangle tests are performed
+        //       without projection on the planes of the triangles.
+        // 
+        // Convex faces.
         //   0 : Use a triangle fan and perform a ray-triangle intersection
         //       query for each triangle.
-        //   1 : Find the point of intersection of the ray and the plane of
-        //       the convex-polygon face. Test whether that point is inside
-        //       the convex polygon using an O(N) test.
-        //   2 : Find the point of intersection of the ray and the plane of
-        //       the convex-polygon face. Test whether that point is inside
-        //       the convex polygon using an O(log N) test.
-        static bool InContainer(
-            Vector3<T> const& P,
-            std::vector<Vector3<T>> const& points,
-            std::vector<ConvexFace> const& faces,
-            std::vector<Vector3<T>> const& directions,
-            std::size_t method)
-        {
-            GTL_ARGUMENT_ASSERT(
-                0 <= method && method <= 2,
-                "Invalid method.");
-
-            if (method == 0)
-            {
-                TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
-                Triangle3<T> triangle{};
-                Ray3<T> ray{};
-                ray.origin = P;
-
-                std::size_t insideCount = 0;
-                for (auto const& direction : directions)
-                {
-                    ray.direction = direction;
-
-                    // Zero intersections to start with.
-                    bool odd = false;
-
-                    for (auto const& face : faces)
-                    {
-                        // Attempt to cull the triangle quickly.
-                        if (FastNoIntersect(ray, face.plane))
-                        {
-                            continue;
-                        }
-
-                        // Process the triangles in a trifan of the face.
-                        triangle.v[0] = points[face.indices[0]];
-                        for (std::size_t k = 1, kp1 = 2; kp1 < face.indices.size(); k = kp1++)
-                        {
-                            triangle.v[1] = points[face.indices[k]];
-                            triangle.v[2] = points[face.indices[kp1]];
-
-                            auto rtOutput = rtQuery(ray, triangle);
-                            if (rtOutput.intersect)
-                            {
-                                // The ray intersects the triangle.
-                                odd = !odd;
-                            }
-                        }
-                    }
-
-                    if (odd)
-                    {
-                        ++insideCount;
-                    }
-                }
-
-                // If more than half the directions report 'inside', then the
-                // vote is in favor of 'inside'.
-                return insideCount > directions.size() / 2;
-            }
-            else
-            {
-                FIQuery<T, Ray3<T>, Plane3<T>> rpQuery{};
-                Ray3<T> ray{};
-                ray.origin = P;
-
-                std::size_t insideCount = 0;
-                for (auto const& direction : directions)
-                {
-                    ray.direction = direction;
-
-                    // Zero intersections to start with.
-                    bool odd = false;
-
-                    for (auto const& face : faces)
-                    {
-                        // Attempt to cull the triangle quickly.
-                        if (FastNoIntersect(ray, face.plane))
-                        {
-                            continue;
-                        }
-
-                        // Compute the ray-plane intersection.
-                        auto rpOutput = rpQuery(ray, face.plane);
-
-                        // This assertion can be triggered when floating-point
-                        // rounding errors occur.
-                        GTL_RUNTIME_ASSERT(
-                            rpOutput.intersect,
-                            "Unexpected condition.");
-
-                        // TODO. The orthonormal basis approach is subject to
-                        // floating-point rounding errors. Use the projection
-                        // of points onto the most aligned coordinate plane.
-
-                        // Get a coordinate system for the plane. Use vertex
-                        // V0 as the origin.
-                        Vector3<T> const& V0 = points[face.indices[0]];
-                        std::array<Vector3<T>, 3> basis{};
-                        basis[0] = face.plane.normal;
-                        ComputeOrthonormalBasis(1, basis[0], basis[1], basis[2]);
-
-                        // Project the intersection onto the plane.
-                        Vector3<T> diff = rpOutput.point - V0;
-                        Vector2<T> projIntersect{ Dot(basis[1], diff), Dot(basis[2], diff) };
-
-                        // Project the face vertices onto the plane of the face.
-                        std::vector<Vector2<T>> projVertices(face.indices.size());
-                        projVertices[0] = { C_<T>(0), C_<T>(0) };
-                        for (std::size_t k = 1; k < face.indices.size(); ++k)
-                        {
-                            diff = points[face.indices[k]] - V0;
-                            projVertices[k][0] = Dot(basis[1], diff);
-                            projVertices[k][1] = Dot(basis[2], diff);
-                        }
-
-                        // Test whether the intersection point is in the convex
-                        // polygon.
-                        if (method == 1)
-                        {
-                            if (ContPolygon2<T>::InContainerConvexOrderN(
-                                projVertices, projIntersect))
-                            {
-                                // The ray intersects the triangle.
-                                odd = !odd;
-                            }
-                        }
-                        else
-                        {
-                            if (ContPolygon2<T>::InContainerConvexOrderLogN(
-                                projVertices, projIntersect))
-                            {
-                                // The ray intersects the triangle.
-                                odd = !odd;
-                            }
-                        }
-                    }
-
-                    if (odd)
-                    {
-                        ++insideCount;
-                    }
-                }
-
-                // If more than half the directions report 'inside', then the
-                // vote is in favor of 'inside'.
-                return insideCount > directions.size() / 2;
-            }
-        }
-
-        // Test whether P is contained by the polyhedron. The query uses
-        // ray-simple_polygon intersection queries. A ray-simple_polygon
-        // intersection query can be implemented in a couple of ways. In
-        // this context, 'method' is one of two values:
+        //   1 : Find the point of intersection of ray and plane of polygon.
+        //       Test whether that point is inside the convex polygon using an
+        //       O(N) test.
+        //   2 : Find the point of intersection of ray and plane of polygon.
+        //       Test whether that point is inside the convex polygon using an
+        //       O(log N) test.
+        //
+        // Simple faces that are not convex.
         //   0 : Iterate over the triangles of each face and perform a
         //       ray-triangle intersection query for each triangle. This
-        //       requires that the SimpleFace::Triangles array be initialized
-        //       for each face.
-        //   1 : Find the point of intersection of the ray and the plane of
-        //       simple-polygon face. Test whether that point is inside the
-        //       simple polygon using an O(N) test. The SimpleFace::triangles
-        //       array is not used for this method, so it does not have to be
-        //       initialized for each face.
+        //       requires that the Face::Triangles array be initialized for
+        //       each face.
+        //   1 : Find the point of intersection of ray and plane of polygon.
+        //       Test whether that point is inside the polygon using an O(N)
+        //       test. The Face::Triangles array is not used for this method,
+        //       so it does not have to be initialized for each face.
         static bool InContainer(
-            Vector3<T> const& P,
+            FaceType type,
+            std::uint32_t method,
+            Vector3<T> const& p,
             std::vector<Vector3<T>> const& points,
-            std::vector<SimpleFace> const& faces,
-            std::vector<Vector3<T>> const& directions,
-            std::size_t method)
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
         {
-            GTL_ARGUMENT_ASSERT(
-                0 <= method && method <= 1,
-                "Invalid method.");
-
-            if (method == 0)
+            if (type == TRIANGLE)
             {
-                TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
-                Triangle3<T> triangle{};
-                Ray3<T> ray{};
-                ray.origin = P;
+                return ContainsT0(p, points, faces, directions);
+            }
 
-                std::size_t insideCount = 0;
-                for (auto const& direction : directions)
+            if (type == CONVEX)
+            {
+                if (method == 0)
                 {
-                    ray.direction = direction;
+                    return ContainsC0(p, points, faces, directions);
+                }
+                else // method is 1 or 2
+                {
+                    return ContainsC1C2(method, p, points, faces, directions);
+                }
+            }
 
-                    // Zero intersections to start with.
-                    bool odd = false;
-
-                    for (auto const& face : faces)
-                    {
-                        // Attempt to cull the triangle quickly.
-                        if (FastNoIntersect(ray, face.plane))
-                        {
-                            continue;
-                        }
-
-                        // The triangulation must exist to use it.
-                        std::size_t numTriangles = face.triangles.size() / 3;
-                        GTL_RUNTIME_ASSERT(
-                            numTriangles > 0,
-                            "A triangulation must exist.");
-
-                        // Process the triangles in a triangulation of the
-                        // face.
-                        std::size_t const* index = face.triangles.data();
-                        for (std::size_t t = 0; t < numTriangles; ++t)
-                        {
-                            // Get the triangle vertices.
-                            for (std::size_t k = 0; k < 3; ++k)
-                            {
-                                triangle.v[k] = points[*index++];
-                            }
-
-                            // Test for intersection.
-                            auto rtOutput = rtQuery(ray, triangle);
-                            if (rtOutput.intersect)
-                            {
-                                // The ray intersects the triangle.
-                                odd = !odd;
-                            }
-                        }
-                    }
-
-                    if (odd)
-                    {
-                        ++insideCount;
-                    }
+            if (type == SIMPLE)
+            {
+                if (method == 0)
+                {
+                    return ContainsS0(p, points, faces, directions);
                 }
 
-                // If more than half the directions report 'inside', then the
-                // vote is in favor of 'inside'.
-                return insideCount > directions.size() / 2;
-            }
-            else
-            {
-                FIQuery<T, Ray3<T>, Plane3<T>> rpQuery{};
-                Ray3<T> ray{};
-                ray.origin = P;
-
-                std::size_t insideCount = 0;
-                for (auto const& direction : directions)
+                if (method == 1)
                 {
-                    ray.direction = direction;
-
-                    // Zero intersections to start with.
-                    bool odd = false;
-
-                    for (auto const& face : faces)
-                    {
-                        // Attempt to cull the triangle quickly.
-                        if (FastNoIntersect(ray, face.plane))
-                        {
-                            continue;
-                        }
-
-                        // Compute the ray-plane intersection.
-                        auto rpOutput = rpQuery(ray, face.plane);
-
-                        // This assertion can be triggered when floating-point
-                        // rounding errors occur.
-                        GTL_RUNTIME_ASSERT(
-                            rpOutput.intersect,
-                            "Unexpected condition.");
-
-                        // TODO. The orthonormal basis approach is subject to
-                        // floating-point rounding errors. Use the projection
-                        // of points onto the most aligned coordinate plane.
-
-                        // Get a coordinate system for the plane. Vertex V0
-                        // is the origin.
-                        Vector3<T> const& V0 = points[face.indices[0]];
-                        std::array<Vector3<T>, 3> basis{};
-                        basis[0] = face.plane.normal;
-                        ComputeOrthonormalBasis(1, basis[0], basis[1], basis[2]);
-
-                        // Project the intersection onto the plane.
-                        Vector3<T> diff = rpOutput.point - V0;
-                        Vector2<T> projIntersect{ Dot(basis[1], diff), Dot(basis[2], diff) };
-
-                        // Project the face vertices onto the plane of the face.
-                        std::vector<Vector2<T>> projVertices(face.indices.size());
-                        projVertices[0] = { C_<T>(0), C_<T>(0) };
-                        for (std::size_t k = 1; k < face.indices.size(); ++k)
-                        {
-                            diff = points[face.indices[k]] - V0;
-                            projVertices[k][0] = Dot(basis[1], diff);
-                            projVertices[k][1] = Dot(basis[2], diff);
-                        }
-
-                        // Test whether the intersection point is in the convex
-                        // polygon.
-                        if (ContPolygon2<T>::InContainer(projVertices, projIntersect))
-                        {
-                            // The ray intersects the triangle.
-                            odd = !odd;
-                        }
-                    }
-
-                    if (odd)
-                    {
-                        ++insideCount;
-                    }
+                    return ContainsS1(method, p, points, faces, directions);
                 }
-
-                // If more than half the directions report 'inside', then the
-                // vote is in favor of 'inside'.
-                return insideCount > directions.size() / 2;
             }
+
+            return false;
         }
 
     private:
@@ -516,6 +177,315 @@ namespace gtl
             }
 
             return false;
+        }
+
+        using ContainmentQuery = void (*)(
+            std::uint32_t,                      // method
+            std::vector<Vector2<T>> const&,     // projVertices
+            Vector2<T> const&,                  // projIntersect
+            bool&);                             // odd
+
+        static void ContainsPointConvex(
+            uint32_t method,
+            std::vector<Vector2<T>> const& projVertices,
+            Vector2<T> const& projIntersect,
+            bool& odd)
+        {
+            if (method == 1)
+            {
+                if (ContPolygon2<T>::InContainerConvexOrderN(projVertices, projIntersect))
+                {
+                    // The ray intersects the triangle.
+                    odd = !odd;
+                }
+            }
+            else
+            {
+                if (ContPolygon2<T>::InContainerConvexOrderLogN(projVertices, projIntersect))
+                {
+                    // The ray intersects the triangle.
+                    odd = !odd;
+                }
+            }
+        }
+
+        static void ContainsPointSimple(
+            std::uint32_t,
+            std::vector<Vector2<T>> const& projVertices,
+            Vector2<T> const& projIntersect,
+            bool& odd)
+        {
+            if (ContPolygon2<T>::InContainer(projVertices, projIntersect))
+            {
+                // The ray intersects the triangle.
+                odd = !odd;
+            }
+        }
+
+        // For triangle faces.
+        static bool ContainsT0(
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            std::size_t insideCount = 0;
+
+            TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
+            Triangle3<T> triangle{};
+            Ray3<T> ray{};
+            ray.origin = p;
+
+            for (auto const& direction : directions)
+            {
+                ray.direction = direction;
+
+                // Zero intersections to start with.
+                bool odd = false;
+
+                for (auto const& face : faces)
+                {
+                    // Attempt to quickly cull the triangle.
+                    if (FastNoIntersect(ray, face.plane))
+                    {
+                        continue;
+                    }
+
+                    // Get the triangle vertices.
+                    for (std::size_t i = 0; i < 3; ++i)
+                    {
+                        triangle.v[i] = points[face.indices[i]];
+                    }
+
+                    // Test for intersection.
+                    if (rtQuery(ray, triangle).intersect)
+                    {
+                        // The ray intersects the triangle.
+                        odd = !odd;
+                    }
+                }
+
+                if (odd)
+                {
+                    insideCount++;
+                }
+            }
+
+            return insideCount > directions.size() / 2;
+        }
+
+        // For convex faces.
+        static bool ContainsC0(
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            std::size_t insideCount = 0;
+
+            TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
+            Triangle3<T> triangle{};
+            Ray3<T> ray{};
+            ray.origin = p;
+
+            for (auto const& direction : directions)
+            {
+                ray.direction = direction;
+
+                // Zero intersections to start with.
+                bool odd = false;
+
+                for (auto const& face : faces)
+                {
+                    // Attempt to quickly cull the triangle.
+                    if (FastNoIntersect(ray, face.plane))
+                    {
+                        continue;
+                    }
+
+                    // Process the triangles in a trifan of the face.
+                    std::size_t numVerticesM1 = face.indices.size() - 1;
+                    triangle.v[0] = points[face.indices[0]];
+                    for (std::size_t i = 1; i < numVerticesM1; ++i)
+                    {
+                        triangle.v[1] = points[face.indices[i]];
+                        triangle.v[2] = points[face.indices[i + 1]];
+
+                        if (rtQuery(ray, triangle).intersect)
+                        {
+                            // The ray intersects the triangle.
+                            odd = !odd;
+                        }
+                    }
+                }
+
+                if (odd)
+                {
+                    insideCount++;
+                }
+            }
+
+            return insideCount > directions.size() / 2;
+        }
+
+        static bool ContainsC1C2(
+            uint32_t method,
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            return SharedContains(ContainsPointConvex, method, p, points, faces, directions);
+        }
+
+        // For simple faces.
+        static bool ContainsS0(
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            std::size_t insideCount = 0;
+
+            TIQuery<T, Ray3<T>, Triangle3<T>> rtQuery{};
+            Triangle3<T> triangle{};
+            Ray3<T> ray{};
+            ray.origin = p;
+
+            for (auto const& direction : directions)
+            {
+                ray.direction = direction;
+
+                // Zero intersections to start with.
+                bool odd = false;
+
+                for (auto const& face : faces)
+                {
+                    // Attempt to quickly cull the triangle.
+                    if (FastNoIntersect(ray, face.plane))
+                    {
+                        continue;
+                    }
+
+                    // The triangulation must exist to use it.
+                    std::size_t numTriangles = face.triangles.size() / 3;
+                    GTL_RUNTIME_ASSERT(
+                        numTriangles > 0,
+                        "Triangulation must exist.");
+
+                    // Process the triangles in a triangulation of the face.
+                    std::size_t const* currentIndex = face.triangles.data();
+                    for (std::size_t t = 0; t < numTriangles; ++t)
+                    {
+                        // Get the triangle vertices.
+                        for (std::size_t i = 0; i < 3; ++i)
+                        {
+                            triangle.v[i] = points[*currentIndex++];
+                        }
+
+                        // Test for intersection.
+                        if (rtQuery(ray, triangle).intersect)
+                        {
+                            // The ray intersects the triangle.
+                            odd = !odd;
+                        }
+                    }
+                }
+
+                if (odd)
+                {
+                    insideCount++;
+                }
+            }
+
+            return insideCount > directions.size() / 2;
+        }
+
+        static bool ContainsS1(
+            uint32_t method,
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            return SharedContains(ContainsPointSimple, method, p, points, faces, directions);
+        }
+
+        // Shared code for ContainsC1C2 and ContainsS1.
+        static bool SharedContains(
+            ContainmentQuery Contains,
+            uint32_t method,
+            Vector3<T> const& p,
+            std::vector<Vector3<T>> const& points,
+            std::vector<Face> const& faces,
+            std::vector<Vector3<T>> const& directions)
+        {
+            std::size_t insideCount = 0;
+
+            FIQuery<T, Ray3<T>, Plane3<T>> rpQuery{};
+            Ray3<T> ray{};
+            ray.origin = p;
+
+            for (auto const& direction : directions)
+            {
+                ray.direction = direction;
+
+                // Zero intersections to start with.
+                bool odd = false;
+
+                for (auto const& face : faces)
+                {
+                    // Attempt to quickly cull the triangle.
+                    if (FastNoIntersect(ray, face.plane))
+                    {
+                        continue;
+                    }
+
+                    // Compute the ray-plane intersection.
+                    auto result = rpQuery(ray, face.plane);
+
+                    // If you trigger this assertion, numerical round-off
+                    // errors have led to a discrepancy between
+                    // FastNoIntersect and the Find() result.
+                    GTL_RUNTIME_ASSERT(
+                        result.intersect,
+                        "Unexpected condition.");
+
+                    // Get a coordinate system for the plane. Use vertex 0
+                    // as the origin.
+                    Vector3<T> const& V0 = points[face.indices[0]];
+                    std::array<Vector3<T>, 3> basis{};
+                    basis[0] = face.plane.normal;
+                    ComputeOrthogonalComplement(basis[0], basis[1], basis[2]);
+
+                    // Project the intersection onto the plane.
+                    Vector3<T> diff = result.point - V0;
+                    Vector2<T> projIntersect{ Dot(basis[1], diff), Dot(basis[2], diff) };
+
+                    // Project the face vertices onto the plane of the face.
+                    // Vertex 0 is always the origin.
+                    std::size_t numIndices = face.indices.size();
+                    std::vector<Vector2<T>> projVertices(numIndices);
+                    projVertices[0] = Vector2<T>::Zero();
+                    for (std::size_t i = 1; i < numIndices; ++i)
+                    {
+                        diff = points[face.indices[i]] - V0;
+                        projVertices[i][0] = Dot(basis[1], diff);
+                        projVertices[i][1] = Dot(basis[2], diff);
+                    }
+
+                    // Test whether the intersection point is in the convex
+                    // polygon.
+                    Contains(method, projVertices, projIntersect, odd);
+                }
+
+                if (odd)
+                {
+                    insideCount++;
+                }
+            }
+
+            return insideCount > directions.size() / 2;
         }
 
     private:
