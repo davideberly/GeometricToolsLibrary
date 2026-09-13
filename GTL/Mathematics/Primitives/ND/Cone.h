@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.08.06
+// File Version: 0.0.2026.09.12
 
 #pragma once
 
@@ -330,7 +330,7 @@ namespace gtl
             // zero, then rMin is zero and tNumExtra is 'inf'. How was this
             // equation derived? For now, guard against the division by zero
             // using 0.5*(1+rMax)/(1+rMin)-1.
-            T tNumExtra = C_<T>(0.5) * (C_<T>(1) + rMax) / (C_<T>(1) + rMin) - C_<T>(1);
+            T tNumExtra = C_<T>(1, 2) * (C_<T>(1) + rMax) / (C_<T>(1) + rMin) - C_<T>(1);
             std::size_t numExtra = 0;
             if (tNumExtra > C_<T>(0))
             {
