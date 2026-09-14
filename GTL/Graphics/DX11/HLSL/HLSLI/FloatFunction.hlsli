@@ -1,9 +1,9 @@
-// David Eberly, Geometric Tools, Redmond WA 98052
-// Copyright (c) 1998-2024
-// Distributed under the Boost Software License, Version 1.0.
+// Geometric Tools Library
+// https://www.geometrictools.com
+// Copyright (c) 2025 Geometric Tools LLC
+// Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// https://www.geometrictools.com/License/Boost/LICENSE_1_0.txt
-// Version: 6.0.2022.01.06
+// File Version: 0.0.2026.09.13
 
 // HLSL Shader Compiler 6.3.9600.16384 has poorly written intrinsics for
 // frexp and ldexp.  frexp ignores the sign bit and works only on normal
