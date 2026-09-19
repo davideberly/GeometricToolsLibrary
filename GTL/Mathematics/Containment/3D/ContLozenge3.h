@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.09.12
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -182,8 +182,8 @@ namespace gtl
         static bool InContainer(Vector3<T> const& point, Lozenge3<T> const& lozenge)
         {
             DCPQuery<T, Vector3<T>, Rectangle3<T>> prQuery;
-            auto result = prQuery(point, lozenge.rectangle);
-            return result.distance <= lozenge.radius;
+            auto prResult = prQuery(point, lozenge.rectangle);
+            return prResult.distance <= lozenge.radius;
         }
 
     private:

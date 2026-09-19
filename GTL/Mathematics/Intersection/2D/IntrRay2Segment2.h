@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -186,15 +186,15 @@ namespace gtl
 
                 // Compute the intersection of [0,+infinity) and [tmin,tmax].
                 FIQuery<T, std::array<T, 2>, std::array<T, 2>> iiQuery{};
-                auto iiResult = iiQuery(interval0, interval1);
-                if (iiResult.intersect)
+                auto iiOutput = iiQuery(interval0, interval1);
+                if (iiOutput.intersect)
                 {
                     output.intersect = true;
-                    output.numIntersections = iiResult.numIntersections;
-                    for (std::size_t i = 0; i < iiResult.numIntersections; ++i)
+                    output.numIntersections = iiOutput.numIntersections;
+                    for (std::size_t i = 0; i < iiOutput.numIntersections; ++i)
                     {
-                        output.rayParameter[i] = iiResult.overlap[i];
-                        output.segmentParameter[i] = iiResult.overlap[i] - t;
+                        output.rayParameter[i] = iiOutput.overlap[i];
+                        output.segmentParameter[i] = iiOutput.overlap[i] - t;
                         output.point[i] = ray.origin + output.rayParameter[i] * ray.direction;
                     }
                 }

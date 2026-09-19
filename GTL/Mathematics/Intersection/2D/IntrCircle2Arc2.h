@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -78,7 +78,7 @@ namespace gtl
             // 74, 76, 78, 79, 74, 76, 78. Before inserting this comment, line
             // 74 is the for-loop below. The code analysis tool seems to
             // believe that result.numIntersections is 2 and that this number
-            // is out-of-range. It is not because ccResult sets the value of
+            // is out-of-range. It is not because ccOutput sets the value of
             // numIntersections to 0, 1, 2 or maxInt. The test for maxInt
             // occurs in the if-statement above. Inferring that the number of
             // intersections at this point being 0, 1, or 2 is probably

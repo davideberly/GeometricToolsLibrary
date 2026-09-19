@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -73,18 +73,18 @@ namespace gtl
 
             FIQuery<T, Line2<T>, Circle2<T>> lcQuery{};
             Circle2<T> circle(arc.center, arc.radius);
-            auto lcResult = lcQuery(line, circle);
-            if (lcResult.intersect)
+            auto lcOutput = lcQuery(line, circle);
+            if (lcOutput.intersect)
             {
                 // Test whether line-circle intersections are on the arc.
                 output.numIntersections = 0;
-                for (std::size_t i = 0; i < lcResult.numIntersections; ++i)
+                for (std::size_t i = 0; i < lcOutput.numIntersections; ++i)
                 {
-                    if (arc.Contains(lcResult.point[i], epsilon))
+                    if (arc.Contains(lcOutput.point[i], epsilon))
                     {
                         output.intersect = true;
-                        output.parameter[output.numIntersections] = lcResult.parameter[i];
-                        output.point[output.numIntersections] = lcResult.point[i];
+                        output.parameter[output.numIntersections] = lcOutput.parameter[i];
+                        output.point[output.numIntersections] = lcOutput.point[i];
                         ++output.numIntersections;
                     }
                 }

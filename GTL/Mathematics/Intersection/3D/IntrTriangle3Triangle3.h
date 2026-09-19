@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -458,14 +458,14 @@ namespace gtl
             // Compute the intersection with the coincident edge and the
             // triangle.
             FIQuery<T, Segment2<T>, Triangle2<T>> stQuery{};
-            auto stResult = stQuery(projSegment, projTriangle);
-            if (stResult.intersect)
+            auto stOutput = stQuery(projSegment, projTriangle);
+            if (stOutput.intersect)
             {
                 output.intersect = true;
-                output.intersection.resize(stResult.numIntersections);
+                output.intersection.resize(stOutput.numIntersections);
 
                 // Lift the 2D intersection points to the 3D triangle space.
-                auto const& src = stResult.point;
+                auto const& src = stOutput.point;
                 auto& trg = output.intersection;
                 ProjectPointsToCoordinatePlane<T>::Lift(src.size(), src.data(),
                     { C_<T>(0), C_<T>(0), C_<T>(0) }, normal, permute, trg.data());

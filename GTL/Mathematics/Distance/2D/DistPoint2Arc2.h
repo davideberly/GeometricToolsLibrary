@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -46,19 +46,19 @@ namespace gtl
 
             Circle2<T> circle(arc.center, arc.radius);
             DCPQuery<T, Vector2<T>, Circle2<T>> pcQuery{};
-            auto pcResult = pcQuery(point, circle);
-            if (!pcResult.equidistant)
+            auto pcOutput = pcQuery(point, circle);
+            if (!pcOutput.equidistant)
             {
                 // Test whether the closest circle point is on the arc. If it
                 // is, that point is the closest arc point. If it is not, the
                 // closest arc point is an arc endpoint. Determine which
                 // endpoint that is.
-                if (arc.Contains(pcResult.closest[1]))
+                if (arc.Contains(pcOutput.closest[1]))
                 {
-                    output.distance = pcResult.distance;
-                    output.sqrDistance = pcResult.sqrDistance;
-                    output.closest = pcResult.closest;
-                    output.equidistant = pcResult.equidistant;
+                    output.distance = pcOutput.distance;
+                    output.sqrDistance = pcOutput.sqrDistance;
+                    output.closest = pcOutput.closest;
+                    output.equidistant = pcOutput.equidistant;
                 }
                 else
                 {

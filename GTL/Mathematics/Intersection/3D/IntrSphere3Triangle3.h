@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -67,13 +67,13 @@ namespace gtl
 
             // Test for initial overlap or contact.
             DCPQuery<T, Vector3<T>, Triangle3<T>> ptQuery{};
-            auto ptResult = ptQuery(sphere.center, triangle);
+            auto ptOutput = ptQuery(sphere.center, triangle);
             T rsqr = sphere.radius * sphere.radius;
-            if (ptResult.sqrDistance <= rsqr)
+            if (ptOutput.sqrDistance <= rsqr)
             {
-                output.intersectionType = (ptResult.sqrDistance < rsqr ? -1 : +1);
+                output.intersectionType = (ptOutput.sqrDistance < rsqr ? -1 : +1);
                 output.contactTime = C_<T>(0);
-                output.contactPoint = ptResult.closest[1];
+                output.contactPoint = ptOutput.closest[1];
                 return output;
             }
 
@@ -299,9 +299,9 @@ namespace gtl
         // The implementation for arbitrary-precision types.
         using QFN1 = QFNumber<T, 1>;
 
-        struct ExactResult
+        struct ExactOutput
         {
-            ExactResult()
+            ExactOutput()
                 :
                 intersectionType(0),
                 contactTime{},
@@ -353,27 +353,27 @@ namespace gtl
         };
 
         template <typename Dummy = T>
-        typename std::enable_if<is_arbitrary_precision<Dummy>::value, ExactResult>::type
+        typename std::enable_if<is_arbitrary_precision<Dummy>::value, ExactOutput>::type
         operator()(Sphere3<T> const& sphere, Vector3<T> const& sphereVelocity,
             Triangle3<T> const& triangle, Vector3<T> const& triangleVelocity)
         {
             // The default constructors for the members of 'output' set their
             // own members to zero.
-            ExactResult output{};
+            ExactOutput output{};
 
             // Test for initial overlap or contact.
             DCPQuery<T, Vector3<T>, Triangle3<T>> ptQuery{};
-            auto ptResult = ptQuery(sphere.center, triangle);
+            auto ptOutput = ptQuery(sphere.center, triangle);
             T rsqr = sphere.radius * sphere.radius;
-            if (ptResult.sqrDistance <= rsqr)
+            if (ptOutput.sqrDistance <= rsqr)
             {
                 // The values output.contactTime and output.contactPoint[]
                 // are both zero, so we need only set the
                 // output.contactPoint[].x values.
-                output.intersectionType = (ptResult.sqrDistance < rsqr ? -1 : +1);
+                output.intersectionType = (ptOutput.sqrDistance < rsqr ? -1 : +1);
                 for (std::size_t j = 0; j < 3; ++j)
                 {
-                    output.contactPoint[j].x = ptResult.closest[j];
+                    output.contactPoint[j].x = ptOutput.closest[j];
                 }
                 return output;
             }

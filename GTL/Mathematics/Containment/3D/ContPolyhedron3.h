@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2028.08.13
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -442,13 +442,13 @@ namespace gtl
                     }
 
                     // Compute the ray-plane intersection.
-                    auto result = rpQuery(ray, face.plane);
+                    auto rpOutput = rpQuery(ray, face.plane);
 
                     // If you trigger this assertion, numerical round-off
                     // errors have led to a discrepancy between
                     // FastNoIntersect and the Find() result.
                     GTL_RUNTIME_ASSERT(
-                        result.intersect,
+                        rpOutput.intersect,
                         "Unexpected condition.");
 
                     // Get a coordinate system for the plane. Use vertex 0
@@ -459,7 +459,7 @@ namespace gtl
                     ComputeOrthogonalComplement(basis[0], basis[1], basis[2]);
 
                     // Project the intersection onto the plane.
-                    Vector3<T> diff = result.point - V0;
+                    Vector3<T> diff = rpOutput.point - V0;
                     Vector2<T> projIntersect{ Dot(basis[1], diff), Dot(basis[2], diff) };
 
                     // Project the face vertices onto the plane of the face.

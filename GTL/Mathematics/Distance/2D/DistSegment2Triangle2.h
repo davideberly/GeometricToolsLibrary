@@ -43,37 +43,40 @@ namespace gtl
             Vector2<T> segDirection = segment.p[1] - segment.p[0];
             Line2<T> line(segment.p[0], segDirection);
             LTQuery ltQuery{};
-            auto ltResult = ltQuery(line, triangle);
-            if (ltResult.parameter >= zero)
+            auto ltOutput = ltQuery(line, triangle);
+            if (ltOutput.parameter >= zero)
             {
-                if (ltResult.parameter <= one)
+                if (ltOutput.parameter <= one)
                 {
-                    output = ltResult;
+                    output = ltOutput;
                 }
                 else
                 {
                     DCPQuery<T, Vector2<T>, Triangle2<T>> ptQuery{};
-                    auto ptResult = ptQuery(segment.p[1], triangle);
-                    output.distance = ptResult.distance;
-                    output.sqrDistance = ptResult.sqrDistance;
+                    auto ptOutput = ptQuery(segment.p[1], triangle);
+                    output.distance = ptOutput.distance;
+                    output.sqrDistance = ptOutput.sqrDistance;
                     output.parameter = one;
-                    output.barycentric = ptResult.barycentric;
+                    output.barycentric = ptOutput.barycentric;
                     output.closest[0] = segment.p[1];
-                    output.closest[1] = ptResult.closest[1];
+                    output.closest[1] = ptOutput.closest[1];
                 }
             }
             else
             {
                 DCPQuery<T, Vector2<T>, Triangle2<T>> ptQuery{};
-                auto ptResult = ptQuery(segment.p[0], triangle);
-                output.distance = ptResult.distance;
-                output.sqrDistance = ptResult.sqrDistance;
+                auto ptOutput = ptQuery(segment.p[0], triangle);
+                output.distance = ptOutput.distance;
+                output.sqrDistance = ptOutput.sqrDistance;
                 output.parameter = zero;
-                output.barycentric = ptResult.barycentric;
+                output.barycentric = ptOutput.barycentric;
                 output.closest[0] = segment.p[0];
-                output.closest[1] = ptResult.closest[1];
+                output.closest[1] = ptOutput.closest[1];
             }
             return output;
         }
+
+    private:
+        friend class UnitTestDistSegment2Triangle2;
     };
 }

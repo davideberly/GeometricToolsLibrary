@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -49,18 +49,18 @@ namespace gtl
             // on the arc, there is no need to test arc endpoints for
             // closeness.
             Circle2<T> circle(arc.center, arc.radius);
-            auto rcResult = DCPQuery<T, Segment2<T>, Circle2<T>>{}(segment, circle);
+            auto rcOutput = DCPQuery<T, Segment2<T>, Circle2<T>>{}(segment, circle);
             Output output{};
-            for (std::size_t i = 0; i < rcResult.numClosestPairs; ++i)
+            for (std::size_t i = 0; i < rcOutput.numClosestPairs; ++i)
             {
-                if (arc.Contains(rcResult.closest[i][1]))
+                if (arc.Contains(rcOutput.closest[i][1]))
                 {
                     std::size_t j = output.numClosestPairs++;
-                    output.distance = rcResult.distance;
-                    output.sqrDistance = rcResult.sqrDistance;
-                    output.parameter[j] = rcResult.parameter[i];
-                    output.closest[j][0] = rcResult.closest[i][0];
-                    output.closest[j][1] = rcResult.closest[i][1];
+                    output.distance = rcOutput.distance;
+                    output.sqrDistance = rcOutput.sqrDistance;
+                    output.parameter[j] = rcOutput.parameter[i];
+                    output.closest[j][0] = rcOutput.closest[i][0];
+                    output.closest[j][1] = rcOutput.closest[i][1];
                 }
             }
 
@@ -76,32 +76,32 @@ namespace gtl
             // then select the minima.
             DCPQuery<T, Vector2<T>, Segment2<T>> psQuery{};
             DCPQuery<T, Vector2<T>, Arc2<T>> paQuery{};
-            auto psResult0 = psQuery(arc.end[0], segment);
-            auto psResult1 = psQuery(arc.end[1], segment);
-            auto paResult2 = paQuery(segment.p[0], arc);
-            auto paResult3 = paQuery(segment.p[1], arc);
+            auto psOutput0 = psQuery(arc.end[0], segment);
+            auto psOutput1 = psQuery(arc.end[1], segment);
+            auto paOutput2 = paQuery(segment.p[0], arc);
+            auto paOutput3 = paQuery(segment.p[1], arc);
 
             std::array<SortItem, 4> items{};
-            items[0].distance = std::sqrt(psResult0.sqrDistance);
-            items[0].sqrDistance = psResult0.sqrDistance;
-            items[0].parameter = psResult0.parameter;
-            items[0].closest[0] = psResult0.closest[1];
+            items[0].distance = std::sqrt(psOutput0.sqrDistance);
+            items[0].sqrDistance = psOutput0.sqrDistance;
+            items[0].parameter = psOutput0.parameter;
+            items[0].closest[0] = psOutput0.closest[1];
             items[0].closest[1] = arc.end[0];
-            items[1].distance = std::sqrt(psResult1.sqrDistance);
-            items[1].sqrDistance = psResult1.sqrDistance;
-            items[1].parameter = psResult1.parameter;
-            items[1].closest[0] = psResult1.closest[1];
+            items[1].distance = std::sqrt(psOutput1.sqrDistance);
+            items[1].sqrDistance = psOutput1.sqrDistance;
+            items[1].parameter = psOutput1.parameter;
+            items[1].closest[0] = psOutput1.closest[1];
             items[1].closest[1] = arc.end[1];
-            items[2].distance = paResult2.distance;
-            items[2].sqrDistance = paResult2.sqrDistance;
+            items[2].distance = paOutput2.distance;
+            items[2].sqrDistance = paOutput2.sqrDistance;
             items[2].parameter = C_<T>(0);
-            items[2].closest[0] = paResult2.closest[0];
-            items[2].closest[1] = paResult2.closest[1];
-            items[3].distance = paResult3.distance;
-            items[3].sqrDistance = paResult3.sqrDistance;
+            items[2].closest[0] = paOutput2.closest[0];
+            items[2].closest[1] = paOutput2.closest[1];
+            items[3].distance = paOutput3.distance;
+            items[3].sqrDistance = paOutput3.sqrDistance;
             items[3].parameter = C_<T>(1);
-            items[3].closest[0] = paResult3.closest[0];
-            items[3].closest[1] = paResult3.closest[1];
+            items[3].closest[0] = paOutput3.closest[0];
+            items[3].closest[1] = paOutput3.closest[1];
             std::sort(items.begin(), items.end());
 
             auto const& item0 = items[0];
@@ -154,5 +154,8 @@ namespace gtl
             T parameter;
             std::array<Vector2<T>, 2> closest;
         };
+
+    private:
+        friend class UnitTestDistSegment2Arc2;
     };
 }

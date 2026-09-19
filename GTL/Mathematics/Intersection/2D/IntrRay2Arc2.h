@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.17
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -72,18 +72,18 @@ namespace gtl
 
             FIQuery<T, Ray2<T>, Circle2<T>> rcQuery{};
             Circle2<T> circle(arc.center, arc.radius);
-            auto rcResult = rcQuery(ray, circle);
-            if (rcResult.intersect)
+            auto rcOutput = rcQuery(ray, circle);
+            if (rcOutput.intersect)
             {
                 // Test whether ray-circle intersections are on the arc.
                 output.numIntersections = 0;
-                for (std::size_t i = 0; i < rcResult.numIntersections; ++i)
+                for (std::size_t i = 0; i < rcOutput.numIntersections; ++i)
                 {
-                    if (arc.Contains(rcResult.point[i], epsilon))
+                    if (arc.Contains(rcOutput.point[i], epsilon))
                     {
                         output.intersect = true;
-                        output.parameter[output.numIntersections] = rcResult.parameter[i];
-                        output.point[output.numIntersections] = rcResult.point[i];
+                        output.parameter[output.numIntersections] = rcOutput.parameter[i];
+                        output.point[output.numIntersections] = rcOutput.point[i];
                         ++output.numIntersections;
                     }
                 }

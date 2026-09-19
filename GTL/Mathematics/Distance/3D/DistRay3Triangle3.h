@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -47,13 +47,13 @@ namespace gtl
             else
             {
                 DCPQuery<T, Vector3<T>, Triangle3<T>> ptQuery{};
-                auto ptResult = ptQuery(ray.origin, triangle);
-                output.distance = ptResult.distance;
-                output.sqrDistance = ptResult.sqrDistance;
+                auto ptOutput = ptQuery(ray.origin, triangle);
+                output.distance = ptOutput.distance;
+                output.sqrDistance = ptOutput.sqrDistance;
                 output.parameter = C_<T>(0);
-                output.barycentric = ptResult.barycentric;
+                output.barycentric = ptOutput.barycentric;
                 output.closest[0] = ray.origin;
-                output.closest[1] = ptResult.closest[1];
+                output.closest[1] = ptOutput.closest[1];
             }
             return output;
         }

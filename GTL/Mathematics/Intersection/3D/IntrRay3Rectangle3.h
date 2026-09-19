@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.09.13
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -53,10 +53,10 @@ namespace gtl
             T const zero = C_<T>(0);
             FIQuery<T, Line3<T>, Rectangle3<T>> lrQuery{};
             Line3<T> line(ray.origin, ray.direction);
-            auto lrResult = lrQuery(line, rectangle);
-            if (lrResult.intersect)
+            auto lrOutput = lrQuery(line, rectangle);
+            if (lrOutput.intersect)
             {
-                if (lrResult.parameter >= zero)
+                if (lrOutput.parameter >= zero)
                 {
                     // The line-rectangle intersection is on the ray.
                     output.intersect = true;
@@ -97,16 +97,16 @@ namespace gtl
             T const zero = C_<T>(0);
             FIQuery<T, Line3<T>, Rectangle3<T>> lrQuery{};
             Line3<T> line(ray.origin, ray.direction);
-            auto lrResult = lrQuery(line, rectangle);
-            if (lrResult.intersect)
+            auto lrOutput = lrQuery(line, rectangle);
+            if (lrOutput.intersect)
             {
-                if (lrResult.parameter >= zero)
+                if (lrOutput.parameter >= zero)
                 {
                     // The line-rectangle intersection is on the ray.
                     output.intersect = true;
-                    output.parameter = lrResult.parameter;
-                    output.rectCoord = lrResult.rectCoord;
-                    output.point = lrResult.point;
+                    output.parameter = lrOutput.parameter;
+                    output.rectCoord = lrOutput.rectCoord;
+                    output.point = lrOutput.point;
                     return output;
                 }
             }

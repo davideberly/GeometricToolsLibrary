@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -96,11 +96,11 @@ namespace gtl
                 // [-segExtent,+segExtent].
                 std::array<T, 2> segInterval = { -segExtent, segExtent };
                 FIQuery<T, std::array<T, 2>, std::array<T, 2>> iiQuery{};
-                auto iiResult = iiQuery(output.parameter, segInterval);
-                if (iiResult.intersect)
+                auto iiOutput = iiQuery(output.parameter, segInterval);
+                if (iiOutput.intersect)
                 {
-                    output.numIntersections = iiResult.numIntersections;
-                    output.parameter = iiResult.overlap;
+                    output.numIntersections = iiOutput.numIntersections;
+                    output.parameter = iiOutput.overlap;
                 }
                 else
                 {

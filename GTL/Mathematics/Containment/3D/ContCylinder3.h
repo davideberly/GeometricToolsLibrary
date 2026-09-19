@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.13
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -33,10 +33,10 @@ namespace gtl
             T maxRadiusSqr = C_<T>(0);
             for (auto const& point : points)
             {
-                auto result = plQuery(point, line);
-                if (result.sqrDistance > maxRadiusSqr)
+                auto plOutput = plQuery(point, line);
+                if (plOutput.sqrDistance > maxRadiusSqr)
                 {
-                    maxRadiusSqr = result.sqrDistance;
+                    maxRadiusSqr = plOutput.sqrDistance;
                 }
             }
 

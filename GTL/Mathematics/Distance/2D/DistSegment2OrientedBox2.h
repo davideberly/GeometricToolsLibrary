@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -51,23 +51,23 @@ namespace gtl
                 else
                 {
                     DCPQuery<T, Vector2<T>, OrientedBox2<T>> pbQuery{};
-                    auto pbResult = pbQuery(segment.p[1], box);
-                    output.distance = pbResult.distance;
-                    output.sqrDistance = pbResult.sqrDistance;
+                    auto pbOutput = pbQuery(segment.p[1], box);
+                    output.distance = pbOutput.distance;
+                    output.sqrDistance = pbOutput.sqrDistance;
                     output.parameter = C_<T>(1);
                     output.closest[0] = segment.p[1];
-                    output.closest[1] = pbResult.closest[1];
+                    output.closest[1] = pbOutput.closest[1];
                 }
             }
             else
             {
                 DCPQuery<T, Vector2<T>, OrientedBox2<T>> pbQuery{};
-                auto pbResult = pbQuery(segment.p[0], box);
-                output.distance = pbResult.distance;
-                output.sqrDistance = pbResult.sqrDistance;
+                auto pbOutput = pbQuery(segment.p[0], box);
+                output.distance = pbOutput.distance;
+                output.sqrDistance = pbOutput.sqrDistance;
                 output.parameter = C_<T>(0);
                 output.closest[0] = segment.p[0];
-                output.closest[1] = pbResult.closest[1];
+                output.closest[1] = pbOutput.closest[1];
             }
 
             return output;

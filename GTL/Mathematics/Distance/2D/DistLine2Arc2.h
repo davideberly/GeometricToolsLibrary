@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -49,17 +49,17 @@ namespace gtl
             // on the arc, there is no need to test arc endpoints for
             // closeness.
             Circle2<T> circle(arc.center, arc.radius);
-            auto lcResult = DCPQuery<T, Line2<T>, Circle2<T>>{}(line, circle);
-            for (std::size_t i = 0; i < lcResult.numClosestPairs; ++i)
+            auto lcOutput = DCPQuery<T, Line2<T>, Circle2<T>>{}(line, circle);
+            for (std::size_t i = 0; i < lcOutput.numClosestPairs; ++i)
             {
-                if (arc.Contains(lcResult.closest[i][1]))
+                if (arc.Contains(lcOutput.closest[i][1]))
                 {
                     std::size_t j = output.numClosestPairs++;
-                    output.distance = lcResult.distance;
-                    output.sqrDistance = lcResult.sqrDistance;
-                    output.parameter[j] = lcResult.parameter[i];
-                    output.closest[j][0] = lcResult.closest[i][0];
-                    output.closest[j][1] = lcResult.closest[i][1];
+                    output.distance = lcOutput.distance;
+                    output.sqrDistance = lcOutput.sqrDistance;
+                    output.parameter[j] = lcOutput.parameter[i];
+                    output.closest[j][0] = lcOutput.closest[i][0];
+                    output.closest[j][1] = lcOutput.closest[i][1];
                 }
             }
 
@@ -73,40 +73,43 @@ namespace gtl
             // No circle closest points are on the arc. Compute distances to
             // the arc endpoints and select the minima.
             DCPQuery<T, Vector2<T>, Line2<T>> plQuery{};
-            auto plResult0 = plQuery(arc.end[0], line);
-            auto plResult1 = plQuery(arc.end[1], line);
-            if (plResult0.sqrDistance < plResult1.sqrDistance)
+            auto plOutput0 = plQuery(arc.end[0], line);
+            auto plOutput1 = plQuery(arc.end[1], line);
+            if (plOutput0.sqrDistance < plOutput1.sqrDistance)
             {
-                output.distance = std::sqrt(plResult0.sqrDistance);
-                output.sqrDistance = plResult0.sqrDistance;
+                output.distance = std::sqrt(plOutput0.sqrDistance);
+                output.sqrDistance = plOutput0.sqrDistance;
                 output.numClosestPairs = 1;
-                output.parameter[0] = plResult0.parameter;
-                output.closest[0][0] = plResult0.closest[1];
+                output.parameter[0] = plOutput0.parameter;
+                output.closest[0][0] = plOutput0.closest[1];
                 output.closest[0][1] = arc.end[0];
             }
-            else if (plResult1.sqrDistance < plResult0.sqrDistance)
+            else if (plOutput1.sqrDistance < plOutput0.sqrDistance)
             {
-                output.distance = std::sqrt(plResult1.sqrDistance);
-                output.sqrDistance = plResult1.sqrDistance;
+                output.distance = std::sqrt(plOutput1.sqrDistance);
+                output.sqrDistance = plOutput1.sqrDistance;
                 output.numClosestPairs = 1;
-                output.parameter[0] = plResult1.parameter;
-                output.closest[0][0] = plResult1.closest[1];
+                output.parameter[0] = plOutput1.parameter;
+                output.closest[0][0] = plOutput1.closest[1];
                 output.closest[0][1] = arc.end[1];
             }
             else
             {
-                output.distance = std::sqrt(plResult0.sqrDistance);
-                output.sqrDistance = plResult0.sqrDistance;
+                output.distance = std::sqrt(plOutput0.sqrDistance);
+                output.sqrDistance = plOutput0.sqrDistance;
                 output.numClosestPairs = 2;
-                output.parameter[0] = plResult0.parameter;
-                output.parameter[1] = plResult1.parameter;
-                output.closest[0][0] = plResult0.closest[1];
+                output.parameter[0] = plOutput0.parameter;
+                output.parameter[1] = plOutput1.parameter;
+                output.closest[0][0] = plOutput0.closest[1];
                 output.closest[0][1] = arc.end[0];
-                output.closest[1][0] = plResult1.closest[1];
+                output.closest[1][0] = plOutput1.closest[1];
                 output.closest[1][1] = arc.end[1];
             }
 
             return output;
         }
+
+    private:
+        friend class UnitTestDistLine2Arc2;
     };
 }

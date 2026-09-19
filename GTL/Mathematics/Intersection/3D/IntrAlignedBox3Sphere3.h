@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.09.23
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -120,8 +120,8 @@ namespace gtl
                 superBox.min[i] = -superBox.max[i];
             }
             TIQuery<T, Ray3<T>, AlignedBox3<T>> rbQuery{};
-            auto rbResult = rbQuery(Ray3<T>(C, V), superBox);
-            if (rbResult.intersect)
+            auto rbOutput = rbQuery(Ray3<T>(C, V), superBox);
+            if (rbOutput.intersect)
             {
                 DoQuery(extent, C, sphere.radius, V, output);
 

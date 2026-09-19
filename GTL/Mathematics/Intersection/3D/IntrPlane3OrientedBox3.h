@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.18
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -39,8 +39,8 @@ namespace gtl
                 std::fabs(box.extent[2] * Dot(plane.normal, box.axis[2]));
 
             DCPQuery<T, Vector3<T>, Plane3<T>> ppQuery{};
-            auto ppResult = ppQuery(box.center, plane);
-            output.intersect = (ppResult.distance <= radius);
+            auto ppOutput = ppQuery(box.center, plane);
+            output.intersect = (ppOutput.distance <= radius);
             return output;
         }
 

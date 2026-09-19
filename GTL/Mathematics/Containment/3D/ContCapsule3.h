@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.13
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -35,10 +35,10 @@ namespace gtl
             T maxRadiusSqr = C_<T>(0);
             for (auto const& point : points)
             {
-                auto result = plQuery(point, line);
-                if (result.sqrDistance > maxRadiusSqr)
+                auto plOutput = plQuery(point, line);
+                if (plOutput.sqrDistance > maxRadiusSqr)
                 {
-                    maxRadiusSqr = result.sqrDistance;
+                    maxRadiusSqr = plOutput.sqrDistance;
                 }
             }
 
@@ -97,8 +97,8 @@ namespace gtl
         static bool InContainer(Vector3<T> const& point, Capsule3<T> const& capsule)
         {
             DCPQuery<T, Vector3<T>, Segment3<T>> psQuery{};
-            auto result = psQuery(point, capsule.segment);
-            return result.distance <= capsule.radius;
+            auto psOutput = psQuery(point, capsule.segment);
+            return psOutput.distance <= capsule.radius;
         }
 
         // Test for containment of a sphere by a capsule.
@@ -108,8 +108,8 @@ namespace gtl
             if (rDiff >= C_<T>(0))
             {
                 DCPQuery<T, Vector3<T>, Segment3<T>> psQuery{};
-                auto result = psQuery(sphere.center, capsule.segment);
-                return result.distance <= rDiff;
+                auto psOutput = psQuery(sphere.center, capsule.segment);
+                return psOutput.distance <= rDiff;
             }
             return false;
         }

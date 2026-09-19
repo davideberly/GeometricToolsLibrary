@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -49,13 +49,13 @@ namespace gtl
             else
             {
                 DCPQuery<T, Vector3<T>, Rectangle3<T>> prQuery{};
-                auto prResult = prQuery(ray.origin, rectangle);
-                output.distance = prResult.distance;
-                output.sqrDistance = prResult.sqrDistance;
+                auto prOutput = prQuery(ray.origin, rectangle);
+                output.distance = prOutput.distance;
+                output.sqrDistance = prOutput.sqrDistance;
                 output.parameter = C_<T>(0);
-                output.cartesian = prResult.cartesian;
+                output.cartesian = prOutput.cartesian;
                 output.closest[0] = ray.origin;
-                output.closest[1] = prResult.closest[1];
+                output.closest[1] = prOutput.closest[1];
             }
             return output;
         }
