@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -23,6 +23,7 @@
 // When Output.numIntersections is 2, Output.parameter and Output.closest[0,1]
 // store Output.intersectionParameters[0] and Output.intersections[0].
 
+#include <GTL/Utility/Exceptions.h>
 #include <GTL/Mathematics/Distance/DistanceClosestPointQuery.h>
 #include <GTL/Mathematics/Primitives/2D/Circle2.h>
 #include <GTL/Mathematics/Primitives/ND/Line.h>
@@ -62,6 +63,11 @@ namespace gtl
 
         Output operator()(Line2<T> const& line, Circle2<T> const& circle)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != Vector2<T>::Zero() &&
+                circle.radius > static_cast<T>(0),
+                "Invalid input.");
+
             Output output{};
 
             // Translate the line and circle so that the circle has center at
@@ -163,5 +169,8 @@ namespace gtl
                 output.closest[1][1] = output.closest[1][0];
             }
         }
+
+    private:
+        friend class UnitTestDistLine2Circle2;
     };
 }

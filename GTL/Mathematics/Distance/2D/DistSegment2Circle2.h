@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.19
 
 #pragma once
 
@@ -101,33 +101,33 @@ namespace gtl
                 // the t0-point and the t1-point. The closest segment endpoint
                 // to the circle is the closest endpoint. Possibly both
                 // segment endpoints are closest.
-                auto pcResult0 = DCPQuery<T, Vector2<T>, Circle2<T>>{}(segment.p[0], circle);
-                auto pcResult1 = DCPQuery<T, Vector2<T>, Circle2<T>>{}(segment.p[1], circle);
-                if (pcResult0.distance < pcResult1.distance)
+                auto pcOutput0 = DCPQuery<T, Vector2<T>, Circle2<T>>{}(segment.p[0], circle);
+                auto pcOutput1 = DCPQuery<T, Vector2<T>, Circle2<T>>{}(segment.p[1], circle);
+                if (pcOutput0.distance < pcOutput1.distance)
                 {
                     // The endpoint segment.p[0] is closer to the circle than
                     // the endpoint segment.p[1].
-                    lcOutput.distance = pcResult0.distance;
-                    lcOutput.sqrDistance = pcResult0.sqrDistance;
+                    lcOutput.distance = pcOutput0.distance;
+                    lcOutput.sqrDistance = pcOutput0.sqrDistance;
                     lcOutput.numClosestPairs = 1;
                     lcOutput.parameter[0] = zero;
                     lcOutput.parameter[1] = zero;
-                    lcOutput.closest[0][0] = pcResult0.closest[0];
-                    lcOutput.closest[0][1] = pcResult0.closest[1];
+                    lcOutput.closest[0][0] = pcOutput0.closest[0];
+                    lcOutput.closest[0][1] = pcOutput0.closest[1];
                     lcOutput.closest[1][0] = { zero, zero };
                     lcOutput.closest[1][1] = { zero, zero };
                 }
-                else if (pcResult0.distance > pcResult1.distance)
+                else if (pcOutput0.distance > pcOutput1.distance)
                 {
                     // The endpoint segment.p[1] is closer to the circle than
                     // the endpoint segment.p[0].
-                    lcOutput.distance = pcResult1.distance;
-                    lcOutput.sqrDistance = pcResult1.sqrDistance;
+                    lcOutput.distance = pcOutput1.distance;
+                    lcOutput.sqrDistance = pcOutput1.sqrDistance;
                     lcOutput.numClosestPairs = 1;
                     lcOutput.parameter[0] = one;
                     lcOutput.parameter[1] = zero;
-                    lcOutput.closest[0][0] = pcResult1.closest[0];
-                    lcOutput.closest[0][1] = pcResult1.closest[1];
+                    lcOutput.closest[0][0] = pcOutput1.closest[0];
+                    lcOutput.closest[0][1] = pcOutput1.closest[1];
                     lcOutput.closest[1][0] = { zero, zero };
                     lcOutput.closest[1][1] = { zero, zero };
                 }
@@ -135,15 +135,15 @@ namespace gtl
                 {
                     // The endpoints segment.p[0] and segment.p[1] are
                     // equidistant from the circle.
-                    lcOutput.distance = pcResult0.distance;
-                    lcOutput.sqrDistance = pcResult0.sqrDistance;
+                    lcOutput.distance = pcOutput0.distance;
+                    lcOutput.sqrDistance = pcOutput0.sqrDistance;
                     lcOutput.numClosestPairs = 2;
                     lcOutput.parameter[0] = zero;
                     lcOutput.parameter[1] = one;
-                    lcOutput.closest[0][0] = pcResult0.closest[0];
-                    lcOutput.closest[0][1] = pcResult0.closest[1];
-                    lcOutput.closest[1][0] = pcResult1.closest[0];
-                    lcOutput.closest[1][1] = pcResult1.closest[1];
+                    lcOutput.closest[0][0] = pcOutput0.closest[0];
+                    lcOutput.closest[0][1] = pcOutput0.closest[1];
+                    lcOutput.closest[1][0] = pcOutput1.closest[0];
+                    lcOutput.closest[1][1] = pcOutput1.closest[1];
                 }
             }
             else  // 0 <= t0 <= 1 && 0 <= t1 <= 1
@@ -174,5 +174,8 @@ namespace gtl
             lcOutput.closest[1][0] = { zero, zero };
             lcOutput.closest[1][1] = { zero, zero };
         }
+
+    private:
+        friend class UnitTestDistSegment2Circle2;
     };
 }
