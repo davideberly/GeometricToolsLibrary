@@ -52,22 +52,23 @@ namespace gtl
             // at the origin.
             Line3<T> xfrmLine(xfrmOrigin, xfrmDirection);
             LBQuery lbQuery{};
-            output = lbQuery(xfrmLine, cbox);
+            Output lbOutput = lbQuery(xfrmLine, cbox);
 
-            // Compute the closest point on the line.
-            output.closest[0] = line.origin + output.parameter * line.direction;
+            output.distance = lbOutput.distance;
+            output.sqrDistance = lbOutput.sqrDistance;
+            output.parameter = lbOutput.parameter;
 
-            // Rotate and translate the closest points to the original
-            // coordinates.
-            std::array<Vector3<T>, 2> closest{ box.center, box.center };
-            for (std::size_t i = 0; i < 2; ++i)
+            // Compute the closest point on the line in the original
+            // coordinate system.
+            output.closest[0] = line.origin + lbOutput.parameter * line.direction;
+
+            // Compute the closest point on the box in the original coordinate
+            // system.
+            output.closest[1] = box.center;
+            for (int32_t j = 0; j < 3; ++j)
             {
-                for (std::size_t j = 0; j < 3; ++j)
-                {
-                    closest[i] += output.closest[i][j] * box.axis[j];
-                }
+                output.closest[1] += lbOutput.closest[1][j] * box.axis[j];
             }
-            output.closest = closest;
 
             return output;
         }
