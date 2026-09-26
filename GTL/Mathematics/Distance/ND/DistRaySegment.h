@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.26
 
 #pragma once
 
@@ -20,6 +20,7 @@
 // parameter[1] storing s[1]. When there are infinitely many choices for the
 // pair of closest points, only one of them is returned.
 
+#include <GTL/Utility/Exceptions.h>
 #include <GTL/Mathematics/Distance/DistanceClosestPointQuery.h>
 #include <GTL/Mathematics/Primitives/ND/Ray.h>
 #include <GTL/Mathematics/Primitives/ND/Segment.h>
@@ -52,6 +53,11 @@ namespace gtl
 
         Output operator()(Ray<T, N> const& ray, Segment<T, N> const& segment)
         {
+            GTL_ARGUMENT_ASSERT(
+                ray.direction != (Vector<T, N>::Zero()) &&
+                segment.p[0] != segment.p[1],
+                "Invalid input.");
+
             Output output{};
 
             Vector<T, N> segDirection = segment.p[1] - segment.p[0];
@@ -99,80 +105,33 @@ namespace gtl
                 }
                 else  // s0 < 0
                 {
-                    if (s1 <= C_<T>(0))  // region 4
+                    // The s0 parameter is for the line containing the ray.
+                    // Clamp this parameter to 0 to obtain the closest ray
+                    // point, which is the ray origin.origin is
+                    s0 = C_<T>(0);
+
+                    // The s1 parameter is for the line containing the segment.
+                    // Clamp this parameter to [0,1] to obtain the closest
+                    // segment point.
+                    s1 = -b1;
+                    if (s1 < C_<T>(0))  // region 4
                     {
-                        s0 = -b0;
-                        if (s0 > C_<T>(0))
-                        {
-                            s0 /= a00;
-                            s1 = C_<T>(0);
-                        }
-                        else
-                        {
-                            s0 = C_<T>(0);
-                            s1 = -b1;
-                            if (s1 < C_<T>(0))
-                            {
-                                s1 = C_<T>(0);
-                            }
-                            else if (s1 > a11)
-                            {
-                                s1 = C_<T>(1);
-                            }
-                            else
-                            {
-                                s1 /= a11;
-                            }
-                        }
+                        s1 = C_<T>(0);
                     }
-                    else if (s1 <= det)  // region 3
+                    else if (s1 > a11)  // region 2
                     {
-                        s0 = C_<T>(0);
-                        s1 = -b1;
-                        if (s1 < C_<T>(0))
-                        {
-                            s1 = C_<T>(0);
-                        }
-                        else if (s1 > a11)
-                        {
-                            s1 = C_<T>(1);
-                        }
-                        else
-                        {
-                            s1 /= a11;
-                        }
+                        s1 = C_<T>(1);
                     }
-                    else  // region 2
+                    else  // region 3
                     {
-                        s0 = -(a01 + b0);
-                        if (s0 > C_<T>(0))
-                        {
-                            s0 /= a00;
-                            s1 = C_<T>(1);
-                        }
-                        else
-                        {
-                            s0 = C_<T>(0);
-                            s1 = -b1;
-                            if (s1 < C_<T>(0))
-                            {
-                                s1 = C_<T>(0);
-                            }
-                            else if (s1 > a11)
-                            {
-                                s1 = C_<T>(1);
-                            }
-                            else
-                            {
-                                s1 /= a11;
-                            }
-                        }
+                        s1 /= a11;
                     }
                 }
             }
             else
             {
-                // The ray and segment are parallel.
+                // The ray and segment are parallel. The initial s0 values are
+                // for the line.
                 if (a01 > C_<T>(0))
                 {
                     // Opposite direction vectors.
@@ -185,6 +144,12 @@ namespace gtl
                     s0 = -(a01 + b0) / a00;
                     s1 = C_<T>(1);
                 }
+            
+                // The parameter s0 for the ray must be clamped to
+                // [0,+infinity).
+                s0 = std::max(s0, C_<T>(0));
+                int stophere{};
+                stophere = 0;
             }
 
             output.parameter[0] = s0;

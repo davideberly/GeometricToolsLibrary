@@ -3,23 +3,24 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.09.26
 
 #pragma once
 
 // Compute the distance between a line and a segment in nD.
 // 
-// The segment is Q[0] + s[0] * (Q[1] - Q[0]) for 0 <= s[0] <= 1. The
-// direction D[0] = Q[1] - Q[0] is generally not unit length.
+// The line is P[0] + s[0] * D[0] for real numbers s[0]. D[0] is not required
+// to be unit length.
+
+// The segment is Q[1] + s[1] * (Q[1] - Q[0]) for 0 <= s[1] <= 1. The
+// direction D[1] = Q[1] - Q[0] is generally not unit length.
 // 
-// The line is P[1] + s[1] * D[1], where D[i] is not required to be unit
-// length.
-// 
-// The closest point on the segment is stored in closest[0] with parameter[0]
-// storing s[0]. The closest point on the line is stoed in closest[1] with
+// The closest point on the line is stored in closest[0] with parameter[0]
+// storing s[0]. The closest point on the segment is stoed in closest[1] with
 // parameter[1] storing s[1]. When there are infinitely many choices for the
 // pair of closest points, only one of them is returned.
 
+#include <GTL/Utility/Exceptions.h>
 #include <GTL/Mathematics/Distance/DistanceClosestPointQuery.h>
 #include <GTL/Mathematics/Primitives/ND/Line.h>
 #include <GTL/Mathematics/Primitives/ND/Segment.h>
@@ -52,6 +53,11 @@ namespace gtl
 
         Output operator()(Line<T, N> const& line, Segment<T, N> const& segment)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != (Vector<T, N>::Zero()) &&
+                segment.p[0] != segment.p[1],
+                "Invalid input.");
+
             Output output{};
 
             Vector<T, N> segDirection = segment.p[1] - segment.p[0];
