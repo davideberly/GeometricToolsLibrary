@@ -469,7 +469,7 @@ namespace gtl
                     output.numIntersections = 1;
                     output.firstTime = (interval1[0] - interval0[1]) / diffSpeed;
                     output.lastTime = (interval1[1] - interval0[0]) / diffSpeed;
-                    output.overlap[0] = interval0[0] + output.firstTime * speed0;
+                    output.overlap[0] = interval0[1] + output.firstTime * speed0;
                     output.overlap[1] = output.overlap[0];
                     return output;
                 }
