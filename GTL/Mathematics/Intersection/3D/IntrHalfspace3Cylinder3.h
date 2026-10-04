@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.18
+// File Version: 0.0.2026.10.04
 
 #pragma once
 
@@ -43,7 +43,7 @@ namespace gtl
             //   max = (Dot(N,C)-d) + r*sqrt(1-Dot(N,W)^2) + (h/2)*|Dot(N,W)|
             T center = Dot(halfspace.normal, cylinder.center) - halfspace.constant;
             T absNdW = std::fabs(Dot(halfspace.normal, cylinder.direction));
-            T root = std::sqrt(std::max(C_<T>(1), C_<T>(1) - absNdW * absNdW));
+            T root = std::sqrt(std::max(C_<T>(0), C_<T>(1) - absNdW * absNdW));
             T tmax = center + cylinder.radius * root + C_<T>(1, 2) * cylinder.height * absNdW;
 
             // The cylinder and halfspace intersect when the projection
