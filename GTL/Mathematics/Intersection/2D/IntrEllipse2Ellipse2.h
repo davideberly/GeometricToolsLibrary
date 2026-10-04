@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.10.04
 
 #pragma once
 
@@ -797,17 +797,20 @@ namespace gtl
                     if (lambda > zero)
                     {
                         T y1 = -std::sqrt(lambda / d1);
-                        output.points[output.numPoints] = { FMA(-ell, y1, y0) + C0[0], y1 + C0[1] };
+                        output.points[output.numPoints] = { gtl::FMA(-ell, y1, y0) + C0[0], y1 + C0[1] };
+                        output.isTransverse[output.numPoints] = true;
+                        ++output.numPoints;
                         y1 = -y1;
-                        output.points[output.numPoints] = { FMA(-ell, y1, y0) + C0[0], y1 + C0[1] };
+                        output.points[output.numPoints] = { gtl::FMA(-ell, y1, y0) + C0[0], y1 + C0[1] };
+                        output.isTransverse[output.numPoints] = true;
+                        ++output.numPoints;
                     }
                     else
                     {
                         output.points[output.numPoints] = { y0 + C0[0], C0[1] };
+                        output.isTransverse[output.numPoints] = false;
+                        ++output.numPoints;
                     }
-
-                    output.isTransverse[output.numPoints] = (lambda > zero);
-                    ++output.numPoints;
 
                     output.intersect = true;
                 }
