@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.10.05
 
 #pragma once
 
@@ -127,7 +127,7 @@ namespace gtl
                 if (rDif <= C_<T>(0))
                 {
                     output.type = 4;
-                    output.point = sphere1.center + r1 * C1mC0;
+                    output.point = sphere1.center - r1 * C1mC0;
                 }
                 else
                 {
