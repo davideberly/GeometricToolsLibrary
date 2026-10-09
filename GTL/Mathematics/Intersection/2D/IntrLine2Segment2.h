@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.10.09
 
 #pragma once
 
@@ -45,6 +45,10 @@ namespace gtl
 
         Output operator()(Line2<T> const& line, Segment2<T> const& segment)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != Vector2<T>::Zero() && segment.p[1] != segment.p[0],
+                "Invalid input (degenerate line or segment).");
+
             Output output{};
 
             FIQuery<T, Line2<T>, Line2<T>> llQuery{};
@@ -128,6 +132,10 @@ namespace gtl
 
         Output operator()(Line2<T> const& line, Segment2<T> const& segment)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != Vector2<T>::Zero() && segment.p[1] != segment.p[0],
+                "Invalid input (degenerate line or segment).");
+
             Output output{};
 
             FIQuery<T, Line2<T>, Line2<T>> llQuery{};
@@ -157,9 +165,8 @@ namespace gtl
             {
                 output.intersect = true;
                 output.numIntersections = std::numeric_limits<std::size_t>::max();
-                T maxT = std::numeric_limits<T>::max();
-                output.lineParameter[0] = -maxT;
-                output.lineParameter[1] = +maxT;
+                output.lineParameter[0] = C_<T>(0);
+                output.lineParameter[1] = C_<T>(1);
                 output.segmentParameter[0] = C_<T>(0);
                 output.segmentParameter[1] = C_<T>(1);
             }

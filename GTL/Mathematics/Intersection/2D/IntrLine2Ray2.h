@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.28
+// File Version: 0.0.2026.10.09
 
 #pragma once
 
@@ -45,6 +45,10 @@ namespace gtl
 
         Output operator()(Line2<T> const& line, Ray2<T> const& ray)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != Vector2<T>::Zero() && ray.direction != Vector2<T>::Zero(),
+                "Invalid input (degenerate line or ray).");
+
             Output output{};
 
             FIQuery<T, Line2<T>, Line2<T>> llQuery{};
@@ -124,6 +128,10 @@ namespace gtl
 
         Output operator()(Line2<T> const& line, Ray2<T> const& ray)
         {
+            GTL_ARGUMENT_ASSERT(
+                line.direction != Vector2<T>::Zero() && ray.direction != Vector2<T>::Zero(),
+                "Invalid input (degenerate line or ray).");
+
             Output output{};
 
             std::size_t constexpr smax = std::numeric_limits<std::size_t>::max();
@@ -156,10 +164,10 @@ namespace gtl
                 output.intersect = true;
                 output.numIntersections = smax;
                 T const tmax = std::numeric_limits<T>::max();
-                output.lineParameter[0] = -tmax;
-                output.lineParameter[1] = +tmax;
+                output.lineParameter[0] = C_<T>(0);
+                output.lineParameter[1] = tmax;
                 output.rayParameter[0] = C_<T>(0);
-                output.rayParameter[1] = +tmax;
+                output.rayParameter[1] = tmax;
             }
             else
             {
