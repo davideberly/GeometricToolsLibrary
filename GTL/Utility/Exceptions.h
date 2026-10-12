@@ -3,45 +3,62 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2025.01.12
+// File Version: 0.0.2026.10.12
 
 #pragma once
 
 // Documentation for this class is
 // https://www.geometrictools.com/Documentation/GTLUtility.pdf#Exceptions
 
+#include <exception>
 #include <stdexcept>
 #include <string>
 
 // If exceptions are enabled, throw the exception passed in, otherwise call std::terminate.
 #if (defined(__cpp_exceptions) || defined(__EXCEPTIONS) || (defined(_MSC_VER) && defined(_CPPUNWIND))) && !defined(GTL_NO_EXCEPTIONS)
-#define GTL_EXCEPTION_HANDLER(exception, message) throw exception(message)
+#define GTL_EXCEPTION_HANDLER(exception, message) \
+do \
+{ \
+    throw exception(message); \
+} \
+while(0)
 #else
-#define GTL_EXCEPTION_HANDLER(exception, message) std::terminate()
+#define GTL_EXCEPTION_HANDLER(exception, message) \
+do \
+{ \
+    std::terminate(); \
+} \
+while(0)
 #endif
 
 // The generic assertion allows you to specify any exception type you
 // prefer, including user-defined exception types.
 #define GTL_ASSERT(condition, exception, message) \
-if (!(condition)) \
+do \
 { \
-    std::string sLine = std::to_string(__LINE__); \
-    std::string sFile(__FILE__); \
-    std::string sFunc(__FUNCTION__); \
-    std::string report = sFile+"("+sFunc+","+sLine+"): "+message+"\n"; \
-    GTL_EXCEPTION_HANDLER(exception, report); \
-}
+    if (!(condition)) \
+    { \
+        std::string sLine = std::to_string(__LINE__); \
+        std::string sFile(__FILE__); \
+        std::string sFunc(__FUNCTION__); \
+        std::string report = sFile + "(" + sFunc + "," + sLine + "): " + message + "\n"; \
+        GTL_EXCEPTION_HANDLER(exception, report); \
+    } \
+} \
+while(0)
 
 // The generic error allows you to specify any exception type you
 // prefer, including user-defined exception types.
 #define GTL_ERROR(exception, message) \
+do \
 { \
     std::string sLine = std::to_string(__LINE__); \
     std::string sFile(__FILE__); \
     std::string sFunc(__FUNCTION__); \
-    std::string report = sFile+"("+sFunc+","+sLine+"): "+message+"\n"; \
+    std::string report = sFile + "(" + sFunc + "," + sLine + "): " + message + "\n"; \
     GTL_EXCEPTION_HANDLER(exception, report); \
-}
+} \
+while(0)
 
 // Domain errors occur when inputs are outside the domain of an operation.
 #define GTL_DOMAIN_ASSERT(condition, message) \
