@@ -65,6 +65,13 @@ namespace gtl
             mMask{ xBound + 2, yBound + 2, zBound + 2 },
             mHasMask(mask != nullptr)
         {
+            GTL_ARGUMENT_ASSERT(
+                xSpacing > static_cast<T>(0) &&
+                ySpacing > static_cast<T>(0) &&
+                zSpacing > static_cast<T>(0) &&
+                mask != nullptr,
+                "Invalid input.");
+
             for (std::size_t i = 0; i < 2; ++i)
             {
                 mBuffer[i].resize({ xBound + 2, yBound + 2, zBound + 2 });

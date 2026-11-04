@@ -3,7 +3,7 @@
 // Copyright (c) 2025 Geometric Tools LLC
 // Distributed under the Boost Software License, Version 1.0
 // https://www.boost.org/LICENSE_1_0.txt
-// File Version: 0.0.2026.07.10
+// File Version: 0.0.2026.11.04
 
 #pragma once
 
@@ -11,6 +11,7 @@
 // differential equations. PDEFilter is the abstract base class for
 // PDEFilter1, PDEFilter2 and PDEFilter3.
 
+#include <GTL/Utility/Exceptions.h>
 #include <GTL/Mathematics/Arithmetic/Constants.h>
 #include <cstddef>
 
@@ -88,6 +89,11 @@ namespace gtl
             mScale(C_<T>(0)),
             mTimeStep(C_<T>(0))
         {
+            GTL_ARGUMENT_ASSERT(
+                quantity > 0 &&
+                data != nullptr,
+                "Invalid input.");
+
             T maxValue = data[0];
             mMin = maxValue;
             for (std::size_t i = 1; i < mQuantity; i++)

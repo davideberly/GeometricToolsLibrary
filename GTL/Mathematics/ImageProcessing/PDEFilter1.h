@@ -47,6 +47,11 @@ namespace gtl
             mMask(xBound + 2),
             mHasMask(mask != nullptr)
         {
+            GTL_ARGUMENT_ASSERT(
+                xSpacing > static_cast<T>(0) &&
+                mask != nullptr,
+                "Invalid input.");
+
             // The mBuffer[] are ping-pong buffers for filtering.
             for (std::size_t i = 0; i < 2; ++i)
             {
